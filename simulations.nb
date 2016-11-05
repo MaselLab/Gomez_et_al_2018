@@ -1,0 +1,4323 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[    141646,       4322]
+NotebookOptionsPosition[    117054,       3683]
+NotebookOutlinePosition[    117390,       3698]
+CellTagsIndexPosition[    117347,       3695]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "RUN", " ", "ONE", " ", "TRIALS", " ", "TO", " ", "TEST", " ", "OUTPUT"}], 
+   " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"r0", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"\[Mu]0", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"s", "=", "0.02"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"c", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.02", ",", "0.03", ",", "0.04", ",", "0.05", ",", "0.06"}], 
+      "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"K0", "=", 
+     RowBox[{"4", " ", 
+      RowBox[{"10", "^", "6"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Us", "=", 
+     RowBox[{"10", "^", 
+      RowBox[{"-", "6"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Uc", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"2.5", " ", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}], ",", 
+       RowBox[{"3.5", " ", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}], ",", 
+       RowBox[{"4.5", " ", 
+        RowBox[{"10", "^", 
+         RowBox[{"-", "5"}]}]}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"timebetweenenvchanges", "=", 
+     RowBox[{"x", "=", "170"}]}], ";"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"maxtime", "=", 
+     RowBox[{"9", " ", 
+      RowBox[{"10", "^", "4."}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"initgenotype", "=", 
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{"24", ",", "1"}], "}"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"fulldata", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"verbose", "=", "False"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"veryverbose", "=", "False"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"targetrun", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"runcount", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"results", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"temp", "=", 
+     RowBox[{"{", "}"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.6718329330681477`*^9, 3.671832947670623*^9}, {
+   3.6718442754604053`*^9, 3.671844400157608*^9}, {3.67184624779631*^9, 
+   3.671846256188882*^9}, {3.6718463407577467`*^9, 3.671846365115897*^9}, {
+   3.6718464362440653`*^9, 3.6718464493001223`*^9}, {3.671876463647531*^9, 
+   3.671876488516087*^9}, {3.671876532389806*^9, 3.671876577573823*^9}, {
+   3.672408340107037*^9, 3.672408348491644*^9}, {3.672408399212202*^9, 
+   3.672408419612174*^9}, {3.672408624933085*^9, 3.6724086564044952`*^9}, {
+   3.672408759325616*^9, 3.672408770245266*^9}, {3.672408809341693*^9, 
+   3.672408857301774*^9}, 3.672408915030218*^9, {3.672409208230741*^9, 
+   3.6724092310390253`*^9}, {3.672411680062736*^9, 3.672411728199059*^9}, {
+   3.676139577672875*^9, 3.676139592232368*^9}, {3.67613963734971*^9, 
+   3.676139663366084*^9}, {3.676139758209865*^9, 3.6761398239504013`*^9}, {
+   3.676139887609067*^9, 3.6761399120550613`*^9}, {3.676139944453637*^9, 
+   3.6761399849659367`*^9}, {3.6761403460212507`*^9, 3.676140369917592*^9}, {
+   3.676140681877043*^9, 3.676140794635972*^9}, 3.676141139909069*^9, {
+   3.677246155582572*^9, 3.677246178460992*^9}, {3.677246364485957*^9, 
+   3.677246375821357*^9}, {3.679585851336385*^9, 3.67958585755989*^9}, {
+   3.67958598189676*^9, 3.679586020776688*^9}, {3.679586072944861*^9, 
+   3.67958607305616*^9}, {3.679586114944743*^9, 3.6795861266967077`*^9}, {
+   3.679586340401252*^9, 3.6795863443214684`*^9}, {3.679586504681535*^9, 
+   3.6795865089217587`*^9}, {3.679586564513172*^9, 3.679586564905254*^9}, {
+   3.679586692143302*^9, 3.679586692273535*^9}, {3.679586817777711*^9, 
+   3.679586822617551*^9}, {3.679604968660973*^9, 3.6796049738606987`*^9}, {
+   3.6796121792635*^9, 3.679612195455451*^9}, 3.680469614816719*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Base", " ", "Runs", " ", "with", " ", "no", " ", "relative", " ", 
+    "mutation"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"ParallelDo", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"results", "=", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"RunSimulationCheckEachMutation2", "[", 
+          RowBox[{
+          "r0", ",", "\[Mu]0", ",", "s", ",", "0", ",", "K0", ",", "Us", ",", 
+           "0", ",", "maxtime", ",", "timebetweenenvchanges", ",", 
+           "initgenotype"}], "]"}], ",", "0", ",", "0", ",", "s", ",", "Us"}],
+         "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Export", "[", 
+       RowBox[{
+        RowBox[{
+        "\"\<./Documents/kg2dprj/AllData/RelAbsMean/Exp0/simdata\>\"", "<>", 
+         RowBox[{"ToString", "[", "k", "]"}], "<>", "\"\<.dat\>\""}], ",", 
+        RowBox[{"N", "[", "results", "]"}], ",", "\"\<Data\>\""}], "]"}], 
+      ";"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "1", ",", "4"}], "}"}]}], "]"}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.679745210558366*^9, 3.6797453756222143`*^9}, 
+   3.6797456725448008`*^9, {3.6797458736330976`*^9, 3.679745875652616*^9}, {
+   3.6797492393504057`*^9, 3.679749240589633*^9}, {3.68026550634298*^9, 
+   3.6802655235360327`*^9}, {3.680311715755664*^9, 3.680311721961133*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680448323599691*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "simulations", " ", "with", " ", "mutation", " ", "in", " ", "relative", 
+    " ", "dimension"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"ParallelDo", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Print", "[", 
+           RowBox[{
+            RowBox[{"5", "*", 
+             RowBox[{"(", 
+              RowBox[{"j", "-", "1"}], ")"}]}], "+", "i"}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"targetrun", "=", "0"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"runcount", "=", "0"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"While", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"targetrun", "\[LessEqual]", "50000"}], ")"}], "&&", 
+             RowBox[{"(", 
+              RowBox[{"runcount", "\[LessEqual]", " ", "3"}], ")"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"runcount", "+=", "1"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"results", "=", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"RunSimulationCheckEachMutation2", "[", 
+                 RowBox[{"r0", ",", "\[Mu]0", ",", "s", ",", 
+                  RowBox[{"c", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], ",", "K0", ",", "Us", ",", 
+                  
+                  RowBox[{"Uc", "[", 
+                   RowBox[{"[", "j", "]"}], "]"}], ",", "maxtime", ",", 
+                  "timebetweenenvchanges", ",", "initgenotype"}], "]"}], ",", 
+                
+                RowBox[{"c", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], ",", 
+                RowBox[{"Uc", "[", 
+                 RowBox[{"[", "j", "]"}], "]"}], ",", "s", ",", "Us"}], 
+               "}"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"runcount", "\[Equal]", "1"}], ",", 
+               RowBox[{"temp", "=", "results"}], ",", "Null"}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"temp", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], ">", 
+                RowBox[{
+                 RowBox[{"results", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "[", 
+                 RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+               RowBox[{
+                RowBox[{"results", "=", "temp"}], ";"}], ",", "Null"}], "]"}],
+              ";", "\[IndentingNewLine]", 
+             RowBox[{"targetrun", "=", 
+              RowBox[{
+               RowBox[{"results", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}], ";"}]}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Print", "[", "targetrun", "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Export", "[", 
+           RowBox[{
+            RowBox[{"\"\<./Documents/kg2dprj/AllData/RelAbsMean/Exp\>\"", "<>", 
+             RowBox[{"ToString", "[", "k", "]"}], "<>", "\"\</simdata\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{
+               RowBox[{"5", "*", 
+                RowBox[{"(", 
+                 RowBox[{"j", "-", "1"}], ")"}]}], "+", "i"}], "]"}], "<>", 
+             "\"\<.dat\>\""}], ",", 
+            RowBox[{"N", "[", "results", "]"}], ",", "\"\<Data\>\""}], "]"}], 
+          ";"}], "\[IndentingNewLine]", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "5"}], "}"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "1", ",", "3"}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "11", ",", "25"}], "}"}]}], "]"}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.676139989642798*^9, 3.676140097991639*^9}, {
+   3.676140803538526*^9, 3.676140821214172*^9}, {3.676140918065783*^9, 
+   3.6761410197666063`*^9}, {3.676141104105236*^9, 3.676141125493484*^9}, {
+   3.6761412439005203`*^9, 3.676141279239403*^9}, {3.676141320239356*^9, 
+   3.676141325313531*^9}, 3.67614185869837*^9, {3.6761419284224243`*^9, 
+   3.676141945170203*^9}, {3.6768356381592007`*^9, 3.676835640246854*^9}, {
+   3.676837936624095*^9, 3.676837991935712*^9}, {3.6768382643861237`*^9, 
+   3.67683826947435*^9}, 3.6769886651876593`*^9, {3.676988701787593*^9, 
+   3.676988709331834*^9}, {3.677007782666627*^9, 3.677007782753003*^9}, {
+   3.677022280190198*^9, 3.677022286261693*^9}, {3.677251759844947*^9, 
+   3.677251766243491*^9}, {3.677536769925673*^9, 3.677536793069295*^9}, {
+   3.679586087577188*^9, 3.679586089593114*^9}, {3.679586143217477*^9, 
+   3.679586164793939*^9}, 3.679586199921315*^9, {3.679586241601626*^9, 
+   3.679586298593863*^9}, {3.679586372665883*^9, 3.679586424489787*^9}, {
+   3.679586483449835*^9, 3.6795864855540037`*^9}, {3.6795867189298573`*^9, 
+   3.67958676541838*^9}, {3.6795868085626698`*^9, 3.679586871401601*^9}, {
+   3.679586939771055*^9, 3.679586952602797*^9}, {3.679587022028734*^9, 
+   3.679587022763278*^9}, {3.679603327813685*^9, 3.6796033375885677`*^9}, {
+   3.679603394435215*^9, 3.67960341573981*^9}, {3.679603521163197*^9, 
+   3.679603529995737*^9}, {3.679603570227858*^9, 3.679603673076416*^9}, 
+   3.67960370787681*^9, {3.6796082993406477`*^9, 3.679608300380249*^9}, {
+   3.679608518643848*^9, 3.679608526435659*^9}, {3.679608600140514*^9, 
+   3.6796086385796022`*^9}, 3.6796089483731737`*^9, {3.6796092156206617`*^9, 
+   3.67960922304329*^9}, 3.6796122120515413`*^9, {3.67968069975976*^9, 
+   3.679680704397533*^9}, {3.679688310993771*^9, 3.679688311624412*^9}, {
+   3.679745162918454*^9, 3.679745178767283*^9}, 3.67974925583797*^9, {
+   3.6802655202622538`*^9, 3.680265520390979*^9}, {3.680273251862307*^9, 
+   3.680273252004613*^9}, {3.680311728206973*^9, 3.680311732555765*^9}, 
+   3.68045548618922*^9, 3.6804696482437983`*^9, 3.680481965549925*^9, 
+   3.680482010375032*^9, {3.680485318819253*^9, 3.680485371914735*^9}, {
+   3.680529432321125*^9, 3.680529432466258*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680529440272677*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805294402834167`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680529625116777*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680529625131022*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680529625515855*^9}],
+
+Cell[BoxData["72022.4353245465`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805296649805183`*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680529665231786*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680529885980111*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680529886022851*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680529886231831*^9}],
+
+Cell[BoxData["56883.957123699336`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680530141957821*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680530194672584*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680530194700029*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680530194905801*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680530194949443*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680530439833124*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680530439880085*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680530440074704*^9}],
+
+Cell[BoxData["52803.504005827686`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680530639366352*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680530639523459*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680530643639213*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680530643685553*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805306439408092`*^9}],
+
+Cell[BoxData["88617.3721910343`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805313302358713`*^9}],
+
+Cell[BoxData["78707.24555016503`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680531602766303*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680531603124216*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680531603132895*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680531830396756*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680531830418202*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680531830610672*^9}],
+
+Cell[BoxData["87075.2051270952`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680532032332218*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680532032573372*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68053216921224*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680532169228812*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680532169469241*^9}],
+
+Cell[BoxData["62437.35138789486`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680532547809308*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680532994651766*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680532994665564*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680532995025077*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805329950327682`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805331874772053`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680533187492865*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680533187689402*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680533382038239*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680533382059575*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680533382303043*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680533473638267*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680533473654847*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68053347386263*^9}],
+
+Cell[BoxData["64378.75636326668`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680533792269944*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68053396691889*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680533966932529*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680533967169786*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680533967185117*^9}],
+
+Cell[BoxData["54855.199394298485`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805341024676113`*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805341025940323`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680534398779275*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805343987993383`*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805343990211077`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680534431083749*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680534431109516*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680534431386643*^9}],
+
+Cell[BoxData["55199.64367697444`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680534822481411*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680534861440486*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805348614599657`*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680534861700515*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680534861724205*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680535104601015*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805351046262712`*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680535104951194*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68053525276167*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680535252782552*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680535253046404*^9}],
+
+Cell[BoxData["68237.4924464067`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680535401011076*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805354012049026`*^9}],
+
+Cell[BoxData["83000.06002473763`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680535766519321*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805359152479486`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680535915265786*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680535915535182*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680535915556234*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680536110903142*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680536110923492*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680536111153595*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805362669120893`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680536266934536*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680536267207884*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680536341225984*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680536341246985*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680536341480702*^9}],
+
+Cell[BoxData["70942.15386785196`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680536626801876*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680536890419989*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680536890438382*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680536890697016*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680536890718568*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680537115849327*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680537115878543*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680537116162318*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680537359919072*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680537359946789*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680537360252202*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805374043513107`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805374043719807`*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680537404589693*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680538094033396*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680538094058465*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680538397477116*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680538397495878*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680538397744968*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680538397769395*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680538748399365*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680538748419492*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680538748672731*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680538902877612*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680538902899734*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680538903233341*^9}],
+
+Cell[BoxData["71301.31059231696`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680539113608952*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680539113817667*^9}],
+
+Cell[BoxData["63108.57303341327`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680539351397923*^9}],
+
+Cell[BoxData["60075.859442100125`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805393882402267`*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680539388423863*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680539388446015*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680539611335731*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680539611362137*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680539611635713*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805398131024113`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680539813126844*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68053981343401*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680539893925084*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805398939462013`*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680539894211636*^9}],
+
+Cell[BoxData["87920.18827616148`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805404480088577`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680540647915286*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805406479338293`*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805406482261477`*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68054064824999*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68054085679967*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680540856822988*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68054085708272*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680541043215193*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68054104323563*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680541043551865*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805411591492987`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680541159169931*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680541159428203*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680541601432537*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680541601453236*^9}],
+
+Cell[BoxData["35646.69847579867`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680541713933063*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680541714037364*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805417140595922`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805419419994383`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680541942024497*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805419422941027`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680542333535779*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680542333560835*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680542333855524*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680542379411016*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805423794343557`*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680542379743881*^9}],
+
+Cell[BoxData["59699.42020089694`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805430606628923`*^9}],
+
+Cell[BoxData["74054.57225703934`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680543532291576*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68054353268482*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680543532709362*^9}],
+
+Cell[BoxData["88083.39441966562`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805437010102863`*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680543701228051*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680543857592184*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680543857612*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68054385784233*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680543984052369*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680543984075859*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680543984312796*^9}],
+
+Cell[BoxData["55351.67113244803`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68054426097342*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680544272493926*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805442725127296`*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680544272750269*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680544272771916*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680544487828595*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680544487848523*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680544488057686*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680544715586533*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680544715607388*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680544715887841*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805447363611393`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680544736382573*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805447366830683`*^9}],
+
+Cell[BoxData["68280.40545624212`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680545222934348*^9}],
+
+Cell[BoxData["54607.195887814334`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680545619578309*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680545619857682*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805456198779182`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680545947452229*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680545947473133*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680545947721181*^9}],
+
+Cell[BoxData["68711.76954104182`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680545963300915*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805459635093927`*^9}],
+
+Cell[BoxData["55753.16604168838`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680546286660972*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68054628688536*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805462869077168`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680546286926394*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68054698285254*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680546982872198*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680546983155471*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680546983176507*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680547291571011*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805472915964947`*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805472918991203`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68054736053754*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680547360559876*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680547360783512*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680547631109312*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805476311309843`*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680547631404529*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680547714047048*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680547714068872*^9}],
+
+Cell[BoxData["73754.66412811044`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680548690782154*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805486909867477`*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680548691008891*^9}],
+
+Cell[BoxData["56269.7248770891`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680548806993636*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680548807143599*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680549126871046*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680549126892909*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680549127151691*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680549133990888*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680549134008975*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680549134379981*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805497108016787`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680549710828085*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680549729229941*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680549729247765*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680549729488946*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680549729513579*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680549997007039*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68054999702887*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680549997308854*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680550182849513*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680550182871204*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68055018318556*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805504491164293`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680550449138751*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680550449494535*^9}],
+
+Cell[BoxData["52318.87348071275`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680550480709567*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805519486044197`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680551948623426*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680551949159871*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805519491816673`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680552130542346*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805521305747023`*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680552130826497*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805523781153393`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680552378131027*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680552378368112*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68055254660783*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680552546621717*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680552546902276*^9}],
+
+Cell[BoxData["56740.87858151777`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680552609387959*^9}],
+
+Cell[BoxData["54342.70204088496`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805532130188828`*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805532132240133`*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680553213233035*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680553425501356*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680553425523233*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805534257329473`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805536598339252`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680553659857292*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680553660184854*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680553700370141*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680553700391328*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680553700634666*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68055407685605*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680554076877454*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805543216234283`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680554321642289*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805543218800364`*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680554321888462*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805545504250793`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680554550446616*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680554550740938*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680554808185598*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805548082098627`*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680554808535748*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805549409267187`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680554940951591*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680554941293035*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680555496089373*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680555496110807*^9}],
+
+Cell[BoxData["89926.62412858868`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680555687688562*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680555687937007*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68055568794549*^9}],
+
+Cell[BoxData["53482.320432625515`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68055586578535*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805558659400597`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680556148637333*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680556148659433*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680556148906011*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680556271741556*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805562717674932`*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680556272086442*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805565583872967`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680556558414048*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680556853801499*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680556853821391*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680556854038101*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680556854049797*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805570762162037`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680557076241748*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680557076513208*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680557396688017*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680557396709923*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680557397047154*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805574082968397`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680557408319265*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680557408576104*^9}],
+
+Cell[BoxData["76454.80188346718`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805580093083067`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680558256074395*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680558256093617*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680558256329049*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680558256338891*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680558508400374*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805585084248962`*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680558508728106*^9}],
+
+Cell[BoxData["64220.87489531906`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680558579348627*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680558579534539*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680558845506809*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680558845528748*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805588458237667`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68055906434182*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680559064362207*^9}],
+
+Cell[BoxData["58131.953688858586`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680559496022451*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680559496228633*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680559496243478*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680559684122726*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680559684143194*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680559684317575*^9}],
+
+Cell[BoxData["61709.39215219914`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805597208134127`*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680559721036077*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680559997325067*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680559997351533*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680559997648315*^9}],
+
+Cell[BoxData["89499.76545781881`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805601602001257`*^9}],
+
+Cell[BoxData["54569.28888034976`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680560233018536*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805602331803513`*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805602331910477`*^9}],
+
+Cell[BoxData["72614.53986045926`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680560411094149*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680560411291486*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680560678972239*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680560678990024*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805606792614183`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805607695378513`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680560769560141*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805607698911*^9}],
+
+Cell[BoxData["51247.28084628202`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805609011079283`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680561256434093*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680561256450341*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680561256734351*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680561256746537*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805614953164787`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805614953420353`*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680561495627138*^9}],
+
+Cell[BoxData["78314.15487809852`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68056155553668*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680561555755772*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680561945497512*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805619455206213`*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680561945840213*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68056216839322*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680562168424262*^9}],
+
+Cell[BoxData["50037.71446135446`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805622208538113`*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805622210071*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805622210156307`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805624275663233`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680562427589335*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680562427832653*^9}],
+
+Cell[BoxData["72884.48435047346`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68056260909788*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680562609334765*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805626436620903`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680562643684547*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805626440127983`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680563041619946*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680563041642435*^9}],
+
+Cell[BoxData["59443.4458156181`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680563311569607*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680563311740902*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680563311749629*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680563510958968*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680563510981192*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680563511190336*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68056385391219*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805638539344673`*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805638542020197`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680563876340413*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680563876363439*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680563876631205*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805643179631023`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680564317994933*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680564392301758*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680564392321649*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680564392571364*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680564392581559*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805646332289543`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680564633253146*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805646334865923`*^9}],
+
+Cell[BoxData["88818.91080697076`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68056480690012*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805648072110043`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680565022516448*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680565022542495*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805650228351307`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680565392667158*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680565392689736*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680565754519224*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680565754538903*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680565754811764*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68056575482377*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680565963614819*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805659636414547`*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680565963898856*^9}],
+
+Cell[BoxData["68099.68389503355`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680566047680616*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805660478882027`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680566228284802*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68056622831468*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805662285839853`*^9}],
+
+Cell[BoxData["52090.3526890203`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805662500620623`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805666126845703`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680566612706501*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68056661296771*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680566612981588*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680566850258254*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805668502921467`*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680566850562353*^9}],
+
+Cell[BoxData["65408.180185367426`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805669164334383`*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680566916677701*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680567186693653*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680567186719046*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805671870252438`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805673784039087`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680567378430176*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680567786956246*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680567786976067*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805677872590513`*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680567787271915*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68056804197584*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680568042001381*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680568042295136*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805683419106817`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805683419335003`*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68056834229454*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68056849988929*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805684999122887`*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805685002306757`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680568773908709*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680568773929448*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680569476427395*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680569476446343*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68056947669807*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680569476711678*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680569697648972*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680569697672274*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805696979107857`*^9}],
+
+Cell[BoxData["58692.963412002515`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680569702982017*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805697031375923`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805699523194313`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680569952342257*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680569952567012*^9}],
+
+Cell[BoxData["73045.97571267534`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805701564760437`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680570851060832*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805708510805893`*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805708514517508`*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680570851461996*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680571065413209*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805710654353933`*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805710657054873`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680571216137231*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805712161677732`*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680571216472927*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680571416816986*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805714168437853`*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805714171262913`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805716212841454`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680571621308707*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680571878139027*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680571878158362*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680571878443153*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680571878456945*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680572114396902*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680572114424027*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805721147045803`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805723601158237`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680572360134198*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680572360446649*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680572528091435*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680572528118351*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805725284388866`*^9}],
+
+Cell[BoxData["67147.79961946502`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680572799202689*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680573212600519*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680573212621286*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805732128715553`*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680573212881476*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805734199790697`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680573420002092*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680573420257965*^9}],
+
+Cell[BoxData["55020.68555902035`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805735871811123`*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680573587357462*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68057367855781*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805736785809193`*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680573678890046*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680574014807169*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805740148305683`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680574425213827*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68057442524061*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805744254583197`*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680574425467836*^9}],
+
+Cell[BoxData["56238.66809059749`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680574569978415*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680574570143817*^9}],
+
+Cell[BoxData["57649.32607975962`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680574648449597*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680574648615471*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805749161268787`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805749161522837`*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68057491644632*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680575079436224*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680575079458897*^9}],
+
+Cell[BoxData["30817.683304980244`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805753908344593`*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680575390930292*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680575390940897*^9}],
+
+Cell[BoxData["51281.28529955637`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680575571414942*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680575571592298*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680575627445991*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68057562747668*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805756277757607`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680575987866117*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680575987893436*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680575988196015*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680576075685313*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680576075713972*^9}],
+
+Cell[BoxData["86589.85549376125`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680576516378674*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680576516638755*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680576516647519*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680576732802265*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680576732826004*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680576733044978*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680576937412216*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680576937444549*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680576937738599*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805770009462557`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680577000968521*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68057700125095*^9}],
+
+Cell[BoxData["64232.137071579666`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680577265375567*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805775664260597`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680577566445876*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805775666622753`*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805775667108097`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680577787839847*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680577787865521*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680577788166524*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805779459245*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680577945952083*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680577946267683*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680578129939273*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680578129961817*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680578130267269*^9}],
+
+Cell[BoxData["62124.680065712906`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680578448148283*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680578968811161*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680578968832714*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680578969117581*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805789691264343`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680579226758336*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805792268230124`*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680579227059161*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680579535716402*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680579535777513*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680579536093095*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680579633019288*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680579633043602*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805796333663483`*^9}],
+
+Cell[BoxData["60529.88829381643`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805800414686193`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805802985706053`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805802985909147`*^9}],
+
+Cell[BoxData["1"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68058029884295*^9}],
+
+Cell[BoxData["3"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680580298857511*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805805020537567`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680580502071828*^9}],
+
+Cell[BoxData["2"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680580502243597*^9}],
+
+Cell[BoxData["85234.22791181844`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805807443451967`*^9}],
+
+Cell[BoxData["4"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680580744614958*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680580786634927*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805807866555634`*^9}],
+
+Cell[BoxData["5"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680580786946177*^9}],
+
+Cell[BoxData["75516.52668889597`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680581413686776*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680582221604916*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805822216242933`*^9}],
+
+Cell[BoxData["6"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680582222089592*^9}],
+
+Cell[BoxData["8"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680582222110944*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805824460288982`*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680582446052287*^9}],
+
+Cell[BoxData["7"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805824463226757`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680582586690648*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680582586714719*^9}],
+
+Cell[BoxData["9"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68058258701978*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680582731538723*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680582731560931*^9}],
+
+Cell[BoxData["10"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680582731842284*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680583160688204*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805831607127323`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680585009472875*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680585009491878*^9}],
+
+Cell[BoxData["11"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680585010421928*^9}],
+
+Cell[BoxData["13"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805850104433737`*^9}],
+
+Cell[BoxData["66508.75431668281`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680585276061017*^9}],
+
+Cell[BoxData["14"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.68058527626294*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680585286424272*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680585286463831*^9}],
+
+Cell[BoxData["12"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805852867330513`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680585664808572*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680585664829462*^9}],
+
+Cell[BoxData["15"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805856651440783`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"not extinct before \"\>", "\[InvisibleSpace]", "90000.`", 
+   "\[InvisibleSpace]", "\<\" with changes at rate \"\>", "\[InvisibleSpace]",
+    "170"}],
+  SequenceForm["not extinct before ", 90000., " with changes at rate ", 170],
+  Editable->False]], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680585749825441*^9}],
+
+Cell[BoxData["90000.`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.680585749849127*^9}],
+
+Cell[BoxData["78551.15550246148`"], "Print",
+ ShowCellLabel->True,
+ CellChangeTimes->{3.6805860627874117`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1855, 1056},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[400, 13, 4008, 90, 407, "Input"],
+Cell[CellGroupData[{
+Cell[4433, 107, 1393, 31, 99, "Input"],
+Cell[5829, 140, 371, 8, 23, "Print"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6237, 153, 6228, 124, 319, "Input"],
+Cell[CellGroupData[{
+Cell[12490, 281, 91, 2, 23, "Print"],
+Cell[12584, 285, 93, 2, 23, "Print"],
+Cell[12680, 289, 371, 8, 23, "Print"],
+Cell[13054, 299, 97, 2, 23, "Print"],
+Cell[13154, 303, 91, 2, 23, "Print"],
+Cell[13248, 307, 109, 2, 23, "Print"],
+Cell[13360, 311, 91, 2, 23, "Print"],
+Cell[13454, 315, 371, 8, 23, "Print"],
+Cell[13828, 325, 97, 2, 23, "Print"],
+Cell[13928, 329, 91, 2, 23, "Print"],
+Cell[14022, 333, 109, 2, 23, "Print"],
+Cell[14134, 337, 371, 8, 23, "Print"],
+Cell[14508, 347, 97, 2, 23, "Print"],
+Cell[14608, 351, 91, 2, 23, "Print"],
+Cell[14702, 355, 91, 2, 23, "Print"],
+Cell[14796, 359, 371, 8, 23, "Print"],
+Cell[15170, 369, 97, 2, 23, "Print"],
+Cell[15270, 373, 91, 2, 23, "Print"],
+Cell[15364, 377, 109, 2, 23, "Print"],
+Cell[15476, 381, 91, 2, 23, "Print"],
+Cell[15570, 385, 371, 8, 23, "Print"],
+Cell[15944, 395, 97, 2, 23, "Print"],
+Cell[16044, 399, 94, 2, 23, "Print"],
+Cell[16141, 403, 109, 2, 23, "Print"],
+Cell[16253, 407, 108, 2, 23, "Print"],
+Cell[16364, 411, 92, 2, 23, "Print"],
+Cell[16459, 415, 92, 2, 23, "Print"],
+Cell[16554, 419, 371, 8, 23, "Print"],
+Cell[16928, 429, 97, 2, 23, "Print"],
+Cell[17028, 433, 92, 2, 23, "Print"],
+Cell[17123, 437, 107, 2, 23, "Print"],
+Cell[17233, 441, 92, 2, 23, "Print"],
+Cell[17328, 445, 370, 8, 23, "Print"],
+Cell[17701, 455, 97, 2, 23, "Print"],
+Cell[17801, 459, 92, 2, 23, "Print"],
+Cell[17896, 463, 108, 2, 23, "Print"],
+Cell[18007, 467, 371, 8, 23, "Print"],
+Cell[18381, 477, 97, 2, 23, "Print"],
+Cell[18481, 481, 91, 2, 23, "Print"],
+Cell[18575, 485, 93, 2, 23, "Print"],
+Cell[18671, 489, 373, 8, 23, "Print"],
+Cell[19047, 499, 97, 2, 23, "Print"],
+Cell[19147, 503, 91, 2, 23, "Print"],
+Cell[19241, 507, 371, 8, 23, "Print"],
+Cell[19615, 517, 97, 2, 23, "Print"],
+Cell[19715, 521, 91, 2, 23, "Print"],
+Cell[19809, 525, 371, 8, 23, "Print"],
+Cell[20183, 535, 97, 2, 23, "Print"],
+Cell[20283, 539, 90, 2, 23, "Print"],
+Cell[20376, 543, 108, 2, 23, "Print"],
+Cell[20487, 547, 370, 8, 23, "Print"],
+Cell[20860, 557, 97, 2, 23, "Print"],
+Cell[20960, 561, 91, 2, 23, "Print"],
+Cell[21054, 565, 91, 2, 23, "Print"],
+Cell[21148, 569, 111, 2, 23, "Print"],
+Cell[21262, 573, 93, 2, 23, "Print"],
+Cell[21358, 577, 371, 8, 23, "Print"],
+Cell[21732, 587, 99, 2, 23, "Print"],
+Cell[21834, 591, 93, 2, 23, "Print"],
+Cell[21930, 595, 371, 8, 23, "Print"],
+Cell[22304, 605, 97, 2, 23, "Print"],
+Cell[22404, 609, 92, 2, 23, "Print"],
+Cell[22499, 613, 108, 2, 23, "Print"],
+Cell[22610, 617, 371, 8, 23, "Print"],
+Cell[22984, 627, 99, 2, 23, "Print"],
+Cell[23086, 631, 92, 2, 23, "Print"],
+Cell[23181, 635, 92, 2, 23, "Print"],
+Cell[23276, 639, 371, 8, 23, "Print"],
+Cell[23650, 649, 99, 2, 23, "Print"],
+Cell[23752, 653, 92, 2, 23, "Print"],
+Cell[23847, 657, 370, 8, 23, "Print"],
+Cell[24220, 667, 97, 2, 23, "Print"],
+Cell[24320, 671, 92, 2, 23, "Print"],
+Cell[24415, 675, 107, 2, 23, "Print"],
+Cell[24525, 679, 94, 2, 23, "Print"],
+Cell[24622, 683, 108, 2, 23, "Print"],
+Cell[24733, 687, 373, 8, 23, "Print"],
+Cell[25109, 697, 97, 2, 23, "Print"],
+Cell[25209, 701, 91, 2, 23, "Print"],
+Cell[25303, 705, 91, 2, 23, "Print"],
+Cell[25397, 709, 371, 8, 23, "Print"],
+Cell[25771, 719, 97, 2, 23, "Print"],
+Cell[25871, 723, 91, 2, 23, "Print"],
+Cell[25965, 727, 373, 8, 23, "Print"],
+Cell[26341, 737, 97, 2, 23, "Print"],
+Cell[26441, 741, 91, 2, 23, "Print"],
+Cell[26535, 745, 371, 8, 23, "Print"],
+Cell[26909, 755, 97, 2, 23, "Print"],
+Cell[27009, 759, 91, 2, 23, "Print"],
+Cell[27103, 763, 108, 2, 23, "Print"],
+Cell[27214, 767, 371, 8, 23, "Print"],
+Cell[27588, 777, 97, 2, 23, "Print"],
+Cell[27688, 781, 91, 2, 23, "Print"],
+Cell[27782, 785, 91, 2, 23, "Print"],
+Cell[27876, 789, 371, 8, 23, "Print"],
+Cell[28250, 799, 97, 2, 23, "Print"],
+Cell[28350, 803, 91, 2, 23, "Print"],
+Cell[28444, 807, 371, 8, 23, "Print"],
+Cell[28818, 817, 97, 2, 23, "Print"],
+Cell[28918, 821, 91, 2, 23, "Print"],
+Cell[29012, 825, 373, 8, 23, "Print"],
+Cell[29388, 835, 99, 2, 23, "Print"],
+Cell[29490, 839, 92, 2, 23, "Print"],
+Cell[29585, 843, 371, 8, 23, "Print"],
+Cell[29959, 853, 97, 2, 23, "Print"],
+Cell[30059, 857, 371, 8, 23, "Print"],
+Cell[30433, 867, 97, 2, 23, "Print"],
+Cell[30533, 871, 92, 2, 23, "Print"],
+Cell[30628, 875, 92, 2, 23, "Print"],
+Cell[30723, 879, 371, 8, 23, "Print"],
+Cell[31097, 889, 97, 2, 23, "Print"],
+Cell[31197, 893, 92, 2, 23, "Print"],
+Cell[31292, 897, 371, 8, 23, "Print"],
+Cell[31666, 907, 97, 2, 23, "Print"],
+Cell[31766, 911, 92, 2, 23, "Print"],
+Cell[31861, 915, 108, 2, 23, "Print"],
+Cell[31972, 919, 92, 2, 23, "Print"],
+Cell[32067, 923, 108, 2, 23, "Print"],
+Cell[32178, 927, 111, 2, 23, "Print"],
+Cell[32292, 931, 91, 2, 23, "Print"],
+Cell[32386, 935, 91, 2, 23, "Print"],
+Cell[32480, 939, 371, 8, 23, "Print"],
+Cell[32854, 949, 97, 2, 23, "Print"],
+Cell[32954, 953, 91, 2, 23, "Print"],
+Cell[33048, 957, 373, 8, 23, "Print"],
+Cell[33424, 967, 97, 2, 23, "Print"],
+Cell[33524, 971, 90, 2, 23, "Print"],
+Cell[33617, 975, 371, 8, 23, "Print"],
+Cell[33991, 985, 99, 2, 23, "Print"],
+Cell[34093, 989, 91, 2, 23, "Print"],
+Cell[34187, 993, 110, 2, 23, "Print"],
+Cell[34300, 997, 371, 8, 23, "Print"],
+Cell[34674, 1007, 99, 2, 23, "Print"],
+Cell[34776, 1011, 93, 2, 23, "Print"],
+Cell[34872, 1015, 90, 2, 23, "Print"],
+Cell[34965, 1019, 370, 8, 23, "Print"],
+Cell[35338, 1029, 97, 2, 23, "Print"],
+Cell[35438, 1033, 90, 2, 23, "Print"],
+Cell[35531, 1037, 371, 8, 23, "Print"],
+Cell[35905, 1047, 96, 2, 23, "Print"],
+Cell[36004, 1051, 91, 2, 23, "Print"],
+Cell[36098, 1055, 373, 8, 23, "Print"],
+Cell[36474, 1065, 97, 2, 23, "Print"],
+Cell[36574, 1069, 92, 2, 23, "Print"],
+Cell[36669, 1073, 371, 8, 23, "Print"],
+Cell[37043, 1083, 97, 2, 23, "Print"],
+Cell[37143, 1087, 108, 2, 23, "Print"],
+Cell[37254, 1091, 92, 2, 23, "Print"],
+Cell[37349, 1095, 94, 2, 23, "Print"],
+Cell[37446, 1099, 373, 8, 23, "Print"],
+Cell[37822, 1109, 97, 2, 23, "Print"],
+Cell[37922, 1113, 94, 2, 23, "Print"],
+Cell[38019, 1117, 371, 8, 23, "Print"],
+Cell[38393, 1127, 97, 2, 23, "Print"],
+Cell[38493, 1131, 92, 2, 23, "Print"],
+Cell[38588, 1135, 371, 8, 23, "Print"],
+Cell[38962, 1145, 99, 2, 23, "Print"],
+Cell[39064, 1149, 92, 2, 23, "Print"],
+Cell[39159, 1153, 110, 2, 23, "Print"],
+Cell[39272, 1157, 108, 2, 23, "Print"],
+Cell[39383, 1161, 90, 2, 23, "Print"],
+Cell[39476, 1165, 91, 2, 23, "Print"],
+Cell[39570, 1169, 110, 2, 23, "Print"],
+Cell[39683, 1173, 91, 2, 23, "Print"],
+Cell[39777, 1177, 371, 8, 23, "Print"],
+Cell[40151, 1187, 94, 2, 23, "Print"],
+Cell[40248, 1191, 90, 2, 23, "Print"],
+Cell[40341, 1195, 371, 8, 23, "Print"],
+Cell[40715, 1205, 97, 2, 23, "Print"],
+Cell[40815, 1209, 91, 2, 23, "Print"],
+Cell[40909, 1213, 107, 2, 23, "Print"],
+Cell[41019, 1217, 371, 8, 23, "Print"],
+Cell[41393, 1227, 99, 2, 23, "Print"],
+Cell[41495, 1231, 91, 2, 23, "Print"],
+Cell[41589, 1235, 91, 2, 23, "Print"],
+Cell[41683, 1239, 371, 8, 23, "Print"],
+Cell[42057, 1249, 97, 2, 23, "Print"],
+Cell[42157, 1253, 91, 2, 23, "Print"],
+Cell[42251, 1257, 371, 8, 23, "Print"],
+Cell[42625, 1267, 97, 2, 23, "Print"],
+Cell[42725, 1271, 91, 2, 23, "Print"],
+Cell[42819, 1275, 373, 8, 23, "Print"],
+Cell[43195, 1285, 97, 2, 23, "Print"],
+Cell[43295, 1289, 94, 2, 23, "Print"],
+Cell[43392, 1293, 108, 2, 23, "Print"],
+Cell[43503, 1297, 109, 2, 23, "Print"],
+Cell[43615, 1301, 92, 2, 23, "Print"],
+Cell[43710, 1305, 94, 2, 23, "Print"],
+Cell[43807, 1309, 371, 8, 23, "Print"],
+Cell[44181, 1319, 97, 2, 23, "Print"],
+Cell[44281, 1323, 92, 2, 23, "Print"],
+Cell[44376, 1327, 108, 2, 23, "Print"],
+Cell[44487, 1331, 94, 2, 23, "Print"],
+Cell[44584, 1335, 108, 2, 23, "Print"],
+Cell[44695, 1339, 370, 8, 23, "Print"],
+Cell[45068, 1349, 94, 2, 23, "Print"],
+Cell[45165, 1353, 97, 2, 23, "Print"],
+Cell[45265, 1357, 370, 8, 23, "Print"],
+Cell[45638, 1367, 97, 2, 23, "Print"],
+Cell[45738, 1371, 91, 2, 23, "Print"],
+Cell[45832, 1375, 91, 2, 23, "Print"],
+Cell[45926, 1379, 371, 8, 23, "Print"],
+Cell[46300, 1389, 99, 2, 23, "Print"],
+Cell[46402, 1393, 93, 2, 23, "Print"],
+Cell[46498, 1397, 370, 8, 23, "Print"],
+Cell[46871, 1407, 97, 2, 23, "Print"],
+Cell[46971, 1411, 91, 2, 23, "Print"],
+Cell[47065, 1415, 371, 8, 23, "Print"],
+Cell[47439, 1425, 99, 2, 23, "Print"],
+Cell[47541, 1429, 91, 2, 23, "Print"],
+Cell[47635, 1433, 371, 8, 23, "Print"],
+Cell[48009, 1443, 97, 2, 23, "Print"],
+Cell[48109, 1447, 108, 2, 23, "Print"],
+Cell[48220, 1451, 93, 2, 23, "Print"],
+Cell[48316, 1455, 91, 2, 23, "Print"],
+Cell[48410, 1459, 107, 2, 23, "Print"],
+Cell[48520, 1463, 91, 2, 23, "Print"],
+Cell[48614, 1467, 371, 8, 23, "Print"],
+Cell[48988, 1477, 97, 2, 23, "Print"],
+Cell[49088, 1481, 91, 2, 23, "Print"],
+Cell[49182, 1485, 371, 8, 23, "Print"],
+Cell[49556, 1495, 97, 2, 23, "Print"],
+Cell[49656, 1499, 92, 2, 23, "Print"],
+Cell[49751, 1503, 373, 8, 23, "Print"],
+Cell[50127, 1513, 97, 2, 23, "Print"],
+Cell[50227, 1517, 371, 8, 23, "Print"],
+Cell[50601, 1527, 97, 2, 23, "Print"],
+Cell[50701, 1531, 92, 2, 23, "Print"],
+Cell[50796, 1535, 92, 2, 23, "Print"],
+Cell[50891, 1539, 371, 8, 23, "Print"],
+Cell[51265, 1549, 96, 2, 23, "Print"],
+Cell[51364, 1553, 92, 2, 23, "Print"],
+Cell[51459, 1557, 371, 8, 23, "Print"],
+Cell[51833, 1567, 97, 2, 23, "Print"],
+Cell[51933, 1571, 91, 2, 23, "Print"],
+Cell[52027, 1575, 373, 8, 23, "Print"],
+Cell[52403, 1585, 97, 2, 23, "Print"],
+Cell[52503, 1589, 92, 2, 23, "Print"],
+Cell[52598, 1593, 108, 2, 23, "Print"],
+Cell[52709, 1597, 373, 8, 23, "Print"],
+Cell[53085, 1607, 97, 2, 23, "Print"],
+Cell[53185, 1611, 91, 2, 23, "Print"],
+Cell[53279, 1615, 93, 2, 23, "Print"],
+Cell[53375, 1619, 371, 8, 23, "Print"],
+Cell[53749, 1629, 99, 2, 23, "Print"],
+Cell[53851, 1633, 91, 2, 23, "Print"],
+Cell[53945, 1637, 373, 8, 23, "Print"],
+Cell[54321, 1647, 97, 2, 23, "Print"],
+Cell[54421, 1651, 91, 2, 23, "Print"],
+Cell[54515, 1655, 370, 8, 23, "Print"],
+Cell[54888, 1665, 97, 2, 23, "Print"],
+Cell[54988, 1669, 91, 2, 23, "Print"],
+Cell[55082, 1673, 108, 2, 23, "Print"],
+Cell[55193, 1677, 110, 2, 23, "Print"],
+Cell[55306, 1681, 93, 2, 23, "Print"],
+Cell[55402, 1685, 91, 2, 23, "Print"],
+Cell[55496, 1689, 371, 8, 23, "Print"],
+Cell[55870, 1699, 97, 2, 23, "Print"],
+Cell[55970, 1703, 93, 2, 23, "Print"],
+Cell[56066, 1707, 373, 8, 23, "Print"],
+Cell[56442, 1717, 97, 2, 23, "Print"],
+Cell[56542, 1721, 91, 2, 23, "Print"],
+Cell[56636, 1725, 371, 8, 23, "Print"],
+Cell[57010, 1735, 97, 2, 23, "Print"],
+Cell[57110, 1739, 92, 2, 23, "Print"],
+Cell[57205, 1743, 370, 8, 23, "Print"],
+Cell[57578, 1753, 97, 2, 23, "Print"],
+Cell[57678, 1757, 373, 8, 23, "Print"],
+Cell[58054, 1767, 97, 2, 23, "Print"],
+Cell[58154, 1771, 94, 2, 23, "Print"],
+Cell[58251, 1775, 92, 2, 23, "Print"],
+Cell[58346, 1779, 373, 8, 23, "Print"],
+Cell[58722, 1789, 97, 2, 23, "Print"],
+Cell[58822, 1793, 92, 2, 23, "Print"],
+Cell[58917, 1797, 371, 8, 23, "Print"],
+Cell[59291, 1807, 99, 2, 23, "Print"],
+Cell[59393, 1811, 92, 2, 23, "Print"],
+Cell[59488, 1815, 373, 8, 23, "Print"],
+Cell[59864, 1825, 97, 2, 23, "Print"],
+Cell[59964, 1829, 92, 2, 23, "Print"],
+Cell[60059, 1833, 371, 8, 23, "Print"],
+Cell[60433, 1843, 97, 2, 23, "Print"],
+Cell[60533, 1847, 108, 2, 23, "Print"],
+Cell[60644, 1851, 91, 2, 23, "Print"],
+Cell[60738, 1855, 90, 2, 23, "Print"],
+Cell[60831, 1859, 108, 2, 23, "Print"],
+Cell[60942, 1863, 93, 2, 23, "Print"],
+Cell[61038, 1867, 371, 8, 23, "Print"],
+Cell[61412, 1877, 97, 2, 23, "Print"],
+Cell[61512, 1881, 91, 2, 23, "Print"],
+Cell[61606, 1885, 371, 8, 23, "Print"],
+Cell[61980, 1895, 99, 2, 23, "Print"],
+Cell[62082, 1899, 91, 2, 23, "Print"],
+Cell[62176, 1903, 373, 8, 23, "Print"],
+Cell[62552, 1913, 97, 2, 23, "Print"],
+Cell[62652, 1917, 371, 8, 23, "Print"],
+Cell[63026, 1927, 97, 2, 23, "Print"],
+Cell[63126, 1931, 91, 2, 23, "Print"],
+Cell[63220, 1935, 91, 2, 23, "Print"],
+Cell[63314, 1939, 373, 8, 23, "Print"],
+Cell[63690, 1949, 97, 2, 23, "Print"],
+Cell[63790, 1953, 91, 2, 23, "Print"],
+Cell[63884, 1957, 371, 8, 23, "Print"],
+Cell[64258, 1967, 97, 2, 23, "Print"],
+Cell[64358, 1971, 91, 2, 23, "Print"],
+Cell[64452, 1975, 373, 8, 23, "Print"],
+Cell[64828, 1985, 97, 2, 23, "Print"],
+Cell[64928, 1989, 92, 2, 23, "Print"],
+Cell[65023, 1993, 110, 2, 23, "Print"],
+Cell[65136, 1997, 371, 8, 23, "Print"],
+Cell[65510, 2007, 97, 2, 23, "Print"],
+Cell[65610, 2011, 92, 2, 23, "Print"],
+Cell[65705, 2015, 92, 2, 23, "Print"],
+Cell[65800, 2019, 371, 8, 23, "Print"],
+Cell[66174, 2029, 99, 2, 23, "Print"],
+Cell[66276, 2033, 92, 2, 23, "Print"],
+Cell[66371, 2037, 108, 2, 23, "Print"],
+Cell[66482, 2041, 92, 2, 23, "Print"],
+Cell[66577, 2045, 371, 8, 23, "Print"],
+Cell[66951, 2055, 97, 2, 23, "Print"],
+Cell[67051, 2059, 94, 2, 23, "Print"],
+Cell[67148, 2063, 370, 8, 23, "Print"],
+Cell[67521, 2073, 97, 2, 23, "Print"],
+Cell[67621, 2077, 109, 2, 23, "Print"],
+Cell[67733, 2081, 91, 2, 23, "Print"],
+Cell[67827, 2085, 91, 2, 23, "Print"],
+Cell[67921, 2089, 371, 8, 23, "Print"],
+Cell[68295, 2099, 97, 2, 23, "Print"],
+Cell[68395, 2103, 91, 2, 23, "Print"],
+Cell[68489, 2107, 110, 2, 23, "Print"],
+Cell[68602, 2111, 91, 2, 23, "Print"],
+Cell[68696, 2115, 371, 8, 23, "Print"],
+Cell[69070, 2125, 97, 2, 23, "Print"],
+Cell[69170, 2129, 91, 2, 23, "Print"],
+Cell[69264, 2133, 110, 2, 23, "Print"],
+Cell[69377, 2137, 108, 2, 23, "Print"],
+Cell[69488, 2141, 93, 2, 23, "Print"],
+Cell[69584, 2145, 93, 2, 23, "Print"],
+Cell[69680, 2149, 108, 2, 23, "Print"],
+Cell[69791, 2153, 91, 2, 23, "Print"],
+Cell[69885, 2157, 371, 8, 23, "Print"],
+Cell[70259, 2167, 97, 2, 23, "Print"],
+Cell[70359, 2171, 93, 2, 23, "Print"],
+Cell[70455, 2175, 373, 8, 23, "Print"],
+Cell[70831, 2185, 97, 2, 23, "Print"],
+Cell[70931, 2189, 90, 2, 23, "Print"],
+Cell[71024, 2193, 110, 2, 23, "Print"],
+Cell[71137, 2197, 371, 8, 23, "Print"],
+Cell[71511, 2207, 97, 2, 23, "Print"],
+Cell[71611, 2211, 92, 2, 23, "Print"],
+Cell[71706, 2215, 92, 2, 23, "Print"],
+Cell[71801, 2219, 373, 8, 23, "Print"],
+Cell[72177, 2229, 99, 2, 23, "Print"],
+Cell[72279, 2233, 92, 2, 23, "Print"],
+Cell[72374, 2237, 107, 2, 23, "Print"],
+Cell[72484, 2241, 92, 2, 23, "Print"],
+Cell[72579, 2245, 371, 8, 23, "Print"],
+Cell[72953, 2255, 99, 2, 23, "Print"],
+Cell[73055, 2259, 92, 2, 23, "Print"],
+Cell[73150, 2263, 370, 8, 23, "Print"],
+Cell[73523, 2273, 97, 2, 23, "Print"],
+Cell[73623, 2277, 110, 2, 23, "Print"],
+Cell[73736, 2281, 89, 2, 23, "Print"],
+Cell[73828, 2285, 93, 2, 23, "Print"],
+Cell[73924, 2289, 373, 8, 23, "Print"],
+Cell[74300, 2299, 97, 2, 23, "Print"],
+Cell[74400, 2303, 91, 2, 23, "Print"],
+Cell[74494, 2307, 107, 2, 23, "Print"],
+Cell[74604, 2311, 91, 2, 23, "Print"],
+Cell[74698, 2315, 373, 8, 23, "Print"],
+Cell[75074, 2325, 97, 2, 23, "Print"],
+Cell[75174, 2329, 93, 2, 23, "Print"],
+Cell[75270, 2333, 371, 8, 23, "Print"],
+Cell[75644, 2343, 97, 2, 23, "Print"],
+Cell[75744, 2347, 107, 2, 23, "Print"],
+Cell[75854, 2351, 91, 2, 23, "Print"],
+Cell[75948, 2355, 91, 2, 23, "Print"],
+Cell[76042, 2359, 371, 8, 23, "Print"],
+Cell[76416, 2369, 97, 2, 23, "Print"],
+Cell[76516, 2373, 91, 2, 23, "Print"],
+Cell[76610, 2377, 370, 8, 23, "Print"],
+Cell[76983, 2387, 99, 2, 23, "Print"],
+Cell[77085, 2391, 93, 2, 23, "Print"],
+Cell[77181, 2395, 371, 8, 23, "Print"],
+Cell[77555, 2405, 97, 2, 23, "Print"],
+Cell[77655, 2409, 92, 2, 23, "Print"],
+Cell[77750, 2413, 373, 8, 23, "Print"],
+Cell[78126, 2423, 97, 2, 23, "Print"],
+Cell[78226, 2427, 371, 8, 23, "Print"],
+Cell[78600, 2437, 97, 2, 23, "Print"],
+Cell[78700, 2441, 92, 2, 23, "Print"],
+Cell[78795, 2445, 92, 2, 23, "Print"],
+Cell[78890, 2449, 373, 8, 23, "Print"],
+Cell[79266, 2459, 97, 2, 23, "Print"],
+Cell[79366, 2463, 94, 2, 23, "Print"],
+Cell[79463, 2467, 107, 2, 23, "Print"],
+Cell[79573, 2471, 94, 2, 23, "Print"],
+Cell[79670, 2475, 371, 8, 23, "Print"],
+Cell[80044, 2485, 97, 2, 23, "Print"],
+Cell[80144, 2489, 94, 2, 23, "Print"],
+Cell[80241, 2493, 371, 8, 23, "Print"],
+Cell[80615, 2503, 97, 2, 23, "Print"],
+Cell[80715, 2507, 371, 8, 23, "Print"],
+Cell[81089, 2517, 97, 2, 23, "Print"],
+Cell[81189, 2521, 91, 2, 23, "Print"],
+Cell[81283, 2525, 90, 2, 23, "Print"],
+Cell[81376, 2529, 371, 8, 23, "Print"],
+Cell[81750, 2539, 99, 2, 23, "Print"],
+Cell[81852, 2543, 91, 2, 23, "Print"],
+Cell[81946, 2547, 108, 2, 23, "Print"],
+Cell[82057, 2551, 93, 2, 23, "Print"],
+Cell[82153, 2555, 371, 8, 23, "Print"],
+Cell[82527, 2565, 96, 2, 23, "Print"],
+Cell[82626, 2569, 93, 2, 23, "Print"],
+Cell[82722, 2573, 109, 2, 23, "Print"],
+Cell[82834, 2577, 373, 8, 23, "Print"],
+Cell[83210, 2587, 97, 2, 23, "Print"],
+Cell[83310, 2591, 90, 2, 23, "Print"],
+Cell[83403, 2595, 91, 2, 23, "Print"],
+Cell[83497, 2599, 371, 8, 23, "Print"],
+Cell[83871, 2609, 99, 2, 23, "Print"],
+Cell[83973, 2613, 91, 2, 23, "Print"],
+Cell[84067, 2617, 111, 2, 23, "Print"],
+Cell[84181, 2621, 91, 2, 23, "Print"],
+Cell[84275, 2625, 371, 8, 23, "Print"],
+Cell[84649, 2635, 97, 2, 23, "Print"],
+Cell[84749, 2639, 94, 2, 23, "Print"],
+Cell[84846, 2643, 373, 8, 23, "Print"],
+Cell[85222, 2653, 97, 2, 23, "Print"],
+Cell[85322, 2657, 371, 8, 23, "Print"],
+Cell[85696, 2667, 97, 2, 23, "Print"],
+Cell[85796, 2671, 94, 2, 23, "Print"],
+Cell[85893, 2675, 92, 2, 23, "Print"],
+Cell[85988, 2679, 370, 8, 23, "Print"],
+Cell[86361, 2689, 97, 2, 23, "Print"],
+Cell[86461, 2693, 92, 2, 23, "Print"],
+Cell[86556, 2697, 373, 8, 23, "Print"],
+Cell[86932, 2707, 99, 2, 23, "Print"],
+Cell[87034, 2711, 91, 2, 23, "Print"],
+Cell[87128, 2715, 370, 8, 23, "Print"],
+Cell[87501, 2725, 99, 2, 23, "Print"],
+Cell[87603, 2729, 94, 2, 23, "Print"],
+Cell[87700, 2733, 371, 8, 23, "Print"],
+Cell[88074, 2743, 97, 2, 23, "Print"],
+Cell[88174, 2747, 371, 8, 23, "Print"],
+Cell[88548, 2757, 97, 2, 23, "Print"],
+Cell[88648, 2761, 90, 2, 23, "Print"],
+Cell[88741, 2765, 91, 2, 23, "Print"],
+Cell[88835, 2769, 371, 8, 23, "Print"],
+Cell[89209, 2779, 97, 2, 23, "Print"],
+Cell[89309, 2783, 93, 2, 23, "Print"],
+Cell[89405, 2787, 109, 2, 23, "Print"],
+Cell[89517, 2791, 93, 2, 23, "Print"],
+Cell[89613, 2795, 373, 8, 23, "Print"],
+Cell[89989, 2805, 97, 2, 23, "Print"],
+Cell[90089, 2809, 91, 2, 23, "Print"],
+Cell[90183, 2813, 110, 2, 23, "Print"],
+Cell[90296, 2817, 371, 8, 23, "Print"],
+Cell[90670, 2827, 99, 2, 23, "Print"],
+Cell[90772, 2831, 93, 2, 23, "Print"],
+Cell[90868, 2835, 91, 2, 23, "Print"],
+Cell[90962, 2839, 371, 8, 23, "Print"],
+Cell[91336, 2849, 99, 2, 23, "Print"],
+Cell[91438, 2853, 93, 2, 23, "Print"],
+Cell[91534, 2857, 371, 8, 23, "Print"],
+Cell[91908, 2867, 99, 2, 23, "Print"],
+Cell[92010, 2871, 91, 2, 23, "Print"],
+Cell[92104, 2875, 371, 8, 23, "Print"],
+Cell[92478, 2885, 99, 2, 23, "Print"],
+Cell[92580, 2889, 94, 2, 23, "Print"],
+Cell[92677, 2893, 373, 8, 23, "Print"],
+Cell[93053, 2903, 97, 2, 23, "Print"],
+Cell[93153, 2907, 371, 8, 23, "Print"],
+Cell[93527, 2917, 97, 2, 23, "Print"],
+Cell[93627, 2921, 92, 2, 23, "Print"],
+Cell[93722, 2925, 92, 2, 23, "Print"],
+Cell[93817, 2929, 371, 8, 23, "Print"],
+Cell[94191, 2939, 97, 2, 23, "Print"],
+Cell[94291, 2943, 94, 2, 23, "Print"],
+Cell[94388, 2947, 373, 8, 23, "Print"],
+Cell[94764, 2957, 97, 2, 23, "Print"],
+Cell[94864, 2961, 92, 2, 23, "Print"],
+Cell[94959, 2965, 371, 8, 23, "Print"],
+Cell[95333, 2975, 97, 2, 23, "Print"],
+Cell[95433, 2979, 94, 2, 23, "Print"],
+Cell[95530, 2983, 108, 2, 23, "Print"],
+Cell[95641, 2987, 371, 8, 23, "Print"],
+Cell[96015, 2997, 97, 2, 23, "Print"],
+Cell[96115, 3001, 93, 2, 23, "Print"],
+Cell[96211, 3005, 91, 2, 23, "Print"],
+Cell[96305, 3009, 373, 8, 23, "Print"],
+Cell[96681, 3019, 97, 2, 23, "Print"],
+Cell[96781, 3023, 91, 2, 23, "Print"],
+Cell[96875, 3027, 110, 2, 23, "Print"],
+Cell[96988, 3031, 91, 2, 23, "Print"],
+Cell[97082, 3035, 370, 8, 23, "Print"],
+Cell[97455, 3045, 99, 2, 23, "Print"],
+Cell[97557, 3049, 91, 2, 23, "Print"],
+Cell[97651, 3053, 371, 8, 23, "Print"],
+Cell[98025, 3063, 99, 2, 23, "Print"],
+Cell[98127, 3067, 371, 8, 23, "Print"],
+Cell[98501, 3077, 96, 2, 23, "Print"],
+Cell[98600, 3081, 93, 2, 23, "Print"],
+Cell[98696, 3085, 91, 2, 23, "Print"],
+Cell[98790, 3089, 108, 2, 23, "Print"],
+Cell[98901, 3093, 91, 2, 23, "Print"],
+Cell[98995, 3097, 108, 2, 23, "Print"],
+Cell[99106, 3101, 91, 2, 23, "Print"],
+Cell[99200, 3105, 373, 8, 23, "Print"],
+Cell[99576, 3115, 99, 2, 23, "Print"],
+Cell[99678, 3119, 91, 2, 23, "Print"],
+Cell[99772, 3123, 371, 8, 23, "Print"],
+Cell[100146, 3133, 97, 2, 23, "Print"],
+Cell[100246, 3137, 111, 2, 23, "Print"],
+Cell[100360, 3141, 92, 2, 23, "Print"],
+Cell[100455, 3145, 92, 2, 23, "Print"],
+Cell[100550, 3149, 108, 2, 23, "Print"],
+Cell[100661, 3153, 92, 2, 23, "Print"],
+Cell[100756, 3157, 371, 8, 23, "Print"],
+Cell[101130, 3167, 96, 2, 23, "Print"],
+Cell[101229, 3171, 94, 2, 23, "Print"],
+Cell[101326, 3175, 371, 8, 23, "Print"],
+Cell[101700, 3185, 97, 2, 23, "Print"],
+Cell[101800, 3189, 92, 2, 23, "Print"],
+Cell[101895, 3193, 371, 8, 23, "Print"],
+Cell[102269, 3203, 97, 2, 23, "Print"],
+Cell[102369, 3207, 108, 2, 23, "Print"],
+Cell[102480, 3211, 91, 2, 23, "Print"],
+Cell[102574, 3215, 91, 2, 23, "Print"],
+Cell[102668, 3219, 371, 8, 23, "Print"],
+Cell[103042, 3229, 97, 2, 23, "Print"],
+Cell[103142, 3233, 91, 2, 23, "Print"],
+Cell[103236, 3237, 371, 8, 23, "Print"],
+Cell[103610, 3247, 97, 2, 23, "Print"],
+Cell[103710, 3251, 91, 2, 23, "Print"],
+Cell[103804, 3255, 373, 8, 23, "Print"],
+Cell[104180, 3265, 97, 2, 23, "Print"],
+Cell[104280, 3269, 90, 2, 23, "Print"],
+Cell[104373, 3273, 109, 2, 23, "Print"],
+Cell[104485, 3277, 373, 8, 23, "Print"],
+Cell[104861, 3287, 97, 2, 23, "Print"],
+Cell[104961, 3291, 93, 2, 23, "Print"],
+Cell[105057, 3295, 93, 2, 23, "Print"],
+Cell[105153, 3299, 371, 8, 23, "Print"],
+Cell[105527, 3309, 97, 2, 23, "Print"],
+Cell[105627, 3313, 91, 2, 23, "Print"],
+Cell[105721, 3317, 369, 8, 23, "Print"],
+Cell[106093, 3327, 97, 2, 23, "Print"],
+Cell[106193, 3331, 91, 2, 23, "Print"],
+Cell[106287, 3335, 371, 8, 23, "Print"],
+Cell[106661, 3345, 97, 2, 23, "Print"],
+Cell[106761, 3349, 92, 2, 23, "Print"],
+Cell[106856, 3353, 109, 2, 23, "Print"],
+Cell[106968, 3357, 371, 8, 23, "Print"],
+Cell[107342, 3367, 97, 2, 23, "Print"],
+Cell[107442, 3371, 92, 2, 23, "Print"],
+Cell[107537, 3375, 94, 2, 23, "Print"],
+Cell[107634, 3379, 371, 8, 23, "Print"],
+Cell[108008, 3389, 99, 2, 23, "Print"],
+Cell[108110, 3393, 92, 2, 23, "Print"],
+Cell[108205, 3397, 371, 8, 23, "Print"],
+Cell[108579, 3407, 97, 2, 23, "Print"],
+Cell[108679, 3411, 92, 2, 23, "Print"],
+Cell[108774, 3415, 371, 8, 23, "Print"],
+Cell[109148, 3425, 97, 2, 23, "Print"],
+Cell[109248, 3429, 94, 2, 23, "Print"],
+Cell[109345, 3433, 110, 2, 23, "Print"],
+Cell[109458, 3437, 373, 8, 23, "Print"],
+Cell[109834, 3447, 99, 2, 23, "Print"],
+Cell[109936, 3451, 90, 2, 23, "Print"],
+Cell[110029, 3455, 91, 2, 23, "Print"],
+Cell[110123, 3459, 373, 8, 23, "Print"],
+Cell[110499, 3469, 97, 2, 23, "Print"],
+Cell[110599, 3473, 91, 2, 23, "Print"],
+Cell[110693, 3477, 110, 2, 23, "Print"],
+Cell[110806, 3481, 91, 2, 23, "Print"],
+Cell[110900, 3485, 371, 8, 23, "Print"],
+Cell[111274, 3495, 99, 2, 23, "Print"],
+Cell[111376, 3499, 91, 2, 23, "Print"],
+Cell[111470, 3503, 108, 2, 23, "Print"],
+Cell[111581, 3507, 371, 8, 23, "Print"],
+Cell[111955, 3517, 99, 2, 23, "Print"],
+Cell[112057, 3521, 91, 2, 23, "Print"],
+Cell[112151, 3525, 91, 2, 23, "Print"],
+Cell[112245, 3529, 373, 8, 23, "Print"],
+Cell[112621, 3539, 97, 2, 23, "Print"],
+Cell[112721, 3543, 93, 2, 23, "Print"],
+Cell[112817, 3547, 371, 8, 23, "Print"],
+Cell[113191, 3557, 97, 2, 23, "Print"],
+Cell[113291, 3561, 90, 2, 23, "Print"],
+Cell[113384, 3565, 371, 8, 23, "Print"],
+Cell[113758, 3575, 97, 2, 23, "Print"],
+Cell[113858, 3579, 92, 2, 23, "Print"],
+Cell[113953, 3583, 371, 8, 23, "Print"],
+Cell[114327, 3593, 99, 2, 23, "Print"],
+Cell[114429, 3597, 371, 8, 23, "Print"],
+Cell[114803, 3607, 97, 2, 23, "Print"],
+Cell[114903, 3611, 92, 2, 23, "Print"],
+Cell[114998, 3615, 94, 2, 23, "Print"],
+Cell[115095, 3619, 108, 2, 23, "Print"],
+Cell[115206, 3623, 91, 2, 23, "Print"],
+Cell[115300, 3627, 371, 8, 23, "Print"],
+Cell[115674, 3637, 97, 2, 23, "Print"],
+Cell[115774, 3641, 94, 2, 23, "Print"],
+Cell[115871, 3645, 371, 8, 23, "Print"],
+Cell[116245, 3655, 97, 2, 23, "Print"],
+Cell[116345, 3659, 94, 2, 23, "Print"],
+Cell[116442, 3663, 371, 8, 23, "Print"],
+Cell[116816, 3673, 97, 2, 23, "Print"],
+Cell[116916, 3677, 110, 2, 23, "Print"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

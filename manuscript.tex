@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{natbib}
+
+\begin{document}
+\title{Relative Fitness vs Absolute Fitness - 2d Travelling Wave}
+
+\section*{Introduction}
+\section*{Methods}
+\section*{Results}
+\section*{Discussion}
+
+\section*{Appendices}
+The following notes provide some basic calculations and formulas needed for constructing and running the two dimensional model.
+
+\subsection*{A1: Deterministic Equations}
+We define the quantities $D(t) = \sum_{i} N_i(t)/K=N(t)/K$ is the "measure of density dependence" (check), $N(t) = \sum_i N_i(t)$ is the total population size, $\bar{c}(t)=\sum_i c_i N_i(t)/N(t)$ is the mean relative fitness of the population, $b$ is the per-capita birth rate, and $K$ is the maximum sustainably achievable population size for any fitness class $i$.  Let $g$ be the number of genotypes.  The deterministic equations for the two dimensional model can be written as,
+\begin{equation}
+\begin{aligned}
+\frac{dN_i}{dt}&=b N_i (1-D+{c_i \over \bar{c}}D)(1-D)-\mu_i N_i\\
+&=\left(b+(1-{c_i \over \bar{c}})bD^2- \mu_i\right)N_i -b(2-{c_i \over \bar{c}})DN_i\\
+\end{aligned}
+\end{equation}
+The coefficients $c_i = i c$ are measures of relative fitness following the model proposed by Desai and Fisher \citep{DesFish07}, and the death rates $\mu_i = i s$ follow the model proposed by \citep{BertMas15}.  The system can then be written as
+\begin{equation}
+\begin{aligned}
+\frac{dN_i}{dt}&=\sum_{j=1}^g\left[\left(b+(1-{c_i \over \bar{c}}){bN^2\over K^2}- \mu_i\right)\delta_{ij} - {b \over K}(2-{c_i \over \bar{c}})N_i \right]N_j\\
+\end{aligned}
+\end{equation}
+\textbf{Remark}: These equations will be modified later, but two things are worth noting.  In the previous 1d model, the steady state solutions play a role in calculating the probability of fixation $p_f$ at the nose.  Mainly, in the module pfix[] takes the assumption that the system is near steady state.  This is easy to calculate for the case of just one measure of fitness.  In the 2d situation, we can generate a mutant class at the boundary, but the steady state solution is still not known and must be computed.  It would also be good to get a rough idea of how long it takes for the solutions to approximate the steady state values (\textit{some readings of asymptotics}).
+\subsection*{A2: Data Structures}
+List of new data structures needed in code:
+\begin{itemize}
+\item{genotypes = $\{\{s_1,c_1\},...,\{s_g,c_g\}\}$ is a two dimensional array.  The first element $s_i$ isthe  absolute fitness "unscaled" and the second element $c_i$ is relative fitness "uncscaled"; both have to be multiplied by $s$ and $c$.}
+\item{newmutantgenotypes = $\{\{fc_1,fk_1,\{s_1,c_1\}\},...,\{fc_g,fk_g,\{s_g,c_g\}\}\}$}.  The list includes information of the candidate new mutant genotypes at the boundary of the current set of fitness classes.  These are the $\{s_i,c_i\}\}$, while the first element $fc_i$ is the index of the fitness class that generated the mutant class at the boundary, the second element $fk_i$ indicates if it was generated at on the boundary for absolute fitness $fk_i=1$ or relative fitness $fk_i=2$.  
+\end{itemize}
+\subsection*{Module Prototypes}
+\begin{itemize}
+\item getUniqueGenotype[genotypeElem]\\
+\item testGenoType[genotype, fitnesscriteria, indx]\\
+\item SolveDiffEqs[$r_0$, $\mu_0$, s, c, K, genotypeabundances, genotypes, timeuntilnextenvchange]\\
+\item PruneUnfitClasses[genotypes, genotypeabundances]\\
+\item getNextMutants[genotypes]
+\end{itemize}
+\newpage
+\section*{Notes From Meeting No. 1}
+Program modules in this order
+\begin{enumerate}
+\item{Modify NDSolve to accommodate the 2 dimensional fitness space.  Define data structures for holding genotype information and modify parameters to include separate selection coefficients.}
+\item{Modify existing pruning modules to prune two dimensional sets of genotypes.}
+\item{Test new modules with following scenarios.}
+\begin{itemize}
+\item{Run system until for lengthy period to check intuition that all fitness class disappear except fittest one.}
+\item{Run code up to certain time, then add new fitness class and check that new fitness class is appropriately incorporated into system, then run again until fittest class remains.}
+\item{Run code along individual dimensions to test that they follow expected behavior.}
+\item{Run code that simulate environmental shift and test that it follows expected behavior.}
+\end{itemize}
+\end{enumerate}
+
+\section{Substitional Load}
+Here we define the substitutional load for the 2D model.  The total selective deaths for each class $i=1,...,k$ are given by the quantity,
+\[
+
+\]
+\begin{equation}
+
+\end{equation}
+
+\bibliographystyle{plain}
+\bibliography{eebprojs2016bib}
+
+\end{document}
