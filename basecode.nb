@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    151336,       3352]
-NotebookOptionsPosition[    150183,       3318]
-NotebookOutlinePosition[    150966,       3343]
-CellTagsIndexPosition[    150923,       3340]
+NotebookDataLength[    151573,       3349]
+NotebookOptionsPosition[    150421,       3315]
+NotebookOutlinePosition[    151203,       3340]
+CellTagsIndexPosition[    151160,       3337]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -117,8 +117,8 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{"getSubLoad", "[", 
     RowBox[{
-    "genotypes_", ",", "genotypeabundances_", ",", "popsize_", ",", "r0_", 
-     ",", "\[Mu]0_", ",", "K0_", ",", "s_", ",", "c_"}], "]"}], ":=", 
+    "genotypes_", ",", "genotypeabundances_", ",", "popsize_", ",", 
+     "\[CapitalDelta]c1_", ",", "\[CapitalDelta]c2_"}], "]"}], ":=", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -151,7 +151,7 @@ Cell[BoxData[{
            RowBox[{
             SuperscriptBox[
              RowBox[{"(", 
-              RowBox[{"1", "+", "c"}], ")"}], 
+              RowBox[{"1", "+", "\[CapitalDelta]c1"}], ")"}], 
              RowBox[{
               RowBox[{"genotypes", "[", 
                RowBox[{"[", "i", "]"}], "]"}], "[", 
@@ -187,7 +187,7 @@ Cell[BoxData[{
               RowBox[{
                SuperscriptBox[
                 RowBox[{"(", 
-                 RowBox[{"1", "+", "c"}], ")"}], 
+                 RowBox[{"1", "+", "\[CapitalDelta]c2"}], ")"}], 
                 RowBox[{
                  RowBox[{"genotypes", "[", 
                   RowBox[{"[", "i", "]"}], "]"}], "[", 
@@ -279,7 +279,9 @@ Cell[BoxData[{
    3.679680187796255*^9, 3.679680401261146*^9}, {3.679680436198654*^9, 
    3.679680462285207*^9}, {3.679687820064117*^9, 3.67968788075244*^9}, {
    3.679687932192257*^9, 3.679687973296645*^9}, {3.679688090185719*^9, 
-   3.679688134073332*^9}, 3.679688194938053*^9}],
+   3.679688134073332*^9}, 3.679688194938053*^9, {3.688133992415286*^9, 
+   3.688134062881281*^9}, {3.688134119812406*^9, 3.688134149326919*^9}, 
+   3.688134633344966*^9, {3.688136537721162*^9, 3.6881365412125*^9}}],
 
 Cell[BoxData[
  RowBox[{"(*", " ", 
@@ -564,9 +566,9 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"SolveDiffEqs", "[", 
    RowBox[{
-   "r0_", ",", "\[Mu]0_", ",", "s_", ",", "c_", ",", "K0_", ",", 
-    "genotypeabundances_", ",", "genotypes_", ",", 
-    "timeuntilnextenvchange_"}], "]"}], ":=", 
+   "\[CapitalDelta]c1_", ",", "\[CapitalDelta]c2_", ",", 
+    "genotypeabundances_", ",", "genotypes_", ",", "nexttimestep_", ",", 
+    "popsize_"}], "]"}], ":=", 
   RowBox[{"Module", "[", "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{"LOCAL", " ", "VARIABLES"}], "*)"}], "\[IndentingNewLine]", 
@@ -574,17 +576,17 @@ Cell[BoxData[
     RowBox[{"{", 
      RowBox[{
      "C", ",", "diffeqarray", ",", "X", ",", "system", ",", "sol", ",", 
-      "numgenotypes", ",", "mostfitclass", ",", "cbar", ",", "popsize"}], 
-     "}"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "numgenotypes", ",", "rbar"}], "}"}], ",", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
     RowBox[{"(*", " ", 
      RowBox[{"INITIALIZE", " ", "LOCAL", " ", "VARIABLES"}], " ", "*)"}], 
     "\[IndentingNewLine]", 
     RowBox[{
+     RowBox[{"C", "=", 
+      RowBox[{"genotypeabundances", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
      RowBox[{"numgenotypes", "=", 
       RowBox[{"getNumGenotypes", "[", "genotypes", "]"}]}], ";", 
-     "\[IndentingNewLine]", 
-     RowBox[{"mostfitclass", "=", 
-      RowBox[{"getBestAbsFitClass", "[", "genotypes", "]"}]}], ";", 
      "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"(*", " ", 
       RowBox[{"SOLVE", " ", "DETERMINISTIC", " ", "EQUATIONS"}], " ", "*)"}], 
@@ -599,9 +601,6 @@ Cell[BoxData[
          RowBox[{"THEN", " ", "USE", " ", "EXACT", " ", "SOLUTION"}]}], " ", 
         "*)"}], "\[IndentingNewLine]", 
        RowBox[{
-        RowBox[{"C", "=", 
-         RowBox[{"genotypeabundances", "[", 
-          RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
         RowBox[{"system", "=", 
          RowBox[{"{", 
           RowBox[{
@@ -610,13 +609,25 @@ Cell[BoxData[
              SuperscriptBox["n1", "\[Prime]",
               MultilineFunction->None], "[", "t", "]"}], "\[Equal]", 
             RowBox[{
-             RowBox[{"n1", "[", "t", "]"}], " ", 
+             RowBox[{"n1", "[", "t", "]"}], 
              RowBox[{"(", 
-              RowBox[{"r0", "-", 
-               RowBox[{"mostfitclass", " ", "s"}], "-", "\[Mu]0", "-", 
-               FractionBox[
-                RowBox[{"r0", " ", 
-                 RowBox[{"n1", "[", "t", "]"}]}], "K0"]}], ")"}]}]}], ",", 
+              RowBox[{"1", "+", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"genotypes", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[CapitalDelta]c1"}], "+", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"genotypes", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "\[CapitalDelta]c2"}]}], 
+              ")"}], 
+             RowBox[{"(", 
+              RowBox[{"1", "-", 
+               RowBox[{
+                RowBox[{"n1", "[", "t", "]"}], "/", "popsize"}]}], ")"}]}]}], 
+           ",", 
            RowBox[{
             RowBox[{"n1", "[", "0", "]"}], "\[Equal]", "C"}]}], "}"}]}], ";", 
         "\[IndentingNewLine]", 
@@ -625,37 +636,31 @@ Cell[BoxData[
           RowBox[{"{", 
            RowBox[{
             RowBox[{"n1", "[", "t", "]"}], "\[Rule]", 
-            RowBox[{
-             RowBox[{"(", 
-              RowBox[{"C", " ", 
-               SuperscriptBox["\[ExponentialE]", 
-                RowBox[{"t", " ", 
-                 RowBox[{"(", 
-                  RowBox[{"r0", "-", " ", 
-                   RowBox[{"mostfitclass", " ", "s"}], "-", "\[Mu]0"}], 
-                  ")"}]}]], " ", "K0", " ", 
-               RowBox[{"(", 
-                RowBox[{"r0", "-", 
-                 RowBox[{"mostfitclass", " ", "s"}], "-", "\[Mu]0"}], ")"}]}],
-               ")"}], "/", 
+            RowBox[{"popsize", "/", 
              RowBox[{"(", 
               RowBox[{
-               RowBox[{"C", " ", "r0", 
+               RowBox[{
                 RowBox[{"(", 
                  RowBox[{
-                  RowBox[{"-", "1"}], "+", 
-                  SuperscriptBox["\[ExponentialE]", 
-                   RowBox[{"t", " ", 
-                    RowBox[{"(", 
-                    RowBox[{"r0", "-", 
-                    RowBox[{"mostfitclass", " ", "s"}], "-", "\[Mu]0"}], 
-                    ")"}]}]]}], ")"}]}], "+", 
-               RowBox[{"K0", " ", 
-                RowBox[{"(", 
-                 RowBox[{"r0", "-", 
-                  RowBox[{"mostfitclass", " ", "s"}], "-", "\[Mu]0"}], 
-                 ")"}]}]}], ")"}]}]}], "}"}], "}"}]}], ";"}], 
-       "\[IndentingNewLine]", ",", 
+                  RowBox[{"popsize", "/", "C"}], "-", "1"}], ")"}], 
+                RowBox[{"Exp", "[", 
+                 RowBox[{
+                  RowBox[{"-", 
+                   RowBox[{"(", 
+                    RowBox[{"1", "+", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"genotypes", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "\[CapitalDelta]c1"}], 
+                    "+", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"genotypes", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "\[CapitalDelta]c2"}]}], 
+                    ")"}]}], "t"}], "]"}]}], "+", "1"}], ")"}]}]}], "}"}], 
+          "}"}]}], ";"}], "\[IndentingNewLine]", ",", 
        RowBox[{"(*", " ", 
         RowBox[{
         "ELSE", " ", "MORE", " ", "THAN", " ", "ONE", " ", "GENOTYPE", " ", 
@@ -674,29 +679,30 @@ Cell[BoxData[
           RowBox[{"Range", "[", "numgenotypes", "]"}]}]}], ";", 
         "\[IndentingNewLine]", 
         RowBox[{
-         RowBox[{"popsize", "[", "t_", "]"}], "=", 
-         RowBox[{"Total", "[", 
-          RowBox[{"X", "[", "t", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"cbar", "[", "t_", "]"}], "=", 
+         RowBox[{"rbar", "[", "t_", "]"}], "=", 
          RowBox[{
           RowBox[{"Sum", "[", 
            RowBox[{
             RowBox[{
-             SuperscriptBox[
-              RowBox[{"(", 
-               RowBox[{"1", "+", "c"}], ")"}], 
-              RowBox[{
-               RowBox[{"genotypes", "[", 
-                RowBox[{"[", "i", "]"}], "]"}], "[", 
-               RowBox[{"[", "2", "]"}], "]"}]], 
+             RowBox[{"(", 
+              RowBox[{"1", "+", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"genotypes", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], "\[CapitalDelta]c1"}], "+", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"genotypes", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "\[CapitalDelta]c2"}]}], 
+              ")"}], 
              RowBox[{
               RowBox[{"X", "[", "t", "]"}], "[", 
               RowBox[{"[", "i", "]"}], "]"}]}], ",", 
             RowBox[{"{", 
              RowBox[{"i", ",", "numgenotypes"}], "}"}]}], "]"}], "/", 
-          RowBox[{"popsize", "[", "t", "]"}]}]}], ";", "\[IndentingNewLine]", 
-        
+          "popsize"}]}], ";", "\[IndentingNewLine]", 
         RowBox[{"diffeqarray", "=", 
          RowBox[{"Table", "[", 
           RowBox[{
@@ -705,36 +711,18 @@ Cell[BoxData[
              RowBox[{"X", "[", "t", "]"}], "[", 
              RowBox[{"[", "i", "]"}], "]"}], 
             RowBox[{"(", 
-             RowBox[{
-              RowBox[{"r0", " ", 
-               RowBox[{"(", 
-                RowBox[{"1", "-", 
-                 FractionBox[
-                  RowBox[{"popsize", "[", "t", "]"}], "K0"], "+", 
-                 RowBox[{
-                  FractionBox[
-                   RowBox[{
-                    SuperscriptBox[
-                    RowBox[{"(", 
-                    RowBox[{"1", "+", "c"}], ")"}], 
-                    RowBox[{
-                    RowBox[{
-                    RowBox[{"genotypes", "[", 
-                    RowBox[{"[", "i", "]"}], "]"}], "[", 
-                    RowBox[{"[", "2", "]"}], "]"}], " "}]], " "}], 
-                   RowBox[{"cbar", "[", "t", "]"}]], 
-                  FractionBox[
-                   RowBox[{"popsize", "[", "t", "]"}], "K0"]}]}], ")"}], 
-               RowBox[{"(", 
-                RowBox[{"1", "-", 
-                 FractionBox[
-                  RowBox[{"popsize", "[", "t", "]"}], "K0"]}], ")"}]}], "-", 
-              "\[Mu]0", "-", 
-              RowBox[{"s", " ", 
+             RowBox[{"1", "+", 
+              RowBox[{
                RowBox[{
                 RowBox[{"genotypes", "[", 
                  RowBox[{"[", "i", "]"}], "]"}], "[", 
-                RowBox[{"[", "1", "]"}], "]"}]}]}], ")"}]}], ",", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[CapitalDelta]c1"}], "+", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"genotypes", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "\[CapitalDelta]c2"}], "-", 
+              RowBox[{"rbar", "[", "t", "]"}]}], ")"}]}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", "numgenotypes"}], "}"}]}], "]"}]}], ";", 
         "\[IndentingNewLine]", 
@@ -770,16 +758,25 @@ Cell[BoxData[
           RowBox[{"system", ",", " ", 
            RowBox[{"X", "[", "t", "]"}], ",", 
            RowBox[{"{", 
-            RowBox[{"t", ",", "0", ",", "timeuntilnextenvchange"}], "}"}]}], 
-          "]"}]}], ";"}]}], "]"}], ";", "\[IndentingNewLine]", 
-     "\[IndentingNewLine]", 
+            RowBox[{"t", ",", "0", ",", "nexttimestep"}], "}"}]}], "]"}]}], 
+        ";"}]}], "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"(*", " ", 
       RowBox[{"RETURN", ":", " ", 
        RowBox[{"SYSTEM", " ", "AND", " ", "SOLUTION"}]}], " ", "*)"}], 
      "\[IndentingNewLine]", 
      RowBox[{"{", 
       RowBox[{"system", ",", "sol"}], "}"}]}]}], "\[IndentingNewLine]", 
-   "]"}]}]], "Input"],
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.688134212242073*^9, 3.6881342932568398`*^9}, {
+  3.688134488456905*^9, 3.6881344898407993`*^9}, {3.688134605688896*^9, 
+  3.688134607152108*^9}, {3.688134658240856*^9, 3.688134736232616*^9}, {
+  3.688134775640337*^9, 3.688134788143772*^9}, {3.6881348274314947`*^9, 
+  3.688134974767275*^9}, {3.6881350134317408`*^9, 3.688135014230921*^9}, {
+  3.688135240231579*^9, 3.688135254919355*^9}, {3.68813534187928*^9, 
+  3.688135354934729*^9}, {3.688135387895347*^9, 3.688135423486569*^9}, {
+  3.688135770991337*^9, 3.6881358179114933`*^9}, {3.688135875750352*^9, 
+  3.688135967959345*^9}, {3.6881360964235973`*^9, 3.688136149073512*^9}, {
+  3.6881374679768248`*^9, 3.68813747926348*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -3317,7 +3314,7 @@ Cell[BoxData[
    3.6802639660039787`*^9}, {3.680273205788069*^9, 3.6802732121085873`*^9}}]
 },
 ScreenStyleEnvironment->"Condensed",
-WindowSize->{1855, 1056},
+WindowSize->{1535, 876},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
 PrintingCopies->1,
 PrintingPageRange->{Automatic, Automatic},
@@ -3343,17 +3340,17 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 94, 2, 19, "Input"],
-Cell[655, 24, 9407, 257, 362, "Input"],
-Cell[10065, 283, 161, 3, 19, "Input"],
-Cell[10229, 288, 5615, 120, 471, "Input"],
-Cell[15847, 410, 5617, 150, 525, "Input"],
-Cell[21467, 562, 8810, 219, 593, "Input"],
-Cell[30280, 783, 8212, 210, 561, "Input"],
-Cell[38495, 995, 15045, 358, 874, "Input"],
-Cell[53543, 1355, 29468, 679, 1526, "Input"],
-Cell[83014, 2036, 4939, 138, 319, "Input"],
-Cell[87956, 2176, 3527, 100, 264, "Input"],
-Cell[91486, 2278, 58693, 1038, 1911, "Input"]
+Cell[655, 24, 9597, 259, 444, "Input"],
+Cell[10255, 285, 161, 3, 19, "Input"],
+Cell[10419, 290, 5615, 120, 471, "Input"],
+Cell[16037, 412, 5617, 150, 525, "Input"],
+Cell[21657, 564, 8858, 214, 488, "Input"],
+Cell[30518, 780, 8212, 210, 561, "Input"],
+Cell[38733, 992, 15045, 358, 910, "Input"],
+Cell[53781, 1352, 29468, 679, 1547, "Input"],
+Cell[83252, 2033, 4939, 138, 319, "Input"],
+Cell[88194, 2173, 3527, 100, 264, "Input"],
+Cell[91724, 2275, 58693, 1038, 1911, "Input"]
 }
 ]
 *)
