@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    151795,       3392]
-NotebookOptionsPosition[    150717,       3360]
-NotebookOutlinePosition[    151500,       3385]
-CellTagsIndexPosition[    151457,       3382]
+NotebookDataLength[    154945,       3462]
+NotebookOptionsPosition[    153868,       3430]
+NotebookOutlinePosition[    154650,       3455]
+CellTagsIndexPosition[    154607,       3452]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -558,7 +558,8 @@ Cell[BoxData[
     RowBox[{
     "dataamount_", ",", "globaltime_", ",", "addtime_", ",", "genotypes_", 
      ",", "genotypeabundances_", ",", "popsize_", ",", "\[CapitalDelta]c1_", 
-     ",", "\[CapitalDelta]c2_", ",", "mutpfix_"}], "]"}], ":=", 
+     ",", "\[CapitalDelta]c2_", ",", "mutpfix_", ",", "mutgenotype_"}], "]"}],
+    ":=", 
    RowBox[{"Module", "[", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"{", 
@@ -628,76 +629,98 @@ Cell[BoxData[
           RowBox[{"1", "+", "trait1meanfitness", "+", "trait2meanfitness"}]}],
           ";", "\[IndentingNewLine]", 
          RowBox[{"traitfitnesscovariances", "=", 
-          RowBox[{
-           RowBox[{"\[CapitalDelta]c1", " ", "\[CapitalDelta]c2", " ", 
-            RowBox[{"(", 
-             RowBox[{"Sum", "[", 
-              RowBox[{
+          RowBox[{"(", 
+           RowBox[{"Sum", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 RowBox[{"genotypes", "[", 
-                  RowBox[{"[", "i", "]"}], "]"}], "[", 
-                 RowBox[{"[", "1", "]"}], "]"}], 
-                RowBox[{
-                 RowBox[{"genotypes", "[", 
-                  RowBox[{"[", "i", "]"}], "]"}], "[", 
-                 RowBox[{"[", "2", "]"}], "]"}], " ", 
-                RowBox[{
-                 RowBox[{"genotypeabundances", "[", 
-                  RowBox[{"[", "i", "]"}], "]"}], "/", "popsize"}]}], ",", 
-               RowBox[{"{", 
-                RowBox[{"i", ",", "1", ",", 
-                 RowBox[{"Length", "[", "genotypes", "]"}]}], "}"}]}], "]"}], 
-             ")"}]}], "-", 
-           RowBox[{"trait1meanfitness", " ", "trait2meanfitness"}]}]}], ";", 
-         "\[IndentingNewLine]", 
+                RowBox[{"\[CapitalDelta]c1", " ", 
+                 RowBox[{
+                  RowBox[{"genotypes", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], "[", 
+                  RowBox[{"[", "1", "]"}], "]"}]}], "-", 
+                "trait1meanfitness"}], ")"}], 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"\[CapitalDelta]c2", " ", 
+                 RowBox[{
+                  RowBox[{"genotypes", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], "[", 
+                  RowBox[{"[", "2", "]"}], "]"}]}], " ", "-", 
+                "trait2meanfitness"}], ")"}], 
+              RowBox[{
+               RowBox[{"genotypeabundances", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "/", "popsize"}]}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "1", ",", 
+               RowBox[{"Length", "[", "genotypes", "]"}]}], "}"}]}], "]"}], 
+           ")"}]}], " ", ";", "\[IndentingNewLine]", 
          RowBox[{"trait1fitnessvariance", "=", 
-          RowBox[{
+          RowBox[{"Sum", "[", 
            RowBox[{
-            SuperscriptBox["\[CapitalDelta]c1", "2"], 
-            RowBox[{"Sum", "[", 
-             RowBox[{
-              RowBox[{
-               SuperscriptBox[
-                RowBox[{
-                 RowBox[{"genotypes", "[", 
-                  RowBox[{"[", "i", "]"}], "]"}], "[", 
-                 RowBox[{"[", "1", "]"}], "]"}], "2"], " ", 
+            RowBox[{
+             SuperscriptBox[
+              RowBox[{"(", 
                RowBox[{
-                RowBox[{"genotypeabundances", "[", 
-                 RowBox[{"[", "i", "]"}], "]"}], "/", "popsize"}]}], ",", 
-              RowBox[{"{", 
-               RowBox[{"i", ",", "1", ",", 
-                RowBox[{"Length", "[", "genotypes", "]"}]}], "}"}]}], "]"}]}],
-            "-", 
-           SuperscriptBox["trait1meanfitness", "2"]}]}], ";", 
-         "\[IndentingNewLine]", 
+                RowBox[{"\[CapitalDelta]c1", " ", 
+                 RowBox[{
+                  RowBox[{"genotypes", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], "[", 
+                  RowBox[{"[", "1", "]"}], "]"}]}], "-", 
+                "trait1meanfitness"}], ")"}], "2"], " ", 
+             RowBox[{
+              RowBox[{"genotypeabundances", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "/", "popsize"}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{"Length", "[", "genotypes", "]"}]}], "}"}]}], "]"}]}], 
+         ";", "\[IndentingNewLine]", 
          RowBox[{"trait2fitnessvariance", "=", 
-          RowBox[{
+          RowBox[{"Sum", "[", 
            RowBox[{
-            SuperscriptBox["\[CapitalDelta]c2", "2"], 
-            RowBox[{"Sum", "[", 
-             RowBox[{
-              RowBox[{
-               SuperscriptBox[
-                RowBox[{
-                 RowBox[{"genotypes", "[", 
-                  RowBox[{"[", "i", "]"}], "]"}], "[", 
-                 RowBox[{"[", "2", "]"}], "]"}], "2"], " ", 
+            RowBox[{
+             SuperscriptBox[
+              RowBox[{"(", 
                RowBox[{
-                RowBox[{"genotypeabundances", "[", 
-                 RowBox[{"[", "i", "]"}], "]"}], "/", "popsize"}]}], ",", 
-              RowBox[{"{", 
-               RowBox[{"i", ",", "1", ",", 
-                RowBox[{"Length", "[", "genotypes", "]"}]}], "}"}]}], "]"}]}],
-            "-", 
-           SuperscriptBox["trait2meanfitness", "2"]}]}], ";", 
-         "\[IndentingNewLine]", 
+                RowBox[{"\[CapitalDelta]c2", " ", 
+                 RowBox[{
+                  RowBox[{"genotypes", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], "[", 
+                  RowBox[{"[", "2", "]"}], "]"}]}], "-", 
+                "trait2meanfitness"}], ")"}], "2"], " ", 
+             RowBox[{
+              RowBox[{"genotypeabundances", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "/", "popsize"}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{"Length", "[", "genotypes", "]"}]}], "}"}]}], "]"}]}], 
+         ";", "\[IndentingNewLine]", 
          RowBox[{"fitnessvariance", "=", 
-          RowBox[{
-          "trait1fitnessvariance", "+", "trait2fitnessvariance", "+", 
-           RowBox[{"2", " ", "traitfitnesscovariances"}]}]}], ";", 
-         "\[IndentingNewLine]", 
+          RowBox[{"Sum", "[", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{"1", "+", 
+                RowBox[{"\[CapitalDelta]c1", " ", 
+                 RowBox[{
+                  RowBox[{"genotypes", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], "[", 
+                  RowBox[{"[", "1", "]"}], "]"}]}], "+", 
+                RowBox[{"\[CapitalDelta]c2", " ", 
+                 RowBox[{
+                  RowBox[{"genotypes", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}], "[", 
+                  RowBox[{"[", "2", "]"}], "]"}]}], "-", "meanfitness"}], 
+               ")"}], "2"], " ", 
+             RowBox[{
+              RowBox[{"genotypeabundances", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "/", "popsize"}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{"Length", "[", "genotypes", "]"}]}], "}"}]}], "]"}]}], 
+         ";", "\[IndentingNewLine]", 
          RowBox[{"subload", "=", 
           RowBox[{"Max", "[", 
            RowBox[{"Table", "[", 
@@ -732,8 +755,8 @@ Cell[BoxData[
               ",", "meanfitness", ",", "traitfitnesscovariances", ",", 
               "trait1fitnessvariance", ",", "trait2fitnessvariance", ",", 
               "fitnessvariance", ",", "subload", ",", "truepopsize", ",", 
-              "mutpfix"}], "}"}], ",", "16"}], "]"}], "]"}], ";"}], ",", 
-        "\[IndentingNewLine]", 
+              "mutpfix", ",", "mutgenotype"}], "}"}], ",", "16"}], "]"}], 
+          "]"}], ";"}], ",", "\[IndentingNewLine]", 
         RowBox[{"(*", " ", 
          RowBox[{"COLLECT", " ", "ALL", " ", 
           RowBox[{"DATA", ":", " ", 
@@ -744,14 +767,51 @@ Cell[BoxData[
         "\[IndentingNewLine]", 
         RowBox[{"dataamount", "\[Equal]", "1"}], ",", "\[IndentingNewLine]", 
         RowBox[{
+         RowBox[{"trait1meanfitness", "=", 
+          RowBox[{"\[CapitalDelta]c1", " ", 
+           RowBox[{"Sum", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"genotypes", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], 
+              RowBox[{
+               RowBox[{"genotypeabundances", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "/", "popsize"}]}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "1", ",", 
+               RowBox[{"Length", "[", "genotypes", "]"}]}], "}"}]}], 
+            "]"}]}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"trait2meanfitness", "=", 
+          RowBox[{"\[CapitalDelta]c2", " ", 
+           RowBox[{"Sum", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"genotypes", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "[", 
+               RowBox[{"[", "2", "]"}], "]"}], 
+              RowBox[{
+               RowBox[{"genotypeabundances", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "/", "popsize"}]}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "1", ",", 
+               RowBox[{"Length", "[", "genotypes", "]"}]}], "}"}]}], 
+            "]"}]}]}], ";", "\[IndentingNewLine]", 
          RowBox[{"Sow", "[", 
           RowBox[{"N", "[", 
            RowBox[{
             RowBox[{"{", 
              RowBox[{
-             "timestamp", ",", "genotypes", ",", "genotypeabundances"}], 
-             "}"}], ",", "16"}], "]"}], "]"}], ";"}]}], "]"}], ";"}]}], 
-    "\[IndentingNewLine]", "]"}]}]}]], "Input",
+             "timestamp", ",", "genotypes", ",", "genotypeabundances", ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"trait1meanfitness", "/", "\[CapitalDelta]c1"}], ",", 
+                
+                RowBox[{"trait2meanfitness", "/", "\[CapitalDelta]c2"}]}], 
+               "}"}], ",", "mutgenotype"}], "}"}], ",", "16"}], "]"}], "]"}], 
+         ";"}]}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}]}]], "Input",
  CellChangeTimes->{{3.676057217710558*^9, 3.676057257543845*^9}, {
    3.676057313582016*^9, 3.676057330942709*^9}, {3.6760574615549297`*^9, 
    3.6760574839326487`*^9}, {3.676139454986308*^9, 3.67613947117892*^9}, 
@@ -779,7 +839,10 @@ Cell[BoxData[
    3.688699808835582*^9, 3.688699813280896*^9}, {3.688701414293068*^9, 
    3.688701442878735*^9}, {3.688701599287324*^9, 3.688701606645568*^9}, {
    3.688701716110155*^9, 3.6887017202034388`*^9}, {3.6887018808592243`*^9, 
-   3.688701906301113*^9}}],
+   3.688701906301113*^9}, {3.688739898802807*^9, 3.688740023523638*^9}, {
+   3.688740056579624*^9, 3.688740102652411*^9}, {3.688740584387495*^9, 
+   3.688740598176127*^9}, {3.6887534527274513`*^9, 3.688753498066927*^9}, {
+   3.688753529303651*^9, 3.688753552337517*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -2750,7 +2813,9 @@ Cell[BoxData[
           RowBox[{
           "fulldata", ",", "globaltime", ",", "0", ",", "genotypes", ",", 
            "genotypeabundances", ",", "popsize", ",", "\[CapitalDelta]c1", 
-           ",", "\[CapitalDelta]c2", ",", "0"}], "]"}], ";", 
+           ",", "\[CapitalDelta]c2", ",", "0", ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ";", 
          "\[IndentingNewLine]", 
          RowBox[{"While", "[", 
           RowBox[{
@@ -2918,9 +2983,11 @@ Cell[BoxData[
                 RowBox[{
                 "fulldata", ",", "globaltime", ",", "0", ",", "genotypes", 
                  ",", "genotypeabundances", ",", "popsize", ",", 
-                 "\[CapitalDelta]c1", ",", "\[CapitalDelta]c2", ",", "pfix"}],
-                 "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-              ",", 
+                 "\[CapitalDelta]c1", ",", "\[CapitalDelta]c2", ",", "pfix", 
+                 ",", 
+                 RowBox[{"newmutants", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ";"}], 
+              "\[IndentingNewLine]", "\[IndentingNewLine]", ",", 
               RowBox[{"(*", " ", 
                RowBox[{
                 RowBox[{
@@ -2982,9 +3049,11 @@ Cell[BoxData[
                 RowBox[{
                 "fulldata", ",", "globaltime", ",", "0", ",", "genotypes", 
                  ",", "genotypeabundances", ",", "popsize", ",", 
-                 "\[CapitalDelta]c1", ",", "\[CapitalDelta]c2", ",", "0"}], 
-                "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
-          "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], 
+                 "\[CapitalDelta]c1", ",", "\[CapitalDelta]c2", ",", "0", ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ";"}]}], 
+             "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", "]"}], 
          RowBox[{"(*", 
           RowBox[{"END", "-", "WHILE", "-", "LOOP"}], "*)"}], ";"}], 
         "\[IndentingNewLine]", "]"}]}], 
@@ -3356,10 +3425,11 @@ Cell[BoxData[
    3.688699445340794*^9, 3.6886994498212337`*^9}, {3.688701624033401*^9, 
    3.688701641500565*^9}, {3.688705127935446*^9, 3.6887051338484497`*^9}, {
    3.6887052862265053`*^9, 3.688705294461854*^9}, {3.6887057174839783`*^9, 
-   3.6887057178280907`*^9}}]
+   3.6887057178280907`*^9}, {3.688740871405038*^9, 3.6887409259968843`*^9}, {
+   3.688741355077259*^9, 3.688741356597086*^9}}]
 },
 ScreenStyleEnvironment->"Condensed",
-WindowSize->{1855, 1056},
+WindowSize->{1535, 876},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
 PrintingCopies->1,
 PrintingPageRange->{Automatic, Automatic},
@@ -3386,14 +3456,14 @@ CellTagsIndex->{}
 Notebook[{
 Cell[558, 20, 160, 3, 19, "Input"],
 Cell[721, 25, 16100, 458, 368, "Input"],
-Cell[16824, 485, 12843, 296, 431, "Input"],
-Cell[29670, 783, 11072, 282, 473, "Input"],
-Cell[40745, 1067, 8212, 210, 561, "Input"],
-Cell[48960, 1279, 16129, 373, 856, "Input"],
-Cell[65092, 1654, 31348, 695, 1445, "Input"],
-Cell[96443, 2351, 5322, 141, 219, "Input"],
-Cell[101768, 2494, 3527, 100, 264, "Input"],
-Cell[105298, 2596, 45415, 762, 1281, "Input"]
+Cell[16824, 485, 15635, 359, 489, "Input"],
+Cell[32462, 846, 11072, 282, 473, "Input"],
+Cell[43537, 1130, 8212, 210, 561, "Input"],
+Cell[51752, 1342, 16129, 373, 892, "Input"],
+Cell[67884, 1717, 31348, 695, 1463, "Input"],
+Cell[99235, 2414, 5322, 141, 219, "Input"],
+Cell[104560, 2557, 3527, 100, 264, "Input"],
+Cell[108090, 2659, 45774, 769, 1281, "Input"]
 }
 ]
 *)
