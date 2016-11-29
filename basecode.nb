@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    175870,       4002]
-NotebookOptionsPosition[    174746,       3969]
-NotebookOutlinePosition[    175528,       3994]
-CellTagsIndexPosition[    175485,       3991]
+NotebookDataLength[    175960,       4003]
+NotebookOptionsPosition[    174836,       3970]
+NotebookOutlinePosition[    175618,       3995]
+CellTagsIndexPosition[    175575,       3992]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1083,8 +1083,9 @@ Cell[BoxData[
           RowBox[{"{", 
            RowBox[{
            "timestamp", ",", "genotypes", ",", "genotypeabundances", ",", 
-            "trait1meanfitness", ",", "trait2meanfitness", ",", 
-            "mutgenotype"}], "}"}], "]"}], ";"}]}], "]"}], ";"}]}], 
+            RowBox[{"{", 
+             RowBox[{"trait1meanfitness", ",", "trait2meanfitness"}], "}"}], 
+            ",", "mutgenotype"}], "}"}], "]"}], ";"}]}], "]"}], ";"}]}], 
     "\[IndentingNewLine]", "]"}]}]}]], "Input",
  CellChangeTimes->{{3.676057217710558*^9, 3.676057257543845*^9}, {
    3.676057313582016*^9, 3.676057330942709*^9}, {3.6760574615549297`*^9, 
@@ -1120,7 +1121,7 @@ Cell[BoxData[
    3.689357113071896*^9}, {3.689358014326524*^9, 3.689358026646245*^9}, {
    3.68936723099859*^9, 3.689367295135015*^9}, {3.68936767931957*^9, 
    3.689367743903286*^9}, {3.689368439959461*^9, 3.6893684610554047`*^9}, 
-   3.6893694823203573`*^9}],
+   3.6893694823203573`*^9, {3.689426175940833*^9, 3.689426179619925*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -3995,15 +3996,15 @@ CellTagsIndex->{}
 Notebook[{
 Cell[558, 20, 160, 3, 19, "Input"],
 Cell[721, 25, 26862, 740, 710, "Input"],
-Cell[27586, 767, 15525, 355, 522, "Input"],
-Cell[43114, 1124, 10223, 259, 417, "Input"],
-Cell[53340, 1385, 11072, 282, 473, "Input"],
-Cell[64415, 1669, 8212, 210, 561, "Input"],
-Cell[72630, 1881, 16129, 373, 892, "Input"],
-Cell[88762, 2256, 31348, 695, 1463, "Input"],
-Cell[120113, 2953, 5322, 141, 219, "Input"],
-Cell[125438, 3096, 3527, 100, 264, "Input"],
-Cell[128968, 3198, 45774, 769, 1281, "Input"]
+Cell[27586, 767, 15615, 356, 522, "Input"],
+Cell[43204, 1125, 10223, 259, 417, "Input"],
+Cell[53430, 1386, 11072, 282, 473, "Input"],
+Cell[64505, 1670, 8212, 210, 561, "Input"],
+Cell[72720, 1882, 16129, 373, 892, "Input"],
+Cell[88852, 2257, 31348, 695, 1463, "Input"],
+Cell[120203, 2954, 5322, 141, 219, "Input"],
+Cell[125528, 3097, 3527, 100, 264, "Input"],
+Cell[129058, 3199, 45774, 769, 1281, "Input"]
 }
 ]
 *)
