@@ -3,10 +3,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[     15442,        416]
-NotebookOptionsPosition[     14670,        383]
-NotebookOutlinePosition[     15006,        398]
-CellTagsIndexPosition[     14963,        395]
+NotebookDataLength[      9617,        262]
+NotebookOptionsPosition[      8928,        231]
+NotebookOutlinePosition[      9263,        246]
+CellTagsIndexPosition[      9220,        243]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -18,7 +18,8 @@ Cell[BoxData[
   RowBox[{"(*", " ", 
    RowBox[{
    "Simulation", " ", "to", " ", "check", " ", "single", " ", "traveling", 
-    " ", "wave", " ", "solution"}], " ", "*)"}], "\[IndentingNewLine]", 
+    " ", "wave", " ", "solution", " ", "behavior"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
     RowBox[{"\[CapitalDelta]c1", "=", "0.01"}], ";"}], "\[IndentingNewLine]", 
@@ -33,7 +34,7 @@ Cell[BoxData[
        RowBox[{"-", "4"}]]}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"U2", "=", 
-     RowBox[{"0", " ", 
+     RowBox[{"1", " ", 
       SuperscriptBox["10", 
        RowBox[{"-", "4"}]]}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
@@ -44,9 +45,7 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"timestep", "=", "1000"}], ";"}], " ", "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"maxtime", "=", "60000"}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"fulldata", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"maxtime", "=", "20000"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"verbose", "=", "False"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
@@ -54,143 +53,10 @@ Cell[BoxData[
    RowBox[{"(*", " ", 
     RowBox[{"Check", " ", "Regimes"}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"Print", "[", 
-     RowBox[{"\"\<Trait 1 q = \>\"", ",", 
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{"U1", "\[Equal]", "0"}], ",", "0", ",", 
-        RowBox[{"2", " ", 
-         RowBox[{
-          RowBox[{"Log", "[", 
-           RowBox[{"popsize", " ", "\[CapitalDelta]c1"}], "]"}], "/", 
-          RowBox[{"Log", "[", 
-           RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}]}]}]}], "]"}], ",", 
-      "\"\< in \>\"", ",", " ", 
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{"U1", "\[Equal]", "0"}], ",", "\"\< No Evolution Regime \>\"",
-         ",", 
-        RowBox[{"If", "[", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"2", " ", 
-            RowBox[{
-             RowBox[{"Log", "[", 
-              RowBox[{"popsize", " ", "\[CapitalDelta]c1"}], "]"}], "/", 
-             RowBox[{"Log", "[", 
-              RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}]}]}], "<", " ", 
-           "2"}], ",", "\"\<Successional Regime\>\"", ",", 
-          "\"\<Concurrent Mutations Regime\>\""}], "]"}]}], "]"}], ",", " ", 
-      "\"\< with expected time scale \>\"", ",", 
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{"U1", "\[Equal]", "0"}], ",", "0", ",", 
-        SuperscriptBox[
-         RowBox[{"(", 
-          RowBox[{
-           RowBox[{"(", 
-            RowBox[{"\[CapitalDelta]c1", 
-             RowBox[{"(", 
-              RowBox[{
-               RowBox[{"2", " ", 
-                RowBox[{"Log", "[", 
-                 RowBox[{"popsize", " ", "\[CapitalDelta]c1"}], "]"}]}], "-", 
-               
-               RowBox[{"Log", "[", 
-                RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}]}], ")"}]}], 
-            ")"}], "/", 
-           RowBox[{
-            RowBox[{"Log", "[", 
-             RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}], "^", "2"}]}], 
-          ")"}], 
-         RowBox[{"-", "1"}]]}], "]"}], ",", " ", 
-      "\"\< and rate of adaptation \>\"", ",", 
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{"U1", "\[Equal]", "0"}], ",", "0", ",", 
-        RowBox[{
-         SuperscriptBox["\[CapitalDelta]c1", "2"], 
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"2", " ", 
-             RowBox[{"Log", "[", 
-              RowBox[{"popsize", " ", "\[CapitalDelta]c1"}], "]"}]}], "-", 
-            RowBox[{"Log", "[", 
-             RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}]}], ")"}], "/", 
-          RowBox[{
-           RowBox[{"Log", "[", 
-            RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}], "^", "2"}]}]}]}],
-        "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
-   RowBox[{
-    RowBox[{"Print", "[", 
-     RowBox[{"\"\<Trait 2 q = \>\"", ",", 
-      RowBox[{"If", "[", " ", 
-       RowBox[{
-        RowBox[{"U2", "\[Equal]", "0"}], ",", "0", ",", 
-        RowBox[{"2", " ", 
-         RowBox[{
-          RowBox[{"Log", "[", 
-           RowBox[{"popsize", " ", "\[CapitalDelta]c2"}], "]"}], "/", 
-          RowBox[{"Log", "[", 
-           RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}]}]}]}], "]"}], ",", 
-      "\"\< in \>\"", ",", " ", 
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{"U2", "\[Equal]", "0"}], ",", "\"\<No Evolution Regime\>\"", 
-        ",", 
-        RowBox[{"If", "[", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"2", " ", 
-            RowBox[{
-             RowBox[{"Log", "[", 
-              RowBox[{"popsize", " ", "\[CapitalDelta]c2"}], "]"}], "/", 
-             RowBox[{"Log", "[", 
-              RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}]}]}], "<", " ", 
-           "2"}], ",", "\"\<Successional Regime\>\"", ",", 
-          "\"\<Concurrent Mutations Regime\>\""}], "]"}]}], "]"}], ",", 
-      "\"\< with expected time scale \>\"", ",", 
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{"U2", "\[Equal]", "0"}], ",", "0", ",", 
-        SuperscriptBox[
-         RowBox[{"(", 
-          RowBox[{
-           RowBox[{"(", 
-            RowBox[{"\[CapitalDelta]c2", 
-             RowBox[{"(", 
-              RowBox[{
-               RowBox[{"2", " ", 
-                RowBox[{"Log", "[", 
-                 RowBox[{"popsize", " ", "\[CapitalDelta]c2"}], "]"}]}], "-", 
-               
-               RowBox[{"Log", "[", 
-                RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}]}], ")"}]}], 
-            ")"}], "/", 
-           RowBox[{
-            RowBox[{"Log", "[", 
-             RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}], "^", "2"}]}], 
-          ")"}], 
-         RowBox[{"-", "1"}]]}], "]"}], ",", " ", 
-      "\"\< and rate of adaptation \>\"", ",", 
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{"U2", "\[Equal]", "0"}], ",", "0", ",", 
-        RowBox[{
-         SuperscriptBox["\[CapitalDelta]c2", "2"], 
-         RowBox[{
-          RowBox[{"(", 
-           RowBox[{
-            RowBox[{"2", " ", 
-             RowBox[{"Log", "[", 
-              RowBox[{"popsize", " ", "\[CapitalDelta]c2"}], "]"}]}], "-", 
-            RowBox[{"Log", "[", 
-             RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}]}], ")"}], "/", 
-          RowBox[{
-           RowBox[{"Log", "[", 
-            RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}], "^", "2"}]}]}]}],
-        "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"printRegimeDetails", "[", 
+     RowBox[{
+     "\[CapitalDelta]c1", ",", "\[CapitalDelta]c2", ",", "U1", ",", "U2", ",",
+       "popsize"}], "]"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{"Testing", " ", "two", " ", "trait", " ", "evolution"}], " ", 
     "*)"}], "\[IndentingNewLine]", 
@@ -234,7 +100,11 @@ Cell[BoxData[
    3.68900253142015*^9, {3.689021921402672*^9, 3.689021923653586*^9}, {
    3.689022286805902*^9, 3.689022287454517*^9}, {3.689022484322503*^9, 
    3.689022493549243*^9}, 3.689022549107136*^9, {3.689022618581368*^9, 
-   3.689022675215987*^9}, 3.6890829095378838`*^9}],
+   3.689022675215987*^9}, 3.6890829095378838`*^9, {3.689356125330161*^9, 
+   3.689356153362029*^9}, {3.689356227954563*^9, 3.689356282949707*^9}, {
+   3.689356318833837*^9, 3.6893563194016848`*^9}, {3.68935862533324*^9, 
+   3.6893586340671186`*^9}, 3.6893608013107033`*^9, {3.6893608883790407`*^9, 
+   3.689360912594367*^9}}],
 
 Cell[CellGroupData[{
 
@@ -252,136 +122,114 @@ Cell[BoxData[
    " with expected time scale ", 105.4813220547839, 
    " and rate of adaptation ", 0.00009480351407433339],
   Editable->False]], "Print",
- CellChangeTimes->{3.6890221714588842`*^9, 3.6890223994821987`*^9, 
-  3.689022485516099*^9, 3.689022528293589*^9, 3.689022651050372*^9, 
-  3.6890226868157673`*^9, 3.689024153775456*^9, 3.689082951667153*^9}],
+ CellChangeTimes->{
+  3.6890221714588842`*^9, 3.6890223994821987`*^9, 3.689022485516099*^9, 
+   3.689022528293589*^9, 3.689022651050372*^9, 3.6890226868157673`*^9, 
+   3.689024153775456*^9, 3.689082951667153*^9, 3.68935634394246*^9, 
+   3.689358477181079*^9, {3.6893586280586033`*^9, 3.689358634592918*^9}, 
+   3.689361402506749*^9}],
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"Trait 2 q = \"\>", "\[InvisibleSpace]", "0", 
+  RowBox[{"\<\"Trait 2 q = \"\>", "\[InvisibleSpace]", "3.7383519587043743`", 
    "\[InvisibleSpace]", "\<\" in \"\>", 
-   "\[InvisibleSpace]", "\<\"No Evolution Regime\"\>", 
+   "\[InvisibleSpace]", "\<\"Concurrent Mutations Regime\"\>", 
    "\[InvisibleSpace]", "\<\" with expected time scale \"\>", 
-   "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "96.74281185269709`", 
    "\[InvisibleSpace]", "\<\" and rate of adaptation \"\>", 
-   "\[InvisibleSpace]", "0"}],
+   "\[InvisibleSpace]", "0.0002067337057605115`"}],
   SequenceForm[
-  "Trait 2 q = ", 0, " in ", "No Evolution Regime", 
-   " with expected time scale ", 0, " and rate of adaptation ", 0],
+  "Trait 2 q = ", 3.7383519587043743`, " in ", "Concurrent Mutations Regime", 
+   " with expected time scale ", 96.74281185269709, 
+   " and rate of adaptation ", 0.0002067337057605115],
   Editable->False]], "Print",
- CellChangeTimes->{3.6890221714588842`*^9, 3.6890223994821987`*^9, 
-  3.689022485516099*^9, 3.689022528293589*^9, 3.689022651050372*^9, 
-  3.6890226868157673`*^9, 3.689024153775456*^9, 3.689082951668619*^9}]
+ CellChangeTimes->{
+  3.6890221714588842`*^9, 3.6890223994821987`*^9, 3.689022485516099*^9, 
+   3.689022528293589*^9, 3.689022651050372*^9, 3.6890226868157673`*^9, 
+   3.689024153775456*^9, 3.689082951667153*^9, 3.68935634394246*^9, 
+   3.689358477181079*^9, {3.6893586280586033`*^9, 3.689358634592918*^9}, 
+   3.689361402507462*^9}]
 }, Open  ]]
 }, Open  ]],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"(*", " ", 
-   RowBox[{"Run", " ", "simulation"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"Run", " ", "simulations", " ", "to", " ", "compare"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
   RowBox[{
-   RowBox[{"results", "=", 
-    RowBox[{
-     RowBox[{
-      RowBox[{"RunSimulationCheckEachMutation2", "[", 
-       RowBox[{
-       "popsize", ",", "\[CapitalDelta]c1", ",", "\[CapitalDelta]c2", ",", 
-        "U1", ",", "U2", ",", "maxtime", ",", "timestep", ",", "genotypes", 
-        ",", "genotypeabundances"}], "]"}], "[", 
-      RowBox[{"[", "2", "]"}], "]"}], "[", 
-     RowBox[{"[", "1", "]"}], "]"}]}], ";"}]}]], "Input",
- CellChangeTimes->{{3.688753318987649*^9, 3.6887533200689163`*^9}, {
-  3.68875360606778*^9, 3.6887536070115967`*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"plots", "=", 
-   RowBox[{"Table", "[", 
-    RowBox[{
-     RowBox[{"BarChart", "[", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"results", "[", 
-         RowBox[{"[", "i", "]"}], "]"}], "[", 
-        RowBox[{"[", "3", "]"}], "]"}], ",", 
-       RowBox[{"PlotRange", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{"0", ",", 
-          RowBox[{"10", "^", "6"}]}], "}"}]}]}], "]"}], ",", 
-     RowBox[{"{", 
-      RowBox[{"i", ",", "1", ",", 
-       RowBox[{"Length", "[", "results", "]"}]}], "}"}]}], "]"}]}], 
-  ";"}]], "Input",
- CellChangeTimes->{{3.688754016609482*^9, 3.6887540332293787`*^9}, {
-   3.688754175101905*^9, 3.688754206371833*^9}, {3.688754691068412*^9, 
-   3.688754848006689*^9}, {3.688755557254673*^9, 3.688755616355212*^9}, {
-   3.688755972004508*^9, 3.688755979540669*^9}, {3.6887565027339907`*^9, 
-   3.688756508892968*^9}, {3.688756899550144*^9, 3.688756923221085*^9}, {
-   3.688756963244418*^9, 3.688757006301362*^9}, 3.688757769093914*^9, 
-   3.688757825765091*^9, {3.688759257965433*^9, 3.6887592590853653`*^9}, {
-   3.68882279943191*^9, 3.6888227995894327`*^9}, {3.688822902392864*^9, 
-   3.6888229203518353`*^9}, {3.688823042591827*^9, 3.688823079503949*^9}, {
-   3.688823671897781*^9, 3.6888236720510283`*^9}, {3.688823951856144*^9, 
-   3.688823952013082*^9}, {3.688824143017611*^9, 3.688824145496298*^9}, {
-   3.6890222950539827`*^9, 3.689022307820897*^9}, {3.689023650509409*^9, 
-   3.68902369440166*^9}, {3.689024175201949*^9, 3.6890241772828827`*^9}, {
-   3.689024266012579*^9, 3.68902426785808*^9}, {3.68902444121837*^9, 
-   3.689024446036622*^9}, {3.689082921780767*^9, 3.689082933120936*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Export", "[", 
    RowBox[{
-   "\"\<~/Documents/kgrel2d/plots/travelingwave_N-10p6_c1-0d01_c2-0d02_U1-\
-2x10pn4_U2-0x10pn4_exp01.avi\>\"", ",", "plots"}], "]"}], ";"}]], "Input",
- CellChangeTimes->{{3.689024274223312*^9, 3.6890242876955137`*^9}, {
-  3.689024324478923*^9, 3.689024324881069*^9}, {3.6890244554462013`*^9, 
-  3.689024456262012*^9}, {3.68902476164748*^9, 3.689024781687727*^9}, {
-  3.6890248255327587`*^9, 3.689024831117045*^9}, {3.689024913309284*^9, 
-  3.689024914719183*^9}}],
+    RowBox[{"SeedRandom", "[", "100", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"fulldata", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"results0", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"RunSimulationCheckEachMutation2", "[", 
+        RowBox[{
+        "popsize", ",", "\[CapitalDelta]c1", ",", "\[CapitalDelta]c2", ",", 
+         "U1", ",", "U2", ",", "maxtime", ",", "timestep", ",", "genotypes", 
+         ",", "genotypeabundances"}], "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SeedRandom", "[", "100", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"fulldata", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"results1", "=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"RunSimulationCheckEachMutation2", "[", 
+        RowBox[{
+        "popsize", ",", "\[CapitalDelta]c1", ",", "\[CapitalDelta]c2", ",", 
+         "U1", ",", "U2", ",", "maxtime", ",", "timestep", ",", "genotypes", 
+         ",", "genotypeabundances"}], "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.688753318987649*^9, 3.6887533200689163`*^9}, {
+  3.68875360606778*^9, 3.6887536070115967`*^9}, {3.689356287816737*^9, 
+  3.689356339713913*^9}, {3.689358482731531*^9, 3.6893584856730213`*^9}}],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"results", "[", 
-  RowBox[{"[", "100", "]"}], "]"}]], "Input",
- CellChangeTimes->{{3.6890245804870577`*^9, 3.6890245850743637`*^9}}],
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Compare", " ", "Data", " ", "Collected"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"comparedata0", "=", 
+     RowBox[{"results0", "[", 
+      RowBox[{"[", 
+       RowBox[{";;", ",", 
+        RowBox[{"1", ";;", "10"}]}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"comparedata1", " ", "=", " ", 
+     RowBox[{"getSummarizedResults", "[", 
+      RowBox[{
+      "results1", ",", "\[CapitalDelta]c1", ",", "\[CapitalDelta]c2", ",", 
+       "popsize"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Total", "[", 
+    RowBox[{"comparedata0", "-", "comparedata1"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.689356521846467*^9, 3.689356624288641*^9}, {
+  3.689358080523127*^9, 3.6893581749311543`*^9}, {3.6893582114410257`*^9, 
+  3.689358225697721*^9}, {3.689358524321857*^9, 3.689358553705496*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"13893.536869528773`", ",", 
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{"84.`16.", ",", "1.`16."}], "}"}], ",", 
-     RowBox[{"{", 
-      RowBox[{"85.`16.", ",", "1.`16."}], "}"}], ",", 
-     RowBox[{"{", 
-      RowBox[{"86.`16.", ",", "1.`16."}], "}"}], ",", 
-     RowBox[{"{", 
-      RowBox[{"87.`16.", ",", "1.`16."}], "}"}], ",", 
-     RowBox[{"{", 
-      RowBox[{"88.`16.", ",", "1.`16."}], "}"}], ",", 
-     RowBox[{"{", 
-      RowBox[{"89.`16.", ",", "1.`16."}], "}"}], ",", 
-     RowBox[{"{", 
-      RowBox[{"90.`16.", ",", "1.`16."}], "}"}], ",", 
-     RowBox[{"{", 
-      RowBox[{"91.`16.", ",", "1.`16."}], "}"}]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-    "16.06229579543895`", ",", "967.7506422743791`", ",", 
-     "30193.08076358029`", ",", "26609.097223202283`", ",", 
-     "762952.18684649`", ",", "172271.3164389586`", ",", "6990.494873880091`",
-      ",", "33.84047834593306`"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"88.09936806926378`", ",", "1.0000338295625268`"}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"91.`16.", ",", "1.`16."}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{3.689024585909802*^9}]
+  RowBox[{"0.`", ",", "0.`", ",", "0.`", ",", "0.`", ",", 
+   RowBox[{"-", "3.1602550073898414`*^-18"}], ",", "3.479823105557479`*^-18", 
+   ",", 
+   RowBox[{"-", "2.2936379801069193`*^-17"}], ",", "0.`", ",", 
+   RowBox[{"-", "6.439293542825908`*^-15"}], ",", "0.`"}], "}"}]], "Output",
+ CellChangeTimes->{3.6893585558889027`*^9, 3.689358837255268*^9}]
 }, Open  ]]
 },
-WindowSize->{1918, 1003},
+WindowSize->{1535, 876},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
 FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->"Default.nb"
@@ -398,18 +246,16 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[422, 15, 8289, 221, 557, "Input"],
+Cell[422, 15, 3452, 91, 472, "Input"],
 Cell[CellGroupData[{
-Cell[8736, 240, 880, 16, 23, "Print"],
-Cell[9619, 258, 751, 15, 23, "Print"]
+Cell[3899, 110, 1006, 19, 23, "Print"],
+Cell[4908, 131, 1007, 19, 23, "Print"]
 }, Open  ]]
 }, Open  ]],
-Cell[10397, 277, 681, 16, 55, "Input"],
-Cell[11081, 295, 1667, 33, 32, "Input"],
-Cell[12751, 330, 525, 10, 89, "Input"],
+Cell[5942, 154, 1635, 38, 165, "Input"],
 Cell[CellGroupData[{
-Cell[13301, 344, 155, 3, 32, "Input"],
-Cell[13459, 349, 1195, 31, 77, "Output"]
+Cell[7602, 196, 925, 23, 99, "Input"],
+Cell[8530, 221, 382, 7, 37, "Output"]
 }, Open  ]]
 }
 ]
