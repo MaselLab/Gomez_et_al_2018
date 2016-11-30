@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    175960,       4003]
-NotebookOptionsPosition[    174836,       3970]
-NotebookOutlinePosition[    175618,       3995]
-CellTagsIndexPosition[    175575,       3992]
+NotebookDataLength[    181409,       4136]
+NotebookOptionsPosition[    180285,       4103]
+NotebookOutlinePosition[    181067,       4128]
+CellTagsIndexPosition[    181024,       4125]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -26,10 +26,135 @@ Cell[BoxData[
 Cell[BoxData[{
  RowBox[{
   RowBox[{
+   RowBox[{
+    RowBox[{"getTransQ", "[", 
+     RowBox[{
+     "\[CapitalDelta]c_", ",", "U_", ",", "popsize_", ",", "exactflag_"}], 
+     "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"q0", ",", "ssq"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"q0", "=", 
+        RowBox[{"2", 
+         RowBox[{
+          RowBox[{"Log", "[", 
+           RowBox[{"popsize", " ", "\[CapitalDelta]c"}], "]"}], "/", 
+          RowBox[{"Log", "[", 
+           RowBox[{"\[CapitalDelta]c", "/", "U"}], "]"}]}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"f", "[", "q_", "]"}], ":=", 
+        RowBox[{
+         RowBox[{"2", " ", 
+          RowBox[{
+           RowBox[{"Log", "[", 
+            RowBox[{"popsize", " ", "q", " ", "\[CapitalDelta]c"}], "]"}], 
+           "/", 
+           RowBox[{"Log", "[", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"\[CapitalDelta]c", "/", "U"}], ")"}], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"q", "-", "1"}], ")"}], 
+               RowBox[{
+                RowBox[{"Sin", "[", 
+                 RowBox[{"\[Pi]", "/", "q"}], "]"}], "/", 
+                RowBox[{"(", 
+                 RowBox[{"\[Pi]", " ", 
+                  RowBox[{"Exp", "[", 
+                   RowBox[{"EulerGamma", " ", "/", "q"}], "]"}]}], ")"}]}]}], 
+              ")"}]}], "]"}]}]}], "-", "q"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"ssq", "=", 
+        RowBox[{"If", "[", 
+         RowBox[{"exactflag", ",", 
+          RowBox[{"q", "/.", 
+           RowBox[{
+            RowBox[{"FindRoot", "[", 
+             RowBox[{
+              RowBox[{"f", "[", "q", "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"q", ",", "q0"}], "}"}]}], "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ",", "q0"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", "ssq"}]}], "\[IndentingNewLine]", "]"}]}], 
+   ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"--", 
+    RowBox[{"--", 
+     RowBox[{"--", 
+      RowBox[{"--", 
+       RowBox[{"--", 
+        RowBox[{"--", 
+         RowBox[{"--", 
+          RowBox[{"--", 
+           RowBox[{"--", 
+            RowBox[{"--", 
+             RowBox[{"--", 
+              RowBox[{"--", 
+               RowBox[{"--", 
+                RowBox[{"--", 
+                 RowBox[{"--", 
+                  RowBox[{"--", 
+                   RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{
+                    "--", "-"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}\
+]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}\
+], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
    RowBox[{"printRegimeDetails", "[", 
     RowBox[{
     "\[CapitalDelta]c1_", ",", "\[CapitalDelta]c2_", ",", "U1_", ",", "U2_", 
-     ",", "popsize_"}], "]"}], ":=", 
+     ",", "popsize_", ",", "exactflag_"}], "]"}], ":=", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -44,13 +169,10 @@ Cell[BoxData[{
            RowBox[{"U1", "\[Equal]", "0"}], ",", 
            RowBox[{"\[CapitalDelta]c1", "\[Equal]", "0"}]}], "]"}], ",", "0", 
          ",", 
-         RowBox[{"2", " ", 
+         RowBox[{"getTransQ", "[", 
           RowBox[{
-           RowBox[{"Log", "[", 
-            RowBox[{"popsize", " ", "\[CapitalDelta]c1"}], "]"}], "/", 
-           RowBox[{"Log", "[", 
-            RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}]}]}]}], "]"}]}], 
-      ";", "\[IndentingNewLine]", 
+          "\[CapitalDelta]c1", ",", "U1", ",", "popsize", ",", "exactflag"}], 
+          "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"SRflag", "=", 
        RowBox[{"If", "[", 
         RowBox[{
@@ -76,24 +198,14 @@ Cell[BoxData[{
            RowBox[{"U1", "\[Equal]", "0"}], ",", 
            RowBox[{"\[CapitalDelta]c1", "\[Equal]", "0"}]}], "]"}], ",", "0", 
          ",", 
-         SuperscriptBox[
+         RowBox[{
+          RowBox[{"Log", "[", 
+           RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}], "/", 
           RowBox[{"(", 
-           RowBox[{
+           RowBox[{"\[CapitalDelta]c1", " ", 
             RowBox[{"(", 
-             RowBox[{"\[CapitalDelta]c1", 
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{"2", " ", 
-                 RowBox[{"Log", "[", 
-                  RowBox[{"popsize", " ", "\[CapitalDelta]c1"}], "]"}]}], "-", 
-                RowBox[{"Log", "[", 
-                 RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}]}], ")"}]}], 
-             ")"}], "/", 
-            RowBox[{
-             RowBox[{"Log", "[", 
-              RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}], "^", "2"}]}], 
-           ")"}], 
-          RowBox[{"-", "1"}]]}], "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"q", "-", "1"}], ")"}]}], ")"}]}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
       RowBox[{"v", "=", 
        RowBox[{"If", "[", 
         RowBox[{
@@ -106,17 +218,10 @@ Cell[BoxData[{
           SuperscriptBox["\[CapitalDelta]c1", "2"], 
           RowBox[{
            RowBox[{"(", 
-            RowBox[{
-             RowBox[{"2", " ", 
-              RowBox[{"Log", "[", 
-               RowBox[{"popsize", " ", "\[CapitalDelta]c1"}], "]"}]}], "-", 
-             RowBox[{"Log", "[", 
-              RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}]}], ")"}], "/", 
-           RowBox[{
-            RowBox[{"Log", "[", 
-             RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}], "^", 
-            "2"}]}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
-      "\[IndentingNewLine]", 
+            RowBox[{"q", "-", "1"}], ")"}], "/", 
+           RowBox[{"Log", "[", 
+            RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}]}]}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"Print", "[", 
        RowBox[{
        "\"\<Trait 1 q = \>\"", ",", "q", ",", "\"\< in \>\"", ",", " ", 
@@ -142,13 +247,10 @@ Cell[BoxData[{
            RowBox[{"U2", "\[Equal]", "0"}], ",", 
            RowBox[{"\[CapitalDelta]c2", "\[Equal]", "0"}]}], "]"}], ",", "0", 
          ",", 
-         RowBox[{"2", " ", 
+         RowBox[{"getTransQ", "[", 
           RowBox[{
-           RowBox[{"Log", "[", 
-            RowBox[{"popsize", " ", "\[CapitalDelta]c2"}], "]"}], "/", 
-           RowBox[{"Log", "[", 
-            RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}]}]}]}], "]"}]}], 
-      ";", "\[IndentingNewLine]", 
+          "\[CapitalDelta]c2", ",", "U2", ",", "popsize", ",", "exactflag"}], 
+          "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"SRflag", "=", 
        RowBox[{"If", "[", 
         RowBox[{
@@ -174,24 +276,14 @@ Cell[BoxData[{
            RowBox[{"U2", "\[Equal]", "0"}], ",", 
            RowBox[{"\[CapitalDelta]c2", "\[Equal]", "0"}]}], "]"}], ",", "0", 
          ",", 
-         SuperscriptBox[
+         RowBox[{
+          RowBox[{"Log", "[", 
+           RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}], "/", 
           RowBox[{"(", 
-           RowBox[{
+           RowBox[{"\[CapitalDelta]c2", " ", 
             RowBox[{"(", 
-             RowBox[{"\[CapitalDelta]c2", 
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{"2", " ", 
-                 RowBox[{"Log", "[", 
-                  RowBox[{"popsize", " ", "\[CapitalDelta]c2"}], "]"}]}], "-", 
-                RowBox[{"Log", "[", 
-                 RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}]}], ")"}]}], 
-             ")"}], "/", 
-            RowBox[{
-             RowBox[{"Log", "[", 
-              RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}], "^", "2"}]}], 
-           ")"}], 
-          RowBox[{"-", "1"}]]}], "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"q", "-", "1"}], ")"}]}], ")"}]}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
       RowBox[{"v", "=", 
        RowBox[{"If", "[", 
         RowBox[{
@@ -204,17 +296,10 @@ Cell[BoxData[{
           SuperscriptBox["\[CapitalDelta]c2", "2"], 
           RowBox[{
            RowBox[{"(", 
-            RowBox[{
-             RowBox[{"2", " ", 
-              RowBox[{"Log", "[", 
-               RowBox[{"popsize", " ", "\[CapitalDelta]c2"}], "]"}]}], "-", 
-             RowBox[{"Log", "[", 
-              RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}]}], ")"}], "/", 
-           RowBox[{
-            RowBox[{"Log", "[", 
-             RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}], "^", 
-            "2"}]}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
-      "\[IndentingNewLine]", 
+            RowBox[{"q", "-", "1"}], ")"}], "/", 
+           RowBox[{"Log", "[", 
+            RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}]}]}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"Print", "[", 
        RowBox[{
        "\"\<Trait 2 q = \>\"", ",", "q", ",", "\"\< in \>\"", ",", " ", 
@@ -454,10 +539,10 @@ Cell[BoxData[{
                     RowBox[{"--", 
                     RowBox[{"--", 
                     RowBox[{"--", 
-                    RowBox[{"--", 
-                    "-"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}\
-]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}], 
-   "*)"}]}], "\[IndentingNewLine]", 
+                    RowBox[{
+                    "--", "-"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}\
+]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}\
+], "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"getMaxTraitValue", "[", 
@@ -763,7 +848,15 @@ Cell[BoxData[{
    3.689023824555873*^9, 3.689023825017283*^9}, {3.68936074856649*^9, 
    3.689360862614729*^9}, {3.689360921734653*^9, 3.689360967022915*^9}, {
    3.689360997238782*^9, 3.689361049622375*^9}, {3.689361084100686*^9, 
-   3.689361382991395*^9}, {3.6893649535009527`*^9, 3.6893650064649467`*^9}}],
+   3.689361382991395*^9}, {3.6893649535009527`*^9, 3.6893650064649467`*^9}, {
+   3.689432984987524*^9, 3.689433049354416*^9}, {3.6894331198100224`*^9, 
+   3.689433387880692*^9}, {3.689433433456827*^9, 3.689433439856921*^9}, {
+   3.689433524816661*^9, 3.689433623697349*^9}, {3.689433670927103*^9, 
+   3.689433791735464*^9}, {3.6894338475605392`*^9, 3.689433873462957*^9}, {
+   3.689434129974052*^9, 3.6894341471895*^9}, {3.689434485803258*^9, 
+   3.689434495203923*^9}, {3.689439513123231*^9, 3.689439527746624*^9}, {
+   3.689440389854795*^9, 3.689440393510035*^9}, {3.689440448566277*^9, 
+   3.689440449191861*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -849,8 +942,8 @@ Cell[BoxData[
       "timestamp", ",", "meanfitness", ",", " ", "trait1meanfitness", ",", 
        "trait2meanfitness", ",", "fitnessvariance", ",", 
        "trait1fitnessvariance", ",", "trait2fitnessvariance", ",", 
-       "traitfitnesscovariances", ",", "subload", ",", "truepopsize"}], "}"}],
-      ",", "\[IndentingNewLine]", 
+       "traitfitnesscovariances", ",", "subload", ",", "truepopsize", ",", 
+       "mutboundary"}], "}"}], ",", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"timestamp", "=", 
        RowBox[{"globaltime", "+", "addtime"}]}], ";", "\[IndentingNewLine]", 
@@ -875,6 +968,24 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"dataamount", "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
         RowBox[{
+         RowBox[{"mutboundary", "=", 
+          RowBox[{"getNextMutants", "[", "genotypes", "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"mutboundary", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"mutboundary", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{"Length", "[", "mutboundary", "]"}]}], "}"}]}], "]"}]}],
+          ";", "\[IndentingNewLine]", 
+         RowBox[{"mutboundary", "=", 
+          RowBox[{"Join", "[", 
+           RowBox[{"genotypes", ",", "mutboundary"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
          RowBox[{"trait1meanfitness", "=", 
           RowBox[{"\[CapitalDelta]c1", " ", 
            RowBox[{"Sum", "[", 
@@ -1012,19 +1123,31 @@ Cell[BoxData[
                RowBox[{"1", "+", 
                 RowBox[{"\[CapitalDelta]c1", " ", 
                  RowBox[{
-                  RowBox[{"genotypes", "[", 
+                  RowBox[{"mutboundary", "[", 
                    RowBox[{"[", "i", "]"}], "]"}], "[", 
                   RowBox[{"[", "1", "]"}], "]"}]}], "+", 
                 RowBox[{"\[CapitalDelta]c2", " ", 
                  RowBox[{
-                  RowBox[{"genotypes", "[", 
+                  RowBox[{"mutboundary", "[", 
                    RowBox[{"[", "i", "]"}], "]"}], "[", 
                   RowBox[{"[", "2", "]"}], "]"}]}]}], ")"}], "-", 
               "meanfitness"}], ",", 
              RowBox[{"{", 
               RowBox[{"i", ",", "1", ",", 
-               RowBox[{"Length", "[", "genotypes", "]"}]}], "}"}]}], "]"}], 
+               RowBox[{"Length", "[", "mutboundary", "]"}]}], "}"}]}], "]"}], 
            "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"subload", "<", "0"}], ",", 
+           RowBox[{
+            RowBox[{"Print", "[", 
+             RowBox[{
+             "\"\<boundary and genotypes are \>\"", ",", "mutboundary", ",", 
+              "\"\<, abundances are \>\"", ",", "genotypeabundances", ",", 
+              "\"\<, mean fitness = \>\"", ",", "meanfitness", ",", 
+              "\"\<, fit1= \>\"", ",", "trait1meanfitness", ",", 
+              "\"\<, fit2= \>\"", ",", "trait2meanfitness"}], "]"}], ";"}], 
+           ",", "Null"}], "]"}], ";", "\[IndentingNewLine]", 
          RowBox[{"truepopsize", "=", 
           RowBox[{"Total", "[", "genotypeabundances", "]"}]}], ";", 
          "\[IndentingNewLine]", 
@@ -1121,7 +1244,17 @@ Cell[BoxData[
    3.689357113071896*^9}, {3.689358014326524*^9, 3.689358026646245*^9}, {
    3.68936723099859*^9, 3.689367295135015*^9}, {3.68936767931957*^9, 
    3.689367743903286*^9}, {3.689368439959461*^9, 3.6893684610554047`*^9}, 
-   3.6893694823203573`*^9, {3.689426175940833*^9, 3.689426179619925*^9}}],
+   3.6893694823203573`*^9, {3.689426175940833*^9, 3.689426179619925*^9}, {
+   3.689438319399035*^9, 3.6894383483341007`*^9}, {3.6894383809185257`*^9, 
+   3.6894384143431587`*^9}, {3.689438458061956*^9, 3.689438527757937*^9}, {
+   3.689439018755101*^9, 3.689439038435278*^9}, {3.689439077731921*^9, 
+   3.689439084692482*^9}, {3.6894393932025213`*^9, 3.68943939822511*^9}, {
+   3.68944125248882*^9, 3.68944128930484*^9}, {3.689441349080769*^9, 
+   3.689441377855089*^9}, {3.6894414162966337`*^9, 3.689441475904031*^9}, {
+   3.6894415471995583`*^9, 3.689441589521233*^9}, {3.6894416363593073`*^9, 
+   3.689441656759499*^9}, {3.68945384971353*^9, 3.6894539376576653`*^9}, {
+   3.689453995648777*^9, 3.6894540523572283`*^9}, {3.689454084224292*^9, 
+   3.689454099161302*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -3995,16 +4128,16 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 160, 3, 19, "Input"],
-Cell[721, 25, 26862, 740, 710, "Input"],
-Cell[27586, 767, 15615, 356, 522, "Input"],
-Cell[43204, 1125, 10223, 259, 417, "Input"],
-Cell[53430, 1386, 11072, 282, 473, "Input"],
-Cell[64505, 1670, 8212, 210, 561, "Input"],
-Cell[72720, 1882, 16129, 373, 892, "Input"],
-Cell[88852, 2257, 31348, 695, 1463, "Input"],
-Cell[120203, 2954, 5322, 141, 219, "Input"],
-Cell[125528, 3097, 3527, 100, 264, "Input"],
-Cell[129058, 3199, 45774, 769, 1281, "Input"]
+Cell[721, 25, 30229, 833, 830, "Input"],
+Cell[30953, 860, 17697, 396, 612, "Input"],
+Cell[48653, 1258, 10223, 259, 417, "Input"],
+Cell[58879, 1519, 11072, 282, 473, "Input"],
+Cell[69954, 1803, 8212, 210, 561, "Input"],
+Cell[78169, 2015, 16129, 373, 892, "Input"],
+Cell[94301, 2390, 31348, 695, 1463, "Input"],
+Cell[125652, 3087, 5322, 141, 219, "Input"],
+Cell[130977, 3230, 3527, 100, 264, "Input"],
+Cell[134507, 3332, 45774, 769, 1281, "Input"]
 }
 ]
 *)
