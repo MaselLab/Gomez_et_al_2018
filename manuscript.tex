@@ -11,8 +11,21 @@
 
 %-----------------------------------------------------------------------------------------
 \section*{Methods}
+Our model describes the simultaneous evolution of two traits in asexual populations with no recombination, whose size $N$ is large but fixed.  We consider only beneficial mutations in our framework which occur at a rate $U_i$, for i=1,2.  A beneficial mutation modifying trait $i$ provides a fixed incremental gain $\Delta c_i$, in the relative fitness of a mutant.  
+
+
+Our model describes the simultaneous evolution of two traits (or loci) in an asexual population with no recombination.  The population size is taken to be large but fixed and finite.  Each trait evolves in the concurrent mutations regime, which 
+
+for the simultaneous evolution of two traits follows the construction of Desai and Fisher (2007), which permits the partitioning of the population subpopulations into deterministic and stochastic dominated.  we make a number of assumptions for the construction of our model.  Our model describes the simultaneous evolution of two traits (or loci) in an asexual population, whose size is large but fixed.  We assume that there is no recombination     
+
+adapting simultaneously, both evolving in the concurrent mutations regime.  We consider only asexual populations with no recombination, whose population size is large but constant.  Adaptation in each trait dimension is denoted $i$ for trait 1
+
+Following the work of Desai and Fisher, we designate fitness classes whose relative frequencies are given by $p_{i,j}$.  
+, which are represented by points in the $i$-$j$ trait space represented by the product space $\mathbb{N}\times \mathbb{N}$.
+ 
+The parameters of the model are the population size $N$, the mutation rate $U_k$ for each trait, and the traits selective advantage $\Delta c_i$.  
 \subsection*{Selection in Two Dimensions}
-The model 
+The population is divided into subpopulations, called fitness classes, which 
 \subsection*{Mutation-Selection Balance in a Two Dimensional Trait Space}
 
 \section*{Results}
@@ -69,13 +82,10 @@ Program modules in this order
 \section{Substitional Load}
 Here we define the substitutional load for the 2D model.  The total selective deaths for each class $i=1,...,k$ are given by the quantity,
 \[
-
+L(t)=\max_{i,j}\left \{ d \ln(p_ij) \over dt \right \}
 \]
-\begin{equation}
-
-\end{equation}
 
 \bibliographystyle{plain}
-\bibliography{eebprojs2016bib}
+\bibliography{biblio}
 
 \end{document}
