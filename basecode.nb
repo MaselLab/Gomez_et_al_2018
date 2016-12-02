@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    187818,       4311]
-NotebookOptionsPosition[    186692,       4278]
-NotebookOutlinePosition[    187474,       4303]
-CellTagsIndexPosition[    187431,       4300]
+NotebookDataLength[    195309,       4497]
+NotebookOptionsPosition[    194181,       4464]
+NotebookOutlinePosition[    194963,       4489]
+CellTagsIndexPosition[    194920,       4486]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -397,7 +397,7 @@ Cell[BoxData[{
        "}"}], ",", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"q0", "=", 
-       RowBox[{"Ceiling", "[", 
+       RowBox[{"Floor", "[", 
         RowBox[{"2", " ", 
          RowBox[{
           RowBox[{"Log", "[", 
@@ -415,28 +415,24 @@ Cell[BoxData[{
            RowBox[{"q0", "-", "1"}], ")"}]}], ")"}]}]}], ";", 
       "\[IndentingNewLine]", 
       RowBox[{"DFabundances", "=", 
-       RowBox[{"Reverse", "[", 
-        RowBox[{"Table", "[", 
-         RowBox[{
-          RowBox[{
-           SuperscriptBox[
-            RowBox[{"(", 
-             RowBox[{"q0", " ", "\[CapitalDelta]c"}], ")"}], 
-            RowBox[{"-", "1"}]], 
-           RowBox[{"Product", "[", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Exp", "[", 
+          RowBox[{"Sum", "[", 
+           RowBox[{
             RowBox[{
-             RowBox[{"Exp", "[", 
-              RowBox[{
-               RowBox[{"(", 
-                RowBox[{"q0", "-", "1", "-", "i"}], ")"}], "\[CapitalDelta]c",
-                " ", "\[Tau]0"}], "]"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"i", ",", "0", ",", "j"}], "}"}]}], "]"}]}], ",", 
-          RowBox[{"{", 
-           RowBox[{"j", ",", "0", ",", 
-            RowBox[{
-             RowBox[{"2", " ", "q0"}], "-", "1"}]}], "}"}]}], "]"}], "]"}]}], 
-      ";", "\[IndentingNewLine]", 
+             RowBox[{"-", "i"}], " ", "\[CapitalDelta]c", " ", "\[Tau]0"}], 
+            ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "0", ",", 
+              RowBox[{"Abs", "[", 
+               RowBox[{"q0", "-", "j"}], "]"}]}], "}"}]}], "]"}], "]"}], ",", 
+         
+         RowBox[{"{", 
+          RowBox[{"j", ",", "0", ",", 
+           RowBox[{
+            RowBox[{"2", " ", "q0"}], "-", "1"}]}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
       RowBox[{"DFabundances", "=", 
        RowBox[{
         RowBox[{"(", 
@@ -468,6 +464,171 @@ Cell[BoxData[{
         "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"{", 
        RowBox[{"DFgenotypes", ",", "DFabundances"}], "}"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"--", 
+    RowBox[{"--", 
+     RowBox[{"--", 
+      RowBox[{"--", 
+       RowBox[{"--", 
+        RowBox[{"--", 
+         RowBox[{"--", 
+          RowBox[{"--", 
+           RowBox[{"--", 
+            RowBox[{"--", 
+             RowBox[{"--", 
+              RowBox[{"--", 
+               RowBox[{"--", 
+                RowBox[{"--", 
+                 RowBox[{"--", 
+                  RowBox[{"--", 
+                   RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{
+                    "--", "-"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}\
+]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}\
+], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"getInitial2Ddistribution", "[", 
+    RowBox[{
+    "n_", ",", "popsize_", ",", "\[CapitalDelta]c1_", ",", 
+     "\[CapitalDelta]c2_", ",", "U1_", ",", "U2_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "genotypes2D", ",", "abundances2D", ",", "t1", ",", "t2", ",", 
+       "\[Tau]1", ",", "\[Tau]2"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"genotypes2D", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"\[Tau]1", "=", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"Log", "[", 
+          RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}], "2"], "/", 
+        RowBox[{"(", 
+         RowBox[{"\[CapitalDelta]c1", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"2", " ", 
+             RowBox[{"Log", "[", 
+              RowBox[{"popsize", " ", "\[CapitalDelta]c1"}], "]"}]}], "-", 
+            RowBox[{"Log", "[", 
+             RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}]}], ")"}]}], 
+         ")"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"\[Tau]2", "=", 
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"Log", "[", 
+          RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}], "2"], "/", 
+        RowBox[{"(", 
+         RowBox[{"\[CapitalDelta]c2", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"2", " ", 
+             RowBox[{"Log", "[", 
+              RowBox[{"popsize", " ", "\[CapitalDelta]c2"}], "]"}]}], "-", 
+            RowBox[{"Log", "[", 
+             RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}]}], ")"}]}], 
+         ")"}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"genotypes2D", "=", 
+          RowBox[{"Join", "[", 
+           RowBox[{"genotypes2D", ",", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"j", ",", "i"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "1", ",", 
+                RowBox[{"n", "-", "j", "+", "1"}]}], "}"}]}], "]"}]}], 
+           "]"}]}], ";"}], "\[IndentingNewLine]", ",", 
+        RowBox[{"{", 
+         RowBox[{"j", ",", "1", ",", "n"}], "}"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"abundances2D", "=", 
+       RowBox[{"Table", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"t1", ",", "t2"}], "}"}], "=", 
+           RowBox[{"genotypes2D", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Exp", "[", 
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"t1", 
+                RowBox[{"(", 
+                 RowBox[{"t1", "-", "1"}], ")"}], "\[CapitalDelta]c1", " ", 
+                "\[Tau]1"}], "+", 
+               RowBox[{"t2", 
+                RowBox[{"(", 
+                 RowBox[{"t2", "-", "1"}], ")"}], "\[CapitalDelta]c2", " ", 
+                "\[Tau]2"}]}], ")"}]}], "/", "2.0"}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"Length", "[", "genotypes2D", "]"}]}], "}"}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"abundances2D", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"popsize", "/", 
+          RowBox[{"Total", "[", "abundances2D", "]"}]}], ")"}], 
+        "abundances2D"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"genotypes2D", ",", "abundances2D"}], "}"}]}]}], 
     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
    RowBox[{"--", 
@@ -1010,7 +1171,22 @@ Cell[BoxData[{
    3.689440389854795*^9, 3.689440393510035*^9}, {3.689440448566277*^9, 
    3.689440449191861*^9}, {3.689541048214299*^9, 3.689541417470614*^9}, {
    3.6896134559829807`*^9, 3.689613459873115*^9}, {3.689613543486578*^9, 
-   3.6896135751904373`*^9}}],
+   3.6896135751904373`*^9}, {3.689618656735084*^9, 3.689618657319641*^9}, {
+   3.6896191061374903`*^9, 3.689619143497912*^9}, {3.6896191810974913`*^9, 
+   3.689619222921636*^9}, {3.689619257809943*^9, 3.689619258846815*^9}, {
+   3.689619310402206*^9, 3.689619325532127*^9}, {3.689619396522592*^9, 
+   3.689619424585968*^9}, {3.689619467931018*^9, 3.6896194747700453`*^9}, {
+   3.6896195255712214`*^9, 3.689619528754867*^9}, {3.689619563674999*^9, 
+   3.689619593491666*^9}, {3.6896196342995663`*^9, 3.689619636147263*^9}, {
+   3.689632284004088*^9, 3.689632317779997*^9}, {3.689632349116199*^9, 
+   3.689632351396144*^9}, {3.689632386044806*^9, 3.689632421412462*^9}, {
+   3.6896324624846478`*^9, 3.6896324760069237`*^9}, {3.689632563013093*^9, 
+   3.689632570365114*^9}, {3.689632671164804*^9, 3.689632809998295*^9}, {
+   3.689632859990484*^9, 3.6896329163827972`*^9}, {3.68963294835081*^9, 
+   3.68963322546914*^9}, {3.6896332794566298`*^9, 3.689633321409637*^9}, {
+   3.6896334816095257`*^9, 3.689633492572557*^9}, 3.689633543346375*^9, {
+   3.689633664266124*^9, 3.689633702146152*^9}, {3.689633759499207*^9, 
+   3.689633890267881*^9}, {3.689634034419132*^9, 3.689634039580454*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -1528,7 +1704,7 @@ Cell[BoxData[
              RowBox[{"i", ",", "1", ",", 
               RowBox[{"Length", "[", "mutboundary", "]"}]}], "}"}]}], "]"}]}],
           ";", "\[IndentingNewLine]", 
-         RowBox[{"types", "=", 
+         RowBox[{"mutboundary", "=", 
           RowBox[{"Join", "[", 
            RowBox[{
             RowBox[{
@@ -1536,6 +1712,11 @@ Cell[BoxData[
               RowBox[{"[", "j", "]"}], "]"}], "[", 
              RowBox[{"[", "2", "]"}], "]"}], ",", "mutboundary"}], "]"}]}], 
          ";", "\[IndentingNewLine]", 
+         RowBox[{"types", "=", 
+          RowBox[{
+           RowBox[{"resultsIndxd", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
          RowBox[{"abundances", "=", 
           RowBox[{
            RowBox[{"resultsIndxd", "[", 
@@ -1657,19 +1838,19 @@ Cell[BoxData[
              RowBox[{"1", "+", 
               RowBox[{
                RowBox[{
-                RowBox[{"types", "[", 
+                RowBox[{"mutboundary", "[", 
                  RowBox[{"[", "i", "]"}], "]"}], "[", 
                 RowBox[{"[", "1", "]"}], "]"}], " ", "\[CapitalDelta]c1"}], 
               "+", 
               RowBox[{
                RowBox[{
-                RowBox[{"types", "[", 
+                RowBox[{"mutboundary", "[", 
                  RowBox[{"[", "i", "]"}], "]"}], "[", 
                 RowBox[{"[", "2", "]"}], "]"}], " ", "\[CapitalDelta]c2"}], 
               "-", "rbar"}], ",", 
              RowBox[{"{", 
               RowBox[{"i", ",", "1", ",", 
-               RowBox[{"Length", "[", "types", "]"}]}], "}"}]}], "]"}], 
+               RowBox[{"Length", "[", "mutboundary", "]"}]}], "}"}]}], "]"}], 
            "]"}]}], ";", "\[IndentingNewLine]", 
          RowBox[{"truepopsize", "=", 
           RowBox[{"Total", "[", "abundances", "]"}]}], ";", 
@@ -1682,7 +1863,8 @@ Cell[BoxData[
             RowBox[{"\[CapitalDelta]c1", " ", "mean1"}], ",", 
             RowBox[{"\[CapitalDelta]c2", " ", "mean2"}], ",", "rbar", ",", 
             "covar", ",", "var1", ",", "var2", ",", "var", ",", "subload", 
-            ",", "truepopsize"}], "}"}]}]}], "\[IndentingNewLine]", ",", 
+            ",", "truepopsize", ",", "mutboundary"}], "}"}]}]}], 
+        "\[IndentingNewLine]", ",", 
         RowBox[{"{", 
          RowBox[{"j", ",", "1", ",", 
           RowBox[{"Length", "[", "resultsIndxd", "]"}]}], "}"}]}], "]"}], ";",
@@ -1690,7 +1872,11 @@ Cell[BoxData[
     "]"}]}]}]], "Input",
  CellChangeTimes->{{3.6893580316218433`*^9, 3.6893580537226*^9}, {
   3.689358301877377*^9, 3.6893583019428883`*^9}, {3.689358336872244*^9, 
-  3.689358337060124*^9}, {3.689614844501265*^9, 3.689614941149366*^9}}],
+  3.689358337060124*^9}, {3.689614844501265*^9, 3.689614941149366*^9}, {
+  3.6896166336530523`*^9, 3.68961664906905*^9}, {3.689616721654586*^9, 
+  3.689616735593315*^9}, {3.689616894790782*^9, 3.689616937566642*^9}, {
+  3.689616983319069*^9, 3.689616988003171*^9}, {3.689617192000428*^9, 
+  3.689617194944036*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -4303,16 +4489,16 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 160, 3, 19, "Input"],
-Cell[721, 25, 35743, 987, 999, "Input"],
-Cell[36467, 1014, 17697, 396, 579, "Input"],
-Cell[54167, 1412, 11116, 280, 486, "Input"],
-Cell[65286, 1694, 11072, 282, 473, "Input"],
-Cell[76361, 1978, 8212, 210, 561, "Input"],
-Cell[84576, 2190, 16129, 373, 892, "Input"],
-Cell[100708, 2565, 31348, 695, 1463, "Input"],
-Cell[132059, 3262, 5322, 141, 219, "Input"],
-Cell[137384, 3405, 3527, 100, 264, "Input"],
-Cell[140914, 3507, 45774, 769, 1281, "Input"]
+Cell[721, 25, 42720, 1163, 1289, "Input"],
+Cell[43444, 1190, 17697, 396, 579, "Input"],
+Cell[61144, 1588, 11628, 290, 471, "Input"],
+Cell[72775, 1880, 11072, 282, 473, "Input"],
+Cell[83850, 2164, 8212, 210, 561, "Input"],
+Cell[92065, 2376, 16129, 373, 892, "Input"],
+Cell[108197, 2751, 31348, 695, 1463, "Input"],
+Cell[139548, 3448, 5322, 141, 219, "Input"],
+Cell[144873, 3591, 3527, 100, 264, "Input"],
+Cell[148403, 3693, 45774, 769, 1281, "Input"]
 }
 ]
 *)
