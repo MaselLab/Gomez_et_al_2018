@@ -6,26 +6,36 @@
 
 \begin{document}
 \title{The Speed of Evolution in a Two Dimensional Trait Space}
+\author{Kevin Gomez, Joanna Masel, Jason Bertram}
+\date{2017}
+
+\maketitle
+\newpage
 
 \section*{Introduction}
 
 %-----------------------------------------------------------------------------------------
 \section*{Methods}
-Our model describes the simultaneous evolution of two traits (or loci) in an asexual population with no recombination.  The population size $N$ is assumed to large but fixed.  We consider only beneficial mutations in our framework which occur at a rate $U_k$, where $k=1,2$ designates the trait.  A beneficial mutation modifying trait $k$ provides a fixed incremental gain $\Delta c_k$, in the relative fitness of a mutant.  No distinction is made between the types of beneficial mutations, and fitness is strictly determined by the number of benenficial mutations in the genotype of an individual.  Its relative fitness is given as its growth rate in excess of the population's mean growth rate $r_{i,j}-\bar{r}$, where $r_{i,j}=1+\Delta c_1 i + \Delta c_2 j$. 
+\subsection*{Model Description}
+The construction of our model employs much of the theoretical framework developed by Desai and Fisher \citep{DesFish07}, but with the key distinction of including two traits that evolve through selective and mutation forces.  We consider asexual populations with no recombination, and assume 
 
-The populutation is divided into subpopulations consisting of fitness classes, whose frequencies are designated by $p_{i,j}$ with $i$ consists 
+\subsection*{Parameters, Model Basics, and Definitions}
+The population size $N$ is assumed to large but fixed.  Beneficial mutations occur at a rate $U_k$, where $k=1,2$ designates the trait.  A beneficial mutation modifying trait $k$ provides a fixed incremental gain $\Delta c_k$, in the relative growth rate $r_{i,j}$ of a mutant, where $r_{i,j}=1+\Delta c_1 i + \Delta c_2 j$.  We adopt the convention of using an index $i$ and $j$ to indicate the number of beneficial mutations in the first and second trait, respectively.  The fitness of an individual or a fitness class can be represented as the point $(i,j) \in \mathbb{N}^2$.  
 
-for the simultaneous evolution of two traits follows the construction of Desai and Fisher (2007), which permits the partitioning of the population subpopulations into deterministic and stochastic dominated.  we make a number of assumptions for the construction of our model.  Our model describes the simultaneous evolution of two traits (or loci) in an asexual population, whose size is large but fixed.  We assume that there is no recombination     
+Relative fitness is defined as its growth rate in excess of the population's mean growth rate $r_{i,j}-\bar{r}$, .  The mean fitness of a population can also be written as $\bar{r}=1+\Delta c_1 \bar{i} + \Delta c_2 \bar{j}$, where the means are marginal with respect to the joint distribution $p_{i,j}$.  
 
-adapting simultaneously, both evolving in the concurrent mutations regime.  We consider only asexual populations with no recombination, whose population size is large but constant.  Adaptation in each trait dimension is denoted $i$ for trait 1
+The frequency of a fitness classes which grows deterministically is denoted as $p_{i,j}$, and its abundance is governed by the coupled equation defined in (1).
+\begin{equation}
+\frac{dp_{i,j}}{dt}=(r_{i,j}-\bar{r})p_{i,j}
+\end{equation}
+From this equation it follows that the relative fitness of an individual from the fitness class $(i,j)$ equals $d(\ln(p_{i,j}))/dt$.  
 
-Following the work of Desai and Fisher, we designate fitness classes whose relative frequencies are given by $p_{i,j}$.  
-, which are represented by points in the $i$-$j$ trait space represented by the product space $\mathbb{N}\times \mathbb{N}$.
- 
-The parameters of the model are the population size $N$, the mutation rate $U_k$ for each trait, and the traits selective advantage $\Delta c_i$.  
-\subsection*{Selection in Two Dimensions}
+\subsection*{Adaptation in Two Dimensions}
+%
 The population is divided into subpopulations, called fitness classes, which 
+
 \subsection*{Mutation-Selection Balance in a Two Dimensional Trait Space}
+
 
 \section*{Results}
 
@@ -34,55 +44,6 @@ The population is divided into subpopulations, called fitness classes, which
 \section*{Appendices}
 The following notes provide some basic calculations and formulas needed for constructing and running the two dimensional model.
 
-\subsection*{A1: Deterministic Equations}
-We define the quantities $D(t) = \sum_{i} N_i(t)/K=N(t)/K$ is the "measure of density dependence" (check), $N(t) = \sum_i N_i(t)$ is the total population size, $\bar{c}(t)=\sum_i c_i N_i(t)/N(t)$ is the mean relative fitness of the population, $b$ is the per-capita birth rate, and $K$ is the maximum sustainably achievable population size for any fitness class $i$.  Let $g$ be the number of genotypes.  The deterministic equations for the two dimensional model can be written as,
-\begin{equation}
-\begin{aligned}
-\frac{dN_i}{dt}&=b N_i (1-D+{c_i \over \bar{c}}D)(1-D)-\mu_i N_i\\
-&=\left(b+(1-{c_i \over \bar{c}})bD^2- \mu_i\right)N_i -b(2-{c_i \over \bar{c}})DN_i\\
-\end{aligned}
-\end{equation}
-The coefficients $c_i = i c$ are measures of relative fitness following the model proposed by Desai and Fisher \citep{DesFish07}, and the death rates $\mu_i = i s$ follow the model proposed by \citep{BertMas15}.  The system can then be written as
-\begin{equation}
-\begin{aligned}
-\frac{dN_i}{dt}&=\sum_{j=1}^g\left[\left(b+(1-{c_i \over \bar{c}}){bN^2\over K^2}- \mu_i\right)\delta_{ij} - {b \over K}(2-{c_i \over \bar{c}})N_i \right]N_j\\
-\end{aligned}
-\end{equation}
-\textbf{Remark}: These equations will be modified later, but two things are worth noting.  In the previous 1d model, the steady state solutions play a role in calculating the probability of fixation $p_f$ at the nose.  Mainly, in the module pfix[] takes the assumption that the system is near steady state.  This is easy to calculate for the case of just one measure of fitness.  In the 2d situation, we can generate a mutant class at the boundary, but the steady state solution is still not known and must be computed.  It would also be good to get a rough idea of how long it takes for the solutions to approximate the steady state values (\textit{some readings of asymptotics}).
-\subsection*{A2: Data Structures}
-List of new data structures needed in code:
-\begin{itemize}
-\item{genotypes = $\{\{s_1,c_1\},...,\{s_g,c_g\}\}$ is a two dimensional array.  The first element $s_i$ isthe  absolute fitness "unscaled" and the second element $c_i$ is relative fitness "uncscaled"; both have to be multiplied by $s$ and $c$.}
-\item{newmutantgenotypes = $\{\{fc_1,fk_1,\{s_1,c_1\}\},...,\{fc_g,fk_g,\{s_g,c_g\}\}\}$}.  The list includes information of the candidate new mutant genotypes at the boundary of the current set of fitness classes.  These are the $\{s_i,c_i\}\}$, while the first element $fc_i$ is the index of the fitness class that generated the mutant class at the boundary, the second element $fk_i$ indicates if it was generated at on the boundary for absolute fitness $fk_i=1$ or relative fitness $fk_i=2$.  
-\end{itemize}
-\subsection*{Module Prototypes}
-\begin{itemize}
-\item getUniqueGenotype[genotypeElem]\\
-\item testGenoType[genotype, fitnesscriteria, indx]\\
-\item SolveDiffEqs[$r_0$, $\mu_0$, s, c, K, genotypeabundances, genotypes, timeuntilnextenvchange]\\
-\item PruneUnfitClasses[genotypes, genotypeabundances]\\
-\item getNextMutants[genotypes]
-\end{itemize}
-\newpage
-\section*{Notes From Meeting No. 1}
-Program modules in this order
-\begin{enumerate}
-\item{Modify NDSolve to accommodate the 2 dimensional fitness space.  Define data structures for holding genotype information and modify parameters to include separate selection coefficients.}
-\item{Modify existing pruning modules to prune two dimensional sets of genotypes.}
-\item{Test new modules with following scenarios.}
-\begin{itemize}
-\item{Run system until for lengthy period to check intuition that all fitness class disappear except fittest one.}
-\item{Run code up to certain time, then add new fitness class and check that new fitness class is appropriately incorporated into system, then run again until fittest class remains.}
-\item{Run code along individual dimensions to test that they follow expected behavior.}
-\item{Run code that simulate environmental shift and test that it follows expected behavior.}
-\end{itemize}
-\end{enumerate}
-
-\section{Substitional Load}
-Here we define the substitutional load for the 2D model.  The total selective deaths for each class $i=1,...,k$ are given by the quantity,
-\[
-L(t)=\max_{i,j}\left \{ d \ln(p_ij) \over dt \right \}
-\]
 
 \bibliographystyle{plain}
 \bibliography{biblio}
