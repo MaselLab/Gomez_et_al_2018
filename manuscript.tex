@@ -12,17 +12,16 @@
 \maketitle
 \newpage
 
+\begin{abstract}
+This paper will discuss something.
+\end{abstract}
+
 \section*{Introduction}
 
 %-----------------------------------------------------------------------------------------
 \section*{Methods}
-\subsection*{Model Description}
-The construction of our model employs much of the theoretical framework developed by Desai and Fisher \citep{DesFish07}, but with the key distinction of including two traits that evolve through selective and mutation forces.  We consider asexual populations with no recombination, and assume 
-
-\subsection*{Parameters, Model Basics, and Definitions}
-The population size $N$ is assumed to large but fixed.  Beneficial mutations occur at a rate $U_k$, where $k=1,2$ designates the trait.  A beneficial mutation modifying trait $k$ provides a fixed incremental gain $\Delta c_k$, in the relative growth rate $r_{i,j}$ of a mutant, where $r_{i,j}=1+\Delta c_1 i + \Delta c_2 j$.  We adopt the convention of using an index $i$ and $j$ to indicate the number of beneficial mutations in the first and second trait, respectively.  The fitness of an individual or a fitness class can be represented as the point $(i,j) \in \mathbb{N}^2$.  
-
-Relative fitness is defined as its growth rate in excess of the population's mean growth rate $r_{i,j}-\bar{r}$, .  The mean fitness of a population can also be written as $\bar{r}=1+\Delta c_1 \bar{i} + \Delta c_2 \bar{j}$, where the means are marginal with respect to the joint distribution $p_{i,j}$.  
+\subsection*{A Two Trait Model with Selection and Mutations}
+The construction of our model employs much of the theoretical framework developed by Desai and Fisher \citep{DesFish07}, but with the key distinction of including two traits that evolve through selective and mutation forces.  We consider asexual populations with no recombination.  We assume that the population size $N$ large but fixed.  Beneficial mutations occur at a rate $U_k$, where $k=1,2$ and designates the trait in question.  A beneficial mutation modifying trait $k$ provides a fixed incremental gain $\Delta c_k$, in the relative growth rate $r_{i,j}$ of a mutant, where $r_{i,j}=1+\Delta c_1 i + \Delta c_2 j$.  We adopt the convention of using an indices $i$ and $j$ to indicate the number of beneficial mutations in the first and second trait, respectively.  This allows us to represent the fitness of an individual, or its fitness class, by a the point $(i,j) \in \mathbb{N}^2$.  The discrete fitness distribution of the population in the two dimensional trait space is then given by the set of frequencies $\{p_{i,j}\}_{i,j}$.  Relative fitness is defined as its growth rate in excess of the population's mean growth rate $r_{i,j}-\bar{r}$, .  The mean fitness of a population can also be written as $\bar{r}=1+\Delta c_1 \bar{i} + \Delta c_2 \bar{j}$, where the means are marginal with respect to the joint distribution $p_{i,j}$.  
 
 The frequency of a fitness classes which grows deterministically is denoted as $p_{i,j}$, and its abundance is governed by the coupled equation defined in (1).
 \begin{equation}
@@ -30,9 +29,6 @@ The frequency of a fitness classes which grows deterministically is denoted as $
 \end{equation}
 From this equation it follows that the relative fitness of an individual from the fitness class $(i,j)$ equals $d(\ln(p_{i,j}))/dt$.  
 
-\subsection*{Adaptation in Two Dimensions}
-%
-The population is divided into subpopulations, called fitness classes, which 
 
 \subsection*{Mutation-Selection Balance in a Two Dimensional Trait Space}
 
