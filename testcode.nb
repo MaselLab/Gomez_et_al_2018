@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1173273,      25764]
-NotebookOptionsPosition[   1161611,      25409]
-NotebookOutlinePosition[   1161946,      25424]
-CellTagsIndexPosition[   1161903,      25421]
+NotebookDataLength[   1174050,      25792]
+NotebookOptionsPosition[   1162268,      25433]
+NotebookOutlinePosition[   1162603,      25448]
+CellTagsIndexPosition[   1162560,      25445]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -25405,6 +25405,30 @@ Cell[BoxData[
 
 Cell[BoxData["0.09944114078876712`"], "Output",
  CellChangeTimes->{3.694541635179497*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Array", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"0", " ", "#1", " ", "#2"}], ")"}], " ", "&"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "3"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.697202665334929*^9, 3.697202695394355*^9}, {
+  3.697202736725923*^9, 3.697202744682405*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.697202672726403*^9, 3.697202696071747*^9}, 
+   3.6972027453799343`*^9}]
 }, Open  ]]
 },
 WindowSize->{1535, 876},
@@ -25756,7 +25780,7 @@ Cell[1158061, 25307, 786, 16, 23, "Print"]
 Cell[CellGroupData[{
 Cell[1158884, 25328, 758, 20, 62, "Input"],
 Cell[1159645, 25350, 304, 4, 32, "Output"],
-Cell[1159952, 25356, 337, 5, 65, "Output"]
+Cell[1159952, 25356, 337, 5, 32, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[1160326, 25366, 821, 24, 85, "Input"],
@@ -25765,6 +25789,10 @@ Cell[1161150, 25392, 112, 1, 32, "Output"]
 Cell[CellGroupData[{
 Cell[1161299, 25398, 204, 5, 34, "Input"],
 Cell[1161506, 25405, 89, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1161632, 25411, 332, 9, 32, "Input"],
+Cell[1161967, 25422, 285, 8, 89, "Output"]
 }, Open  ]]
 }
 ]
