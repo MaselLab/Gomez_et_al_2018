@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    259200,       6034]
-NotebookOptionsPosition[    257908,       5997]
-NotebookOutlinePosition[    258713,       6023]
-CellTagsIndexPosition[    258670,       6020]
+NotebookDataLength[    259637,       6046]
+NotebookOptionsPosition[    258364,       6010]
+NotebookOutlinePosition[    259150,       6035]
+CellTagsIndexPosition[    259107,       6032]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -2276,6 +2276,7 @@ Cell[BoxData[
        "SolvDiffEqs", " ", "and", " ", "returns", " ", "dynamics", " ", 
        "traitcovariance", " ", "at", " ", "tstep", " ", "sampling", " ", 
        "points"}], " ", "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     
      RowBox[{"(*", " ", 
       RowBox[{
       "set", " ", "initial", " ", "values", " ", "of", " ", "module", " ", 
@@ -2830,8 +2831,19 @@ Cell[BoxData[
         RowBox[{"{", 
          RowBox[{"i", ",", "1", ",", 
           RowBox[{"Length", "[", "results", "]"}]}], "}"}]}], "]"}], ";", 
-      "\[IndentingNewLine]", "meanPDF"}]}], "\[IndentingNewLine]", 
-    "]"}]}]}]], "Input",
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"meanPDF", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1", "/", 
+          RowBox[{"Total", "[", 
+           RowBox[{"meanPDF", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ")"}], 
+        RowBox[{"meanPDF", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+      "meanPDF"}]}], "\[IndentingNewLine]", "]"}]}]}]], "Input",
  CellChangeTimes->{{3.69945997186078*^9, 3.699460012177884*^9}, {
    3.699460647894208*^9, 3.6994606613675604`*^9}, {3.6994607170120444`*^9, 
    3.6994607521207485`*^9}, {3.699460792733494*^9, 3.6994608229712915`*^9}, {
@@ -2852,7 +2864,8 @@ Cell[BoxData[
    3.6994640698546333`*^9}, {3.699464153125561*^9, 3.6994641823524837`*^9}, {
    3.6994642125918813`*^9, 3.699464306533024*^9}, {3.699464368161023*^9, 
    3.699464444476204*^9}, {3.6994644849264*^9, 3.6994644938449116`*^9}, {
-   3.6994645470681796`*^9, 3.69946456838107*^9}, 3.699464722124406*^9}],
+   3.6994645470681796`*^9, 3.69946456838107*^9}, 3.699464722124406*^9, {
+   3.6994706084158983`*^9, 3.699470646242558*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -5997,19 +6010,18 @@ Cell[BoxData[
 },
 ScreenStyleEnvironment->"Condensed",
 WindowSize->{1535, 876},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{-10, Automatic}, {Automatic, -10}},
 PrintingCopies->1,
 PrintingPageRange->{Automatic, Automatic},
 PrintingOptions->{"PaperOrientation"->"Landscape",
 "PaperSize"->{Automatic, Automatic},
 "PostScriptOutputFile"->"/home/kevin/base_code2d.pdf"},
-FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (December 10, 2015)",
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[StyleDefinitions -> "Default.nb"]]}, Visible -> False, 
-  FrontEndVersion -> 
-  "10.3 for Microsoft Windows (64-bit) (December 10, 2015)", StyleDefinitions -> 
-  "PrivateStylesheetFormatting.nb"]
+  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (October 9, 2015)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
 ]
 (* End of Notebook Content *)
 
@@ -6023,19 +6035,19 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 160, 3, 19, "Input"],
-Cell[721, 25, 53002, 1434, 1725, "Input"],
-Cell[53726, 1461, 32270, 722, 1102, "Input"],
-Cell[85999, 2185, 15170, 362, 650, "Input"],
-Cell[101172, 2549, 12935, 305, 503, "Input"],
-Cell[114110, 2856, 6395, 167, 272, "Input"],
-Cell[120508, 3025, 12120, 298, 466, "Input"],
-Cell[132631, 3325, 11072, 282, 470, "Input"],
-Cell[143706, 3609, 8212, 210, 561, "Input"],
-Cell[151921, 3821, 19621, 455, 997, "Input"],
-Cell[171545, 4278, 31648, 700, 1463, "Input"],
-Cell[203196, 4980, 5322, 141, 219, "Input"],
-Cell[208521, 5123, 3527, 100, 264, "Input"],
-Cell[212051, 5225, 45853, 770, 1314, "Input"]
+Cell[721, 25, 53002, 1434, 1820, "Input"],
+Cell[53726, 1461, 32270, 722, 1058, "Input"],
+Cell[85999, 2185, 15176, 363, 633, "Input"],
+Cell[101178, 2550, 13385, 317, 489, "Input"],
+Cell[114566, 2869, 6395, 167, 273, "Input"],
+Cell[120964, 3038, 12120, 298, 453, "Input"],
+Cell[133087, 3338, 11072, 282, 473, "Input"],
+Cell[144162, 3622, 8212, 210, 561, "Input"],
+Cell[152377, 3834, 19621, 455, 964, "Input"],
+Cell[172001, 4291, 31648, 700, 1463, "Input"],
+Cell[203652, 4993, 5322, 141, 219, "Input"],
+Cell[208977, 5136, 3527, 100, 264, "Input"],
+Cell[212507, 5238, 45853, 770, 1281, "Input"]
 }
 ]
 *)
