@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    246209,       5736]
-NotebookOptionsPosition[    244986,       5701]
-NotebookOutlinePosition[    245768,       5726]
-CellTagsIndexPosition[    245725,       5723]
+NotebookDataLength[    246211,       5734]
+NotebookOptionsPosition[    244965,       5698]
+NotebookOutlinePosition[    245770,       5724]
+CellTagsIndexPosition[    245727,       5721]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -3640,7 +3640,6 @@ Cell[BoxData[
    RowBox[{"Module", "[", "\[IndentingNewLine]", 
     RowBox[{"(*", " ", 
      RowBox[{"LOCAL", " ", "VARIABLES"}], " ", "*)"}], "\[IndentingNewLine]", 
-    
     RowBox[{
      RowBox[{"{", 
       RowBox[{
@@ -3919,11 +3918,9 @@ Cell[BoxData[
         RowBox[{
         "ALL", " ", "MUTANT", " ", "FITNESS", " ", "CLASSES", " ", "POSSIBLE",
           " ", "ON", " ", "BOUNDARY"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-      
       RowBox[{"(*", " ", 
        RowBox[{
         RowBox[{"z1", " ", "=", " ", "\"\<abs_fit of mutant\>\""}], ",", " ", 
-        
         RowBox[{"z2", " ", "=", " ", "\"\<rel_fit of mutant\>\""}]}], " ", 
        "*)"}], "\[IndentingNewLine]", 
       RowBox[{"(*", " ", 
@@ -5707,12 +5704,13 @@ PrintingPageRange->{Automatic, Automatic},
 PrintingOptions->{"PaperOrientation"->"Landscape",
 "PaperSize"->{Automatic, Automatic},
 "PostScriptOutputFile"->"/home/kevin/base_code2d.pdf"},
-FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (December 10, 2015)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[StyleDefinitions -> "Default.nb"]]}, Visible -> False, 
-  FrontEndVersion -> "10.3 for Linux x86 (64-bit) (October 9, 2015)", 
-  StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
+  FrontEndVersion -> 
+  "10.3 for Microsoft Windows (64-bit) (December 10, 2015)", StyleDefinitions -> 
+  "PrivateStylesheetFormatting.nb"]
 ]
 (* End of Notebook Content *)
 
@@ -5726,18 +5724,18 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 160, 3, 19, "Input"],
-Cell[721, 25, 53152, 1436, 1820, "Input"],
-Cell[53876, 1463, 32270, 722, 1058, "Input"],
-Cell[86149, 2187, 15176, 363, 633, "Input"],
-Cell[101328, 2552, 6395, 167, 273, "Input"],
-Cell[107726, 2721, 14331, 345, 381, "Input"],
-Cell[122060, 3068, 11072, 282, 473, "Input"],
-Cell[133135, 3352, 8212, 210, 561, "Input"],
-Cell[141350, 3564, 17270, 416, 906, "Input"],
-Cell[158623, 3982, 31648, 700, 1463, "Input"],
-Cell[190274, 4684, 5322, 141, 219, "Input"],
-Cell[195599, 4827, 3527, 100, 264, "Input"],
-Cell[199129, 4929, 45853, 770, 1281, "Input"]
+Cell[721, 25, 53152, 1436, 1725, "Input"],
+Cell[53876, 1463, 32270, 722, 1102, "Input"],
+Cell[86149, 2187, 15176, 363, 650, "Input"],
+Cell[101328, 2552, 6395, 167, 272, "Input"],
+Cell[107726, 2721, 14331, 345, 432, "Input"],
+Cell[122060, 3068, 11072, 282, 470, "Input"],
+Cell[133135, 3352, 8212, 210, 560, "Input"],
+Cell[141350, 3564, 17249, 413, 920, "Input"],
+Cell[158602, 3979, 31648, 700, 1532, "Input"],
+Cell[190253, 4681, 5322, 141, 219, "Input"],
+Cell[195578, 4824, 3527, 100, 264, "Input"],
+Cell[199108, 4926, 45853, 770, 1281, "Input"]
 }
 ]
 *)
