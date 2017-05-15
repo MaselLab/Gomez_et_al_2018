@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """
+Author: Kevin Gomez/Masel-Group
 Spyder Editor
 
 This temporary script file is located here:
@@ -15,6 +16,17 @@ import pickle
 import scipy as sp
 import numpy as np
 import matplotlib.pyplot as plt
+
+# get data from simulations
+datafile = open('C:\Users\dirge\Documents\kgrel2d\data\pythondata\times_N-10p11_c1-0d01_c2-0d01_U1-1x10pn4_U2-1x10pn4_exp1.dat')
+data = file.read(datafile)
+
+
+
+datagenotypes = open('/My%Documents/kgrel2d/data/pythondata/genotypes_N-10p11_c1-0d01_c2-0d01_U1-1x10pn4_U2-1x10pn4_exp1.dat')
+dataabundances = open('/My%Documents/kgrel2d/data/pythondata/abundances_N-10p11_c1-0d01_c2-0d01_U1-1x10pn4_U2-1x10pn4_exp1.dat')
+
+
 
 #reference of uploaded data types:
 getp=dict(Ur=0,Ua=1,sr=2,sa=3,K=4,b=5,d=6,alldata=7)
