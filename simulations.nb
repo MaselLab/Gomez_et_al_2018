@@ -3,10 +3,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[    164491,       4450]
-NotebookOptionsPosition[    163427,       4411]
-NotebookOutlinePosition[    163762,       4426]
-CellTagsIndexPosition[    163719,       4423]
+NotebookDataLength[    180322,       4873]
+NotebookOptionsPosition[    179210,       4833]
+NotebookOutlinePosition[    179545,       4848]
+CellTagsIndexPosition[    179502,       4845]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -410,7 +410,10 @@ Cell[BoxData[
   Editable->False]], "Print",
  CellChangeTimes->{3.701430362545022*^9, 3.701430536660983*^9, 
   3.701435204916998*^9, 3.701435532668003*^9, 3.70143631556532*^9, 
-  3.7014367480756207`*^9, 3.701437013319005*^9}],
+  3.7014367480756207`*^9, 3.701437013319005*^9, 3.701713911528213*^9, 
+  3.701713963559244*^9, 3.701714418441498*^9, 3.701714884198868*^9, 
+  3.701715335187152*^9, 3.701718078578076*^9, 3.701718125527649*^9, 
+  3.701718529376237*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -428,7 +431,10 @@ Cell[BoxData[
   Editable->False]], "Print",
  CellChangeTimes->{3.701430362545022*^9, 3.701430536660983*^9, 
   3.701435204916998*^9, 3.701435532668003*^9, 3.70143631556532*^9, 
-  3.7014367480756207`*^9, 3.701437013319648*^9}]
+  3.7014367480756207`*^9, 3.701437013319005*^9, 3.701713911528213*^9, 
+  3.701713963559244*^9, 3.701714418441498*^9, 3.701714884198868*^9, 
+  3.701715335187152*^9, 3.701718078578076*^9, 3.701718125527649*^9, 
+  3.701718529376906*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -1619,6 +1625,10 @@ Cell[BoxData[
       "rootaddress", "<>", "\"\<data/simtest/groupedsimtest_data1\>\"", "<>", 
        "workingfilename"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
+    RowBox[{"windowsize", "=", 
+     RowBox[{"getTraitWindowSize", "[", "results", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
     RowBox[{"pdfvstime", "=", 
      RowBox[{"ParallelTable", "[", "\[IndentingNewLine]", 
       RowBox[{
@@ -1691,7 +1701,19 @@ Cell[BoxData[
                   RowBox[{"{", "\[CapitalDelta]c2", "}"}]}], "}"}]}], ")"}], 
               "[", 
               RowBox[{"[", "1", "]"}], "]"}], "[", 
-             RowBox[{"[", "1", "]"}], "]"}]}]}], "]"}]}], "}"}], ",", 
+             RowBox[{"[", "1", "]"}], "]"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"getSingleTraitDistributions", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"results", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"results", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "3", "]"}], "]"}], ",", "windowsize"}], "]"}]}], 
+        "}"}], "\[IndentingNewLine]", ",", 
        RowBox[{"{", 
         RowBox[{"i", ",", "1", ",", 
          RowBox[{"Length", "[", "results", "]"}]}], "}"}]}], "]"}]}], ";"}], 
@@ -1855,7 +1877,11 @@ Cell[BoxData[
    3.7005015194439096`*^9}, {3.7005937885821247`*^9, 3.700593790341671*^9}, {
    3.700594567104816*^9, 3.700594578674182*^9}, {3.7005988144701843`*^9, 
    3.700598896598548*^9}, {3.7006794630211*^9, 3.700679467909534*^9}, {
-   3.7008376512318487`*^9, 3.700837737712698*^9}}],
+   3.7008376512318487`*^9, 3.700837737712698*^9}, {3.701712530495516*^9, 
+   3.701712561495656*^9}, {3.701713533026937*^9, 3.701713568131452*^9}, {
+   3.701713866703238*^9, 3.701713893863356*^9}, {3.701714875798169*^9, 
+   3.701714876252283*^9}, {3.7017182717265987`*^9, 3.701718332583806*^9}, {
+   3.701718438440357*^9, 3.7017184752727423`*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -3755,7 +3781,7 @@ Cell[BoxData[
       RowBox[{"startindx", ",", "endindx"}], "}"}], "=", 
      RowBox[{"getIndicesForSpecificTimes", "[", 
       RowBox[{"2000", ",", "7000", ",", 
-       RowBox[{"heatplotdata", "[", 
+       RowBox[{"pdfvstime", "[", 
         RowBox[{"[", 
          RowBox[{";;", ",", "1"}], "]"}], "]"}]}], "]"}]}], ";"}], 
    "\[IndentingNewLine]", 
@@ -3942,7 +3968,403 @@ Cell[BoxData[
    3.700837873425819*^9, 3.700837882105494*^9}, {3.700837934993672*^9, 
    3.700837978482102*^9}, 3.7008380224290543`*^9, {3.700838087076146*^9, 
    3.700838089538991*^9}, {3.70083908342869*^9, 3.700839087444901*^9}, {
-   3.7014371268506927`*^9, 3.701437185571188*^9}}],
+   3.7014371268506927`*^9, 3.701437185571188*^9}, {3.701716519379157*^9, 
+   3.701716520873679*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"PLOT", " ", "SCRIPT"}], " ", "-", " ", 
+    RowBox[{
+    "Create", " ", "Plots", " ", "for", " ", "single", " ", "trait", " ", 
+     "distribution"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"--", 
+    RowBox[{"--", 
+     RowBox[{"--", 
+      RowBox[{"--", 
+       RowBox[{"--", 
+        RowBox[{"--", 
+         RowBox[{"--", 
+          RowBox[{"--", 
+           RowBox[{"--", 
+            RowBox[{"--", 
+             RowBox[{"--", 
+              RowBox[{"--", 
+               RowBox[{"--", 
+                RowBox[{"--", 
+                 RowBox[{"--", 
+                  RowBox[{"--", 
+                   RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{
+                    "--", "--"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]\
+}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"--", 
+    RowBox[{"--", 
+     RowBox[{"--", 
+      RowBox[{"--", 
+       RowBox[{"--", 
+        RowBox[{"--", 
+         RowBox[{"--", 
+          RowBox[{"--", 
+           RowBox[{"--", 
+            RowBox[{"--", 
+             RowBox[{"--", 
+              RowBox[{"--", 
+               RowBox[{"--", 
+                RowBox[{"--", 
+                 RowBox[{"--", 
+                  RowBox[{"--", 
+                   RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{
+                    "--", "--"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]\
+}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"pdfvstime", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "rootaddress", "<>", "\"\<data/simtest/pdfvstime\>\"", "<>", 
+       "workingfilename"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"startindx", ",", "endindx"}], "}"}], "=", 
+     RowBox[{"getIndicesForSpecificTimes", "[", 
+      RowBox[{"2000", ",", "7000", ",", 
+       RowBox[{"pdfvstime", "[", 
+        RowBox[{"[", 
+         RowBox[{";;", ",", "1"}], "]"}], "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"expno", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ParallelDo", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Export", "[", 
+        RowBox[{
+         RowBox[{"rootaddress", "<>", "\"\<plots/exp\>\"", "<>", 
+          RowBox[{"ToString", "[", "expno", "]"}], "<>", 
+          "\"\</singletraitdist/trait1distr/trait1distr\>\"", "<>", 
+          RowBox[{"StringDrop", "[", 
+           RowBox[{"workingfilename", ",", 
+            RowBox[{"-", "3"}]}], "]"}], "<>", 
+          RowBox[{"addZeros", "[", 
+           RowBox[{"i", ",", "4"}], "]"}], "<>", "\"\<.jpg\>\""}], ",", 
+         RowBox[{"BarChart", "[", 
+          RowBox[{
+           RowBox[{"Log10", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"pdfvstime", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "[", 
+               RowBox[{"[", "6", "]"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "[", 
+             RowBox[{"[", 
+              RowBox[{";;", ",", "2"}], "]"}], "]"}], "]"}], ",", 
+           RowBox[{"PlotLabel", "\[Rule]", 
+            RowBox[{"\"\<t=\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{
+               RowBox[{"pdfvstime", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "]"}], "<>", "\"\<, mean=\>\"",
+              "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{
+               RowBox[{"pdfvstime", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "[", 
+               RowBox[{"[", "4", "]"}], "]"}], "]"}]}]}], ",", 
+           RowBox[{"ChartLabels", "\[Rule]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"pdfvstime", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "[", 
+               RowBox[{"[", "6", "]"}], "]"}], "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "[", 
+             RowBox[{"[", 
+              RowBox[{";;", ",", "1"}], "]"}], "]"}]}], ",", 
+           RowBox[{"PlotRange", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "12"}], "}"}]}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}], "]"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"Export", "[", 
+        RowBox[{
+         RowBox[{"rootaddress", "<>", "\"\<plots/exp\>\"", "<>", 
+          RowBox[{"ToString", "[", "expno", "]"}], "<>", 
+          "\"\</singletraitdist/trait2distr/trait2distr\>\"", "<>", 
+          RowBox[{"StringDrop", "[", 
+           RowBox[{"workingfilename", ",", 
+            RowBox[{"-", "3"}]}], "]"}], "<>", 
+          RowBox[{"addZeros", "[", 
+           RowBox[{"i", ",", "4"}], "]"}], "<>", "\"\<.jpg\>\""}], ",", 
+         RowBox[{"BarChart", "[", 
+          RowBox[{
+           RowBox[{"Log10", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"pdfvstime", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "[", 
+               RowBox[{"[", "6", "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], "[", 
+             RowBox[{"[", 
+              RowBox[{";;", ",", "2"}], "]"}], "]"}], "]"}], ",", 
+           RowBox[{"PlotLabel", "\[Rule]", 
+            RowBox[{"\"\<t=\>\"", "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{
+               RowBox[{"pdfvstime", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "]"}], "<>", "\"\<, mean=\>\"",
+              "<>", 
+             RowBox[{"ToString", "[", 
+              RowBox[{
+               RowBox[{"pdfvstime", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "[", 
+               RowBox[{"[", "4", "]"}], "]"}], "]"}]}]}], ",", 
+           RowBox[{"ChartLabels", "\[Rule]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"pdfvstime", "[", 
+                RowBox[{"[", "i", "]"}], "]"}], "[", 
+               RowBox[{"[", "6", "]"}], "]"}], "[", 
+              RowBox[{"[", "2", "]"}], "]"}], "[", 
+             RowBox[{"[", 
+              RowBox[{";;", ",", "1"}], "]"}], "]"}]}], ",", 
+           RowBox[{"PlotRange", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", "12"}], "}"}]}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}], "]"}]}], 
+      "\[IndentingNewLine]", ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "startindx", ",", "endindx"}], "}"}]}], "]"}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Clear", "[", 
+     RowBox[{"pdfvstime", ",", "startindx", ",", "endindx"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"--", 
+     RowBox[{"--", 
+      RowBox[{"--", 
+       RowBox[{"--", 
+        RowBox[{"--", 
+         RowBox[{"--", 
+          RowBox[{"--", 
+           RowBox[{"--", 
+            RowBox[{"--", 
+             RowBox[{"--", 
+              RowBox[{"--", 
+               RowBox[{"--", 
+                RowBox[{"--", 
+                 RowBox[{"--", 
+                  RowBox[{"--", 
+                   RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{
+                    "--", "--"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]\
+}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"--", 
+     RowBox[{"--", 
+      RowBox[{"--", 
+       RowBox[{"--", 
+        RowBox[{"--", 
+         RowBox[{"--", 
+          RowBox[{"--", 
+           RowBox[{"--", 
+            RowBox[{"--", 
+             RowBox[{"--", 
+              RowBox[{"--", 
+               RowBox[{"--", 
+                RowBox[{"--", 
+                 RowBox[{"--", 
+                  RowBox[{"--", 
+                   RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{
+                    "--", "--"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]\
+}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}], " ", 
+    "*)"}]}]}]], "Input",
+ CellChangeTimes->{{3.701715753859172*^9, 3.70171575556361*^9}, {
+  3.701716447737719*^9, 3.7017164773707247`*^9}, {3.701716514347762*^9, 
+  3.701716590266573*^9}, {3.701717002926861*^9, 3.701717067796247*^9}, {
+  3.7017171329390583`*^9, 3.7017171697474003`*^9}, {3.701717238196848*^9, 
+  3.70171725565143*^9}, {3.701718134246278*^9, 3.70171819556635*^9}, {
+  3.701718240183009*^9, 3.701718247751749*^9}, {3.701718341663969*^9, 
+  3.701718402760882*^9}, {3.701718557675235*^9, 3.701718558339436*^9}, {
+  3.70171859329178*^9, 3.701718600558008*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -4428,23 +4850,24 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[422, 15, 14978, 377, 278, "Input"],
 Cell[CellGroupData[{
-Cell[15425, 396, 856, 16, 23, "Print"],
-Cell[16284, 414, 856, 16, 23, "Print"]
+Cell[15425, 396, 1041, 19, 23, "Print"],
+Cell[16469, 417, 1041, 19, 23, "Print"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17189, 436, 14486, 390, 407, "Input"],
-Cell[31678, 828, 408, 8, 32, "Output"]
+Cell[17559, 442, 14486, 390, 407, "Input"],
+Cell[32048, 834, 408, 8, 32, "Output"]
 }, Open  ]],
-Cell[32101, 839, 11760, 328, 319, "Input"],
-Cell[43864, 1169, 10785, 308, 253, "Input"],
-Cell[54652, 1479, 14189, 378, 253, "Input"],
-Cell[68844, 1859, 14771, 417, 496, "Input"],
-Cell[83618, 2278, 20000, 526, 539, "Input"],
-Cell[103621, 2806, 14103, 371, 341, "Input"],
-Cell[117727, 3179, 15595, 431, 517, "Input"],
-Cell[133325, 3612, 11994, 332, 376, "Input"],
-Cell[145322, 3946, 18101, 463, 473, "Input"]
+Cell[32471, 845, 11760, 328, 319, "Input"],
+Cell[44234, 1175, 10785, 308, 253, "Input"],
+Cell[55022, 1485, 15106, 398, 376, "Input"],
+Cell[70131, 1885, 14771, 417, 496, "Input"],
+Cell[84905, 2304, 20000, 526, 539, "Input"],
+Cell[104908, 2832, 14103, 371, 341, "Input"],
+Cell[119014, 3205, 15595, 431, 517, "Input"],
+Cell[134612, 3638, 12041, 333, 319, "Input"],
+Cell[146656, 3973, 14446, 393, 442, "Input"],
+Cell[161105, 4368, 18101, 463, 473, "Input"]
 }
 ]
 *)
