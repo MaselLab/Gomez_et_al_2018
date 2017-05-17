@@ -81,6 +81,7 @@ fig1.savefig('./Documents/kgrel2d/figures/fig1')
 # get all the base data for model with no competitive mutations
 #------------------------------------------------------------------------------
 
+# test plots for viewing
 plt.plot(times[10:-1],(s1**2)*variances[10:-1,0]+s1*s2*covariance[10:-1],c="blue")
 plt.plot(times[10:-1],(s2**2)*variances[10:-1,1]+s1*s2*covariance[10:-1],c="red")
 plt.show()
