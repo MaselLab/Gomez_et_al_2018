@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Author: Kevin Gomez/Masel-Group
 Spyder Editor
 
 This temporary script file is located here:
@@ -10,87 +9,82 @@ This temporary script file is located here:
 # The main purpose of this code is to get summary statistics for the 
 # simulation results as functions of the ratios of key parameters
 
-# IMPORT PACKAGES AND DEFINE LOCAL FUNCTIONS----------------------------------
-#-----------------------------------------------------------------------------
+# import packages for script
 import pickle
 import scipy as sp
 import numpy as np
 import matplotlib.pyplot as plt
 
-# get data from simulations
-datafile = open('C:\Users\dirge\Documents\kgrel2d\data\pythondata\times_N-10p11_c1-0d01_c2-0d01_U1-1x10pn4_U2-1x10pn4_exp1.dat')
-data = file.read(datafile)
+# parameters of simulation
+N=1e11; s1=1e-2; s2=1e-2; U1=1e-4; U2=1e-4; kill_pts=10
+times = []; genotypes = []; abundances = []
 
+# get simulation data and store genotypes as lists since they vary in dimensions over time
+data_file=open('./Documents/kgrel2d/data/pythondata/times_N-10p11_c1-0d01_c2-0d01_U1-1x10pn4_U2-1x10pn4_exp1.dat')
+times = data_file.read().splitlines()
+times = np.array(map(float,times))
+data_file.close()
 
+data_file=open('./Documents/kgrel2d/data/pythondata/genotypes_N-10p11_c1-0d01_c2-0d01_U1-1x10pn4_U2-1x10pn4_exp1.dat')
+genotypes = data_file.read().splitlines()
+data_file.close()
 
-datagenotypes = open('/My%Documents/kgrel2d/data/pythondata/genotypes_N-10p11_c1-0d01_c2-0d01_U1-1x10pn4_U2-1x10pn4_exp1.dat')
-dataabundances = open('/My%Documents/kgrel2d/data/pythondata/abundances_N-10p11_c1-0d01_c2-0d01_U1-1x10pn4_U2-1x10pn4_exp1.dat')
+data_file=open('./Documents/kgrel2d/data/pythondata/abundances_N-10p11_c1-0d01_c2-0d01_U1-1x10pn4_U2-1x10pn4_exp1.dat')
+abundances = data_file.read().splitlines()
+data_file.close()
 
+num_pts = len(times)
 
+for i in range(num_pts):
+    genotypes[i]='genotypes[i]=np.array(['+genotypes[i].replace('\t',',')+'])'
+    genotypes[i]=genotypes[i].replace('{','[')
+    genotypes[i]=genotypes[i].replace('}',']')
+    exec(genotypes[i])
+    abundances[i]='abundances[i]=np.array([['+abundances[i].replace('\t',',')+']])'
+    exec(abundances[i])
 
-#reference of uploaded data types:
-getp=dict(Ur=0,Ua=1,sr=2,sa=3,K=4,b=5,d=6,alldata=7)
+# compute the variances and covariances from the data
+trait_avgs = np.zeros((len(times),2))
+relfitness = genotypes
+frequencies = abundances
+covariance = np.zeros(np.shape(times))
+variances = np.zeros((len(times),2))
 
-# the first thing to do is the get some visualizations and store them somwhere
+for i in range(num_pts):
+    frequencies[i]=(1/np.sum(frequencies[i]))*frequencies[i]
+    trait_avgs[i] = abundances[i].dot(genotypes[i])[0]
+    relfitness[i] = genotypes[i]-np.array([trait_avgs[i] for j in range(len(genotypes[i]))])
+    variances[i]=(frequencies[i].dot(((relfitness[i])**2)))[0]
+    covariance[i]=frequencies[i].dot(relfitness[i][:,0]*relfitness[i][:,1])
 
-# GETTING PROCESSED DATA - can only due one data set at a time due to size
-[amin, amax, aavg, times, data,select_data]=[[],[],[],[],[],[]]
+midtimes=0.5*(times[2:-1]+times[1:-2])
+spdofevol=((times[2:-1]-times[1:-2])**(-1))*()
 
-for expNo in range(30):
-    for i in range(16):
-        fd = open('./AllData/PythonData/simdata'+str(i)+'.data')
-        data = pickle.load(fd)
-        select_data=[data[getp['Ur']],data[getp['Ua']],data[getp['sr']],data[getp['sa']], \
-            data[getp['alldata']][expNo]]
-        amin=[24]+[val[1] for val in select_data[4]]
-        amax=[24]+[val[2] for val in select_data[4]]
-        aavg=[24]+[val[3] for val in select_data[4]]
-        times=[0]+[val[0] for val in select_data[4]]
-        fig1,axes1=plt.subplots(1,1,figsize=[8,8])
-        subfig1=plt.subplot(111)
-        plt.plot(times,amin,c='blue')
-        plt.plot(times,amax,c='blue')
-        plt.plot(times,aavg,c='red')
-        plt.ylim([0,60])
-        plt.xlim([0,90000])    
-        plt.title("Sim: "+str(i)+", Exp: "+str(expNo+1)+", Ur: "+str(select_data[0]) \
-                +", Ua: "+str(select_data[1])+", sr: "+str(select_data[2]) \
-                +", sa: "+str(select_data[3]))
-        plt.xlabel("generations")
-        plt.ylabel("absolute fitness")
-        plt.show()
-        fig1.savefig('./images/RelAbsImgs/sim'+str(i)+"exp"+str(expNo+1))
+for i in range(num_pts-kill_pts)
+    
+# paper figures
+# figure 1: variances, covariance and rate of adaptation
+fig1,axes1=plt.subplots(1,1,figsize=[16,16])
+plt.plot(times[kill_pts:-1],(s1**2)*variances[10:-1,0],c="blue")
+plt.plot(times[kill_pts:-1],(s2**2)*variances[10:-1,1],c="red")
+plt.plot(times[kill_pts:-1],s1*s2*covariance[10:-1],c="black")
+plt.xlabel("time (generations)")
+axes1.ticklabel_format(style='sci', useOffset=False)
+axes1.set_ylabel("Variance-Covariance (gen$^{-2}$)",size=14)
 
-#Before we plot the means of the curves, it will be worth it to check out the
-#of some of these changes
+axes2=axes1.twinx()
 
-fig1,axes1=plt.subplots(1,1,figsize=[8,8])
-subfig=plt.subplot(111)
-for i in range(len(data_slices)-2):
-    plt.plot(data_slices[i+2][1],data_slices[i+2][2],label="UrUa="+str(data_slices[i+2][0]))
-#plt.plot(simgen1[:,0],simgen1[:,2],c="blue")
-#plt.plot(simgen1[:,0],simgen1[:,3],c="red")
-#plt.plot(simgen1[:,0],mvgavg1,c="black",linewidth=2)
-#plt.xlabel("generations")
-#plt.ylabel("abs fitness class")
-#plt.subplot(312)
-#plt.plot(simgen1[:,0],simgen1[:,4],c="blue")
-#plt.plot(simgen1[:,0],simgen1[:,5],c="blue")
-#plt.plot(simgen1[:,0],simgen1[:,6],c="red")
-#plt.xlabel("generations")
-#plt.ylabel("rel fitness class")
-#plt.subplot(313)
-#plt.plot(simgen1[:,0],simgen1[:,7],c="red")
-plt.legend(loc=4)
-plt.xlabel("Ratio of Rel. & Abs. Fitness Increments")
-plt.ylabel("Mean Fitness Class")
 plt.show()
-fig1.savefig('./UrUaSrSaCurves')
+fig1.savefig('./Documents/kgrel2d/figures/fig1')
 
 # CALCULATE  THE GEOMETRIC MEANS OF THE DATA
 # get all the base data for model with no competitive mutations
 #------------------------------------------------------------------------------
 
+# test plots for viewing
+plt.plot(times[10:-1],(s1**2)*variances[10:-1,0]+s1*s2*covariance[10:-1],c="blue")
+plt.plot(times[10:-1],(s2**2)*variances[10:-1,1]+s1*s2*covariance[10:-1],c="red")
+plt.show()
 
 # BURN A SET OF THE TRANSITIONS DATA
 #------------------------------------------------------------------------------
