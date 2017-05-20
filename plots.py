@@ -25,6 +25,17 @@ def get_load_data(genotypes,abundances,trait_avgs,num_pts):
         pop_load[i] = max([L1,L2])
     return pop_load
 
+def get_sample_window(times,start_time,end_time):
+    num_pts = len(times)
+    start_indx = 0
+    end_indx = 0
+    for i in range(len(times)):
+        if times[start_indx] <= start_time:
+            start_indx = start_indx + 1
+        if times[end_indx] <= end_time:
+            end_indx = end_indx + 1
+    return [start_indx,end_indx]
+                
 # parameters of simulation
 N=1e11; s1=1e-2; s2=1e-2; U1=1e-4; U2=1e-4; trans_pts_end=15
 data_name = '_N-10p11_c1-0d01_c2-0d01_U1-1x10pn4_U2-1x10pn4_exp1'
@@ -87,30 +98,34 @@ pickle_file = open(pickle_file_name,'rb')
 pickle_file.close()
 
 # paper figures
+# select indices for plots
+[start_indx,end_indx] = get_sample_window(times,1e4,2e4)
+
 # figure 1: variances, covariance and rate of adaptation
-fig1,(ax1,ax2)=plt.subplots(2,1,figsize=[16,32],sharey=True)
-ax1.plot(times[trans_pts_end:-1],(s1**2)*variances[trans_pts_end:-1,0],c="blue")
-ax1.plot(times[trans_pts_end:-1],(s2**2)*variances[trans_pts_end:-1,1],c="red")
-ax1.plot(times[trans_pts_end:-1],s1*s2*covariance[trans_pts_end:-1],c="black")
-ax1.set_title('Variances-Covariances vs Time',size=18)
-ax1.set_xlabel('Time (generations)',size=18)
-ax1.ticklabel_format(style='sci',axis='x')
-ax1.ticklabel_format(style='sci',axis='y')
+fig1,ax1=plt.subplots(nrows=2,ncols=1,figsize=[8,16])
+ax1[0].plot(times[start_indx:end_indx],(s1**2)*variances[start_indx:end_indx,0],c="blue",label='Var1')
+ax1[0].plot(times[start_indx:end_indx],(s2**2)*variances[start_indx:end_indx,1],c="red",label='Var2')
+ax1[0].plot(times[start_indx:end_indx],s1*s2*covariance[start_indx:end_indx],c="black",label='Cov12')
+ax1[0].set_ylabel('Variances-Covariances',fontsize=18)
+ax1[0].tick_params(axis='both',labelsize=14)
+ax1[0].ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+ax1[0].legend()
 #----------------------------------------------------------------------------
-ax2.plot(mid_pt_times[trans_pts_end-1:-1],spd_of_evol[trans_pts_end-1:-1,0],c = "blue",linestyle="--")
-ax2.plot(mid_pt_times[trans_pts_end-1:-1],spd_of_evol[trans_pts_end-1:-1,1],c = "red",linestyle="--")
-#ax2.ticklabel_format(style='sci',axis='x')
-#ax2.ticklabel_format(style='sci',axis='y')
-ax2.set_title('Rate of Adaptation vs Time',size=18)
+ax1[1].plot(mid_pt_times[start_indx:end_indx],spd_of_evol[start_indx:end_indx,0],c = "blue",linestyle="--",label='r1')
+ax1[1].plot(mid_pt_times[start_indx:end_indx],spd_of_evol[start_indx:end_indx,1],c = "red",linestyle="--",label='r2')
+ax1[1].tick_params(axis='both',labelsize=14)
+ax1[1].ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+ax1[1].set_xlabel('Time (Generations)',fontsize=18)
+ax1[1].set_ylabel('Rate of Adaptation',fontsize=18)
+ax1[1].legend()
 plt.show()
 fig1.savefig('./Documents/kgrel2d/figures/fig1'+data_name+'.pdf')
 
 # figure 2: substituational load resulting from mutation-selection balance
-fig2,ax1=plt.subplots(1,1,figsize=[16,16])
-ax1.plot(times[trans_pts_end:-1],pop_load[trans_pts_end:-1])
-ax1.set_xlabel("Time (generations)")
-ax1.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
-ax1.ticklabel_format(style='sci',axis='y',scilimits=(0,0))
-ax1.set_ylabel("Mean Fitness Class")
+fig2,ax2=plt.subplots(1,1,figsize=[8,8])
+ax2.plot(times[start_indx:end_indx],pop_load[start_indx:end_indx],c='black',label='subload')
+ax2.set_xlabel('Time (generations)')
+ax2.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+ax2.set_ylabel("Mean Fitness Class")
 plt.show()
 fig2.savefig('./Documents/kgrel2d/figures/fig2'+data_name+'.pdf')
