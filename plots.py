@@ -38,7 +38,7 @@ def get_sample_window(times,start_time,end_time):
                 
 # parameters of simulation
 N=1e11; s1=1e-2; s2=1e-2; U1=1e-4; U2=1e-4; trans_pts_end=15
-data_name = '_N-10p11_c1-0d01_c2-0d01_U1-1x10pn4_U2-1x10pn4_exp1'
+data_name = '_N-10p11_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1'
 times = []; genotypes = []; abundances = []
 
 # get simulation data and store genotypes as lists since they vary in dimensions over time
