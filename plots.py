@@ -36,19 +36,25 @@ def get_sample_window(times,start_time,end_time):
             end_indx = end_indx + 1
     return [start_indx,end_indx]
     
-def get_characteristic_time(covariance,times,percent_change)
+def get_characteristic_time(covariance,times,percent_change):
     times_distr = []
-    maxcov = percent_change*np.abs(np.amax(covariance))
+    max_cov_change = percent_change*np.abs(np.mean(covariance))
     indx1 = 0
     indx2 = 0
-    max_loop = len(covariance)
+    max_loop = len(covariance)-1
     
     while (indx1 < max_loop):
         indx2 = indx1        
         while (indx2 <= max_loop):
-            if (np.abs(covariance[indx1]-covariance[indx2])<= )
+            if (np.abs(covariance[indx1]-covariance[indx2])<= max_cov_change):
+                indx2 = indx2 + 1
+            else:
+                times_distr = times_distr+[times[indx2]-times[indx1]]
+                indx2 = max_loop + 1                
         indx1 = indx1 + 1
+        
     return times_distr
+    
 # parameters of simulation
 N=1e9; s1=1e-2; s2=1e-2; U1=1e-5; U2=1e-5;
 vU_thry = s1*s1*(2*np.log(N*s1)-np.log(s1/(1*U1)))/((np.log(s1/(1*U1)))**2)
@@ -109,21 +115,27 @@ var1_avg = np.mean(variances[start_indx:end_indx,0])
 var2_avg = np.mean(variances[start_indx:end_indx,1])
 cov_avg = np.mean(covariance)
 
+# compute characteristic times of covariance and rate of adaptation
+times_distr_cov = get_characteristic_time(covariance,times,0.1)
+times_distr_roa = get_characteristic_time(variances[:,0]+covariance,times,0.1)
+time_scale_cov = np.median(times_distr_cov)
+time_scale_roa = np.median(times_distr_roa)
+
 # dump data into pickle file
 pickle_file_name = './Documents/kgrel2d/data/pythondata/pythondata'+data_name+'.pickle'
 pickle_file = open(pickle_file_name,'wb') 
-pickle.dump([times,genotypes,abundances,trait_avgs,variances,covariance,tot_variance,pop_load,mid_pt_times,spd_of_evol,var1_avg,var2_avg,cov_avg,unit_array,vU_thry,v2U_thry,num_pts],pickle_file,pickle.HIGHEST_PROTOCOL)
+pickle.dump([times,genotypes,abundances,trait_avgs,variances,covariance,tot_variance,pop_load
+            ,mid_pt_times,spd_of_evol,var1_avg,var2_avg,cov_avg,unit_array,vU_thry,v2U_thry,
+            num_pts,times_distr_cov,times_distr_roa],pickle_file,pickle.HIGHEST_PROTOCOL)
 pickle_file.close()
 
 # load data from pickle file
 pickle_file_name = './Documents/kgrel2d/data/pythondata/pythondata'+data_name+'.pickle'
 pickle_file = open(pickle_file_name,'rb') 
-[times,genotypes,abundances,trait_avgs,variances,covariance,tot_variance,pop_load,mid_pt_times,spd_of_evol,var1_avg,var2_avg,cov_avg,unit_array,vU_thry,v2U_thry,num_pts] = pickle.load(pickle_file)
+[times,genotypes,abundances,trait_avgs,variances,covariance,tot_variance,pop_load
+        ,mid_pt_times,spd_of_evol,var1_avg,var2_avg,cov_avg,unit_array,vU_thry
+        ,v2U_thry,num_pts,times_distr_cov,times_distr_roa] = pickle.load(pickle_file)
 pickle_file.close()
-
-# compute characteristic times of covariance and rate of adaptation
-
-
 
 # paper figures
 
@@ -173,16 +185,33 @@ fig2.savefig('./Documents/kgrel2d/figures/fig2'+data_name+'.pdf')
 #----------------------------------------------------------------------------
 
 # figure 3: covariance time scale
-[start_indx2,end_indx2] = get_sample_window(times,1.045e4,1.045e4+tau_est)
+sample_time1 = 1.3e4
+sample_time2 = 1.55e4
+y_range = 0.1*np.abs(cov_avg)
+[start_indx2,end_indx2] = get_sample_window(times,sample_time1,sample_time1+0.5*time_scale_cov)
+[start_indx3,end_indx3] = get_sample_window(times,sample_time2,sample_time2+0.5*time_scale_cov)
+
 fig3,ax3=plt.subplots(1,1,figsize=[8,8])
-ax3.plot(times[start_indx:end_indx],covariance[start_indx:end_indx],c='green',label='cov($r_1$,$r_2$)')
-ax32 = fig3.add_axes([0.65,0.24,0.2,0.13])
-ax32.plot(times[start_indx2:end_indx2],covariance[start_indx2:end_indx2],c='green')
-ax32.ticklabel_format(style='sci',axis='y',scilimits=(0,0))
-ax32.set_ylim((-2.5e-4,-2e-4))
+ax3.plot(times[start_indx:end_indx],covariance[start_indx:end_indx],c='green',label='cov($r_1$,$r_2$)',linestyle=":",linewidth=1.5)
+ax3.plot(times[start_indx:end_indx],cov_avg*unit_array,c="green",label='cov($r_1$,$r_2$)='+str(round(np.mean(covariance[start_indx:end_indx]),7)),linewidth=1.0)
+ax3.plot(times[start_indx2:end_indx2],covariance[start_indx2:end_indx2],c='red',label='cov($r_1$,$r_2$)',linewidth=3.0)
+ax3.plot(times[start_indx3:end_indx3],covariance[start_indx3:end_indx3],c='blue',label='cov($r_1$,$r_2$)',linewidth=3.0)
 ax3.set_xlabel('Time (generations)',fontsize=18)
 ax3.set_ylim((-3e-4,0e-4))
 ax3.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
 ax3.set_ylabel("Covariance",fontsize=18)
+
+ax32 = fig3.add_axes([0.45,0.18,0.33,0.15])
+ax32.plot(times[start_indx2:end_indx2],covariance[start_indx2:end_indx2],c='red')
+ax32.ticklabel_format(style='sci',axis='y',scilimits=(0,0))
+ax32.set_ylim((np.min(covariance[start_indx2:end_indx2]),np.min(covariance[start_indx2:end_indx2])+y_range))
+ax32.tick_params(axis='both', which='major', labelsize=8)
+
+ax33 = fig3.add_axes([0.45,0.40,0.33,0.15])
+ax33.plot(times[start_indx3:end_indx3],covariance[start_indx3:end_indx3],c='blue')
+ax33.ticklabel_format(style='sci',axis='y',scilimits=(0,0))
+ax33.set_ylim((np.min(covariance[start_indx3:end_indx3]),np.min(covariance[start_indx3:end_indx3])+y_range))
+ax33.tick_params(axis='both', which='major', labelsize=8)
+
 plt.show()
 fig3.savefig('./Documents/kgrel2d/figures/fig3'+data_name+'.pdf')
