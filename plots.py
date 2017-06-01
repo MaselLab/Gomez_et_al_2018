@@ -35,7 +35,20 @@ def get_sample_window(times,start_time,end_time):
         if times[end_indx] <= end_time:
             end_indx = end_indx + 1
     return [start_indx,end_indx]
-                
+    
+def get_characteristic_time(covariance,times,percent_change)
+    times_distr = []
+    maxcov = percent_change*np.abs(np.amax(covariance))
+    indx1 = 0
+    indx2 = 0
+    max_loop = len(covariance)
+    
+    while (indx1 < max_loop):
+        indx2 = indx1        
+        while (indx2 <= max_loop):
+            if (np.abs(covariance[indx1]-covariance[indx2])<= )
+        indx1 = indx1 + 1
+    return times_distr
 # parameters of simulation
 N=1e9; s1=1e-2; s2=1e-2; U1=1e-5; U2=1e-5;
 vU_thry = s1*s1*(2*np.log(N*s1)-np.log(s1/(1*U1)))/((np.log(s1/(1*U1)))**2)
@@ -107,6 +120,10 @@ pickle_file_name = './Documents/kgrel2d/data/pythondata/pythondata'+data_name+'.
 pickle_file = open(pickle_file_name,'rb') 
 [times,genotypes,abundances,trait_avgs,variances,covariance,tot_variance,pop_load,mid_pt_times,spd_of_evol,var1_avg,var2_avg,cov_avg,unit_array,vU_thry,v2U_thry,num_pts] = pickle.load(pickle_file)
 pickle_file.close()
+
+# compute characteristic times of covariance and rate of adaptation
+
+
 
 # paper figures
 
