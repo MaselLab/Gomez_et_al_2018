@@ -119,6 +119,23 @@ times_distr_roa = get_characteristic_time(variances[:,0]+covariance,times,0.1)
 time_scale_cov = np.median(times_distr_cov)
 time_scale_roa = np.median(times_distr_roa)
 
+# calculate the mean time scale of covariance changes
+dt_times = np.zeros(np.shape(dcov_dt))
+for i in range(len(dcov_dt)):
+    dt_times[i] = 0.1*np.abs(cov_avg)/np.abs(dcov_dt[i])
+
+fig0,ax0 = plt.subplots(1,1,figsize=[8,8])
+ax0.scatter(dt_times,dcov_dt)
+ax0.set_ylim((-1e-6,0))
+ax0.set_xlim((0,200))
+plt.show()
+
+fig0,ax0 = plt.subplots(1,1,figsize=[8,8])
+ax0.scatter(dt_times,dcov_dt**(-1))
+#ax0.set_ylim((-1e-6,0))
+#ax0.set_xlim((0,200))
+plt.show()
+
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 # DUMP DATA INTO PICKLE FILE
@@ -217,21 +234,5 @@ fig3.savefig('./Documents/kgrel2d/figures/fig3'+data_name+'.pdf')
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
-
-# GENERATE FIGURES FOR PRESENTATION
-
-# figure 1A: Single trait variance
-fig2a,ax2=plt.subplots(nrows=1,ncols=1,figsize=[8,8])
-ax2.plot(times[start_indx:end_indx],vU_thry*unit_array,c="black",label='v(U)='+str(round(vU_thry,7)),linewidth=2)
-ax2.axhline(linewidth=0.5, color = 'k')
-ax2.set_ylabel('Variance',fontsize=18)
-ax2.set_xlabel('Time (Generations)',fontsize=18)
-ax2.set_ylim((-2e-4,2e-4))
-ax2.set_xlim((1e4,2e4))
-ax2.tick_params(axis='both',labelsize=14)
-#ax2.axes.xaxis.set_ticklabels([])
-ax2.axes.yaxis.set_ticklabels([])
-plt.show()
-fig2a.savefig('./Documents/kgrel2d/figures/fig2a'+data_name+'.pdf')
 
 
