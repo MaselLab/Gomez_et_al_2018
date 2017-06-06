@@ -124,16 +124,17 @@ dt_times = np.zeros(np.shape(dcov_dt))
 for i in range(len(dcov_dt)):
     dt_times[i] = 0.1*np.abs(cov_avg)/np.abs(dcov_dt[i])
 
+plt.plot(times,dcov_dt)
+
 fig0,ax0 = plt.subplots(1,1,figsize=[8,8])
-ax0.scatter(dt_times,dcov_dt)
+ax0.scatter(times,dcov_dt)
 ax0.set_ylim((-1e-6,0))
 ax0.set_xlim((0,200))
 plt.show()
 
 fig0,ax0 = plt.subplots(1,1,figsize=[8,8])
-ax0.scatter(dt_times,dcov_dt**(-1))
-#ax0.set_ylim((-1e-6,0))
-#ax0.set_xlim((0,200))
+ax0.scatter(times,np.abs((0.1*cov_avg)*dcov_dt**(-1)))
+ax0.set_ylim((-1e3,1e3))
 plt.show()
 
 #-------------------------------------------------------------------------------
