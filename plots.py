@@ -124,7 +124,29 @@ dt_times = np.zeros(np.shape(dcov_dt))
 for i in range(len(dcov_dt)):
     dt_times[i] = 0.1*np.abs(cov_avg)/np.abs(dcov_dt[i])
 
-plt.plot(times,dcov_dt)
+# test plots to check calculations and quick plots for presentation
+time_scale_cov = np.median(dt_times)
+sample_time3 = 1.55e4
+[start_indx3,end_indx3] = get_sample_window(times,sample_time3,sample_time3+time_scale_cov)
+
+fig0,ax0 = plt.subplots(1,1,figsize=[8,8])
+ax0.plot(times[start_indx3:end_indx3],covariance[start_indx3:end_indx3])
+ax0.set_ylim((np.min(covariance[start_indx3:end_indx3]),np.min(covariance[start_indx3:end_indx3])-0.1*cov_avg))
+ax0.set_xlim((times[start_indx3],times[end_indx3]))
+ax0.set_yticklabels([])
+plt.show()
+
+sample_time4 = 1.59e4
+[start_indx4,end_indx4] = get_sample_window(times,sample_time4,sample_time4+time_scale_cov)
+
+fig0,ax0 = plt.subplots(1,1,figsize=[8,8])
+ax0.plot(times[start_indx4:end_indx4],covariance[start_indx4:end_indx4],linewidth=2.0,c='red')
+ax0.plot(times[start_indx4:end_indx4],(np.min(covariance[start_indx4:end_indx4])-0.05*cov_avg)*np.ones(np.shape(covariance[start_indx4:end_indx4])),linewidth=2.0,linestyle=":",c='black')
+ax0.plot(times[start_indx4:end_indx4],(np.min(covariance[start_indx4:end_indx4])+0.05*cov_avg)*np.ones(np.shape(covariance[start_indx4:end_indx4])),linewidth=2.0,linestyle=":",c='black')
+ax0.set_ylim((np.min(covariance[start_indx4:end_indx4])+0.1*cov_avg,np.min(covariance[start_indx4:end_indx4])-0.1*cov_avg))
+ax0.set_xlim((times[start_indx4],times[end_indx4]))
+ax0.set_yticklabels([])
+plt.show()
 
 fig0,ax0 = plt.subplots(1,1,figsize=[8,8])
 ax0.scatter(times,dcov_dt)
@@ -232,6 +254,25 @@ plt.show()
 fig3.savefig('./Documents/kgrel2d/figures/fig3'+data_name+'.pdf')
 
 #-------------------------------------------------------------------------------
+
+# figure 4: rates of adaptation and variance+covariance
+fig4,ax4=plt.subplots(nrows=1,ncols=1,figsize=[8,8])
+ax4.plot(times[start_indx:end_indx],variances[start_indx:end_indx,0]+covariance[start_indx:end_indx],c="black",label='rate of adapt.',linewidth=2)
+ax4.plot(times[start_indx:end_indx],variances[start_indx:end_indx,0],c="blue",label='variance',linewidth=2)
+ax4.plot(times[start_indx:end_indx],covariance[start_indx:end_indx],c="green",label='covariance',linewidth=2)
+ax4.plot(times[start_indx:end_indx],(var1_avg+cov_avg)*unit_array,c="black",linewidth=2,linestyle=":")
+ax4.plot(times[start_indx:end_indx],(var1_avg)*unit_array,c="blue",linewidth=2,linestyle=":")
+ax4.plot(times[start_indx:end_indx],(cov_avg)*unit_array,c="green",linewidth=2,linestyle=":")
+ax4.axhline(linewidth=0.5, color = 'k')
+ax4.set_ylabel('Variances-Covariances',fontsize=18)
+ax4.set_xlabel('Time (Generations)',fontsize=18)
+ax4.set_ylim((-3e-4,3e-4))
+ax4.set_xlim((1e4,2e4))
+ax4.tick_params(axis='both',labelsize=14)
+ax4.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+#ax4.legend()
+plt.show()
+fig4.savefig('./Documents/kgrel2d/figures/fig4'+data_name+'.pdf')
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
