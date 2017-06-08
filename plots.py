@@ -140,7 +140,7 @@ sample_time4 = 1.59e4
 [start_indx4,end_indx4] = get_sample_window(times,sample_time4,sample_time4+time_scale_cov)
 
 fig0,ax0 = plt.subplots(1,1,figsize=[8,8])
-ax0.plot(times[start_indx4:end_indx4],covariance[start_indx4:end_indx4],linewidth=2.0,c='red')
+ax0.plot(times[start_indx4:end_indx4],covariance[start_indx4:end_indx4],linewidth=3.0,c='green')
 ax0.plot(times[start_indx4:end_indx4],(np.min(covariance[start_indx4:end_indx4])-0.05*cov_avg)*np.ones(np.shape(covariance[start_indx4:end_indx4])),linewidth=2.0,linestyle=":",c='black')
 ax0.plot(times[start_indx4:end_indx4],(np.min(covariance[start_indx4:end_indx4])+0.05*cov_avg)*np.ones(np.shape(covariance[start_indx4:end_indx4])),linewidth=2.0,linestyle=":",c='black')
 ax0.set_ylim((np.min(covariance[start_indx4:end_indx4])+0.1*cov_avg,np.min(covariance[start_indx4:end_indx4])-0.1*cov_avg))
