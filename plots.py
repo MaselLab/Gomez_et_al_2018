@@ -10,6 +10,7 @@ This temporary script file is located here:
 # simulation results as functions of the ratios of key parameters
 
 # import packages for script
+from mpl_toolkits.mplot3d import Axes3D
 import pickle
 import scipy as sp
 import numpy as np
@@ -277,4 +278,30 @@ fig4.savefig('./Documents/kgrel2d/figures/fig4'+data_name+'.pdf')
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 
+genotypes_fitness = [[] for i in range(num_pts)]
+trait_bounds = [[] for i in range(num_pts)]
 
+for i in range(num_pts):
+    genotypes_fitness[i] = np.array([[genotypes[i][j,0],genotypes[i][j,1],1+s1*genotypes[i][j,0]+s2*genotypes[i][j,1]] for j in range(len(genotypes[i]))])
+    trait_bounds[i] = [np.min(genotypes[i][:,0]),np.max(genotypes[i][:,0]),np.min(genotypes[i][:,1]),np.max(genotypes[i][:,1])] 
+
+# animation plot for fitness surface
+kindx=7000
+fudged_range = 4
+
+X=np.arange(trait_bounds[kindx][0]-fudged_range,trait_bounds[kindx][1]+fudged_range)
+Y=np.arange(trait_bounds[kindx][2]-fudged_range,trait_bounds[kindx][3]+fudged_range)
+X,Y = np.meshgrid(X,Y)
+Z = 1+s1*X+s2*Y
+
+fig5 = plt.figure()
+ax5 = fig5.add_subplot(111, projection='3d')
+ax5.plot_wireframe(X,Y,Z,rstride=1, cstride=1,linewidth=0.5,color='k')
+ax5.scatter(genotypes_fitness[kindx][:,0],genotypes_fitness[kindx][:,1],genotypes_fitness[kindx][:,2],c='blue',s=65,marker="s")
+ax5.view_init(elev=90,azim=-90)
+ax5.set_xlabel("Trait 1 Benificial Mutations")
+ax5.set_ylabel("Trait 2 Benificial Mutations")
+ax5.set_zlabel("Relative Fitness")
+
+
+# second animation
