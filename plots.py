@@ -299,9 +299,12 @@ ax5 = fig5.add_subplot(111, projection='3d')
 ax5.plot_wireframe(X,Y,Z,rstride=1, cstride=1,linewidth=0.5,color='k')
 ax5.scatter(genotypes_fitness[kindx][:,0],genotypes_fitness[kindx][:,1],genotypes_fitness[kindx][:,2],c='blue',s=65,marker="s")
 ax5.view_init(elev=90,azim=-90)
-ax5.set_xlabel("Trait 1 Benificial Mutations")
-ax5.set_ylabel("Trait 2 Benificial Mutations")
-ax5.set_zlabel("Relative Fitness")
+ax5.set_xticks([])                               
+ax5.set_yticks([])                               
+ax5.set_zticks([])
+ax5.set_xlabel("Trait 1 Mutations")
+ax5.set_ylabel("Trait 2 Mutations")
+ax5.set_zlabel("Fitness")
 
 
 # second animation
