@@ -248,25 +248,23 @@ FOLLOW-UP:
 }
 
 @Article{Arnold2001,
-  author        = {Arnold, Stevan J. and Pfrender, Michael E. and Jones, Adam G.},
-  title         = {The adaptive landscape as a conceptual bridge between micro- and macroevolution},
-  journal       = {Genetica},
-  year          = {2001},
-  volume        = {112},
-  number        = {1},
-  pages         = {9--32},
-  issn          = {1573-6857},
-  __markedentry = {[dirge:2]},
-  abstract      = {An adaptive landscape concept outlined by G.G. Simpson constitutes the major conceptual bridge between the fields of micro- and macroevolutionary study. Despite some important theoretical extensions since 1944, this conceptual bridge has been ignored in many empirical studies. In this article, we review the status of theoretical work and emphasize the importance of models for peak movement. Although much theoretical work has been devoted to evolution on stationary, unchanging landscapes, an important new development is a focus on the evolution of the landscape itself. We also sketch an agenda of empirical issues that is inspired by theoretical developments.},
-  doi           = {10.1023/A:1013373907708},
-  keywords      = {rank5},
-  review        = {KEY RESULTS:
+  author   = {Arnold, Stevan J. and Pfrender, Michael E. and Jones, Adam G.},
+  title    = {The adaptive landscape as a conceptual bridge between micro- and macroevolution},
+  journal  = {Genetica},
+  year     = {2001},
+  volume   = {112},
+  number   = {1},
+  pages    = {9--32},
+  issn     = {1573-6857},
+  abstract = {An adaptive landscape concept outlined by G.G. Simpson constitutes the major conceptual bridge between the fields of micro- and macroevolutionary study. Despite some important theoretical extensions since 1944, this conceptual bridge has been ignored in many empirical studies. In this article, we review the status of theoretical work and emphasize the importance of models for peak movement. Although much theoretical work has been devoted to evolution on stationary, unchanging landscapes, an important new development is a focus on the evolution of the landscape itself. We also sketch an agenda of empirical issues that is inspired by theoretical developments.},
+  doi      = {10.1023/A:1013373907708},
+  review   = {KEY RESULTS:
 
 COMMENTS:
 
 FOLLOW-UP:
 -Felsenstein 1988; Zeng 1988 – Theory for the case of a simple tilted adaptive landscape.},
-  url           = {http://dx.doi.org/10.1023/A:1013373907708},
+  url      = {http://dx.doi.org/10.1023/A:1013373907708},
 }
 
 @Article{Arnold2008,
