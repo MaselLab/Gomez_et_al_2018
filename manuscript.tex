@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[11pt,one column]{article}
 \usepackage[margin=0.5in]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -6,57 +6,60 @@
 \usepackage{graphicx}
 \graphicspath{{figures/}}
 \usepackage{subfigure}
+\usepackage{multicol}
+
 
 \begin{document}
+\begin{multicols}{2}
+
 \title{Modeling How Evolution in One Trait is Affected by Adaptation in Another}
 \author{Kevin Gomez, Joanna Masel, Jason Bertram}
 \date{2017}
-
 \maketitle
-\newpage
 
 \begin{abstract}
 This paper will discuss something.
 \end{abstract}
 
 \section*{Introduction}
-Natural selection frequently acts on multiple traits simultaneously. A single trait’s response to selection leads to a shift towards the fittest phenotype in a population’s mean.  With multiple traits, the response to selection involves both direct and indirect effects that determine the evolution of traits \cite{Scarcelli23102007,Lovell2013,Wagner2011}.  Indirect effects arise from genetic mechanisms that underlie trait expression which may be associated or shared in a manner that enforces specific patterns of co-expression and give rise to trait correlations.
-Plant and animal breeders preceding Darwon trait associations in domesticated stocks influence their response to artificial selection, and early breeders preceding Darwin often had to account for this in their selection programs (cite).  Darwin’s own considerations of this fact naturally led him to posit an important role for them in adaptive evolution (Darwin p. 144-150).  However, the lack of quantitative descriptions hindered the exploration of have been two major approaches to address questions in this area with the common aim of elucidating further on the complex dynamics of adaptation with multiple traits. One of the earliest theoretical treatments of adaptation in a multivariate trait space was put forth by R.A. Fisher in The Genetical Theory of Natural Selection (1930). The model provides a simple geometric argument demonstrating how adaptive evolution would be constrained in higher dimensional trait spaces.  Kimura (1983) gave further extensions to this model by incorporating probability of fixation, and Orr (1998, 2000) provided additional insights on the the optimal dimensions that ensured maximum adaptation.  Some of the earliest works that attempted to address multi-trait adaptation were developed by Fisher (1930)However, early evolutionary biology could provide little development in this area, in part due to standing questions concerning the relationships between traits and their genetic foundation, such as how to reconcile Mendelian genetics and with the inheritance of continuous characters. Thus questions concerning whole organisms, which are of main interest to plant and animal breeders, and the level of whole organisms. The extension of quantitative genetics to multivariate phenotypes, formulated by Lande (Lande 1979; 1980), provides the first characterization of selection on multiple traits, formally expressed in the breeder’s equation ($\Delta z ̅=G \beta$). The phenotypes of quantitative traits change ($\Delta z$) in response to a selection gradient ($\beta$) acting on them, given a specific set of trait variances and covariance between them ($G$). Lande’s formulation is largely independent of the principles of heredity.  However, genetic correlations are known to be the produce of either pleiotropy, linkage disequilibria, and trans acting elements.  In practice, geneticists can estimate $\beta$ and $G$ to determine the short-term response of quantitative traits to selection \cite{lynch1998genetics}, without knowledge of the underlying causes of that create correlations between traits.  However, most quantitative geneticist adhere to two schools of thought on this matter; these are known as the Birmingham and Edinburgh schools.  The differences in their views stem from the types of organism they studied and the types of questions they aimed to answer.
+Natural selection frequently acts on multiple traits simultaneously. A single trait’s response to selection leads to a shift in the population mean towards the fittest phenotype.  The response to selection with multiple traits involves both direct and indirect effects that together determine their evolution \cite{Scarcelli23102007,Lovell2013,Wagner2011}.  Indirect effects arise from genetic mechanisms that underlie trait expression which may be associated or shared in a manner that enforces specific patterns of co-expression and give rise to trait correlations.\par
+
+Evolutionary theory for the in our understanding of trait correlations and their role in evolution surfaced as the conAdvances in our understanding of trait correlatiosn and their role in evolution have been limited, Plant and animal breeders preceding Darwin trait associations in domesticated stocks influence their response to artificial selection, and early breeders preceding Darwin often had to account for this in their selection programs (cite).  Darwin’s own considerations of this fact naturally led him to posit an important role for them in adaptive evolution (Darwin p. 144-150).  However, the lack of quantitative descriptions hindered the exploration of have been two major approaches to address questions in this area with the common aim of elucidating further on the complex dynamics of adaptation with multiple traits. One of the earliest theoretical treatments of adaptation in a multivariate trait space was put forth by R.A. Fisher in The Genetical Theory of Natural Selection (1930). The model provides a simple geometric argument demonstrating how adaptive evolution would be constrained in higher dimensional trait spaces.  Kimura (1983) gave further extensions to this model by incorporating probability of fixation, and Orr (1998, 2000) provided additional insights on the the optimal dimensions that ensured maximum adaptation.  Some of the earliest works that attempted to address multi-trait adaptation were developed by Fisher (1930)However, early evolutionary biology could provide little development in this area, in part due to standing questions concerning the relationships between traits and their genetic foundation, such as how to reconcile Mendelian genetics and with the inheritance of continuous characters. Thus questions concerning whole organisms, which are of main interest to plant and animal breeders, and the level of whole organisms.\par
+
+The extension of quantitative genetics to multivariate phenotypes, formulated by Lande (Lande 1979; 1980), provides the first characterization of selection on multiple traits, formally expressed in the breeder’s equation ($\Delta z ̅=G \beta$). The phenotypes of quantitative traits change ($\Delta z$) in response to a selection gradient ($\beta$) acting on them, given a specific set of trait variances and covariance between them ($G$). Lande’s formulation is largely independent of the principles of heredity.  However, genetic correlations are known to be the produce of either pleiotropy, linkage disequilibria, and trans acting elements.\par
+In practice, geneticists can estimate $\beta$ and $G$ to determine the short-term response of quantitative traits to selection \cite{lynch1998genetics}, without knowledge of the underlying causes of that create correlations between traits.  However, most quantitative geneticist adhere to two schools of thought on this matter; these are known as the Birmingham and Edinburgh schools.  The differences in their views stem from the types of organism they studied and the types of questions they aimed to answer.\par
+
 Quantitative geneticists in the Edinburgh school have traditionally worked on questions concerning animal breeding, and much of their statistical models aim to clarifying the process by which phenotypic quantitative traits change in response to artificial selection in animals.  Autho
-In such populations, the genetic foundation of phenotypes is hidden, and random breeding are inevitably core elements that must be accounted for in their genetic analysis.  Consequently, 
- arise from associations between alleles that form through either pleiotropy, linkage disequilibrium, or trans acting effects. 
-There are two schools of thought among quantitative geneticists that differ in the principle cause of associations between alleles.  One of them holds pleiotropy as the largely responsible for  pleiotropic effects each of them The views held by each are largely the result of distinct questions and applications Geneticist in the Edinburgh school hold that genetic correlations are the product of pleiotropic effects, while those in the Birmingham school believe that linkage 
-The majority of quantitative genetics follow  
-Geneticist pleiotropy.
-We focus on asexual micro-organisms that lack recombination and examine how the evolution of their traits is affected by linkage. A variety of organisms fall under this category, which includes many single celled Eukaryotes and a variety of bacteria (cite work). In this setting, linkage disequilibria is entirely determined by the combined action of mutations, selection and drift. Standard results in population genetics demonstrate that the amount of linkage disequilibria between various alleles will depend on the beneficial mutation rate ($U_b$), the selection coefficient ($s$), and strength of drift measured by population’s size ($N$). Logically, one expects variances and covariances arising from linkage to also depend on the population’s parameters, but a general expression that details this explicit relationship has not been uncovered. The majority of results concerning linkage comes from experiments with inbred lines in plants, stemming from the Birmingham school, and that have limited application to populations of interest to us Jinks and Mather (1981).
+In such populations, the genetic foundation of phenotypes is hidden, and random breeding are inevitably core elements that must be accounted for in their genetic analysis.  Consequently, arise from associations between alleles that form through either pleiotropy, linkage disequilibrium, or trans acting effects.\par
+
+There are two schools of thought among quantitative geneticists that differ in the principle cause of associations between alleles.  One of them holds pleiotropy as the largely responsible for  pleiotropic effects each of them The views held by each are largely the result of distinct questions and applications Geneticist in the Edinburgh school hold that genetic correlations are the product of pleiotropic effects, while those in the Birmingham school believe that linkage The majority of quantitative genetics follow Geneticist pleiotropy.\par
+
+We focus on asexual micro-organisms that lack recombination and examine how the evolution of their traits is affected by linkage. A variety of organisms fall under this category, which includes many single celled Eukaryotes and a variety of bacteria (cite work). In this setting, linkage disequilibria is entirely determined by the combined action of mutations, selection and drift. Standard results in population genetics demonstrate that the amount of linkage disequilibria between various alleles will depend on the beneficial mutation rate ($U_b$), the selection coefficient ($s$), and strength of drift measured by population’s size ($N$). Logically, one expects variances and covariances arising from linkage to also depend on the population’s parameters, but a general expression that details this explicit relationship has not been uncovered. The majority of results concerning linkage comes from experiments with inbred lines in plants, stemming from the Birmingham school, and that have limited application to populations of interest to us Jinks and Mather (1981).\par
+
 In the case of adaptive traits, with fitness conferred taken as their quantitative measure, the relationship between variance and the population parameters is known explicitly. The work of Desai and Fisher (2007) provide the variance in fitness explicitly shown to work of gives the variance of adaptive traits in terms of the population’s parameters $N$, $U_b$, and $s$. The variance of traits and the covariance between them are estimated, and assume that the underlying traits satisfy basic assumptions, such as being polygenic. The variance in fitness was not something that could be determine from populations parameters, until only recently. Desai and Fisher’s work (2007) provides the rate of adaptation of the population in terms of its parameters,
 \begin{equation} 
 v =s^2  \frac{2 \ln(Ns)-\ln(s/U_b)}{\ln^2(s/U_b)}
 \end{equation}  
 and since the rate of adaptation is the variance of fitness ($v=\sigma^2$).  If we consider a second adaptive trait evolving concurrently, with identical mutation rate and selection coefficient, then the rate of adaptation in each trait should be half of the total rate of adaptation $v(2U_b)$ since evolution in each contributes equally the overall adaptation of the population. A simple application of Desai and Fisher’s formula quickly shows that the rate of adaptation for a single trait is reduced when a second trait is considered since
 \[ 1/2  v(2U)<v(U) \]
-Naturally, we should expect such a result since we have doubled the mutation rate, and consequently, increased the amount of clonal interference that occurs within the population. However, the mere fact that we are also considering a second trait indicates that there to this picture than this.
+Naturally, we should expect such a result since we have doubled the mutation rate, and consequently, increased the amount of clonal interference that occurs within the population. However, the mere fact that we are also considering a second trait indicates that there to this picture than this.\par
+
 The rate of adaptation in one trait is determined by its variance and covariance with other traits, and this relation is expressed in the breeder’s equation. In our situation, both quantitative traits are adaptive and we measure them by the fitness they endow the organism. Consequently, the rate of fitness increase of the focal trait $v_1$ must be related
 \begin{equation}
 v_1=\sigma_1^2+\sigma_{1,2}
 \end{equation}
 
-
 \section*{Results}
-
+Discuss results here
 \begin{figure}
-\includegraphics[scale=1.0]{fig1_N-10p11_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pdf}
+\includegraphics[scale=1.0]{fig2_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pdf}
 \end{figure}
 \section*{Discussion}
-
 \section*{Methods}
-We consider a population with fixed size N, in which individuals have two traits that contribute to its fitness, its growth rate, and which evolve through beneficial mutations; deleterious mutations are not considered.  The beneficial mutation rate for each trait is denoted U_k (trait k=1,2), and each increases trait k’s contribution to relative fitness by s_k.  We can express an individual fitness as 
-
+We consider a population with fixed size N, in which individuals have two traits that contribute to its fitness, its growth rate, and which evolve through beneficial mutations; deleterious mutations are not considered.  The beneficial mutation rate for each trait is denoted $U_k$ (trait $k=1,2$), and each increases trait $k$’s contribution to relative fitness by $s_k$.  We can express an individual fitness as 
 \[ r_{ij}=r+i s_1+j s_2 \]
-
 where i and j represent the number of beneficial mutations in trait one and two, while $r$ is the growth rate a common ancestor to the population. 
 An individual’s relative fitness is given by
-
 \[ (r_{ij}-r ̅)=(i-\bar{i} ) s_1+(j-\bar{j} ) s_2 \]
 respectively, and i ̅ and j ̅ are the population mean.  The two traits of individuals are treated as independently evolving loci in which beneficial mutations occur at a fixed rate $U_k$ ($k=1,2$).  Each beneficial mutation is either lost to drift, or the subpopulation carrying it will grow sufficiently large to ensure that the beneficial mutation fixes in the population through selection. The probability of the latter event, denoted $\pi_{fix}$, is proportional to the selective advantage of the mutation. In these cases a beneficial mutation is said to have established in the population. The selective advantage of an individual is measured by its relative fitness, which in our model, is its expected growth rate minus the growth rate of an average individual. Each new beneficial mutation in trait $k$ increases this fitness by $s_k$; we do not consider deleterious and neutral mutations in our model. If an individual has i mutations in the first trait and $j$ in the second, while the average number carried in the two traits is $\bar{i}$ and $\bar{j}$, its relative fitness equals the difference $(r_{ij}-\bar{r})=(i-\bar{i}) s_1+(j-\bar{j}) s_2$. We group members of the population that carry the same number of beneficial mutations in each trait, $i$ mutations in the first and $j$ in the second, into fitness classes that will often be denoted by subscripts $ij$. The set of fitness class abundances $\{n_{ij} \}$ induce a distribution over the trait space, represented by $N^2$, containing all fitness classes. This two-dimensional distribution, which we will often denote by the set of frequencies $\{p_{ij}\}$, travels in the direction of increasing fitness as the population adapts (Fig 1) in an analogous fashion to the motion of Desai and Fisher’s (2007) one dimensional traveling wave. We also examine the properties of the marginal distributions $\{p_{i\cdot}\}$ and $\{p_{\cdot j}\}$ for each trait, whose behaviors over time are significantly affected by genetic correlations that arise from the confluences of mutations, selection and drift.
 \begin{equation}
@@ -66,7 +69,7 @@ In order to study how genetic correlations arise and influence the evolution of 
 \begin{equation}
 \bar{i}=∑_i i p_{i \cdot} \hspace{0.5in} \bar{j} = ∑_j p_{⋅j} j
 \end{equation}
-Relative fitness, written as the difference $(r_{ij}-\bar{r})=(i-\bar{i}) s_1+(j-\bar{j}) s_2$, determines the growth and decline in abundances n_ij that follow the differential equation
+Relative fitness, written as the difference $(r_{ij}-\bar{r})=(i-\bar{i}) s_1+(j-\bar{j}) s_2$, determines the growth and decline in abundances $n_{ij}$ that follow the differential equation
 \begin{equation}
 \dot{n}_{ij}=n_{ij} (r_{ij}-\bar{r})-n_{ij} \left(\frac{N(t)-N}{N}\right) r 
 \end{equation}
@@ -96,10 +99,13 @@ and it becomes evident that linkage disequilibrium directly affects the evolutio
 
 Discuss the details of the simulations.
 
-\section*{Appendix A:}
-
-
 \bibliographystyle{plain}
 \bibliography{biblio}
+\end{multicols}
 
+\newpage
+
+\section*{Appendix A:}
+\section*{Appendix B:}
+\section*{Appendix C:}
 \end{document}
