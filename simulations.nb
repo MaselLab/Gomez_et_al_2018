@@ -3,10 +3,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[    192710,       5204]
-NotebookOptionsPosition[    191392,       5158]
-NotebookOutlinePosition[    191727,       5173]
-CellTagsIndexPosition[    191684,       5170]
+NotebookDataLength[    192259,       5201]
+NotebookOptionsPosition[    190943,       5155]
+NotebookOutlinePosition[    191278,       5170]
+CellTagsIndexPosition[    191235,       5167]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -195,7 +195,7 @@ Cell[BoxData[
    "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"workingfilename", "=", 
-     RowBox[{"\"\<_N-10p09_c1-0d005_c2-0d01_U1-1x10pn5_U2-5x10pn6_exp\>\"", "<>", 
+     RowBox[{"\"\<_N-10p09_c1-0d03_c2-0d001_U1-1x10pn5_U2-1x10pn5_exp\>\"", "<>", 
       RowBox[{"ToString", "[", "setseed", "]"}], "<>", "\"\<.m\>\""}]}], 
     ";"}], "\[IndentingNewLine]", 
    RowBox[{
@@ -398,51 +398,43 @@ Cell[BoxData[
    3.707755889255024*^9}, 3.708020786587255*^9, {3.708020841043086*^9, 
    3.708020910507519*^9}, {3.708038840677988*^9, 3.708038895708292*^9}, {
    3.7080389347573233`*^9, 3.7080389929095*^9}, {3.708094112822548*^9, 
-   3.708094198174385*^9}, {3.708099618470006*^9, 3.708099658637457*^9}}],
+   3.708094198174385*^9}, {3.708099618470006*^9, 3.708099658637457*^9}, {
+   3.709312245850313*^9, 3.7093122619585943`*^9}, {3.709313226202756*^9, 
+   3.70931322946672*^9}}],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"Trait 1 q = \"\>", "\[InvisibleSpace]", "6.999999999999999`", 
+  RowBox[{"\<\"Trait 1 q = \"\>", "\[InvisibleSpace]", "4.666666666666667`", 
    "\[InvisibleSpace]", "\<\" in \"\>", 
    "\[InvisibleSpace]", "\<\"Concurrent Mutations Regime\"\>", 
    "\[InvisibleSpace]", "\<\" with expected time scale \"\>", 
-   "\[InvisibleSpace]", "76.75283643313487`", 
+   "\[InvisibleSpace]", "188.39332579042187`", 
    "\[InvisibleSpace]", "\<\" and rate of adaptation \"\>", 
-   "\[InvisibleSpace]", "0.0001302883445709755`"}],
+   "\[InvisibleSpace]", "0.00005308043667706412`"}],
   SequenceForm[
-  "Trait 1 q = ", 6.999999999999999, " in ", "Concurrent Mutations Regime", 
-   " with expected time scale ", 76.75283643313487, 
-   " and rate of adaptation ", 0.0001302883445709755],
+  "Trait 1 q = ", 4.666666666666667, " in ", "Concurrent Mutations Regime", 
+   " with expected time scale ", 188.39332579042187`, 
+   " and rate of adaptation ", 0.00005308043667706412],
   Editable->False]], "Print",
- CellChangeTimes->{
-  3.703533234790737*^9, 3.703533272214138*^9, 3.705012961874322*^9, {
-   3.705067222532508*^9, 3.705067263137749*^9}, 3.7052175193553905`*^9, 
-   3.7052175563454227`*^9, 3.7052175884453073`*^9, 3.707755894806131*^9, 
-   3.708020931373802*^9, {3.708038938688582*^9, 3.708038997075645*^9}, {
-   3.708094151169528*^9, 3.7080941996544657`*^9}, 3.708099639858851*^9}],
+ CellChangeTimes->{3.709313231811026*^9}],
 
 Cell[BoxData[
  InterpretationBox[
-  RowBox[{"\<\"Trait 2 q = \"\>", "\[InvisibleSpace]", "6.999999999999999`", 
+  RowBox[{"\<\"Trait 2 q = \"\>", "\[InvisibleSpace]", "4.666666666666667`", 
    "\[InvisibleSpace]", "\<\" in \"\>", 
    "\[InvisibleSpace]", "\<\"Concurrent Mutations Regime\"\>", 
    "\[InvisibleSpace]", "\<\" with expected time scale \"\>", 
-   "\[InvisibleSpace]", "76.75283643313487`", 
+   "\[InvisibleSpace]", "188.39332579042187`", 
    "\[InvisibleSpace]", "\<\" and rate of adaptation \"\>", 
-   "\[InvisibleSpace]", "0.0001302883445709755`"}],
+   "\[InvisibleSpace]", "0.00005308043667706412`"}],
   SequenceForm[
-  "Trait 2 q = ", 6.999999999999999, " in ", "Concurrent Mutations Regime", 
-   " with expected time scale ", 76.75283643313487, 
-   " and rate of adaptation ", 0.0001302883445709755],
+  "Trait 2 q = ", 4.666666666666667, " in ", "Concurrent Mutations Regime", 
+   " with expected time scale ", 188.39332579042187`, 
+   " and rate of adaptation ", 0.00005308043667706412],
   Editable->False]], "Print",
- CellChangeTimes->{
-  3.703533234790737*^9, 3.703533272214138*^9, 3.705012961874322*^9, {
-   3.705067222532508*^9, 3.705067263137749*^9}, 3.7052175193553905`*^9, 
-   3.7052175563454227`*^9, 3.7052175884453073`*^9, 3.707755894806131*^9, 
-   3.708020931373802*^9, {3.708038938688582*^9, 3.708038997075645*^9}, {
-   3.708094151169528*^9, 3.7080941996544657`*^9}, 3.708099639859564*^9}]
+ CellChangeTimes->{3.709313231811617*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -4977,7 +4969,8 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"results", "=", 
      RowBox[{"Import", "[", 
-      RowBox[{"rootaddress", "<>", "\"\<data/simtest/simtest_data\>\"", "<>", 
+      RowBox[{
+      "rootaddress", "<>", "\"\<data/simtest/simtest_data\>\"", "<>", 
        RowBox[{"ToString", "[", "fulldata", "]"}], "<>", "workingfilename"}], 
       "]"}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"Export", "[", 
@@ -5000,7 +4993,8 @@ Cell[BoxData[
        RowBox[{";;", ",", "2"}], "]"}], "]"}]}], "]"}], "\[IndentingNewLine]", 
    RowBox[{"Export", "[", 
     RowBox[{
-     RowBox[{"rootaddress", "<>", "\"\<data/pythondata/abundances\>\"", "<>", 
+     RowBox[{
+     "rootaddress", "<>", "\"\<data/pythondata/abundances\>\"", "<>", 
       RowBox[{"StringDrop", "[", 
        RowBox[{"workingfilename", ",", 
         RowBox[{"-", "2"}]}], "]"}], "<>", "\"\<.dat\>\""}], ",", 
@@ -5140,20 +5134,23 @@ Cell[BoxData[
   3.703533065221695*^9}, {3.705073777074355*^9, 3.705073778458829*^9}, {
   3.705073906341508*^9, 3.705073921095189*^9}}],
 
-Cell[BoxData["\<\"C:/Users/Kevin/Documents/kgrel2d/data/pythondata/times_N-\
-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.dat\"\>"], "Output",
+Cell[BoxData["\<\"~/Documents/kgrel2d/data/pythondata/times_N-10p09_c1-0d03_\
+c2-0d001_U1-1x10pn5_U2-1x10pn5_exp1.dat\"\>"], "Output",
  CellChangeTimes->{3.7035332854237223`*^9, 3.705073806632661*^9, 
-  3.705073928974185*^9, 3.705221071584352*^9}],
+  3.705073928974185*^9, 3.705221071584352*^9, 3.709312325928565*^9, 
+  3.7093132537526712`*^9}],
 
-Cell[BoxData["\<\"C:/Users/Kevin/Documents/kgrel2d/data/pythondata/genotypes_\
-N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.dat\"\>"], "Output",
+Cell[BoxData["\<\"~/Documents/kgrel2d/data/pythondata/genotypes_N-10p09_c1-\
+0d03_c2-0d001_U1-1x10pn5_U2-1x10pn5_exp1.dat\"\>"], "Output",
  CellChangeTimes->{3.7035332854237223`*^9, 3.705073806632661*^9, 
-  3.705073928974185*^9, 3.705221092463213*^9}],
+  3.705073928974185*^9, 3.705221071584352*^9, 3.709312325928565*^9, 
+  3.7093132702921333`*^9}],
 
-Cell[BoxData["\<\"C:/Users/Kevin/Documents/kgrel2d/data/pythondata/abundances_\
-N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.dat\"\>"], "Output",
+Cell[BoxData["\<\"~/Documents/kgrel2d/data/pythondata/abundances_N-10p09_c1-\
+0d03_c2-0d001_U1-1x10pn5_U2-1x10pn5_exp1.dat\"\>"], "Output",
  CellChangeTimes->{3.7035332854237223`*^9, 3.705073806632661*^9, 
-  3.705073928974185*^9, 3.705221105341009*^9}]
+  3.705073928974185*^9, 3.705221071584352*^9, 3.709312325928565*^9, 
+  3.709313280748719*^9}]
 }, Open  ]]
 },
 WindowSize->{1598, 823},
@@ -5173,31 +5170,31 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[422, 15, 15665, 385, 278, "Input"],
+Cell[422, 15, 15766, 387, 278, "Input"],
 Cell[CellGroupData[{
-Cell[16112, 404, 1053, 19, 23, "Print"],
-Cell[17168, 425, 1053, 19, 23, "Print"]
+Cell[16213, 406, 717, 14, 23, "Print"],
+Cell[16933, 422, 717, 14, 23, "Print"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18270, 450, 14486, 390, 407, "Input"],
-Cell[32759, 842, 567, 10, 32, "Output"]
+Cell[17699, 442, 14486, 390, 407, "Input"],
+Cell[32188, 834, 567, 10, 32, "Output"]
 }, Open  ]],
-Cell[33341, 855, 11760, 328, 319, "Input"],
-Cell[45104, 1185, 10785, 308, 253, "Input"],
-Cell[55892, 1495, 15106, 398, 319, "Input"],
-Cell[71001, 1895, 14771, 417, 496, "Input"],
-Cell[85775, 2314, 20000, 526, 539, "Input"],
-Cell[105778, 2842, 14103, 371, 341, "Input"],
-Cell[119884, 3215, 15595, 431, 517, "Input"],
-Cell[135482, 3648, 12041, 333, 319, "Input"],
-Cell[147526, 3983, 14446, 393, 385, "Input"],
-Cell[161975, 4378, 18101, 463, 473, "Input"],
+Cell[32770, 847, 11760, 328, 319, "Input"],
+Cell[44533, 1177, 10785, 308, 253, "Input"],
+Cell[55321, 1487, 15106, 398, 319, "Input"],
+Cell[70430, 1887, 14771, 417, 496, "Input"],
+Cell[85204, 2306, 20000, 526, 539, "Input"],
+Cell[105207, 2834, 14103, 371, 341, "Input"],
+Cell[119313, 3207, 15595, 431, 517, "Input"],
+Cell[134911, 3640, 12041, 333, 319, "Input"],
+Cell[146955, 3975, 14446, 393, 385, "Input"],
+Cell[161404, 4370, 18101, 463, 473, "Input"],
 Cell[CellGroupData[{
-Cell[180101, 4845, 10480, 295, 231, "Input"],
-Cell[190584, 5142, 259, 3, 32, "Output"],
-Cell[190846, 5147, 263, 3, 32, "Output"],
-Cell[191112, 5152, 264, 3, 32, "Output"]
+Cell[179530, 4837, 10493, 297, 231, "Input"],
+Cell[190026, 5136, 296, 4, 32, "Output"],
+Cell[190325, 5142, 300, 4, 32, "Output"],
+Cell[190628, 5148, 299, 4, 32, "Output"]
 }, Open  ]]
 }
 ]
