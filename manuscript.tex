@@ -4,10 +4,10 @@
 \usepackage{amssymb}
 \usepackage{natbib}
 \usepackage{graphicx}
-\graphicspath{{figures/}}
-\usepackage{subfigure}
+\usepackage{capt-of}
 \usepackage{multicol}
 
+\graphicspath{{figures/}}
 
 \begin{document}
 \begin{multicols}{2}
@@ -24,9 +24,12 @@ This paper will discuss something.
 \section*{Introduction}
 Natural selection frequently acts on multiple traits simultaneously. A single trait’s response to selection leads to a shift in the population mean towards the fittest phenotype.  The response to selection with multiple traits involves both direct and indirect effects that together determine their evolution \cite{Scarcelli23102007,Lovell2013,Wagner2011}.  Indirect effects arise from genetic mechanisms that underlie trait expression which may be associated or shared in a manner that enforces specific patterns of co-expression and give rise to trait correlations.\par
 
-Darwin himself realized that trait correlations could significantly influence adaptive evolution (Darwin p. 144-150).  However, the first theoretical insights  but it would take many more years and the insights of the modern synthesis before evolutionary biologists could begin addressing questions in this area.  The lack of quantitative descriptions hindered the exploration of have been two major approaches to address questions in this area with the common aim of elucidating further on the complex dynamics of adaptation with multiple traits. One of the earliest theoretical treatments of adaptation in a multivariate trait space was put forth by R.A. Fisher in The Genetical Theory of Natural Selection (1930). The model provides a simple geometric argument demonstrating how adaptive evolution would be constrained in higher dimensional trait spaces.  Kimura (1983) gave further extensions to this model by incorporating probability of fixation, and Orr (1998, 2000) provided additional insights on the the optimal dimensions that ensured maximum adaptation.  Some of the earliest works that attempted to address multi-trait adaptation were developed by Fisher (1930)However, early evolutionary biology could provide little development in this area, in part due to standing questions concerning the relationships between traits and their genetic foundation, such as how to reconcile Mendelian genetics and with the inheritance of continuous characters. Thus questions concerning whole organisms, which are of main interest to plant and animal breeders, and the level of whole organisms.\par
+Trait correlations are statistical measures of associated co-expression in traits primarily used in quantitative genetics.  Within the 
 
-The extension of quantitative genetics to multivariate phenotypes, formulated by Lande (Lande 1979; 1980), provides the first characterization of selection on multiple traits, formally expressed in the breeder’s equation ($\Delta z ̅=G \beta$). The phenotypes of quantitative traits change ($\Delta z$) in response to a selection gradient ($\beta$) acting on them, given a specific set of trait variances and covariance between them ($G$). Lande’s formulation is largely independent of the principles of heredity.  However, genetic correlations are known to be the produce of either pleiotropy, linkage disequilibria, and trans acting elements.\par
+
+
+Evolution with multiple traits can produce much more complex responses in populations as they adapt; a fact that was clear to Darwin (Darwin p. 144-150).  Today, evolutionary biologists are in agreement that these indirect influences stemming from simultaneous trait evolution have important consequences that affect populations on a micro- and macro-evolutionary scale.  Plant and animal breeders have been keen on this fact for much longer, and not surprisingly, our most comprehensive theory of adaptation in complex organisms with multiple traits was developed from the quantitative tools used in by them.  The extension of quantitative genetics to multivariate phenotypes, formulated by Lande (Lande 1979; 1980), provides the first characterization of selection on multiple traits, formally expressed in the breeder’s equation ($\Delta z ̅=G \beta$). The phenotypes of quantitative traits change ($\Delta z$) in response to a selection gradient ($\beta$) acting on them, given a specific set of trait variances and covariance between them ($G$). Lande’s formulation is largely independent of the principles of heredity.  However, genetic correlations are known to be the produce of either pleiotropy, linkage disequilibria, and trans acting elements.\par
+
 In practice, geneticists can estimate $\beta$ and $G$ to determine the short-term response of quantitative traits to selection \cite{lynch1998genetics}, without knowledge of the underlying causes of that create correlations between traits.  However, most quantitative geneticist adhere to two schools of thought on this matter; these are known as the Birmingham and Edinburgh schools.  The differences in their views stem from the types of organism they studied and the types of questions they aimed to answer.\par
 
 Quantitative geneticists in the Edinburgh school have traditionally worked on questions concerning animal breeding, and much of their statistical models aim to clarifying the process by which phenotypic quantitative traits change in response to artificial selection in animals.  Autho
@@ -51,9 +54,15 @@ v_1=\sigma_1^2+\sigma_{1,2}
 
 \section*{Results}
 Discuss results here
-\begin{figure}
-\includegraphics[scale=1.0]{fig2_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pdf}
-\end{figure}
+{\centering
+\includegraphics[width=1.0\linewidth]{fig2_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1}
+\captionof{figure}{Mean rates of adaptation, variance and covariance.} \label{fig.1}}
+
+{\centering
+\includegraphics[width=1.0\linewidth]{fig3_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1}
+\captionof{figure}{Variance and covariance fluctuations over time.}
+\label{fig.2}}
+
 \section*{Discussion}
 \section*{Methods}
 We consider a population with fixed size N, in which individuals have two traits that contribute to its fitness, its growth rate, and which evolve through beneficial mutations; deleterious mutations are not considered.  The beneficial mutation rate for each trait is denoted $U_k$ (trait $k=1,2$), and each increases trait $k$’s contribution to relative fitness by $s_k$.  We can express an individual fitness as 
@@ -106,5 +115,8 @@ Discuss the details of the simulations.
 \newpage
 
 \section*{Appendix A:}
+
+\section*{scrap text}
+ for example,  the rate of adaptation, and developed his now famous geometric model to infer that complexity would lead to slower adaptation in living organisms.  Other majors works addressing evolutionary biology would follow, such as (cite), but quantitative genetics to provide some of the most The model provides a simple geometric argument demonstrating how adaptive evolution would be constrained in higher dimensional trait spaces.  Kimura (1983) gave further extensions to this model by incorporating probability of fixation, and Orr (1998, 2000) provided additional insights on the the optimal dimensions that ensured maximum adaptation.  Some of the earliest works that attempted to address multi-trait adaptation were developed by Fisher (1930)However, early evolutionary biology could provide little development in this area, in part due to standing questions concerning the relationships between traits and their genetic foundation, such as how to reconcile Mendelian genetics and with the inheritance of continuous characters. Thus questions concerning whole organisms, which are of main interest to plant and animal breeders, and the level of whole organisms.\par
 
 \end{document}
