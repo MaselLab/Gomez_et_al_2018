@@ -446,9 +446,16 @@ follow-up
   abstract      = {It is widely held that each gene typically affects many characters, and that each character is affected by many genes. Moreover, strong stabilizing selection cannot act on an indefinitely large number of independent traits. This makes it likely that heritable variation in any one trait is maintained as a side effect of polymorphisms which have nothing to do with selection on that trait. This paper examines the idea that variation is maintained as the pleiotropic side effect of either deleterious mutation, or balancing selection. If mutation is responsible, it must produce alleles which are only mildly deleterious (s approximately 10(-3)), but nevertheless have significant effects on the trait. Balancing selection can readily maintain high heritabilities; however, selection must be spread over many weakly selected polymorphisms if large responses to artificial selection are to be possible. In both classes of pleiotropic model, extreme phenotypes are less fit, giving the appearance of stabilizing selection on the trait. However, it is shown that this effect is weak (of the same order as the selection on each gene): the strong stabilizing selection which is often observed is likely to be caused by correlations with a limited number of directly selected traits. Possible experiments for distinguishing the alternatives are discussed.},
   eprint        = {http://www.genetics.org/content/124/3/773.full.pdf},
   publisher     = {Genetics},
-  review        = {Results:
+  review        = {RESULT:
+
+COMMENTS:
+-basic conflict in observations: ample additive genetic variation and strong stablizing selection - with explanations: mutation selection balance, selection induces overdominance on loci
 -quantitative view of variation being explained character by character leads to conclusion, through naive calculations, that at most 100 characters can be selected upon
 -seems more likely that quantitative variation is based on overlapping effects of many genes on many characters
+
+CONCLUSION
+-mutation selection balance unlikely cause of quantitative genetic variation
+-
 
 Follow-up:
 -Turelli 1984 - theoretical considerations in the application of quantitative genetics 
@@ -748,29 +755,32 @@ FOLLOW-UP
 }
 
 @Article{Orr2005,
-  author   = {Orr, H. Allen},
-  title    = {The genetic theory of adaptation: a brief history},
-  journal  = {Nat Rev Genet},
-  year     = {2005},
-  volume   = {6},
-  number   = {2},
-  pages    = {119--127},
-  month    = feb,
-  issn     = {1471-0056},
-  abstract = {Theoretical studies of adaptation have exploded over the past decade. This work has been inspired by recent, surprising findings in the experimental study of adaptation. For example, morphological evolution sometimes involves a modest number of genetic changes, with some individual changes having a large effect on the phenotype or fitness. Here I survey the history of adaptation theory, focusing on the rise and fall of various views over the past century and the reasons for the slow development of a mature theory of adaptation. I also discuss the challenges that face contemporary theories of adaptation.},
-  comment  = {10.1038/nrg1523},
-  review   = {REVIEW PAPER - covers mathematical theories of adaptation and their history
+  author        = {Orr, H. Allen},
+  title         = {The genetic theory of adaptation: a brief history},
+  journal       = {Nat Rev Genet},
+  year          = {2005},
+  volume        = {6},
+  number        = {2},
+  pages         = {119--127},
+  month         = feb,
+  issn          = {1471-0056},
+  __markedentry = {[dirge:2]},
+  abstract      = {Theoretical studies of adaptation have exploded over the past decade. This work has been inspired by recent, surprising findings in the experimental study of adaptation. For example, morphological evolution sometimes involves a modest number of genetic changes, with some individual changes having a large effect on the phenotype or fitness. Here I survey the history of adaptation theory, focusing on the rise and fall of various views over the past century and the reasons for the slow development of a mature theory of adaptation. I also discuss the challenges that face contemporary theories of adaptation.},
+  comment       = {10.1038/nrg1523},
+  review        = {REVIEW PAPER - covers mathematical theories of adaptation and their history
 
 COMMENTS
 -adaptation is not natural selection, it is a steady movement by the population towards an optimum phenotype given its environment
+-Darwin believed in adaptation being a gradual process of modification
+
 
 FOLLOW-UP
-
+-British biometric school of evolution (pearson and weldon)
 
 IMPORTANT QUESTIONS (big picture)
 -Do most adapatations involve new mutations or standing genetic variation?
 -How does fitness change as the population approaches an optimum?},
-  url      = {http://dx.doi.org/10.1038/nrg1523},
+  url           = {http://dx.doi.org/10.1038/nrg1523},
 }
 
 @Article{Barrett2006,
@@ -1386,8 +1396,7 @@ comments
 -genome rearrangements cause trait correlations by causing any resulting blocks to be inherited together
 -the genetic architecture of trait correlations is commonly polygenic
 -genetic architecture is expected to depend on evolutionary forces maintaining trait correlations
--*expect trait correlations maintained by different evolutionary processes to have different genetic architectures
--
+-*expected trait correlations maintained by different evolutionary processes to have different genetic architectures
 
 follow-up
 -ref 2 - see paper for information on trade-offs
@@ -1893,6 +1902,71 @@ Follow-up:
   abstract      = {We review and discuss the importance of correlational selection (selection for optimal character combinations) in natural populations. If two or more traits subject to multivariate selection are heritable, correlational selection builds favourable genetic correlations through the formation of linkage disequilibrium at underlying loci governing the traits. However, linkage disequilibria built up by correlational selection are expected to decay rapidly (ie, within a few generations), unless correlational selection is strong and chronic. We argue that frequency-dependent biotic interactions that have 'Red Queen dynamics' (eg, host-parasite interactions, predator-prey relationships or intraspecific arms races) often fuel chronic correlational selection, which is strong enough to maintain adaptive genetic correlations of the kind we describe. We illustrate these processes and phenomena using empirical examples from various plant and animal systems, including our own recent work on the evolutionary dynamics of a heritable throat colour polymorphism in the side-blotched lizard Uta stansburiana. In particular, male and female colour morphs of side-blotched lizards cycle on five- and two-generation (year) timescales under the force of strong frequency-dependent selection. Each morph refines the other morph in a Red Queen dynamic. Strong correlational selection gradients among life history, immunological and morphological traits shape the genetic correlations of the side-blotched lizard polymorphism. We discuss the broader evolutionary consequences of the buildup of co-adapted trait complexes within species, such as the implications for speciation processes.},
   publisher     = {The Genetical Society of Great Britain},
   url           = {http://dx.doi.org/10.1038/sj.hdy.6800148},
+}
+
+@Article{Hill2014,
+  author        = {Hill, William G.},
+  title         = {Applications of Population Genetics to Animal Breeding, from Wright, Fisher and Lush to Genomic Prediction},
+  journal       = {Genetics},
+  year          = {2014},
+  volume        = {196},
+  number        = {1},
+  pages         = {1},
+  month         = jan,
+  __markedentry = {[dirge:2]},
+  abstract      = {Although animal breeding was practiced long before the science of genetics and the relevant disciplines of population and quantitative genetics were known, breeding programs have mainly relied on simply selecting and mating the best individuals on their own or relatives’ performance. This is based on sound quantitative genetic principles, developed and expounded by Lush, who attributed much of his understanding to Wright, and formalized in Fisher’s infinitesimal model. Analysis at the level of individual loci and gene frequency distributions has had relatively little impact. Now with access to genomic data, a revolution in which molecular information is being used to enhance response with “genomic selection” is occurring. The predictions of breeding value still utilize multiple loci throughout the genome and, indeed, are largely compatible with additive and specifically infinitesimal model assumptions. I discuss some of the history and genetic issues as applied to the science of livestock improvement, which has had and continues to have major spin-offs into ideas and applications in other areas.},
+  review        = {REVIEW PAPER
+
+COMMENTS
+-},
+  url           = {http://www.genetics.org/content/196/1/1.abstract},
+}
+
+@Book{fisher1930genetical,
+  title     = {The genetical theory of natural selection: a complete variorum edition},
+  publisher = {Oxford University Press},
+  year      = {1930},
+  author    = {Fisher, Ronald Aylmer},
+  abstract  = {RA Fisher's classic The Genetical Theory of Natural Selection was first published by the 
+Oxford University Press in 1930. It was the first attempt to assess and explain Darwin's 
+evolutionary theories in terms of the genetic processes underlying them, and was also 
+original in being the first book to establish a firm theoretical basis for evolution. Since then, it 
+has become a classic text in evolutionary biology, with Fisher hailed as one of the greatest},
+  keywords  = {rank4},
+  review    = {READ THIS BOOK!!},
+}
+
+@Article{AllenOrr2000,
+  author        = {Allen Orr, H.},
+  title         = {ADAPTATION AND THE COST OF COMPLEXITY},
+  journal       = {Evolution},
+  year          = {2000},
+  volume        = {54},
+  number        = {1},
+  pages         = {13--20},
+  month         = jan,
+  issn          = {0014-3820},
+  __markedentry = {[dirge:1]},
+  abstract      = {Abstract Adaptation is characterized by the movement of a population toward a many-character optimum, movement that results in an increase in fitness. Here I calculate the rate at which fitness increases during adaptation and describe the curve giving fitness versus time as a population approaches an optimum in Fisher's model of adaptation. The results identify several factors affecting the speed of adaptation. One of the most important is organismal complexity?complex organisms adapt more slowly than simple ones when using mutations of the same phenotypic size. Thus, as Fisher foresaw, organisms pay a kind of cost of complexity. However, the magnitude of this cost is considerably larger than Fisher's analysis suggested. Indeed the rate of adaptation declines at least as fast as n?1, where n is the number of independent characters or dimensions comprising an organism. The present results also suggest that one can define an effective number of dimensions characterizing an adapting species. Corresponding Editor: A. Caballero
+Abstract Adaptation is characterized by the movement of a population toward a many-character optimum, movement that results in an increase in fitness. Here I calculate the rate at which fitness increases during adaptation and describe the curve giving fitness versus time as a population approaches an optimum in Fisher's model of adaptation. The results identify several factors affecting the speed of adaptation. One of the most important is organismal complexity?complex organisms adapt more slowly than simple ones when using mutations of the same phenotypic size. Thus, as Fisher foresaw, organisms pay a kind of cost of complexity. However, the magnitude of this cost is considerably larger than Fisher's analysis suggested. Indeed the rate of adaptation declines at least as fast as n?1, where n is the number of independent characters or dimensions comprising an organism. The present results also suggest that one can define an effective number of dimensions characterizing an adapting species. Corresponding Editor: A. Caballero},
+  comment       = {doi: 10.1554/0014-3820(2000)054[0013:AATCOC]2.0.CO;2},
+  doi           = {10.1554/0014-3820(2000)054[0013:aatcoc]2.0.co;2},
+  publisher     = {The Society for the Study of Evolution},
+  url           = {https://doi.org/10.1554/0014-3820(2000)054[0013:AATCOC]2.0.CO;2},
+}
+
+@Article{Felsenstein1979,
+  author        = {Felsenstein, Joseph},
+  title         = {EXCURSIONS ALONG THE INTERFACE BETWEEN DISRUPTIVE AND STABILIZING SELECTION},
+  journal       = {Genetics},
+  year          = {1979},
+  volume        = {93},
+  number        = {3},
+  pages         = {773},
+  month         = nov,
+  __markedentry = {[dirge:1]},
+  abstract      = {When a polygenic character is exposed to natural selection in which the curve giving fitness as a function of phenotype is a mixture of two Gaussian (normal) curves, the population may respond either by evolving to a specialized phenotype near one of the two optimum phenotypes, or by evolving to a generalized phenotype between them. Using approximate multivariate normal distribution methods, it is demonstrated that the condition for selection to result in a specialized phenotype is that the curve of fitness as a function of breeding value be bimodal. This implies that a specialized phenotype is more likely to result the higher is the heritability of the character. Numerical iterations of four-locus models and algebraic analysis of a symmetric two-locus model generally support the conclusions of the normal approximation.},
+  url           = {http://www.genetics.org/content/93/3/773.abstract},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
