@@ -37,31 +37,6 @@ There are two schools of thought among quantitative geneticists that differ in t
 
 We focus on asexual micro-organisms that lack recombination and examine how the evolution of their traits is affected by linkage. A variety of organisms fall under this category, which includes many single celled Eukaryotes and a variety of bacteria (cite work). In this setting, linkage disequilibria is entirely determined by the combined action of mutations, selection and drift. Standard results in population genetics demonstrate that the amount of linkage disequilibria between various alleles will depend on the beneficial mutation rate ($U_b$), the selection coefficient ($s$), and strength of drift measured by population’s size ($N$). Logically, one expects variances and covariances arising from linkage to also depend on the population’s parameters, but a general expression that details this explicit relationship has not been uncovered. The majority of results concerning linkage comes from experiments with inbred lines in plants, stemming from the Birmingham school, and that have limited application to populations of interest to us Jinks and Mather (1981).\par
 
-In the case of adaptive traits, with fitness conferred taken as their quantitative measure, the relationship between variance and the population parameters is known explicitly. The work of Desai and Fisher (2007) provide the variance in fitness explicitly shown to work of gives the variance of adaptive traits in terms of the population’s parameters $N$, $U_b$, and $s$. The variance of traits and the covariance between them are estimated, and assume that the underlying traits satisfy basic assumptions, such as being polygenic. The variance in fitness was not something that could be determine from populations parameters, until only recently. Desai and Fisher’s work (2007) provides the rate of adaptation of the population in terms of its parameters,
-\begin{equation} 
-v =s^2  \frac{2 \ln(Ns)-\ln(s/U_b)}{\ln^2(s/U_b)}
-\end{equation}  
-and since the rate of adaptation is the variance of fitness ($v=\sigma^2$).  If we consider a second adaptive trait evolving concurrently, with identical mutation rate and selection coefficient, then the rate of adaptation in each trait should be half of the total rate of adaptation $v(2U_b)$ since evolution in each contributes equally the overall adaptation of the population. A simple application of Desai and Fisher’s formula quickly shows that the rate of adaptation for a single trait is reduced when a second trait is considered since
-\[ 1/2  v(2U)<v(U) \]
-Naturally, we should expect such a result since we have doubled the mutation rate, and consequently, increased the amount of clonal interference that occurs within the population. However, the mere fact that we are also considering a second trait indicates that there to this picture than this.\par
-
-The rate of adaptation in one trait is determined by its variance and covariance with other traits, and this relation is expressed in the breeder’s equation. In our situation, both quantitative traits are adaptive and we measure them by the fitness they endow the organism. Consequently, the rate of fitness increase of the focal trait $v_1$ must be related
-\begin{equation}
-v_1=\sigma_1^2+\sigma_{1,2}
-\end{equation}
-
-\section*{Results}
-Discuss results here
-{\centering
-\includegraphics[width=1.0\linewidth]{fig2_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1}
-\captionof{figure}{Mean rates of adaptation, variance and covariance.} \label{fig.1}}
-
-{\centering
-\includegraphics[width=1.0\linewidth]{fig3_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1}
-\captionof{figure}{Variance and covariance fluctuations over time.}
-\label{fig.2}}
-
-\section*{Discussion}
 \section*{Methods}
 We consider a population with fixed size N, in which individuals have two traits that contribute to its fitness, its growth rate, and which evolve through beneficial mutations; deleterious mutations are not considered.  The beneficial mutation rate for each trait is denoted $U_k$ (trait $k=1,2$), and each increases trait $k$’s contribution to relative fitness by $s_k$.  We can express an individual fitness as 
 \[ r_{ij}=r+i s_1+j s_2 \]
@@ -104,7 +79,34 @@ Linkage disequilibria continually arises throughout the adaptation process and l
 \end{equation}
 and it becomes evident that linkage disequilibrium directly affects the evolution of the two traits. We can also note from this expression that making a distinction between alleles that yields the same fitness advantage does not change the covariance.
 
+In the case of adaptive traits, with fitness conferred taken as their quantitative measure, the relationship between variance and the population parameters is known explicitly. The work of Desai and Fisher (2007) provide the variance in fitness explicitly shown to work of gives the variance of adaptive traits in terms of the population’s parameters $N$, $U_b$, and $s$. The variance of traits and the covariance between them are estimated, and assume that the underlying traits satisfy basic assumptions, such as being polygenic. The variance in fitness was not something that could be determine from populations parameters, until only recently. Desai and Fisher’s work (2007) provides the rate of adaptation of the population in terms of its parameters,
+\begin{equation} 
+v =s^2  \frac{2 \ln(Ns)-\ln(s/U_b)}{\ln^2(s/U_b)}
+\end{equation}  
+and since the rate of adaptation is the variance of fitness ($v=\sigma^2$).  If we consider a second adaptive trait evolving concurrently, with identical mutation rate and selection coefficient, then the rate of adaptation in each trait should be half of the total rate of adaptation $v(2U_b)$ since evolution in each contributes equally the overall adaptation of the population. A simple application of Desai and Fisher’s formula quickly shows that the rate of adaptation for a single trait is reduced when a second trait is considered since
+\[ 1/2  v(2U)<v(U) \]
+Naturally, we should expect such a result since we have doubled the mutation rate, and consequently, increased the amount of clonal interference that occurs within the population. However, the mere fact that we are also considering a second trait indicates that there to this picture than this.\par
+
+The rate of adaptation in one trait is determined by its variance and covariance with other traits, and this relation is expressed in the breeder’s equation. In our situation, both quantitative traits are adaptive and we measure them by the fitness they endow the organism. Consequently, the rate of fitness increase of the focal trait $v_1$ must be related
+\begin{equation}
+v_1=\sigma_1^2+\sigma_{1,2}
+\end{equation}
+
 Discuss the details of the simulations.
+
+\section*{Results}
+Discuss results here
+{\centering
+\includegraphics[width=1.0\linewidth]{fig2_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1}
+\captionof{figure}{Mean rates of adaptation, variance and covariance.} \label{fig.1}}
+
+{\centering
+\includegraphics[width=1.0\linewidth]{fig3_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1}
+\captionof{figure}{Variance and covariance fluctuations over time.}
+\label{fig.2}}
+
+\section*{Discussion}
+
 
 \bibliographystyle{plain}
 \bibliography{biblio}
