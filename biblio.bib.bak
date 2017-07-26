@@ -1969,4 +1969,49 @@ Abstract Adaptation is characterized by the movement of a population toward a ma
   url           = {http://www.genetics.org/content/93/3/773.abstract},
 }
 
+@Article{Gavrilets1997,
+  author        = {Gavrilets, Sergey},
+  title         = {Evolution and speciation on holey adaptive landscapes},
+  year          = {1997},
+  volume        = {12},
+  number        = {8},
+  pages         = {307--312},
+  month         = aug,
+  issn          = {0169-5347},
+  __markedentry = {[dirge:1]},
+  abstract      = {Sewall Wright's powerful metaphor of rugged adaptive landscapes has formed the basis for discussing evolution and speciation for more than 60 years. However, this metaphor, with its emphasis on adaptive peaks and valleys, is to a large degree a reflection of our three-dimensional experience. Both genotypes and phenotypes of biological organisms differ in numerous characteristics, and, thus, the dimension of ‘real’ adaptive landscapes is much larger than three. Properties of multidimensional adaptive landscapes are very different from those of low dimension. Consequently, something that is seen as a theoretical challenge in a low-dimensional case might be a trivial problem in a multidimensional context and vice versa. In particular, the problem of how a population crosses an adaptive valley on its way from one adaptive peak to another, which Wright attempted to solve with his shifting balance theory, may be non-existent. A new framework is emerging for deepening our understanding of evolution and speciation, which provides a plausible multidimensional alternative to the conventional view of rugged adaptive landscapes.},
+  url           = {http://www.sciencedirect.com/science/article/pii/S0169534797010987},
+}
+
+@Article{sgro2004genetic,
+  author        = {Sgro, CM and Hoffmann, AA},
+  title         = {Genetic correlations, tradeoffs and environmental variation},
+  journal       = {Heredity},
+  year          = {2004},
+  volume        = {93},
+  number        = {3},
+  pages         = {241},
+  __markedentry = {[dirge:2]},
+  abstract      = {Negative genetic correlations among traits are often used as evidence for tradeoffs that can influence evolutionary trajectories in populations. While there may be evidence for negative correlations within a particular environment, genetic correlations can shift when populations encounter different environmental conditions. Here we review the evidence for these shifts by focusing on experiments that have examined genetic correlations in more than one environment. In many studies, there are significant changes in correlations and these can even switch sign across environments. This raises questions about the validity of deducing genetic constraints from studies in one environment and suggests that the interaction between environmental conditions and the expression of genetic covariation is an important avenue for future work.},
+  publisher     = {Nature Publishing Group},
+}
+﻿
+
+@Article{BLOWS2007,
+  author        = {BLOWS, M. W.},
+  title         = {A tale of two matrices: multivariate approaches in evolutionary biology},
+  journal       = {Journal of Evolutionary Biology},
+  year          = {2007},
+  volume        = {20},
+  number        = {1},
+  pages         = {1--8},
+  issn          = {1420-9101},
+  __markedentry = {[dirge:1]},
+  abstract      = {Two symmetric matrices underlie our understanding of microevolutionary change. The first is the matrix of nonlinear selection gradients (γ) which describes the individual fitness surface. The second is the genetic variance–covariance matrix (G) that influences the multivariate response to selection. A common approach to the empirical analysis of these matrices is the element-by-element testing of significance, and subsequent biological interpretation of pattern based on these univariate and bivariate parameters. Here, I show why this approach is likely to misrepresent the genetic basis of quantitative traits, and the selection acting on them in many cases. Diagonalization of square matrices is a fundamental aspect of many of the multivariate statistical techniques used by biologists. Applying this, and other related approaches, to the analysis of the structure of γ and G matrices, gives greater insight into the form and strength of nonlinear selection, and the availability of genetic variance for multiple traits.},
+  doi           = {10.1111/j.1420-9101.2006.01164.x},
+  keywords      = {genetic constraints, genetic variance-covariance matrix, nonlinear selection, stabilizing selection},
+  publisher     = {Blackwell Publishing Ltd},
+  url           = {http://dx.doi.org/10.1111/j.1420-9101.2006.01164.x},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
