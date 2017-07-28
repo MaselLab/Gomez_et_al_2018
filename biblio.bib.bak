@@ -2014,4 +2014,24 @@ Abstract Adaptation is characterized by the movement of a population toward a ma
   url           = {http://dx.doi.org/10.1111/j.1420-9101.2006.01164.x},
 }
 
+@Article{Otto2009,
+  author        = {Otto, Sarah P.},
+  title         = {The Evolutionary Enigma of Sex.},
+  journal       = {The American Naturalist},
+  year          = {2009},
+  volume        = {174},
+  number        = {S1},
+  pages         = {S1--S14},
+  month         = jul,
+  issn          = {0003-0147},
+  __markedentry = {[dirge:]},
+  abstract      = {Abstract: Sexual reproduction entails a number of costs, and yet the majority of eukaryotes engage in sex, at least occasionally. In this article, I review early models to explain the evolution of sex and why they failed to do so. More recent efforts have attempted to account for the complexities of evolution in the real world, with selection that varies over time and space, with differences among individuals in the tendency to reproduce sexually, and with populations that are limited in size. These recent efforts have clarified the conditions that are most likely to explain why sex is so common, as exemplified by the articles in this symposium issue of the American Naturalist.
+Abstract: Sexual reproduction entails a number of costs, and yet the majority of eukaryotes engage in sex, at least occasionally. In this article, I review early models to explain the evolution of sex and why they failed to do so. More recent efforts have attempted to account for the complexities of evolution in the real world, with selection that varies over time and space, with differences among individuals in the tendency to reproduce sexually, and with populations that are limited in size. These recent efforts have clarified the conditions that are most likely to explain why sex is so common, as exemplified by the articles in this symposium issue of the American Naturalist.},
+  comment       = {doi: 10.1086/599084},
+  doi           = {10.1086/599084},
+  keywords      = {rank3},
+  publisher     = {The University of Chicago Press},
+  url           = {https://doi.org/10.1086/599084},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
