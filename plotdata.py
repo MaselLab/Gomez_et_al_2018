@@ -10,6 +10,7 @@ import pickle
 import scipy as sp
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.stats import multivariate_normal
 
 # set parameters of simulation and create required variables
 N=1e9; s1=1e-2; s2=1e-2; U1=1e-5; U2=1e-5;
@@ -27,6 +28,48 @@ def get_sample_window(times,start_time,end_time):
         if times[end_indx] <= end_time:
             end_indx = end_indx + 1
     return [start_indx,end_indx]
+
+def orient_my_2D_distr():
+    
+    return flipped_arry
+
+def generate_2D_discrete_gauss(distr_grid, min_fit_classes,
+                                     mean_fit_class, cov_matrix, tot_pop_size):
+    # distr_grid should be a square array with 1's where the subpop is nonzero
+    # mean indx set (i,j) represents the mean of the gaussian
+
+    [genotypes,abundances] = [[],[]]    
+    
+    for i in range(len(distr_grid[:,0])):
+        for j in range(len(distr_grid[0,:])):
+            if(distr_grid[i,j] != 0):
+                genotypes = genotypes+[[i+min_fit_classes[0],
+                                                j+min_fit_classes[1]]]
+                abundances = abundances+[multivariate_normal.pdf([i,j],
+                                                mean_fit_class,cov_matrix)]
+    
+    abundances = [(tot_pop_size/sum(abundances))*abundances[i] 
+                                            for i in range(len(abundances))]
+    return [genotypes,abundances]
+
+def get_2D_distr(genotypes,abundances,box_dim):
+    #box_dim = [[boxwidth1 (> max_geno1-min_geno1),min indx1 = min_fit_class1],
+    #               ...,[boxwidth2 (> max_geno2-min_geno2),min indx2 = min_fit_class2,...]]
+    tot_pop_size = sum(abundances)
+    
+    dim1_data = [np.min([genotypes[i][0] for i in range(len(abundances))]),
+                 np.max([genotypes[i][0] for i in range(len(abundances))])]
+    dim2_data = [np.min([genotypes[i][1] for i in range(len(abundances))]),
+                 np.max([genotypes[i][1] for i in range(len(abundances))])]
+                 
+    my_distr = np.zeros([box_dim[0][0],box_dim[1][0]])
+        
+    for i in range(len(abundances)):
+        indx1 = genotypes[i][0] - dim1_data[1] + box_dim[0][1]
+        indx2 = genotypes[i][1] - dim2_data[1] + box_dim[1][1]
+        my_distr[indx1,indx2] = abundances[i]/tot_pop_size
+        
+    return [np.flipud(my_distr.transpose()),dim1_data,dim2_data]
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------

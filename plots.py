@@ -307,4 +307,43 @@ ax5.set_ylabel("Trait 2 Mutations")
 ax5.set_zlabel("Fitness")
 
 
-# second animation
+# Grid Plot for 2D distribution
+
+min_fit_classes = [0,0]
+mean_fit_class = [7,7]
+cov_matrix = [[1,0],[0,1]]
+cut_off = 0.0001
+distr_grid = np.zeros([16,16])
+box_dim = [[20,7],[20,7]]
+[arry_dim1,arry_dim2]=[np.shape(distr_grid[:,0])[0],np.shape(distr_grid[0,:])[0]]
+
+for i in range(arry_dim1):
+    for j in range(arry_dim2):
+        if(multivariate_normal.pdf([i,j],mean_fit_class,cov_matrix) >= cut_off):
+            distr_grid[j,i] = 1
+            
+[genotypes,abundances] = generate_2D_discrete_gauss(distr_grid, 
+                                min_fit_classes,mean_fit_class, cov_matrix, N)
+
+[distr_grid,dim1,dim2] = get_2D_distr(genotypes,abundances,box_dim)
+
+fig, ax = plt.subplots()
+
+image = np.ones(np.shape(distr_grid)) - distr_grid
+#image = np.asarray([[.1,0,1],[.1,0,1],[.1,0,1]])
+#image = np.asarray([[.1,.1,.1],[0,0,0],[1,1,1]])
+
+ax.imshow(image, cmap=plt.cm.gray, interpolation='nearest')
+ax.set_title('dropped spines')
+
+# Move left and bottom spines outward by 10 points
+ax.spines['left'].set_position(('outward', 10))
+ax.spines['bottom'].set_position(('outward', 10))
+# Hide the right and top spines
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+# Only show ticks on the left and bottom spines
+ax.yaxis.set_ticks_position('left')
+ax.xaxis.set_ticks_position('bottom')
+
+plt.show()
