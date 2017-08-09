@@ -63,13 +63,17 @@ heredity. As he not,�d, this demands statistical analysis of phenotypic variat
 }
 
 @Article{phillips1989visualizing,
-  author    = {Phillips, Patrick C and Arnold, Stevan J},
-  title     = {Visualizing multivariate selection},
-  journal   = {Evolution},
-  year      = {1989},
-  pages     = {1209--1222},
-  abstract  = {Recent developments in quantitative-genetic theory have shown that natural selection can be viewed as the multivariate relationship between fitness and phenotype. This relationship  can be described by a multidimensional surface depicting fitness as a function of phenotypic traits.  We examine the connection between this surface and the coefficients of phenotypic selection that  can be estimated by multiple regression and show how the interpretation of multivariate selection  can be facilitated through the use of the method of canonical analysis. The results from this analysis can be used to visualize the surface implied by a set of selection coefficients. Such a visualization  provides a compact summary of selection coefficients, can aid in the comparison of selection surfaces, and can help generate testable hypotheses as to the adaptive significance of the traits under study. Further, we discuss traditional definitions of directional, stabilizing, and disruptive selection and conclude that selection may be more usefully classified into two general modes, directional and nonlinear selection, with stabilizing and disruptive selection as special cases of nonlinear selection.},
-  publisher = {JSTOR},
+  author        = {Phillips, Patrick C and Arnold, Stevan J},
+  title         = {Visualizing multivariate selection},
+  journal       = {Evolution},
+  year          = {1989},
+  pages         = {1209--1222},
+  __markedentry = {[dirge:3]},
+  abstract      = {Recent developments in quantitative-genetic theory have shown that natural selection can be viewed as the multivariate relationship between fitness and phenotype. This relationship  can be described by a multidimensional surface depicting fitness as a function of phenotypic traits.  We examine the connection between this surface and the coefficients of phenotypic selection that  can be estimated by multiple regression and show how the interpretation of multivariate selection  can be facilitated through the use of the method of canonical analysis. The results from this analysis can be used to visualize the surface implied by a set of selection coefficients. Such a visualization  provides a compact summary of selection coefficients, can aid in the comparison of selection surfaces, and can help generate testable hypotheses as to the adaptive significance of the traits under study. Further, we discuss traditional definitions of directional, stabilizing, and disruptive selection and conclude that selection may be more usefully classified into two general modes, directional and nonlinear selection, with stabilizing and disruptive selection as special cases of nonlinear selection.},
+  publisher     = {JSTOR},
+  review        = {Comments
+-Types of fitness surfaces recognized in literature: (1) individual selection surface, (2) best quadratic approximation to individual selection surface, (3) the adaptive landscapes
+-},
 }
 
 @Article{lande1979quantitative,
@@ -97,6 +101,8 @@ heredity. As he not,�d, this demands statistical analysis of phenotypic variat
   issn      = {00143820, 15585646},
   abstract  = {Multivariate statistical methods are derived for measuring selection solely from observed changes in the distribution of phenotypic characters in a population within a generation. Selective effects are readily detectable in characters that do not change with age, such as meristic traits or adult characters in species with determinate growth. Ontogenetic characters, including allometric growth rates, can be analyzed in longitudinal studies where individuals are followed through time. Following an approach pioneered by Pearson (1903), this analysis helps to reveal the target(s) of selection, and to quantify its intensity, without identifying the selective agent(s). By accounting for indirect selection through correlated characters, separate forces of directional and stabilizing (or disruptive) selection acting directly on each character can be measured. These directional and stabilizing selection coefficients are respectively the parameters that describe the best linear and quadratic approximations to the selective surface of individual fitness as a function of the phenotypic characters. The theory is illustrated by estimating selective forces on morphological characters influencing survival in pentatomid bugs and in house sparrows during severe weather conditions.},
   publisher = {[Society for the Study of Evolution, Wiley]},
+  review    = {Notes
+-correlation between trais selection on a particular character produces not only},
   url       = {http://www.jstor.org/stable/2408842},
 }
 
