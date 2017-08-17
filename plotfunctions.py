@@ -143,24 +143,21 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
                     
         # plot figure 1 with general with constructed discrete gaussian
         fig2, ax2 = plt.subplots(1,1,figsize=[10,8])
-#        fig2.subplots_adjust(bottom=0.25,left=0.25)
 
-        fit_distr_2d = ax2.pcolor(distr_grid,cmap=plt.cm.gray_r)
-
+        fit_distr_2d = ax2.pcolormesh(distr_grid,cmap=plt.cm.gray_r)
         cbar = plt.colorbar(fit_distr_2d)
-        ax2.axis('tight')
-        
+        ax2.axis('tight')        
         ax2.set_xticks(np.arange(distr_grid.shape[1])+0.5)
-        ax2.set_yticks(np.arange(distr_grid.shape[0])+0.5)
-        
+        ax2.set_yticks(np.arange(distr_grid.shape[0])+0.5)        
         ax2.set_xticklabels(class_xlabels[1:],rotation=90)
-        ax2.set_yticklabels(class_ylabels[1:])
-        
+        ax2.set_yticklabels(class_ylabels[1:])        
         ax2.set_xlabel('Beneficial Mutaitons Trait 1',fontsize=18,labelpad=20)
         ax2.set_ylabel('Beneficial Mutaitons Trait 2',fontsize=18,labelpad=10)
-        ax2.tick_params(axis='both',labelsize=14)
-        
+        ax2.tick_params(axis='both',labelsize=14)        
         cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
+
+#        ax2.scatter([45],[33])
+#        fit_line = plt.plot([i+40 for i in range(13)],[-i+38 for i in range(13)],ls="--", c=".3")
 
         fig2.savefig('./'+folder_location+'figures/'+fname+data_name+'.pdf')
         
