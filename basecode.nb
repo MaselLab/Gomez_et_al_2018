@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    233551,       5466]
-NotebookOptionsPosition[    232375,       5432]
-NotebookOutlinePosition[    233157,       5457]
-CellTagsIndexPosition[    233114,       5454]
+NotebookDataLength[    236623,       5554]
+NotebookOptionsPosition[    235403,       5519]
+NotebookOutlinePosition[    236185,       5544]
+CellTagsIndexPosition[    236142,       5541]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -5428,7 +5428,94 @@ Cell[BoxData[
    3.688741355077259*^9, 3.688741356597086*^9}, {3.699369882253406*^9, 
    3.699369887437744*^9}, {3.700586448785181*^9, 3.7005864783296003`*^9}, {
    3.700586641037364*^9, 3.700586656854373*^9}, {3.7005867333912363`*^9, 
-   3.7005867487669687`*^9}, {3.7005871437786703`*^9, 3.700587184067267*^9}}]
+   3.7005867487669687`*^9}, {3.7005871437786703`*^9, 3.700587184067267*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"--", 
+    RowBox[{"--", 
+     RowBox[{"--", 
+      RowBox[{"--", 
+       RowBox[{"--", 
+        RowBox[{"--", 
+         RowBox[{"--", 
+          RowBox[{"--", 
+           RowBox[{"--", 
+            RowBox[{"--", 
+             RowBox[{"--", 
+              RowBox[{"--", 
+               RowBox[{"--", 
+                RowBox[{"--", 
+                 RowBox[{"--", 
+                  RowBox[{"--", 
+                   RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{
+                    "--", "-"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}\
+]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}\
+], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"simulateNoseEstablishment", "[", 
+    RowBox[{"sol_", ",", "U_", ",", "s_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "mutants", "}"}], ","}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"simulate", " ", "apearance", " ", "of", " ", "mutants"}], " ", 
+     "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "simulate", " ", "growth", " ", "of", " ", "current", " ", "mutants"}], 
+     "*)"}], "\[IndentingNewLine]", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7119116168569317`*^9, 3.711911661105701*^9}, {
+  3.711911711474403*^9, 3.7119117929715014`*^9}}]
 },
 ScreenStyleEnvironment->"Condensed",
 WindowSize->{1598, 823},
@@ -5467,7 +5554,8 @@ Cell[127653, 3293, 16790, 386, 751, "Input"],
 Cell[144446, 3681, 32431, 717, 1499, "Input"],
 Cell[176880, 4400, 5322, 141, 219, "Input"],
 Cell[182205, 4543, 3527, 100, 264, "Input"],
-Cell[185735, 4645, 46636, 785, 1350, "Input"]
+Cell[185735, 4645, 46636, 785, 1317, "Input"],
+Cell[232374, 5432, 3025, 85, 129, "Input"]
 }
 ]
 *)

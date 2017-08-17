@@ -20,7 +20,7 @@ v2U_thry = 0.5*s1*s1*(2*np.log(N*s1)-np.log(s1/(2*U1)))/((np.log(s1/(2*U1)))**2)
 tau_est = 0.5*s1/v2U_thry
 
 # section of code for processing new data from Mathematica simulations
-data_name = '_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp2'
+data_name = '_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1'
 #folder_location = 'Documents/kgrel2d/'  # use this location in linux
 folder_location = ''     # use this location if windows
 [times,genotypes,abundances] = [[],[],[]]
