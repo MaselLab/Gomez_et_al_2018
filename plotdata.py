@@ -12,7 +12,7 @@ import numpy as np
 import copy as cpy
 
 # set parameters of simulation and create required variables
-[N,s1,s2,U1,U2] = [1e9,1e-2,1e-2,1e-5,1e-5];
+[N,s1,s2,U1,U2] = [1e9,1e-2,1e-2,1e-5,1e-5]
 
 # calculate desai and fisher (2007) theoretical "v" and "tau_est"
 vU_thry = s1*s1*(2*np.log(N*s1)-np.log(s1/(1*U1)))/((np.log(s1/(1*U1)))**2)

@@ -9,6 +9,7 @@ Library of functions used in plots.py and plotdata.py
 #--------FUNCTIONS REQUIRE PACKAGES LISTED:------------------------------------
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.stats import multivariate_normal
+from numpy import inf
 import pickle
 import matplotlib.pyplot as plt
 import scipy as sp
@@ -53,13 +54,14 @@ def get_2D_distr(genotypes,abundances,box_dim):
 #           [[width1,margin1],[width2,margin2]]
 # returns: an array whose elements are the abundances of the fit classes
 
-    tot_pop_size = sum(abundances)
+    tot_pop_size = sum(abundances[0])  # be careful with your sums of arrays!!!
     
     dim1_data = [np.min(genotypes[:,0]), np.max(genotypes[:,0])]
                  
     dim2_data = [np.min(genotypes[:,1]), np.max(genotypes[:,1])]
                  
-    my_distr = np.zeros([np.max([box_dim[0][0],box_dim[1][0]]),np.max([box_dim[0][0],box_dim[1][0]])])
+    my_distr = np.zeros([np.max([box_dim[0][0],box_dim[1][0]]),
+                         np.max([box_dim[0][0],box_dim[1][0]])])
         
     for i in range(len(genotypes)):
         indx1 = genotypes[i][0] - dim1_data[0] + box_dim[0][1]
@@ -69,9 +71,11 @@ def get_2D_distr(genotypes,abundances,box_dim):
     return [my_distr,dim1_data,dim2_data]
 
 # -----------------------------------------------------------------------------
-def generate_figure(figNum,data_name,folder_location):
+def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param,fname):
 # figure 1: representation of two-dimensional distribution  (no data required)
-        if(figNum == 1):
+    [N,s1,s2,U1,U2] = pop_param
+    
+    if(figNum == 1):
         
         # set up distribution data for the figure
         [min_fit_clss,mean_fit_clss, cov_mtrx, box_dim] = [[0,0],[7,7],[[1,0],[0,1]],[[20,7],[20,7]]]
@@ -104,11 +108,10 @@ def generate_figure(figNum,data_name,folder_location):
         ax1.yaxis.set_ticks_position('left')
         ax1.xaxis.set_ticks_position('bottom')
         
-        plt.show()
-        fig1.savefig('./'+folder_location+'figures/fig2.pdf')
+        fig1.savefig('./'+folder_location+'figures/'+fname+data_name+'.pdf')
         
-        del min_fit_clss, mean_fit_clss, cov_mtrx, box_dim
-        del cut_off, distr_grid, arry_dim1, arry_dim2
+        del min_fit_clss, mean_fit_clss, cov_mtrx, box_dim, cut_off
+        del distr_grid, arry_dim1, arry_dim2, fig1, ax1, N, s1, s2, U1, U2
 
 # figure 2: plot of sampled two dimensional distribution from simulated data        
     if(figNum == 2):
@@ -118,25 +121,20 @@ def generate_figure(figNum,data_name,folder_location):
         pickle_file = open(pickle_file_name,'rb') 
         [times,genotypes,abundances] = pickle.load(pickle_file)
         pickle_file.close()
-
-        pickle_file_name = './'+folder_location+'data/pythondata/distrStats'+data_name+'.pickle'
-        pickle_file = open(pickle_file_name,'rb') 
-        [times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry] = pickle.load(pickle_file)
-        pickle_file.close()
         
         # change the index to plot a different distribution
-        genotypes = genotypes[13630]
-        abundances = abundances[13630]    
+        snapshot_indx = get_sample_window(times,sim_start,sim_start)[0]
+        genotypes = genotypes[snapshot_indx]
+        abundances = abundances[snapshot_indx]    
         
         fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,
                                  np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
                                  
-        # use time index indx = 13495
+        # use time index indx = 13630
         box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
 
         [distr_grid,dim1_data,dim2_data] = get_2D_distr(genotypes,abundances,box_dim)
 
-#        image = np.ones(np.shape(distr_grid)) - distr_grid
         distr_grid = np.log10(N*distr_grid)
         distr_grid[distr_grid == -inf] = 0
 
@@ -144,47 +142,30 @@ def generate_figure(figNum,data_name,folder_location):
         class_ylabels = [np.min(genotypes[:,1])-2+i for i in range(fit_clss_width+1)]
                     
         # plot figure 1 with general with constructed discrete gaussian
-        fig2, ax2 = plt.subplots()
-        fig2.subplots_adjust(bottom=0.25,left=0.25)
+        fig2, ax2 = plt.subplots(1,1,figsize=[10,8])
+#        fig2.subplots_adjust(bottom=0.25,left=0.25)
 
         fit_distr_2d = ax2.pcolor(distr_grid,cmap=plt.cm.gray_r)
-        cbar = plt.colorbar(fit_distr_2d)
 
-        ax2.set_title('Two Dimensional Fitness Distribution')
+        cbar = plt.colorbar(fit_distr_2d)
         ax2.axis('tight')
         
-        ax2.set_xticks(np.arange(distr_grid.shape[1]) + 0.5, minor=False)
-        ax2.set_yticks(np.arange(distr_grid.shape[0]) + 0.5, minor=False)
+        ax2.set_xticks(np.arange(distr_grid.shape[1])+0.5)
+        ax2.set_yticks(np.arange(distr_grid.shape[0])+0.5)
         
         ax2.set_xticklabels(class_xlabels[1:],rotation=90)
         ax2.set_yticklabels(class_ylabels[1:])
         
-        ax2.set_xlabel('Beneficial Mutaitons Trait 1')
-        ax2.set_ylabel('Beneficial Mutaitons Trait 2')
+        ax2.set_xlabel('Beneficial Mutaitons Trait 1',fontsize=18,labelpad=20)
+        ax2.set_ylabel('Beneficial Mutaitons Trait 2',fontsize=18,labelpad=10)
+        ax2.tick_params(axis='both',labelsize=14)
+        
+        cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
 
-        cbar.ax.set_xlabel('$\textbf{\log_{10}}$ of Abundances', rotation=90)
-
-        fig2.show()
+        fig2.savefig('./'+folder_location+'figures/'+fname+data_name+'.pdf')
         
-#        ax2.imshow(image, cmap=plt.cm.gray, interpolation='nearest')
-#        ax2.set_title('dropped spines')
-#        
-#        # Move left and bottom spines outward by 10 points
-#        ax2.spines['left'].set_position(('outward', 10))
-#        ax2.spines['bottom'].set_position(('outward', 10))
-#        # Hide the right and top spines
-#        ax2.spines['right'].set_visible(False)
-#        ax2.spines['top'].set_visible(False)
-#        # Only show ticks on the left and bottom spines
-#        ax2.yaxis.set_ticks_position('left')
-#        ax2.xaxis.set_ticks_position('bottom')
-        
-#        plt.show()
-        fig2.savefig('./'+folder_location+'figures/fig2.pdf')
-        
-        del min_fit_clss, mean_fit_clss, cov_mtrx, box_dim
-        del cut_off, distr_grid, arry_dim1, arry_dim2
-        
+        del times, genotypes, abundances, fit_clss_width, class_xlabels
+        del class_ylabels, fit_distr_2d, cbar, fig2, ax2, N, s1, s2, U1, U2
     
 # figure 3: plot of rate of adaptation, variances, covariance and their means
     
@@ -198,7 +179,7 @@ def generate_figure(figNum,data_name,folder_location):
         
         # select interval of simulation data that will be used for plot
         # reduce loaded data to subset corresponding to selected interval
-        [start_indx,end_indx] = get_sample_window(times,1e4,2e4)
+        [start_indx,end_indx] = get_sample_window(times,sim_start,sim_end)
         times = times[start_indx:end_indx]
         mean_fit = mean_fit[start_indx:end_indx]
         fit_var = fit_var[start_indx:end_indx]
@@ -218,7 +199,7 @@ def generate_figure(figNum,data_name,folder_location):
         
         # plot data for figure 2a and 2b 
         fig3a, ax3a = plt.subplots(1,1,figsize=[8,8])
-        ax3b = plt.twinx(ax2a)
+        ax3b = plt.twinx(ax3a)
         ax3a.plot(times,var1_avg,c="black",label='var($r_1|r_2$)=' + str(round(var1_avg[0],7)),linewidth=2.0,linestyle = '--')
         ax3a.plot(times,cov_avg,c="black",label='cov($r_1$,$r_2$)=' + str(round(cov_avg[0],7)),linewidth=2.0,linestyle = '-.')
         ax3a.plot(times,vU_thry*np.ones(np.shape(var1_avg)),c="black",label='var($r_1$)=' + str(round(vU_thry,7)),linewidth=2.0,linestyle = '-')        
@@ -238,11 +219,11 @@ def generate_figure(figNum,data_name,folder_location):
         ax3b.set_xlim((1e4,2e4))        
         ax3b.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
         ax3b.tick_params(axis='both',labelsize=14)
+
+        fig3a.savefig('./'+folder_location+'figures/'+fname+data_name+'.pdf')
         
-        plt.show()
-        fig3a.savefig('./'+folder_location+'figures/fig3'+data_name+'.pdf')
-        
-        del times, mean_fit, fit_var, fit_cov, pop_load, dcov_dt, vU_thry, v2U_thry
-        del rate_adpt1, rate_adpt2, var1_avg, var2_avg,cov_avg, rate_adpt1_avg, rate_adpt2_avg
+        del times, mean_fit, fit_var, fit_cov, pop_load, dcov_dt, vU_thry
+        del v2U_thry, rate_adpt1, rate_adpt2, var1_avg, var2_avg,cov_avg
+        del rate_adpt1_avg, rate_adpt2_avg, fig3a, ax3a, ax3b, N, s1, s2, U1, U2
         
     return None
