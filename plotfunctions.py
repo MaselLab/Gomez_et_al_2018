@@ -52,7 +52,7 @@ def get_1D_proj(genotypes,abundances,traitno):
         trait_min = np.min(genotypes[:,traitno-1])
         trait_max = np.max(genotypes[:,traitno-1])
     
-        trait_classes = [trait_min+i for i in range(trait_max-trait_min+1+6)]
+        trait_classes = [trait_min+i-3 for i in range(trait_max-trait_min+1+6)]
         trait_totals = [0 for i in range(trait_max-trait_min+1+6)]
     
         for i in range(len(genotypes[:,traitno-1])):
@@ -105,9 +105,7 @@ def get_2D_distr(genotypes,abundances,box_dim):
         print "Error with box dimensions"
         end()
     
-    print box_dim
     my_distr = np.zeros([box_dim[0][0],box_dim[1][0]])
-    print np.shape(my_distr)    
     
     for i in range(len(genotypes)):
         indx1 = genotypes[i][0] - dim1_data[0] + box_dim[0][1]
@@ -116,9 +114,6 @@ def get_2D_distr(genotypes,abundances,box_dim):
     
     xlabels = [(dim1_data[0] - box_dim[0][1]-1 + i) for i in range(box_dim[0][0]+1)]
     ylabels = [(dim2_data[0] - box_dim[1][1]-1 + i) for i in range(box_dim[1][0]+1)]
-    
-    print xlabels
-    print ylabels
     
     return [my_distr,xlabels,ylabels]
 
@@ -293,12 +288,8 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         genotypes = genotypes[snapshot_indx]
         abundances = abundances[snapshot_indx]   
         
-        [mu, sigma] = get_trait_mean_var(genotypes,abundances,traitno)
-        x = mu + sigma*np.random.randn(10000)
+        [mu, var] = get_trait_mean_var(genotypes,abundances,traitno)
         [trait_bins,trait_tot] = get_1D_proj(genotypes,abundances,traitno)
-        
-        print trait_bins
-        print trait_tot
         
 #        plt.bar(trait_bins1,trait_tot1,align='center')
 #        plt.bar(trait_bins2,trait_tot2,align='center')
@@ -312,16 +303,14 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         fig4, ax4 = plt.subplots(1,1,figsize=[8,8])
         
         # the histogram of the data
-        n, bins, patches = ax4.hist(trait_bins, len(trait_bins), normed=1, 
+        ax4.hist(trait_bins, len(trait_bins), normed=1, 
                                     facecolor='green', alpha=0.75, weights=trait_tot)
         
         # add a 'best fit' line
-        y = mlab.normpdf( bins, mu, sigma)
-        l = ax4.plot(bins, y, 'r--', linewidth=1)
-        
-        ax4.xlabel('Smarts')
-        ax4.ylabel('Probability')
-        ax4.title(r'$\mathrm{Histogram\ of\ IQ:}\ \mu=100,\ \sigma=15$')
+        x = np.asarray([np.min(trait_bins)+(np.max(trait_bins)-np.min(trait_bins))
+                            *i/100 for i in range(101)])
+        y = mlab.normpdf(x, mu, np.sqrt(var))
+        l = ax4.plot(x, y, 'r--', linewidth=1)
 #        ax4.axis([np.min(trait_bins), np.max(trait_bins), 0, 0.5])
         ax4.grid(True)
         
@@ -349,9 +338,6 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
 #        ax3b.tick_params(axis='both',labelsize=14)
 
         fig4.savefig('./'+folder_location+'figures/'+fname+data_name+'.pdf')
-
-        del times, genotypes, abundances, fit_clss_width, class_xlabels
-        del class_ylabels, fit_distr_2d, cbar, fig2, ax2, N, s1, s2, U1, U2                
 
 # figure 4: plot of normality of total relative fitness over time
     if (figNum == 5):
