@@ -19,11 +19,11 @@ folder_location = ''
 pop_param = [1e9,1e-2,1e-2,1e-5,1e-5]
 [sim_start,sim_end,snapshot,traitno] = [1e4,2e4,1.313e4,1]
 
-# generate figure 2. (parameters N=1e9, s1=s2=1e-2, U1=U2=1e-5)
-pltfun.generate_figure(2,data_name,folder_location,snapshot,snapshot,pop_param,'fig2-'+str(snapshot),traitno)
-
-# generate figure 3. (parameters N=1e9, s1=s2=1e-2, U1=U2=1e-5)
-pltfun.generate_figure(3,data_name,folder_location,sim_start,sim_end,pop_param,'fig3',traitno)
+## generate figure 2. (parameters N=1e9, s1=s2=1e-2, U1=U2=1e-5)
+#pltfun.generate_figure(2,data_name,folder_location,snapshot,snapshot,pop_param,'fig2-'+str(snapshot),traitno)
+#
+## generate figure 3. (parameters N=1e9, s1=s2=1e-2, U1=U2=1e-5)
+#pltfun.generate_figure(3,data_name,folder_location,sim_start,sim_end,pop_param,'fig3',traitno)
 
 # generate figure 4. (parameters N=1e9, s1=s2=1e-2, U1=U2=1e-5)
 pltfun.generate_figure(4,data_name,folder_location,snapshot,snapshot,pop_param,'fig4_tr'+str(1)+'t'+str(snapshot),1)

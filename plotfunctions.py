@@ -57,7 +57,7 @@ def get_1D_proj(genotypes,abundances,traitno):
     
         for i in range(len(genotypes[:,traitno-1])):
             indx = genotypes[i,traitno-1]-trait_min+3
-            trait_totals[indx] = trait_totals[indx]+abundances[0][indx] 
+            trait_totals[indx] = trait_totals[indx]+abundances[0][i] 
     
     if (traitno == 0):
         genotype_fitnesses = genotypes[:,0]+genotypes[:,1]
@@ -69,7 +69,7 @@ def get_1D_proj(genotypes,abundances,traitno):
     
         for i in range(len(genotype_fitnesses)):
             indx = genotype_fitnesses[i]-trait_min+3
-            trait_totals[indx] = trait_totals[indx]+abundances[0][indx] 
+            trait_totals[indx] = trait_totals[indx]+abundances[0][i] 
     
     return [trait_classes, trait_totals]
 
@@ -298,6 +298,7 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
                                     *i/100.0 for i in range(101)])
         y = mlab.normpdf(x, mu, np.sqrt(var))
         ax4.plot(x, y, 'r--', linewidth=1)
+        ax4.set_title('1D distribution trait '+str(traitno))
         fig4.savefig('./'+folder_location+'figures/'+fname+data_name+'.pdf')
 
 # figure 5: plot of normality test of distributions vs covariance
