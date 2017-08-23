@@ -283,63 +283,24 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         pickle_file.close()
         
         # change the index to plot a different distribution
-#        snapshot_indx = get_sample_window(times,snapshot,snapshot)[0]
         snapshot_indx = get_sample_window(times,sim_start,sim_start)[0]
         genotypes = genotypes[snapshot_indx]
         abundances = abundances[snapshot_indx]   
         
         [mu, var] = get_trait_mean_var(genotypes,abundances,traitno)
         [trait_bins,trait_tot] = get_1D_proj(genotypes,abundances,traitno)
-        
-#        plt.bar(trait_bins1,trait_tot1,align='center')
-#        plt.bar(trait_bins2,trait_tot2,align='center')
-#        plt.bar(trait_bins,trait_tot,align='center')
-
-#        plt.bar(trait_bins1,np.log10(trait_tot1),align='center')
-#        plt.bar(trait_bins2,np.log10(trait_tot2),align='center')
-#        plt.bar(trait_bins,np.log10(trait_tot),align='center')
-        
+                
         # plot data for figure 2a and 2b 
         fig4, ax4 = plt.subplots(1,1,figsize=[8,8])
-        
-        # the histogram of the data
         ax4.hist(trait_bins, len(trait_bins), normed=1, 
                                     facecolor='green', alpha=0.75, weights=trait_tot)
-        
-        # add a 'best fit' line
         x = np.asarray([np.min(trait_bins)+(np.max(trait_bins)-np.min(trait_bins))
-                            *i/100 for i in range(101)])
+                                    *i/100.0 for i in range(101)])
         y = mlab.normpdf(x, mu, np.sqrt(var))
-        l = ax4.plot(x, y, 'r--', linewidth=1)
-#        ax4.axis([np.min(trait_bins), np.max(trait_bins), 0, 0.5])
-        ax4.grid(True)
-        
-        plt.show()
-        
-#        ax3b = plt.twinx(ax3a)
-#        ax3a.plot(times,var1_avg,c="black",label='var($r_1|r_2$)=' + str(round(var1_avg[0],7)),linewidth=2.0,linestyle = '--')
-#        ax3a.plot(times,cov_avg,c="black",label='cov($r_1$,$r_2$)=' + str(round(cov_avg[0],7)),linewidth=2.0,linestyle = '-.')
-#        ax3a.plot(times,vU_thry*np.ones(np.shape(var1_avg)),c="black",label='var($r_1$)=' + str(round(vU_thry,7)),linewidth=2.0,linestyle = '-')        
-#        ax3a.axhline(linewidth=0.5, color = 'k')
-#        ax3a.set_ylabel('Fitness Variances & Covariance',fontsize=18)
-#        ax3a.set_xlabel('Time (Generations)',fontsize=18)
-#        ax3a.set_ylim((-3e-4,4e-4))
-#        ax3a.set_xlim((1e4,2e4))
-#        ax3a.tick_params(axis='both',labelsize=14)
-#        ax3a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
-#        ax3a.legend()
-#        
-#        ax3b.plot(times,fit_var[:,0],c="black",linestyle="--",linewidth=1.0)
-#        ax3b.plot(times,fit_cov[:],c="black",linestyle="-.",linewidth=1.0)
-#        ax3b.axhline(linewidth=0.5, color = 'k')        
-#        ax3b.set_ylim((-3e-4,4e-4))
-#        ax3b.set_xlim((1e4,2e4))        
-#        ax3b.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
-#        ax3b.tick_params(axis='both',labelsize=14)
-
+        ax4.plot(x, y, 'r--', linewidth=1)
         fig4.savefig('./'+folder_location+'figures/'+fname+data_name+'.pdf')
 
-# figure 4: plot of normality of total relative fitness over time
+# figure 5: plot of normality test of distributions vs covariance
     if (figNum == 5):
 
         # load time series data of distrStats from plotdata.py output

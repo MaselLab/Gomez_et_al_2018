@@ -30,6 +30,6 @@ pltfun.generate_figure(4,data_name,folder_location,snapshot,snapshot,pop_param,'
 pltfun.generate_figure(4,data_name,folder_location,snapshot,snapshot,pop_param,'fig4_tr'+str(2)+'t'+str(snapshot),2)
 pltfun.generate_figure(4,data_name,folder_location,snapshot,snapshot,pop_param,'fig4_tr'+str(0)+'t'+str(snapshot),0)
 
-pltfun.generate_figure(4,data_name,folder_location,19000,19000,pop_param,'fig4_tr'+str(1)+'t'+str(snapshot),1)
-pltfun.generate_figure(4,data_name,folder_location,19000,19000,pop_param,'fig4_tr'+str(2)+'t'+str(snapshot),2)
-pltfun.generate_figure(4,data_name,folder_location,19000,19000,pop_param,'fig4_tr'+str(0)+'t'+str(snapshot),0)
+pltfun.generate_figure(4,data_name,folder_location,19000,19000,pop_param,'fig4_tr'+str(1)+'t'+str(19000),1)
+pltfun.generate_figure(4,data_name,folder_location,19000,19000,pop_param,'fig4_tr'+str(2)+'t'+str(19000),2)
+pltfun.generate_figure(4,data_name,folder_location,19000,19000,pop_param,'fig4_tr'+str(0)+'t'+str(19000),0)
