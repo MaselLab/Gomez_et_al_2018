@@ -121,6 +121,7 @@ def get_2D_distr(genotypes,abundances,box_dim):
 def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param,fname,traitno):
 # figure 1: representation of two-dimensional distribution  (no data required)
     [N,s1,s2,U1,U2] = pop_param
+    plt.ioff()
     
     # figure 1: general two dimensional distribution formed as gaussian
     if(figNum == 1):
@@ -299,7 +300,7 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         y = mlab.normpdf(x, mu, np.sqrt(var))
         ax4.plot(x, y, 'r--', linewidth=1)
         ax4.set_title('1D distribution trait '+str(traitno))
-        fig4.savefig('./'+folder_location+'figures/'+fname+data_name+'.pdf')
+        fig4.savefig('./'+folder_location+'figures/'+fname+data_name+'.png')
 
 # figure 5: plot of normality test of distributions vs covariance
     if (figNum == 5):
