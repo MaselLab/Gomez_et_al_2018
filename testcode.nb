@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1257006,      27975]
-NotebookOptionsPosition[   1242812,      27549]
-NotebookOutlinePosition[   1243159,      27564]
-CellTagsIndexPosition[   1243116,      27561]
+NotebookDataLength[   1268535,      28313]
+NotebookOptionsPosition[   1254182,      27882]
+NotebookOutlinePosition[   1254513,      27897]
+CellTagsIndexPosition[   1254470,      27894]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -4424,11 +4424,12 @@ Pn1Y+H+A9buN
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -4465,11 +4466,12 @@ Pn1Y+H+A9buN
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -5515,11 +5517,12 @@ e8uyA4OZ7ej/Aet6EfE=
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -5556,11 +5559,12 @@ e8uyA4OZ7ej/Aet6EfE=
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -5597,10 +5601,11 @@ e8uyA4OZ7ej/Aet6EfE=
                     True, FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
                     PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
-                    Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
-                    Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "GrayLevel[0]"], Appearance -> None, 
+                    BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
                     With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -10133,8 +10138,9 @@ eIzPcIzv4wk+xwl+gKf4Aqf4Es/wQ5zhR3iOH+McP8ELfIULfI2X+Cku8Q1e
                     0.4731986666666667], FrameTicks -> None, PlotRangePadding -> 
                     None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
                     "RGBColor[0.368417, 0.506779, 0.709798]"], Appearance -> 
                     None, BaseStyle -> {}, BaselinePosition -> Baseline, 
                     DefaultBaseStyle -> {}, ButtonFunction :> 
@@ -10178,8 +10184,9 @@ eIzPcIzv4wk+xwl+gKf4Aqf4Es/wQ5zhR3iOH+McP8ELfIULfI2X+Cku8Q1e
                     0.587148, 0.40736066666666665`, 0.09470066666666668], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
                     "RGBColor[0.880722, 0.611041, 0.142051]"], Appearance -> 
                     None, BaseStyle -> {}, BaselinePosition -> Baseline, 
                     DefaultBaseStyle -> {}, ButtonFunction :> 
@@ -11901,11 +11908,12 @@ V38rRIX/Af4/lXA=
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -11942,11 +11950,12 @@ V38rRIX/Af4/lXA=
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -11983,10 +11992,11 @@ V38rRIX/Af4/lXA=
                     True, FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
                     PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
-                    Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
-                    Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "GrayLevel[0]"], Appearance -> None, 
+                    BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
                     With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -12263,11 +12273,12 @@ vP6Xw/95UJvv
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -12304,11 +12315,12 @@ vP6Xw/95UJvv
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -12345,10 +12357,11 @@ vP6Xw/95UJvv
                     True, FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
                     PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
-                    Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
-                    Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "GrayLevel[0]"], Appearance -> None, 
+                    BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
                     With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -13212,11 +13225,12 @@ eajIbVYtcYqGPFTs8u46OffsoNnjoeKm2nHGaB00ezxUrIkJHd3eM2D2eKgo
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -13253,11 +13267,12 @@ eajIbVYtcYqGPFTs8u46OffsoNnjoeKm2nHGaB00ezxUrIkJHd3eM2D2eKgo
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -13294,10 +13309,11 @@ eajIbVYtcYqGPFTs8u46OffsoNnjoeKm2nHGaB00ezxUrIkJHd3eM2D2eKgo
                     True, FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
                     PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
-                    Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
-                    Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "GrayLevel[0]"], Appearance -> None, 
+                    BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
                     With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -13587,11 +13603,12 @@ DMQ5
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -13628,11 +13645,12 @@ DMQ5
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -13669,10 +13687,11 @@ DMQ5
                     True, FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
                     PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
-                    Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
-                    Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "GrayLevel[0]"], Appearance -> None, 
+                    BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
                     With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -14528,11 +14547,12 @@ tqrTYLeMeRjJlnrJKm1NHP4fgsEMBQ==
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -14569,11 +14589,12 @@ tqrTYLeMeRjJlnrJKm1NHP4fgsEMBQ==
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -14610,10 +14631,11 @@ tqrTYLeMeRjJlnrJKm1NHP4fgsEMBQ==
                     True, FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
                     PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
-                    Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
-                    Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "GrayLevel[0]"], Appearance -> None, 
+                    BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
                     With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -14901,11 +14923,12 @@ DHo46JwnBeOy6wx6OOjjKqGNWBj0sNPcN1v+KfuOQQ87LUqzJrz8JYMedmp9
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -14942,11 +14965,12 @@ DHo46JwnBeOy6wx6OOjjKqGNWBj0sNPcN1v+KfuOQQ87LUqzJrz8JYMedmp9
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -14983,10 +15007,11 @@ DHo46JwnBeOy6wx6OOjjKqGNWBj0sNPcN1v+KfuOQQ87LUqzJrz8JYMedmp9
                     True, FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
                     PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
-                    Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
-                    Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "GrayLevel[0]"], Appearance -> None, 
+                    BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
                     With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -15669,7 +15694,7 @@ Cell[BoxData[
             0]},
           
           ImageSizeCache->{{22.209054209919252`, 98.02451841140314}, {
-           102.46723952514793`, 103.24630125933996`}}],
+           101.46723952514795`, 102.24630125933997`}}],
          StatusArea[#, -0.019803607687857237`]& ,
          TagBoxNote->"-0.019803607687857237"],
         StyleBox[
@@ -15693,7 +15718,7 @@ Cell[BoxData[
             9.190536764288327}, "RoundingRadius" -> 0]},
           
           ImageSizeCache->{{104.75480297474559`, 
-           180.5702671762295}, {-27.040836378137925`, 102.96723952514793`}}],
+           180.5702671762295}, {-28.04083637813791, 101.96723952514795`}}],
          StatusArea[#, 9.190536764288327]& ,
          TagBoxNote->"9.190536764288327"],
         StyleBox["9.190536764288327`", {}, StripOnInput -> False]],
@@ -15716,7 +15741,7 @@ Cell[BoxData[
             13.795706950276418`}, "RoundingRadius" -> 0]},
           
           ImageSizeCache->{{187.30055173957194`, 
-           263.1160159410558}, {-91.93440519687687, 102.96723952514793`}}],
+           263.1160159410558}, {-92.93440519687685, 101.96723952514795`}}],
          StatusArea[#, 13.795706950276418`]& ,
          TagBoxNote->"13.795706950276418"],
         StyleBox["13.795706950276418`", {}, StripOnInput -> False]],
@@ -15739,7 +15764,7 @@ Cell[BoxData[
             9.190536764288327}, "RoundingRadius" -> 0]},
           
           ImageSizeCache->{{269.8463005043983, 
-           345.6617647058822}, {-27.040836378137925`, 102.96723952514793`}}],
+           345.6617647058822}, {-28.04083637813791, 101.96723952514795`}}],
          StatusArea[#, 9.190536764288327]& ,
          TagBoxNote->"9.190536764288327"],
         StyleBox["9.190536764288327`", {}, StripOnInput -> False]],
@@ -15850,49 +15875,7 @@ Cell[BoxData[
    3.689618038631064*^9, 3.689618086222169*^9, {3.689618133833741*^9, 
    3.6896181576633472`*^9}, {3.689618375973209*^9, 3.689618405608625*^9}, 
    3.689618631643243*^9, 3.68961869112712*^9, {3.689620079631913*^9, 
-   3.689620107876213*^9}, 3.6896203912232227`*^9, 
-   3.689620429079446*^9},ImageCache->GraphicsData["CompressedBitmap", "\<\
-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\
-\>"]]
+   3.689620107876213*^9}, 3.6896203912232227`*^9, 3.689620429079446*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -16785,11 +16768,12 @@ V38rRIX/Af4/lXA=
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -16826,11 +16810,12 @@ V38rRIX/Af4/lXA=
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -16867,10 +16852,11 @@ V38rRIX/Af4/lXA=
                     True, FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
                     PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
-                    Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
-                    Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "GrayLevel[0]"], Appearance -> None, 
+                    BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
                     With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -17182,11 +17168,12 @@ vP6Xw/95UJvv
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -17223,11 +17210,12 @@ vP6Xw/95UJvv
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -17264,10 +17252,11 @@ vP6Xw/95UJvv
                     True, FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
                     PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
-                    Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
-                    Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "GrayLevel[0]"], Appearance -> None, 
+                    BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
                     With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -18197,11 +18186,12 @@ eajIbVYtcYqGPFTs8u46OffsoNnjoeKm2nHGaB00ezxUrIkJHd3eM2D2eKgo
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -18238,11 +18228,12 @@ eajIbVYtcYqGPFTs8u46OffsoNnjoeKm2nHGaB00ezxUrIkJHd3eM2D2eKgo
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -18279,10 +18270,11 @@ eajIbVYtcYqGPFTs8u46OffsoNnjoeKm2nHGaB00ezxUrIkJHd3eM2D2eKgo
                     True, FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
                     PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
-                    Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
-                    Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "GrayLevel[0]"], Appearance -> None, 
+                    BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
                     With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -18607,11 +18599,12 @@ DMQ5
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -18648,11 +18641,12 @@ DMQ5
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -18689,10 +18683,11 @@ DMQ5
                     True, FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
                     PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
-                    Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
-                    Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "GrayLevel[0]"], Appearance -> None, 
+                    BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
                     With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -19616,11 +19611,12 @@ tqrTYLeMeRjJlnrJKm1NHP4fgsEMBQ==
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -19657,11 +19653,12 @@ tqrTYLeMeRjJlnrJKm1NHP4fgsEMBQ==
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -19698,10 +19695,11 @@ tqrTYLeMeRjJlnrJKm1NHP4fgsEMBQ==
                     True, FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
                     PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
-                    Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
-                    Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "GrayLevel[0]"], Appearance -> None, 
+                    BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
                     With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -20025,11 +20023,12 @@ DHo46JwnBeOy6wx6OOjjKqGNWBj0sNPcN1v+KfuOQQ87LUqzJrz8JYMedmp9
                     True, FrameStyle -> RGBColor[0.6666666666666666, 0., 0.], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[1, 0, 0]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[1, 0, 0]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -20066,11 +20065,12 @@ DHo46JwnBeOy6wx6OOjjKqGNWBj0sNPcN1v+KfuOQQ87LUqzJrz8JYMedmp9
                     True, FrameStyle -> RGBColor[0., 0., 0.6666666666666666], 
                     FrameTicks -> None, PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], 
-                    "RGBColor[0, 0, 1]"], Appearance -> None, BaseStyle -> {},
-                     BaselinePosition -> Baseline, DefaultBaseStyle -> {}, 
-                    ButtonFunction :> With[{Typeset`box$ = EvaluationBox[]}, 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "RGBColor[0, 0, 1]"], Appearance -> 
+                    None, BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
+                    With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
                     AbsoluteCurrentValue["Deployed"]], 
@@ -20107,10 +20107,11 @@ DHo46JwnBeOy6wx6OOjjKqGNWBj0sNPcN1v+KfuOQQ87LUqzJrz8JYMedmp9
                     True, FrameStyle -> GrayLevel[0.], FrameTicks -> None, 
                     PlotRangePadding -> None, ImageSize -> 
                     Dynamic[{
-                    Automatic, 1.35 CurrentValue["FontCapHeight"]/
-                    AbsoluteCurrentValue[Magnification]}]], "GrayLevel[0]"], 
-                    Appearance -> None, BaseStyle -> {}, BaselinePosition -> 
-                    Baseline, DefaultBaseStyle -> {}, ButtonFunction :> 
+                    Automatic, 
+                    1.35 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], "GrayLevel[0]"], Appearance -> None, 
+                    BaseStyle -> {}, BaselinePosition -> Baseline, 
+                    DefaultBaseStyle -> {}, ButtonFunction :> 
                     With[{Typeset`box$ = EvaluationBox[]}, 
                     If[
                     Not[
@@ -21148,7 +21149,7 @@ Cell[BoxData[
              Opacity[0.66]}], {}, {}], 
           RectangleBox[{0., 0}, {100., 21}, "RoundingRadius" -> 0]},
          ImageSizeCache->{{34.100680544435555`, 59.02637494611074}, {
-          84.64024124794254, 89.08529685368636}}],
+          83.64024124794254, 88.08529685368636}}],
         StatusArea[#, 21]& ,
         TagBoxNote->"21"],
        StyleBox["21", {}, StripOnInput -> False]],
@@ -21166,7 +21167,7 @@ Cell[BoxData[
              Opacity[0.66]}], {}, {}], 
           RectangleBox[{100., 0}, {200., 112}, "RoundingRadius" -> 0]},
          ImageSizeCache->{{58.52637494611074, 83.45206934778594}, {
-          67.5450002897193, 89.08529685368636}}],
+          66.5450002897193, 88.08529685368636}}],
         StatusArea[#, 112]& ,
         TagBoxNote->"112"],
        StyleBox["112", {}, StripOnInput -> False]],
@@ -21184,7 +21185,7 @@ Cell[BoxData[
              Opacity[0.66]}], {}, {}], 
           RectangleBox[{200., 0}, {300., 476}, "RoundingRadius" -> 0]},
          ImageSizeCache->{{82.95206934778594, 
-          107.87776374946111`}, {-0.8359635431736478, 89.08529685368636}}],
+          107.87776374946111`}, {-1.8359635431736478`, 88.08529685368636}}],
         StatusArea[#, 476]& ,
         TagBoxNote->"476"],
        StyleBox["476", {}, StripOnInput -> False]],
@@ -21202,7 +21203,7 @@ Cell[BoxData[
              Opacity[0.66]}], {}, {}], 
           RectangleBox[{300., 0}, {400., 1012}, "RoundingRadius" -> 0]},
          ImageSizeCache->{{107.37776374946111`, 
-          132.3034581511363}, {-101.52881138501603`, 89.08529685368636}}],
+          132.3034581511363}, {-102.52881138501603`, 88.08529685368636}}],
         StatusArea[#, 1012]& ,
         TagBoxNote->"1012"],
        StyleBox["1012", {}, StripOnInput -> False]],
@@ -21220,7 +21221,7 @@ Cell[BoxData[
              Opacity[0.66]}], {}, {}], 
           RectangleBox[{400., 0}, {500., 957}, "RoundingRadius" -> 0]},
          ImageSizeCache->{{131.8034581511363, 
-          156.72915255281148`}, {-91.19652289378219, 89.08529685368636}}],
+          156.72915255281148`}, {-92.19652289378219, 88.08529685368636}}],
         StatusArea[#, 957]& ,
         TagBoxNote->"957"],
        StyleBox["957", {}, StripOnInput -> False]],
@@ -21238,7 +21239,7 @@ Cell[BoxData[
              Opacity[0.66]}], {}, {}], 
           RectangleBox[{500., 0}, {600., 539}, "RoundingRadius" -> 0]},
          ImageSizeCache->{{156.22915255281148`, 
-          181.1548469544867}, {-12.67113036040513, 89.08529685368636}}],
+          181.1548469544867}, {-13.67113036040513, 88.08529685368636}}],
         StatusArea[#, 539]& ,
         TagBoxNote->"539"],
        StyleBox["539", {}, StripOnInput -> False]],
@@ -21256,7 +21257,7 @@ Cell[BoxData[
              Opacity[0.66]}], {}, {}], 
           RectangleBox[{600., 0}, {700., 312}, "RoundingRadius" -> 0]},
          ImageSizeCache->{{180.6548469544867, 205.5805413561619}, {
-          29.973042139778116`, 89.08529685368636}}],
+          28.973042139778116`, 88.08529685368636}}],
         StatusArea[#, 312]& ,
         TagBoxNote->"312"],
        StyleBox["312", {}, StripOnInput -> False]],
@@ -21274,7 +21275,7 @@ Cell[BoxData[
              Opacity[0.66]}], {}, {}], 
           RectangleBox[{700., 0}, {800., 155}, "RoundingRadius" -> 0]},
          ImageSizeCache->{{205.0805413561619, 230.00623575783706`}, {
-          59.46702928748194, 89.08529685368636}}],
+          58.46702928748194, 88.08529685368636}}],
         StatusArea[#, 155]& ,
         TagBoxNote->"155"],
        StyleBox["155", {}, StripOnInput -> False]],
@@ -21292,7 +21293,7 @@ Cell[BoxData[
              Opacity[0.66]}], {}, {}], 
           RectangleBox[{800., 0}, {900., 42}, "RoundingRadius" -> 0]},
          ImageSizeCache->{{229.50623575783706`, 254.43193015951226`}, {
-          80.69518564219871, 89.08529685368636}}],
+          79.69518564219871, 88.08529685368636}}],
         StatusArea[#, 42]& ,
         TagBoxNote->"42"],
        StyleBox["42", {}, StripOnInput -> False]],
@@ -21310,7 +21311,7 @@ Cell[BoxData[
              Opacity[0.66]}], {}, {}], 
           RectangleBox[{900., 0}, {1000., 23}, "RoundingRadius" -> 0]},
          ImageSizeCache->{{253.93193015951226`, 278.85762456118744`}, {
-          84.26452166644312, 89.08529685368636}}],
+          83.26452166644312, 88.08529685368636}}],
         StatusArea[#, 23]& ,
         TagBoxNote->"23"],
        StyleBox["23", {}, StripOnInput -> False]],
@@ -21328,7 +21329,7 @@ Cell[BoxData[
              Opacity[0.66]}], {}, {}], 
           RectangleBox[{1000., 0}, {1100., 2}, "RoundingRadius" -> 0]},
          ImageSizeCache->{{278.35762456118744`, 303.2833189628626}, {
-          88.20957727218695, 89.08529685368636}}],
+          87.20957727218695, 88.08529685368636}}],
         StatusArea[#, 2]& ,
         TagBoxNote->"2"],
        StyleBox["2", {}, StripOnInput -> False]],
@@ -21346,7 +21347,7 @@ Cell[BoxData[
              Opacity[0.66]}], {}, {}], 
           RectangleBox[{1100., 0}, {1200., 1}, "RoundingRadius" -> 0]},
          ImageSizeCache->{{302.7833189628626, 327.7090133645378}, {
-          88.39743706293665, 89.08529685368636}}],
+          87.39743706293665, 88.08529685368636}}],
         StatusArea[#, 1]& ,
         TagBoxNote->"1"],
        StyleBox["1", {}, StripOnInput -> False]],
@@ -21364,7 +21365,7 @@ Cell[BoxData[
              Opacity[0.66]}], {}, {}], 
           RectangleBox[{1200., 0}, {1300., 1}, "RoundingRadius" -> 0]},
          ImageSizeCache->{{327.2090133645378, 352.13470776621295`}, {
-          88.39743706293665, 89.08529685368636}}],
+          87.39743706293665, 88.08529685368636}}],
         StatusArea[#, 1]& ,
         TagBoxNote->"1"],
        StyleBox["1", {}, StripOnInput -> False]],
@@ -21392,56 +21393,7 @@ Cell[BoxData[
    3.68996962494925*^9, 3.689970825803776*^9, 3.6899708664646072`*^9, 
    3.6899711476886787`*^9, 3.6899729670747137`*^9, 3.689973447819523*^9, 
    3.689975336839625*^9, {3.689975454490315*^9, 3.689975483437242*^9}, 
-   3.689975732556316*^9, 3.6899790670607357`*^9, 
-   3.689979874102683*^9},ImageCache->GraphicsData["CompressedBitmap", "\<\
-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\
-\>"]]
+   3.689975732556316*^9, 3.6899790670607357`*^9, 3.689979874102683*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -24815,7 +24767,95 @@ Ofz6tjil5ySUXzDdYY390038p886AgBkQ5q1
    3.69437656742068*^9}, {3.694376616994421*^9, 3.694376667694325*^9}, 
    3.6943767382756147`*^9, {3.6943768103397512`*^9, 3.6943768357981443`*^9}, 
    3.694376929848776*^9, 3.694377248589367*^9, 3.6943773700900393`*^9, {
-   3.694377400721388*^9, 3.69437744293399*^9}}]
+   3.694377400721388*^9, 
+   3.69437744293399*^9}},ImageCache->GraphicsData["CompressedBitmap", "\<\
+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
+LwqX1uLfF+Vx0uhsH5b/Jy8qdKX9D24onPw=\
+\>"]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -27481,12 +27521,185 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   RowBox[{"(*", " ", 
+   RowBox[{"--", 
+    RowBox[{"--", 
+     RowBox[{"--", 
+      RowBox[{"--", 
+       RowBox[{"--", 
+        RowBox[{"--", 
+         RowBox[{"--", 
+          RowBox[{"--", 
+           RowBox[{"--", 
+            RowBox[{"--", 
+             RowBox[{"--", 
+              RowBox[{"--", 
+               RowBox[{"--", 
+                RowBox[{"--", 
+                 RowBox[{"--", 
+                  RowBox[{"--", 
+                   RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{
+                    "--", "--"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]\
+}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"--", 
+    RowBox[{"--", 
+     RowBox[{"--", 
+      RowBox[{"--", 
+       RowBox[{"--", 
+        RowBox[{"--", 
+         RowBox[{"--", 
+          RowBox[{"--", 
+           RowBox[{"--", 
+            RowBox[{"--", 
+             RowBox[{"--", 
+              RowBox[{"--", 
+               RowBox[{"--", 
+                RowBox[{"--", 
+                 RowBox[{"--", 
+                  RowBox[{"--", 
+                   RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{
+                    "--", "--"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]\
+}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"--", 
+    RowBox[{"--", 
+     RowBox[{"--", 
+      RowBox[{"--", 
+       RowBox[{"--", 
+        RowBox[{"--", 
+         RowBox[{"--", 
+          RowBox[{"--", 
+           RowBox[{"--", 
+            RowBox[{"--", 
+             RowBox[{"--", 
+              RowBox[{"--", 
+               RowBox[{"--", 
+                RowBox[{"--", 
+                 RowBox[{"--", 
+                  RowBox[{"--", 
+                   RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{"--", 
+                    RowBox[{
+                    "--", "--"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]\
+}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
    RowBox[{
    "Code", " ", "to", " ", "Debug", " ", "and", " ", "test", " ", "mutation", 
     " ", "modules"}], " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
   RowBox[{"(*", " ", 
-   RowBox[{"get", " ", "distibtion", " ", "of", " ", 
-    RowBox[{"tau", "'"}], "s"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+   "Set", " ", "parameters", " ", "for", " ", "simulation", " ", "of", " ", 
+    "taus"}], " ", "*)"}], "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{
     RowBox[{
@@ -27506,19 +27719,56 @@ Cell[BoxData[
    RowBox[{
     RowBox[{
      RowBox[{"{", 
-      RowBox[{"starttime", ",", "timestep", ",", "maxtime"}], "}"}], "=", 
+      RowBox[{
+      "starttime", ",", "timestep", ",", "maxtime", ",", "globaltime"}], 
+      "}"}], "=", 
      RowBox[{"{", 
-      RowBox[{"0", ",", "100", ",", "1"}], "}"}]}], ";"}], " ", 
-   "\[IndentingNewLine]", 
+      RowBox[{"0", ",", 
+       FractionBox[
+        RowBox[{"50", 
+         SuperscriptBox[
+          RowBox[{"Log", "[", 
+           RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}], "2"]}], 
+        RowBox[{"\[CapitalDelta]c1", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", 
+            RowBox[{"Log", "[", 
+             RowBox[{"popsize", " ", "\[CapitalDelta]c1"}], "]"}]}], "-", 
+           RowBox[{"Log", "[", 
+            RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}]}], ")"}]}]], ",", 
+       
+       FractionBox[
+        RowBox[{"50", 
+         SuperscriptBox[
+          RowBox[{"Log", "[", 
+           RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}], "2"]}], 
+        RowBox[{"\[CapitalDelta]c1", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", 
+            RowBox[{"Log", "[", 
+             RowBox[{"popsize", " ", "\[CapitalDelta]c1"}], "]"}]}], "-", 
+           RowBox[{"Log", "[", 
+            RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}]}], ")"}]}]], ",", 
+       "0"}], "}"}]}], ";"}], " ", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"{", 
       RowBox[{
-      "fulldata", ",", "verbose", ",", "veryverbose", ",", "exactqv"}], "}"}],
-      "=", 
+      "verbose", ",", "veryverbose", ",", "time1", ",", "time2", ",", "time3",
+        ",", "time4"}], "}"}], "=", 
      RowBox[{"{", 
-      RowBox[{"0", ",", "False", ",", "False", ",", "False"}], "}"}]}], ";"}],
-    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"False", ",", "False", ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"genotypes", " ", "=", 
      RowBox[{"{", 
@@ -27529,27 +27779,110 @@ Cell[BoxData[
         RowBox[{"2", ",", "0"}], "}"}]}], "}"}]}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"Abundances", "=", 
+    RowBox[{"genotypeabundances", "=", 
      RowBox[{"{", 
       RowBox[{
        RowBox[{"popsize", "-", 
         RowBox[{"1", "/", "\[CapitalDelta]c1"}]}], ",", 
        RowBox[{"1", "/", "\[CapitalDelta]c1"}]}], "}"}]}], ";"}], 
    "\[IndentingNewLine]", 
+   RowBox[{"meanFit", " ", "=", " ", "genotypes"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"taus", " ", "=", " ", 
-     RowBox[{
-     "ParallelTable", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-      RowBox[{",", 
-       RowBox[{"{", 
-        RowBox[{"i", ",", "1", ",", "500"}], "}"}]}], "]"}]}], 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"system", ",", "sol"}], "}"}], "=", 
+     RowBox[{"SolveDiffEqs", "[", 
+      RowBox[{
+      "popsize", ",", "\[CapitalDelta]c1", ",", "\[CapitalDelta]c2", ",", 
+       "genotypeabundances", ",", "genotypes", ",", "timestep"}], "]"}]}], 
     ";"}]}]}]], "Input",
  CellChangeTimes->{{3.712680412106834*^9, 3.712680427703993*^9}, {
-  3.712680498520581*^9, 3.7126807987904825`*^9}}]
+   3.712680498520581*^9, 3.7126807987904825`*^9}, {3.71268739010987*^9, 
+   3.7126874531102943`*^9}, {3.7126895527170563`*^9, 
+   3.7126895662718153`*^9}, {3.712689647231591*^9, 3.7126896947991533`*^9}, {
+   3.712689745839395*^9, 3.712689938897605*^9}, {3.712689973906804*^9, 
+   3.7126900077946787`*^9}, {3.712690050715727*^9, 3.7126900801638393`*^9}, {
+   3.712690128357686*^9, 3.712690135084835*^9}, 3.712690173392888*^9, {
+   3.712690211510346*^9, 3.7126902582136497`*^9}, {3.712690379031467*^9, 
+   3.712690387791478*^9}, {3.712690524392864*^9, 3.712690576185464*^9}, {
+   3.712690719603125*^9, 3.7126907354356403`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Sample", " ", "the", " ", 
+    RowBox[{"tau", "'"}], "s", " ", "to", " ", "compare", " ", "with", " ", 
+    "theoretical", " ", "distribution"}], " ", "*)"}], "\[IndentingNewLine]", 
+  
+  RowBox[{
+   RowBox[{"taus", " ", "=", " ", 
+    RowBox[{"ParallelTable", "[", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", "asdf", " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"NextMutation", "[", 
+        RowBox[{
+        "popsize", ",", "\[CapitalDelta]c1", ",", "\[CapitalDelta]c2", ",", 
+         "U1", ",", "U2", ",", "sol", ",", "genotypes", ",", 
+         "genotypeabundances", ",", "starttime", ",", "timestep"}], "]"}], 
+       "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "asdf", " ", "*)"}], "\[IndentingNewLine]", ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "2"}], "}"}]}], "]"}]}], ";"}]}]], "Input",\
+
+ CellChangeTimes->{{3.712690608521779*^9, 3.712690609490572*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Sample", " ", "the", " ", 
+    RowBox[{"tauq", "'"}], "s", " ", "to", " ", "compare", " ", "with", " ", 
+    "theoretical", " ", "distribution"}], " ", "*)"}], "\[IndentingNewLine]", 
+  
+  RowBox[{
+   RowBox[{"taus", " ", "=", " ", 
+    RowBox[{"ParallelTable", "[", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", "asdf", " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"SolveDiffEqs", "[", 
+        RowBox[{
+        "popsize_", ",", "\[CapitalDelta]c1_", ",", "\[CapitalDelta]c2_", ",",
+          "genotypeabundances_", ",", "genotypes_", ",", "timestep_"}], "]"}],
+        ";", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", "asdf", " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"NextMutation", "[", 
+        RowBox[{
+        "popsize_", ",", "\[CapitalDelta]c1_", ",", "\[CapitalDelta]c2_", ",",
+          "U1_", ",", "U2_", ",", "sol_", ",", "genotypes_", ",", 
+         "genotypeabundances_", ",", "starttime_", ",", "timestep_"}], "]"}], 
+       ";"}], "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "asdf", " ", "*)"}], "\[IndentingNewLine]", ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "500"}], "}"}]}], "]"}]}], 
+   ";"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"genotypes", "[", 
+   RowBox[{"[", 
+    RowBox[{";;", ",", "1"}], "]"}], "]"}], ".", 
+  RowBox[{"(", 
+   RowBox[{"genotypeabundances", "/", 
+    RowBox[{"Total", "[", "genotypeabundances", "]"}]}], ")"}]}]], "Input",
+ CellChangeTimes->{{3.7126907394576883`*^9, 3.7126907892597837`*^9}}],
+
+Cell[BoxData["1.0000001`"], "Output",
+ CellChangeTimes->{{3.712690753519026*^9, 3.712690790332141*^9}}]
+}, Open  ]]
 },
-WindowSize->{1280, 637},
-WindowMargins->{{-8, Automatic}, {Automatic, -8}},
-FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (December 10, 2015)",
+WindowSize->{1600, 824},
+WindowMargins->{{1, Automatic}, {0, 28}},
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -27564,421 +27897,425 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 6405, 146, 272, "Input"],
-Cell[6988, 170, 2023, 45, 238, "Output"],
-Cell[9014, 217, 62690, 1042, 238, "Output"]
+Cell[580, 22, 6405, 146, 285, "Input"],
+Cell[6988, 170, 2023, 45, 239, "Output"],
+Cell[9014, 217, 62690, 1042, 239, "Output"]
 }, Open  ]],
-Cell[71719, 1262, 8998, 260, 219, "Input"],
-Cell[80720, 1524, 478, 12, 31, "Input"],
+Cell[71719, 1262, 8998, 260, 243, "Input"],
+Cell[80720, 1524, 478, 12, 34, "Input"],
 Cell[CellGroupData[{
-Cell[81223, 1540, 551, 11, 52, "Input"],
-Cell[81777, 1553, 1974, 53, 31, "Output"],
-Cell[83754, 1608, 1181, 22, 31, "Output"]
+Cell[81223, 1540, 551, 11, 57, "Input"],
+Cell[81777, 1553, 1974, 53, 34, "Output"],
+Cell[83754, 1608, 1181, 22, 34, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[84972, 1635, 10043, 268, 256, "Input"],
+Cell[84972, 1635, 10043, 268, 288, "Input"],
 Cell[CellGroupData[{
-Cell[95040, 1907, 1542, 26, 23, "Print"],
-Cell[96585, 1935, 1414, 25, 23, "Print"]
+Cell[95040, 1907, 1542, 26, 24, "Print"],
+Cell[96585, 1935, 1414, 25, 24, "Print"]
 }, Open  ]]
 }, Open  ]],
-Cell[98026, 1964, 1608, 33, 92, "Input"],
+Cell[98026, 1964, 1608, 33, 102, "Input"],
 Cell[CellGroupData[{
-Cell[99659, 2001, 2329, 64, 152, "Input"],
+Cell[99659, 2001, 2329, 64, 171, "Input"],
 Cell[CellGroupData[{
-Cell[102013, 2069, 484, 9, 23, "Print"],
-Cell[102500, 2080, 440, 8, 23, "Print"]
+Cell[102013, 2069, 484, 9, 24, "Print"],
+Cell[102500, 2080, 440, 8, 24, "Print"]
 }, Open  ]],
 Cell[102955, 2091, 8203, 146, 239, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[111195, 2242, 8645, 249, 256, "Input"],
+Cell[111195, 2242, 8645, 249, 288, "Input"],
 Cell[CellGroupData[{
-Cell[119865, 2495, 808, 17, 23, "Print"],
-Cell[120676, 2514, 934, 18, 23, "Print"]
+Cell[119865, 2495, 808, 17, 24, "Print"],
+Cell[120676, 2514, 934, 18, 24, "Print"]
 }, Open  ]]
 }, Open  ]],
-Cell[121637, 2536, 1114, 26, 92, "Input"],
+Cell[121637, 2536, 1114, 26, 102, "Input"],
 Cell[CellGroupData[{
-Cell[122776, 2566, 2366, 64, 152, "Input"],
+Cell[122776, 2566, 2366, 64, 171, "Input"],
 Cell[CellGroupData[{
-Cell[125167, 2634, 391, 8, 23, "Print"],
-Cell[125561, 2644, 351, 7, 23, "Print"]
+Cell[125167, 2634, 391, 8, 24, "Print"],
+Cell[125561, 2644, 351, 7, 24, "Print"]
 }, Open  ]],
 Cell[125927, 2654, 10220, 179, 239, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[136184, 2838, 8991, 254, 256, "Input"],
+Cell[136184, 2838, 8991, 254, 288, "Input"],
 Cell[CellGroupData[{
-Cell[145200, 3096, 1177, 21, 23, "Print"],
-Cell[146380, 3119, 1175, 21, 23, "Print"]
+Cell[145200, 3096, 1177, 21, 24, "Print"],
+Cell[146380, 3119, 1175, 21, 24, "Print"]
 }, Open  ]]
 }, Open  ]],
-Cell[147582, 3144, 1491, 32, 92, "Input"],
+Cell[147582, 3144, 1491, 32, 102, "Input"],
 Cell[CellGroupData[{
-Cell[149098, 3180, 9248, 260, 452, "Input"],
-Cell[158349, 3442, 633, 12, 23, "Print"],
+Cell[149098, 3180, 9248, 260, 491, "Input"],
+Cell[158349, 3442, 633, 12, 24, "Print"],
 Cell[158985, 3456, 17432, 297, 239, "Output"],
-Cell[176420, 3755, 44089, 778, 251, "Output"],
-Cell[220512, 4535, 64570, 1132, 234, "Output"],
-Cell[285085, 5669, 24611, 442, 227, "Output"],
-Cell[309699, 6113, 640, 12, 23, "Print"],
-Cell[310342, 6127, 30036, 549, 255, "Output"]
+Cell[176420, 3755, 44135, 780, 250, "Output"],
+Cell[220558, 4537, 64639, 1135, 233, "Output"],
+Cell[285200, 5674, 24611, 442, 225, "Output"],
+Cell[309814, 6118, 640, 12, 24, "Print"],
+Cell[310457, 6132, 30036, 549, 255, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[340415, 6681, 4306, 104, 172, "Input"],
-Cell[344724, 6787, 217, 3, 31, "Output"]
+Cell[340530, 6686, 4306, 104, 171, "Input"],
+Cell[344839, 6792, 217, 3, 32, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[344978, 6795, 9308, 274, 319, "Input"],
+Cell[345093, 6800, 9308, 274, 354, "Input"],
 Cell[CellGroupData[{
-Cell[354311, 7073, 787, 15, 23, "Print"],
-Cell[355101, 7090, 790, 15, 23, "Print"]
+Cell[354426, 7078, 787, 15, 24, "Print"],
+Cell[355216, 7095, 790, 15, 24, "Print"]
 }, Open  ]]
 }, Open  ]],
-Cell[355918, 7109, 1110, 26, 92, "Input"],
-Cell[357031, 7137, 5863, 150, 252, "Input"],
+Cell[356033, 7114, 1110, 26, 102, "Input"],
+Cell[357146, 7142, 5863, 150, 262, "Input"],
 Cell[CellGroupData[{
-Cell[362919, 7291, 9071, 244, 402, "Input"],
-Cell[371993, 7537, 16368, 282, 219, "Output"],
-Cell[388364, 7821, 23174, 437, 263, "Output"],
+Cell[363034, 7296, 9071, 244, 436, "Input"],
+Cell[372108, 7542, 16368, 282, 212, "Output"],
+Cell[388479, 7826, 23174, 437, 264, "Output"],
 Cell[CellGroupData[{
-Cell[411563, 8262, 567, 12, 23, "Print"],
-Cell[412133, 8276, 557, 12, 23, "Print"],
-Cell[412693, 8290, 553, 12, 23, "Print"]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[413295, 8308, 8725, 250, 256, "Input"],
-Cell[CellGroupData[{
-Cell[422045, 8562, 742, 14, 23, "Print"],
-Cell[422790, 8578, 744, 14, 23, "Print"]
-}, Open  ]]
-}, Open  ]],
-Cell[423561, 8596, 1158, 27, 92, "Input"],
-Cell[424722, 8625, 6102, 155, 272, "Input"],
-Cell[CellGroupData[{
-Cell[430849, 8784, 9168, 245, 423, "Input"],
-Cell[440020, 9031, 33198, 558, 219, "Output"],
-Cell[473221, 9591, 36293, 653, 264, "Output"],
-Cell[CellGroupData[{
-Cell[509539, 10248, 609, 12, 23, "Print"],
-Cell[510151, 10262, 601, 12, 23, "Print"],
-Cell[510755, 10276, 600, 12, 23, "Print"]
+Cell[411678, 8267, 567, 12, 24, "Print"],
+Cell[412248, 8281, 557, 12, 24, "Print"],
+Cell[412808, 8295, 553, 12, 24, "Print"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[511404, 10294, 3080, 86, 239, "Input"],
+Cell[413410, 8313, 8725, 250, 288, "Input"],
 Cell[CellGroupData[{
-Cell[514509, 10384, 736, 14, 23, "Print"],
-Cell[515248, 10400, 739, 14, 23, "Print"]
+Cell[422160, 8567, 742, 14, 24, "Print"],
+Cell[422905, 8583, 744, 14, 24, "Print"]
 }, Open  ]]
 }, Open  ]],
-Cell[516014, 10418, 1502, 33, 132, "Input"],
+Cell[423676, 8601, 1158, 27, 102, "Input"],
+Cell[424837, 8630, 6102, 155, 285, "Input"],
 Cell[CellGroupData[{
-Cell[517541, 10455, 2503, 63, 212, "Input"],
-Cell[520047, 10520, 336, 5, 31, "Output"],
-Cell[520386, 10527, 336, 5, 31, "Output"],
-Cell[520725, 10534, 340, 5, 31, "Output"],
-Cell[521068, 10541, 1776, 39, 235, "Output"]
-}, Open  ]],
+Cell[430964, 8789, 9168, 245, 459, "Input"],
+Cell[440135, 9036, 33198, 558, 212, "Output"],
+Cell[473336, 9596, 36339, 655, 264, "Output"],
 Cell[CellGroupData[{
-Cell[522881, 10585, 9742, 279, 319, "Input"],
-Cell[CellGroupData[{
-Cell[532648, 10868, 803, 15, 23, "Print"],
-Cell[533454, 10885, 818, 15, 23, "Print"]
+Cell[509700, 10255, 609, 12, 24, "Print"],
+Cell[510312, 10269, 601, 12, 24, "Print"],
+Cell[510916, 10283, 600, 12, 24, "Print"]
 }, Open  ]]
 }, Open  ]],
-Cell[534299, 10904, 1233, 28, 92, "Input"],
-Cell[535535, 10934, 6063, 153, 252, "Input"],
-Cell[541601, 11089, 11177, 293, 276, "Input"],
-Cell[552781, 11384, 9228, 230, 359, "Input"],
 Cell[CellGroupData[{
-Cell[562034, 11618, 2475, 56, 132, "Input"],
-Cell[564512, 11676, 18140, 369, 258, "Output"],
-Cell[582655, 12047, 17591, 360, 251, "Output"]
-}, Open  ]],
-Cell[600261, 12410, 11057, 291, 276, "Input"],
-Cell[611321, 12703, 8764, 228, 302, "Input"],
+Cell[511565, 10301, 3080, 86, 266, "Input"],
 Cell[CellGroupData[{
-Cell[620110, 12935, 2056, 50, 132, "Input"],
-Cell[622169, 12987, 18504, 374, 257, "Output"],
-Cell[640676, 13363, 18379, 373, 256, "Output"]
-}, Open  ]],
-Cell[659070, 13739, 9059, 264, 276, "Input"],
-Cell[668132, 14005, 8797, 243, 355, "Input"],
-Cell[CellGroupData[{
-Cell[676954, 14252, 1713, 46, 132, "Input"],
-Cell[678670, 14300, 18551, 375, 260, "Output"],
-Cell[697224, 14677, 18359, 371, 259, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[715620, 15053, 8910, 254, 256, "Input"],
-Cell[CellGroupData[{
-Cell[724555, 15311, 1008, 19, 23, "Print"],
-Cell[725566, 15332, 875, 18, 23, "Print"]
+Cell[514670, 10391, 736, 14, 24, "Print"],
+Cell[515409, 10407, 739, 14, 24, "Print"]
 }, Open  ]]
 }, Open  ]],
-Cell[726468, 15354, 1551, 31, 72, "Input"],
-Cell[728022, 15387, 1243, 34, 72, "Input"],
+Cell[516175, 10425, 1502, 33, 147, "Input"],
 Cell[CellGroupData[{
-Cell[729290, 15425, 2976, 70, 132, "Input"],
-Cell[732269, 15497, 3246, 63, 259, "Output"],
-Cell[CellGroupData[{
-Cell[735540, 15564, 1111, 23, 23, "Print"],
-Cell[736654, 15589, 1485, 35, 23, "Print"],
-Cell[738142, 15626, 1031, 19, 23, "Print"]
+Cell[517702, 10462, 2503, 63, 236, "Input"],
+Cell[520208, 10527, 336, 5, 32, "Output"],
+Cell[520547, 10534, 336, 5, 32, "Output"],
+Cell[520886, 10541, 340, 5, 32, "Output"],
+Cell[521229, 10548, 1776, 39, 232, "Output"]
 }, Open  ]],
-Cell[739188, 15648, 10857, 246, 249, 7303, 189, "CachedBoxData", "BoxData", \
+Cell[CellGroupData[{
+Cell[523042, 10592, 9742, 279, 354, "Input"],
+Cell[CellGroupData[{
+Cell[532809, 10875, 803, 15, 26, "Print"],
+Cell[533615, 10892, 818, 15, 24, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[534460, 10911, 1233, 28, 102, "Input"],
+Cell[535696, 10941, 6063, 153, 262, "Input"],
+Cell[541762, 11096, 11177, 293, 312, "Input"],
+Cell[552942, 11391, 9228, 230, 350, "Input"],
+Cell[CellGroupData[{
+Cell[562195, 11625, 2475, 56, 80, "Input"],
+Cell[564673, 11683, 18209, 372, 258, "Output"],
+Cell[582885, 12057, 17660, 363, 251, "Output"]
+}, Open  ]],
+Cell[600560, 12423, 11057, 291, 312, "Input"],
+Cell[611620, 12716, 8764, 228, 332, "Input"],
+Cell[CellGroupData[{
+Cell[620409, 12948, 2056, 50, 80, "Input"],
+Cell[622468, 13000, 18573, 377, 256, "Output"],
+Cell[641044, 13379, 18448, 376, 255, "Output"]
+}, Open  ]],
+Cell[659507, 13758, 9059, 264, 312, "Input"],
+Cell[668569, 14024, 8797, 243, 391, "Input"],
+Cell[CellGroupData[{
+Cell[677391, 14271, 1713, 46, 80, "Input"],
+Cell[679107, 14319, 18620, 378, 262, "Output"],
+Cell[697730, 14699, 18428, 374, 261, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[716195, 15078, 8910, 254, 289, "Input"],
+Cell[CellGroupData[{
+Cell[725130, 15336, 1008, 19, 26, "Print"],
+Cell[726141, 15357, 875, 18, 24, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[727043, 15379, 1551, 31, 79, "Input"],
+Cell[728597, 15412, 1243, 34, 81, "Input"],
+Cell[CellGroupData[{
+Cell[729865, 15450, 2976, 70, 149, "Input"],
+Cell[732844, 15522, 3246, 63, 259, "Output"],
+Cell[CellGroupData[{
+Cell[736115, 15589, 1111, 23, 26, "Print"],
+Cell[737229, 15614, 1485, 35, 26, "Print"],
+Cell[738717, 15651, 1031, 19, 26, "Print"]
+}, Open  ]],
+Cell[739763, 15673, 8369, 204, 249, "Output"]
+}, Open  ]],
+Cell[748147, 15880, 11341, 294, 289, "Input"],
+Cell[759491, 16176, 6682, 143, 246, "Input"],
+Cell[766176, 16321, 3946, 122, 188, "Input"],
+Cell[CellGroupData[{
+Cell[770147, 16447, 2643, 58, 80, "Input"],
+Cell[772793, 16507, 20392, 409, 258, "Output"],
+Cell[793188, 16918, 19755, 398, 251, "Output"]
+}, Open  ]],
+Cell[812958, 17319, 11022, 290, 289, "Input"],
+Cell[823983, 17611, 5504, 123, 200, "Input"],
+Cell[829490, 17736, 4216, 133, 188, "Input"],
+Cell[CellGroupData[{
+Cell[833731, 17873, 2106, 51, 80, "Input"],
+Cell[835840, 17926, 20710, 413, 256, "Output"],
+Cell[856553, 18341, 20506, 411, 255, "Output"]
+}, Open  ]],
+Cell[877074, 18755, 9071, 263, 289, "Input"],
+Cell[886148, 19020, 4670, 115, 222, "Input"],
+Cell[890821, 19137, 5075, 159, 241, "Input"],
+Cell[CellGroupData[{
+Cell[895921, 19300, 1718, 46, 80, "Input"],
+Cell[897642, 19348, 20725, 414, 262, "Output"],
+Cell[918370, 19764, 20470, 410, 261, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[938877, 20179, 3807, 87, 268, "Input"],
+Cell[CellGroupData[{
+Cell[942709, 20270, 781, 10, 24, "Print"],
+Cell[943493, 20282, 1361, 23, 24, "Print"],
+Cell[944857, 20307, 1260, 22, 24, "Print"],
+Cell[946120, 20331, 775, 10, 24, "Print"],
+Cell[946898, 20343, 1388, 23, 24, "Print"],
+Cell[948289, 20368, 1260, 22, 24, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[949576, 20394, 1226, 30, 147, "Input"],
+Cell[CellGroupData[{
+Cell[950827, 20428, 3619, 88, 305, "Input"],
+Cell[CellGroupData[{
+Cell[954471, 20520, 380, 5, 24, "Print"],
+Cell[954854, 20527, 667, 13, 26, "Print"],
+Cell[955524, 20542, 376, 5, 24, "Print"],
+Cell[955903, 20549, 673, 13, 26, "Print"],
+Cell[956579, 20564, 378, 5, 24, "Print"],
+Cell[956960, 20571, 821, 15, 26, "Print"]
+}, Open  ]],
+Cell[957796, 20589, 3650, 67, 235, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[961483, 20661, 1760, 57, 179, "Input"],
+Cell[963246, 20720, 88, 1, 32, "Output"],
+Cell[963337, 20723, 87, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[963461, 20729, 3616, 83, 246, "Input"],
+Cell[CellGroupData[{
+Cell[967102, 20816, 738, 10, 24, "Print"],
+Cell[967843, 20828, 1342, 23, 24, "Print"],
+Cell[969188, 20853, 1219, 22, 24, "Print"],
+Cell[970410, 20877, 732, 10, 24, "Print"],
+Cell[971145, 20889, 1348, 23, 24, "Print"],
+Cell[972496, 20914, 1217, 22, 24, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[973740, 20940, 1226, 30, 147, "Input"],
+Cell[CellGroupData[{
+Cell[974991, 20974, 3472, 86, 305, "Input"],
+Cell[CellGroupData[{
+Cell[978488, 21064, 330, 5, 24, "Print"],
+Cell[978821, 21071, 621, 13, 26, "Print"],
+Cell[979445, 21086, 324, 5, 24, "Print"],
+Cell[979772, 21093, 623, 13, 26, "Print"],
+Cell[980398, 21108, 331, 5, 24, "Print"],
+Cell[980732, 21115, 779, 15, 26, "Print"]
+}, Open  ]],
+Cell[981526, 21133, 9288, 262, 234, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[990851, 21400, 2274, 65, 201, "Input"],
+Cell[993128, 21467, 259, 3, 32, "Output"],
+Cell[993390, 21472, 259, 3, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[993686, 21480, 3981, 90, 268, "Input"],
+Cell[CellGroupData[{
+Cell[997692, 21574, 929, 12, 24, "Print"],
+Cell[998624, 21588, 1507, 25, 24, "Print"],
+Cell[1000134, 21615, 1406, 24, 24, "Print"],
+Cell[1001543, 21641, 921, 12, 24, "Print"],
+Cell[1002467, 21655, 1532, 25, 24, "Print"],
+Cell[1004002, 21682, 1405, 24, 24, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[1005434, 21710, 1294, 31, 147, "Input"],
+Cell[CellGroupData[{
+Cell[1006753, 21745, 6157, 150, 348, "Input"],
+Cell[CellGroupData[{
+Cell[1012935, 21899, 1183, 20, 24, "Print"],
+Cell[1014121, 21921, 1169, 19, 24, "Print"],
+Cell[1015293, 21942, 1181, 20, 24, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1016523, 21968, 7539, 220, 197, "Input"],
+Cell[CellGroupData[{
+Cell[1024087, 22192, 787, 15, 24, "Print"],
+Cell[1024877, 22209, 790, 15, 24, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[1025694, 22228, 5942, 152, 284, "Input"],
+Cell[CellGroupData[{
+Cell[1031661, 22384, 9071, 244, 436, "Input"],
+Cell[1040735, 22630, 16368, 282, 212, "Output"],
+Cell[1057106, 22914, 23174, 437, 264, "Output"],
+Cell[CellGroupData[{
+Cell[1080305, 23355, 567, 12, 24, "Print"],
+Cell[1080875, 23369, 557, 12, 24, "Print"],
+Cell[1081435, 23383, 553, 12, 24, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1082037, 23401, 11272, 284, 304, "Input"],
+Cell[CellGroupData[{
+Cell[1093334, 23689, 879, 16, 24, "Print"],
+Cell[1094216, 23707, 753, 15, 24, "Print"],
+Cell[1094972, 23724, 877, 16, 24, "Print"],
+Cell[1095852, 23742, 751, 15, 24, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1096652, 23763, 1512, 42, 143, "Input"],
+Cell[1098167, 23807, 658, 15, 26, "Print"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1098862, 23827, 18220, 474, 791, "Input"],
+Cell[1117085, 24303, 974, 29, 38, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1118096, 24337, 9947, 283, 281, "Input"],
+Cell[1128046, 24622, 950, 28, 38, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1129033, 24655, 2212, 53, 124, "Input"],
+Cell[1131248, 24710, 8034, 147, 228, 2237, 51, "CachedBoxData", "BoxData", \
 "Output"]
 }, Open  ]],
-Cell[750060, 15897, 11341, 294, 256, "Input"],
-Cell[761404, 16193, 6682, 143, 288, "Input"],
-Cell[768089, 16338, 3946, 122, 209, "Input"],
 Cell[CellGroupData[{
-Cell[772060, 16464, 2643, 58, 132, "Input"],
-Cell[774706, 16524, 20323, 406, 258, "Output"],
-Cell[795032, 16932, 19686, 395, 251, "Output"]
-}, Open  ]],
-Cell[814733, 17330, 11022, 290, 256, "Input"],
-Cell[825758, 17622, 5504, 123, 188, "Input"],
-Cell[831265, 17747, 4216, 133, 209, "Input"],
-Cell[CellGroupData[{
-Cell[835506, 17884, 2106, 51, 132, "Input"],
-Cell[837615, 17937, 20641, 410, 257, "Output"],
-Cell[858259, 18349, 20437, 408, 256, "Output"]
-}, Open  ]],
-Cell[878711, 18760, 9071, 263, 256, "Input"],
-Cell[887785, 19025, 4670, 115, 208, "Input"],
-Cell[892458, 19142, 5075, 159, 260, "Input"],
-Cell[CellGroupData[{
-Cell[897558, 19305, 1718, 46, 132, "Input"],
-Cell[899279, 19353, 20656, 411, 260, "Output"],
-Cell[919938, 19766, 20401, 407, 259, "Output"]
+Cell[1139319, 24862, 1935, 44, 101, "Input"],
+Cell[1141257, 24908, 1534, 37, 224, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[940376, 20178, 3807, 87, 236, "Input"],
+Cell[1142828, 24950, 12129, 300, 276, "Input"],
 Cell[CellGroupData[{
-Cell[944208, 20269, 781, 10, 23, "Print"],
-Cell[944992, 20281, 1361, 23, 23, "Print"],
-Cell[946356, 20306, 1260, 22, 23, "Print"],
-Cell[947619, 20330, 775, 10, 23, "Print"],
-Cell[948397, 20342, 1388, 23, 23, "Print"],
-Cell[949788, 20367, 1260, 22, 23, "Print"]
-}, Open  ]]
-}, Open  ]],
-Cell[951075, 20393, 1226, 30, 132, "Input"],
-Cell[CellGroupData[{
-Cell[952326, 20427, 3619, 88, 272, "Input"],
-Cell[CellGroupData[{
-Cell[955970, 20519, 380, 5, 23, "Print"],
-Cell[956353, 20526, 667, 13, 23, "Print"],
-Cell[957023, 20541, 376, 5, 23, "Print"],
-Cell[957402, 20548, 673, 13, 23, "Print"],
-Cell[958078, 20563, 378, 5, 23, "Print"],
-Cell[958459, 20570, 821, 15, 23, "Print"]
-}, Open  ]],
-Cell[959295, 20588, 3650, 67, 236, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[962982, 20660, 1760, 57, 163, "Input"],
-Cell[964745, 20719, 88, 1, 31, "Output"],
-Cell[964836, 20722, 87, 1, 31, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[964960, 20728, 3616, 83, 216, "Input"],
-Cell[CellGroupData[{
-Cell[968601, 20815, 738, 10, 23, "Print"],
-Cell[969342, 20827, 1342, 23, 23, "Print"],
-Cell[970687, 20852, 1219, 22, 23, "Print"],
-Cell[971909, 20876, 732, 10, 23, "Print"],
-Cell[972644, 20888, 1348, 23, 23, "Print"],
-Cell[973995, 20913, 1217, 22, 23, "Print"]
-}, Open  ]]
-}, Open  ]],
-Cell[975239, 20939, 1226, 30, 132, "Input"],
-Cell[CellGroupData[{
-Cell[976490, 20973, 3472, 86, 272, "Input"],
-Cell[CellGroupData[{
-Cell[979987, 21063, 330, 5, 23, "Print"],
-Cell[980320, 21070, 621, 13, 23, "Print"],
-Cell[980944, 21085, 324, 5, 23, "Print"],
-Cell[981271, 21092, 623, 13, 23, "Print"],
-Cell[981897, 21107, 331, 5, 23, "Print"],
-Cell[982231, 21114, 779, 15, 23, "Print"]
-}, Open  ]],
-Cell[983025, 21132, 12206, 311, 234, 8930, 257, "CachedBoxData", "BoxData", \
-"Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[995268, 21448, 2274, 65, 183, "Input"],
-Cell[997545, 21515, 259, 3, 31, "Output"],
-Cell[997807, 21520, 259, 3, 31, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[998103, 21528, 3981, 90, 236, "Input"],
-Cell[CellGroupData[{
-Cell[1002109, 21622, 929, 12, 23, "Print"],
-Cell[1003041, 21636, 1507, 25, 23, "Print"],
-Cell[1004551, 21663, 1406, 24, 23, "Print"],
-Cell[1005960, 21689, 921, 12, 23, "Print"],
-Cell[1006884, 21703, 1532, 25, 23, "Print"],
-Cell[1008419, 21730, 1405, 24, 23, "Print"]
-}, Open  ]]
-}, Open  ]],
-Cell[1009851, 21758, 1294, 31, 132, "Input"],
-Cell[CellGroupData[{
-Cell[1011170, 21793, 6157, 150, 290, "Input"],
-Cell[CellGroupData[{
-Cell[1017352, 21947, 1183, 20, 23, "Print"],
-Cell[1018538, 21969, 1169, 19, 23, "Print"],
-Cell[1019710, 21990, 1181, 20, 23, "Print"]
+Cell[1154982, 25254, 1217, 23, 25, "Print"],
+Cell[1156202, 25279, 1055, 20, 24, "Print"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1020940, 22016, 7539, 220, 176, "Input"],
+Cell[1157306, 25305, 1859, 47, 143, "Input"],
+Cell[1159168, 25354, 786, 16, 24, "Print"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[1028504, 22240, 787, 15, 23, "Print"],
-Cell[1029294, 22257, 790, 15, 23, "Print"]
+Cell[1159991, 25375, 758, 20, 71, "Input"],
+Cell[1160752, 25397, 304, 4, 32, "Output"],
+Cell[1161059, 25403, 337, 5, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1161433, 25413, 821, 24, 80, "Input"],
+Cell[1162257, 25439, 112, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1162406, 25445, 204, 5, 34, "Input"],
+Cell[1162613, 25452, 89, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1162739, 25458, 332, 9, 34, "Input"],
+Cell[1163074, 25469, 285, 8, 34, "Output"]
+}, Open  ]],
+Cell[1163374, 25480, 1567, 44, 110, "Input"],
+Cell[CellGroupData[{
+Cell[1164966, 25528, 1393, 37, 102, "Input"],
+Cell[1166362, 25567, 1046, 33, 34, "Output"],
+Cell[1167411, 25602, 628, 11, 34, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1168076, 25618, 725, 19, 80, "Input"],
+Cell[1168804, 25639, 943, 31, 34, "Output"],
+Cell[1169750, 25672, 522, 9, 34, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1170309, 25686, 3787, 103, 192, "Input"],
+Cell[1174099, 25791, 1345, 29, 88, "Output"],
+Cell[1175447, 25822, 1021, 26, 102, "Output"],
+Cell[1176471, 25850, 1687, 38, 100, "Output"]
+}, Open  ]],
+Cell[1178173, 25891, 4779, 140, 238, "Input"],
+Cell[CellGroupData[{
+Cell[1182977, 26035, 1563, 44, 167, "Input"],
+Cell[1184543, 26081, 187, 2, 32, "Output"],
+Cell[1184733, 26085, 187, 2, 32, "Output"],
+Cell[1184923, 26089, 208, 3, 34, "Output"],
+Cell[1185134, 26094, 429, 9, 34, "Output"],
+Cell[1185566, 26105, 481, 10, 34, "Output"],
+Cell[1186050, 26117, 255, 5, 38, "Output"]
+}, Open  ]],
+Cell[1186320, 26125, 2980, 80, 202, "Input"],
+Cell[CellGroupData[{
+Cell[1189325, 26209, 2358, 58, 103, "Input"],
+Cell[1191686, 26269, 1285, 31, 209, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1193008, 26305, 3768, 96, 278, "Input"],
+Cell[CellGroupData[{
+Cell[1196801, 26405, 969, 15, 26, "Print"],
+Cell[1197773, 26422, 878, 14, 26, "Print"],
+Cell[1198654, 26438, 910, 15, 26, "Print"],
+Cell[1199567, 26455, 941, 16, 24, "Print"],
+Cell[1200511, 26473, 936, 16, 24, "Print"],
+Cell[1201450, 26491, 1285, 22, 26, "Print"],
+Cell[1202738, 26515, 1284, 22, 26, "Print"],
+Cell[1204025, 26539, 1282, 22, 26, "Print"],
+Cell[1205310, 26563, 1156, 21, 24, "Print"]
+}, Open  ]],
+Cell[1206481, 26587, 796, 15, 38, "Output"],
+Cell[1207280, 26604, 782, 14, 38, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1208099, 26623, 8952, 252, 288, "Input"],
+Cell[CellGroupData[{
+Cell[1217076, 26879, 803, 15, 26, "Print"],
+Cell[1217882, 26896, 818, 15, 24, "Print"]
 }, Open  ]]
 }, Open  ]],
-Cell[1030111, 22276, 5942, 152, 272, "Input"],
+Cell[1218727, 26915, 1233, 28, 102, "Input"],
+Cell[1219963, 26945, 6063, 153, 262, "Input"],
 Cell[CellGroupData[{
-Cell[1036078, 22432, 9071, 244, 402, "Input"],
-Cell[1045152, 22678, 16368, 282, 219, "Output"],
-Cell[1061523, 22962, 23174, 437, 263, "Output"],
+Cell[1226051, 27102, 9398, 273, 182, "Input"],
+Cell[1235452, 27377, 1076, 33, 59, "Output"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[1084722, 23403, 567, 12, 23, "Print"],
-Cell[1085292, 23417, 557, 12, 23, "Print"],
-Cell[1085852, 23431, 553, 12, 23, "Print"]
+Cell[1236565, 27415, 2925, 62, 140, "Input"],
+Cell[1239493, 27479, 982, 20, 34, "Output"],
+Cell[1240478, 27501, 902, 16, 49, "Output"]
+}, Open  ]],
+Cell[1241395, 27520, 10019, 288, 363, "Input"],
+Cell[1251417, 27810, 1032, 24, 145, "Input"],
+Cell[1252452, 27836, 1263, 28, 190, "Input"],
+Cell[CellGroupData[{
+Cell[1253740, 27868, 320, 8, 34, "Input"],
+Cell[1254063, 27878, 103, 1, 65, "Output"]
 }, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1086454, 23449, 11272, 284, 272, "Input"],
-Cell[CellGroupData[{
-Cell[1097751, 23737, 879, 16, 23, "Print"],
-Cell[1098633, 23755, 753, 15, 23, "Print"],
-Cell[1099389, 23772, 877, 16, 23, "Print"],
-Cell[1100269, 23790, 751, 15, 23, "Print"]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1101069, 23811, 1512, 42, 119, "Input"],
-Cell[1102584, 23855, 658, 15, 23, "Print"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1103279, 23875, 18220, 474, 712, "Input"],
-Cell[1121502, 24351, 974, 29, 57, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1122513, 24385, 9947, 283, 272, "Input"],
-Cell[1132463, 24670, 950, 28, 57, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1133450, 24703, 2212, 53, 112, "Input"],
-Cell[1135665, 24758, 2752, 59, 231, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1138454, 24822, 1935, 44, 112, "Input"],
-Cell[1140392, 24868, 1534, 37, 224, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1141963, 24910, 12129, 300, 276, "Input"],
-Cell[CellGroupData[{
-Cell[1154117, 25214, 1217, 23, 25, "Print"],
-Cell[1155337, 25239, 1055, 20, 23, "Print"]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1156441, 25265, 1859, 47, 119, "Input"],
-Cell[1158303, 25314, 786, 16, 23, "Print"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1159126, 25335, 758, 20, 57, "Input"],
-Cell[1159887, 25357, 304, 4, 31, "Output"],
-Cell[1160194, 25363, 337, 5, 31, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1160568, 25373, 821, 24, 79, "Input"],
-Cell[1161392, 25399, 112, 1, 31, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1161541, 25405, 204, 5, 31, "Input"],
-Cell[1161748, 25412, 89, 1, 31, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1161874, 25418, 332, 9, 31, "Input"],
-Cell[1162209, 25429, 285, 8, 31, "Output"]
-}, Open  ]],
-Cell[1162509, 25440, 1567, 44, 96, "Input"],
-Cell[CellGroupData[{
-Cell[1164101, 25488, 1393, 37, 92, "Input"],
-Cell[1165497, 25527, 1046, 33, 31, "Output"],
-Cell[1166546, 25562, 628, 11, 31, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1167211, 25578, 725, 19, 72, "Input"],
-Cell[1167939, 25599, 943, 31, 31, "Output"],
-Cell[1168885, 25632, 522, 9, 31, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1169444, 25646, 3787, 103, 212, "Input"],
-Cell[1173234, 25751, 1345, 29, 78, "Output"],
-Cell[1174582, 25782, 1021, 26, 92, "Output"],
-Cell[1175606, 25810, 1687, 38, 85, "Output"]
-}, Open  ]],
-Cell[1177308, 25851, 4779, 140, 244, "Input"],
-Cell[CellGroupData[{
-Cell[1182112, 25995, 1563, 44, 152, "Input"],
-Cell[1183678, 26041, 187, 2, 31, "Output"],
-Cell[1183868, 26045, 187, 2, 31, "Output"],
-Cell[1184058, 26049, 208, 3, 33, "Output"],
-Cell[1184269, 26054, 429, 9, 31, "Output"],
-Cell[1184701, 26065, 481, 10, 31, "Output"],
-Cell[1185185, 26077, 255, 5, 36, "Output"]
-}, Open  ]],
-Cell[1185455, 26085, 2980, 80, 176, "Input"],
-Cell[CellGroupData[{
-Cell[1188460, 26169, 2358, 58, 92, "Input"],
-Cell[1190821, 26229, 1285, 31, 214, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1192143, 26265, 3768, 96, 239, "Input"],
-Cell[CellGroupData[{
-Cell[1195936, 26365, 969, 15, 25, "Print"],
-Cell[1196908, 26382, 878, 14, 23, "Print"],
-Cell[1197789, 26398, 910, 15, 23, "Print"],
-Cell[1198702, 26415, 941, 16, 23, "Print"],
-Cell[1199646, 26433, 936, 16, 23, "Print"],
-Cell[1200585, 26451, 1285, 22, 23, "Print"],
-Cell[1201873, 26475, 1284, 22, 23, "Print"],
-Cell[1203160, 26499, 1282, 22, 23, "Print"],
-Cell[1204445, 26523, 1156, 21, 23, "Print"]
-}, Open  ]],
-Cell[1205616, 26547, 796, 15, 36, "Output"],
-Cell[1206415, 26564, 782, 14, 36, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1207234, 26583, 8952, 252, 256, "Input"],
-Cell[CellGroupData[{
-Cell[1216211, 26839, 803, 15, 23, "Print"],
-Cell[1217017, 26856, 818, 15, 23, "Print"]
-}, Open  ]]
-}, Open  ]],
-Cell[1217862, 26875, 1233, 28, 92, "Input"],
-Cell[1219098, 26905, 6063, 153, 252, "Input"],
-Cell[CellGroupData[{
-Cell[1225186, 27062, 9398, 273, 178, "Input"],
-Cell[1234587, 27337, 1076, 33, 60, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[1235700, 27375, 2925, 62, 119, "Input"],
-Cell[1238628, 27439, 982, 20, 31, "Output"],
-Cell[1239613, 27461, 902, 16, 55, "Output"]
-}, Open  ]],
-Cell[1240530, 27480, 2278, 67, 236, "Input"]
 }
 ]
 *)
 
-(* End of internal cache information *)
