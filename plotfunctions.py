@@ -308,6 +308,12 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         cov = np.ones([num_exp,1])
         vUthry = np.ones([num_exp,1])
         v2Uthry = np.ones([num_exp,1])
+        
+        varp = np.ones([num_exp,1])
+        covp = np.ones([num_exp,1])
+        vUthryp = np.ones([num_exp,1])
+        v2Uthryp = np.ones([num_exp,1])
+        
         NsUparam = [[] for i in range(num_exp)]
     
         for i in range(num_exp):
@@ -332,6 +338,11 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
             cov[i] = np.mean(fit_cov)
             vUthry[i] = vU_thry
             v2Uthry[i] = v2U_thry
+            varp[i] = var[i]/vU_thry
+            covp[i] = cov[i]/vU_thry
+            vUthryp[i] = vU_thry/vU_thry
+            v2Uthryp[i] = v2U_thry/vU_thry
+            
             NsUparam[i] = parameters
         
         # plot data for figure 2a and 2b 
@@ -342,11 +353,12 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         fig5a, ax5a = plt.subplots(1,1,figsize=[8,8])
         ax5a.plot(NsUparam[start1:end1,1],var[start1:end1],c="black",label='var($r_1|r_2$)',linewidth=2.0,linestyle = '--')
         ax5a.plot(NsUparam[start1:end1,1],cov[start1:end1],c="black",label='cov($r_1$,$r_2$)',linewidth=2.0,linestyle = '-.')
+        ax5a.plot(NsUparam[start1:end1,1],np.asarray(var[start1:end1])+np.asarray(cov[start1:end1]),c="red",label='v($r_1|r_2$)',linewidth=2.0,linestyle = '-')
         ax5a.plot(NsUparam[start1:end1,1],vUthry[start1:end1],c="black",label='v($r_1$)',linewidth=2.0,linestyle = '-')
         ax5a.plot(NsUparam[start1:end1,1],v2Uthry[start1:end1],c="black",label='v($r_1|r_2$)',linewidth=2.0,linestyle = ':')
         ax5a.axhline(linewidth=0.5, color = 'k')
         ax5a.set_ylabel('Fitness Variances & Covariance',fontsize=18)
-        ax5a.set_xlabel('selection coeff',fontsize=18)
+        ax5a.set_xlabel('selection coeff ($10^{-3} - 2x10^{-2}$)',fontsize=18)
         ax5a.tick_params(axis='both',labelsize=14)
         ax5a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
         ax5a.legend()
@@ -355,11 +367,12 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         fig5b, ax5b = plt.subplots(1,1,figsize=[8,8])
         ax5b.plot(NsUparam[start2:end2,2],var[start2:end2],c="black",label='var($r_1|r_2$)',linewidth=2.0,linestyle = '--')
         ax5b.plot(NsUparam[start2:end2,2],cov[start2:end2],c="black",label='cov($r_1$,$r_2$)',linewidth=2.0,linestyle = '-.')
-        ax5b.plot(NsUparam[start2:end2,2],vUthry[start2:end2],c="black",label='v($r_1$)',linewidth=2.0,linestyle = ':')
-        ax5b.plot(NsUparam[start2:end2,2],v2Uthry[start2:end2],c="black",label='v($r_1|r_2$)',linewidth=2.0,linestyle = '-')
+        ax5b.plot(NsUparam[start2:end2,2],np.asarray(var[start2:end2])+np.asarray(cov[start2:end2]),c="red",label='v($r_1|r_2$)',linewidth=2.0,linestyle = '-')
+        ax5b.plot(NsUparam[start2:end2,2],vUthry[start2:end2],c="black",label='v($r_1$)',linewidth=2.0,linestyle = '-')
+        ax5b.plot(NsUparam[start2:end2,2],v2Uthry[start2:end2],c="black",label='v($r_1|r_2$)',linewidth=2.0,linestyle = ':')
         ax5b.axhline(linewidth=0.5, color = 'k')
         ax5b.set_ylabel('Fitness Variances & Covariance',fontsize=18)
-        ax5b.set_xlabel('mutation rate',fontsize=18)
+        ax5b.set_xlabel('mutation rate ($10^{-6} - 10^{-4}$)',fontsize=18)
         ax5b.tick_params(axis='both',labelsize=14)
         ax5b.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
         ax5b.legend()
@@ -367,15 +380,64 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         
         fig5c, ax5c = plt.subplots(1,1,figsize=[8,8])
         ax5c.plot(NsUparam[start3:end3,0],var[start3:end3],c="black",label='var($r_1|r_2$)',linewidth=2.0,linestyle = '--')        
-        ax5c.plot(NsUparam[start2:end2,2],cov[start2:end2],c="black",label='cov($r_1$,$r_2$)',linewidth=2.0,linestyle = '-.')
-        ax5c.plot(NsUparam[start2:end2,2],vUthry[start3:end3],c="black",label='v($r_1$)',linewidth=2.0,linestyle = '-')
-        ax5c.plot(NsUparam[start2:end2,2],v2Uthry[start3:end3],c="black",label='v($r_1|r_2$)',linewidth=2.0,linestyle = ':')
+        ax5c.plot(NsUparam[start3:end3,0],cov[start3:end3],c="black",label='cov($r_1$,$r_2$)',linewidth=2.0,linestyle = '-.')
+        ax5c.plot(NsUparam[start3:end3,0],np.asarray(var[start3:end3])+np.asarray(cov[start3:end3]),c="red",label='v($r_1|r_2$)',linewidth=2.0,linestyle = '-')        
+        ax5c.plot(NsUparam[start3:end3,0],vUthry[start3:end3],c="black",label='v($r_1$)',linewidth=2.0,linestyle = '-')
+        ax5c.plot(NsUparam[start3:end3,0],v2Uthry[start3:end3],c="black",label='v($r_1|r_2$)',linewidth=2.0,linestyle = ':')
         ax5c.axhline(linewidth=0.5, color = 'k')
         ax5c.set_ylabel('Fitness Variances & Covariance',fontsize=18)
-        ax5c.set_xlabel('population size',fontsize=18)
+        ax5c.set_xlabel('population size ($10^{6} - 10^{9}$)',fontsize=18)
         ax5c.tick_params(axis='both',labelsize=14)
         ax5c.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
         ax5c.legend()        
         fig5c.savefig('./'+folder_location+'figures/'+fname+data_name+'c.pdf')
+        
+        fig5d, ax5d = plt.subplots(1,1,figsize=[8,8])
+#        ax5d.plot(NsUparam[start1:end1,1],varp[start1:end1],c="black",label='var($r_1|r_2$)',linewidth=2.0,linestyle = '--')
+#        ax5d.plot(NsUparam[start1:end1,1],covp[start1:end1],c="black",label='cov($r_1$,$r_2$)',linewidth=2.0,linestyle = '-.')
+#        ax5d.plot(NsUparam[start1:end1,1],np.asarray(varp[start1:end1])+np.asarray(covp[start1:end1]),c="red",label='v($r_1|r_2$)',linewidth=2.0,linestyle = '-')
+#        ax5d.plot(NsUparam[start1:end1,1],vUthryp[start1:end1],c="black",label='v($r_1$)',linewidth=2.0,linestyle = '-')
+#        ax5d.plot(NsUparam[start1:end1,1],v2Uthryp[start1:end1],c="black",label='v($r_1|r_2$)',linewidth=2.0,linestyle = ':')
+        ax5d.plot(NsUparam[start1:end1,1],varp[start1:end1]-vUthryp[start1:end1],c="blue",label='var($r_1|r_2$)',linewidth=2.0,linestyle = '-')
+        ax5d.plot(NsUparam[start1:end1,1],-covp[start1:end1],c="red",label='cov($r_1$,$r_2$)',linewidth=2.0,linestyle = '-')
+        ax5d.axhline(linewidth=0.5, color = 'k')
+        ax5d.set_ylabel('Percent of Orig. Variances',fontsize=18)
+        ax5d.set_xlabel('selection coeff ($10^{-3} - 2 x 10^{-2}$)',fontsize=18)
+        ax5d.tick_params(axis='both',labelsize=14)
+        ax5d.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+        ax5d.legend()
+        fig5d.savefig('./'+folder_location+'figures/'+fname+data_name+'d.pdf')
+        
+        fig5e, ax5e = plt.subplots(1,1,figsize=[8,8])
+#        ax5e.plot(NsUparam[start2:end2,2],varp[start2:end2],c="black",label='var($r_1|r_2$)',linewidth=2.0,linestyle = '--')
+#        ax5e.plot(NsUparam[start2:end2,2],covp[start2:end2],c="black",label='cov($r_1$,$r_2$)',linewidth=2.0,linestyle = '-.')
+#        ax5e.plot(NsUparam[start2:end2,2],np.asarray(varp[start2:end2])+np.asarray(covp[start2:end2]),c="red",label='v($r_1|r_2$)',linewidth=2.0,linestyle = '-')
+#        ax5e.plot(NsUparam[start2:end2,2],vUthryp[start2:end2],c="black",label='v($r_1$)',linewidth=2.0,linestyle = '-')
+#        ax5e.plot(NsUparam[start2:end2,2],v2Uthryp[start2:end2],c="black",label='v($r_1|r_2$)',linewidth=2.0,linestyle = ':')
+        ax5e.plot(NsUparam[start2:end2,2],varp[start2:end2]-vUthryp[start2:end2],c="blue",label='var($r_1|r_2$)',linewidth=2.0,linestyle = '-')
+        ax5e.plot(NsUparam[start2:end2,2],-covp[start2:end2],c="red",label='cov($r_1$,$r_2$)',linewidth=2.0,linestyle = '-')
+        ax5e.axhline(linewidth=0.5, color = 'k')
+        ax5e.set_ylabel('Percent of Orig. Variances',fontsize=18)
+        ax5e.set_xlabel('mutation rate ($10^{-6} - 10^{-4}$)',fontsize=18)
+        ax5e.tick_params(axis='both',labelsize=14)
+        ax5e.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+        ax5e.legend()
+        fig5e.savefig('./'+folder_location+'figures/'+fname+data_name+'e.pdf')
+        
+        fig5f, ax5f = plt.subplots(1,1,figsize=[8,8])
+#        ax5f.plot(NsUparam[start3:end3,0],varp[start3:end3],c="black",label='var($r_1|r_2$)',linewidth=2.0,linestyle = '--')        
+#        ax5f.plot(NsUparam[start3:end3,0],covp[start3:end3],c="black",label='cov($r_1$,$r_2$)',linewidth=2.0,linestyle = '-.')
+#        ax5f.plot(NsUparam[start3:end3,0],np.asarray(varp[start3:end3])+np.asarray(covp[start3:end3]),c="red",label='v($r_1|r_2$)',linewidth=2.0,linestyle = '-')        
+#        ax5f.plot(NsUparam[start3:end3,0],vUthryp[start3:end3],c="black",label='v($r_1$)',linewidth=2.0,linestyle = '-')
+#        ax5f.plot(NsUparam[start3:end3,0],v2Uthryp[start3:end3],c="black",label='v($r_1|r_2$)',linewidth=2.0,linestyle = ':')
+        ax5f.plot(NsUparam[start3:end3,0],varp[start3:end3]-vUthryp[start3:end3],c="blue",label='var($r_1|r_2$)',linewidth=2.0,linestyle = '-')        
+        ax5f.plot(NsUparam[start3:end3,0],-covp[start3:end3],c="red",label='cov($r_1$,$r_2$)',linewidth=2.0,linestyle = '-')
+        ax5f.axhline(linewidth=0.5, color = 'k')
+        ax5f.set_ylabel('Percent of Orig. Variances',fontsize=18)
+        ax5f.set_xlabel('population size ($10^{6} - 10^{9}$)',fontsize=18)
+        ax5f.tick_params(axis='both',labelsize=14)
+        ax5f.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+        ax5f.legend()        
+        fig5f.savefig('./'+folder_location+'figures/'+fname+data_name+'f.pdf')
                 
     return None
