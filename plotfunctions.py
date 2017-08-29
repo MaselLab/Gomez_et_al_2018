@@ -118,7 +118,7 @@ def get_2D_distr(genotypes,abundances,box_dim):
     return [my_distr,xlabels,ylabels]
 
 # -----------------------------------------------------------------------------
-def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param,fname,traitno):
+def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param,fname,traitno,num_exp):
 # figure 1: representation of two-dimensional distribution  (no data required)
     [N,s1,s2,U1,U2] = pop_param
     plt.ioff()
@@ -302,62 +302,80 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         ax4.set_title('1D distribution trait '+str(traitno))
         fig4.savefig('./'+folder_location+'figures/'+fname+data_name+'.png')
 
-# figure 5: plot of normality test of distributions vs covariance
+# figure 5: plot of covariances and trait 1 varainces
     if (figNum == 5):
-
-        # load time series data of distrStats from plotdata.py output
-        pickle_file_name = './'+folder_location+'data/pythondata/distrStats'+data_name+'.pickle'
-        pickle_file = open(pickle_file_name,'rb') 
-        [times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry] = pickle.load(pickle_file)
-        pickle_file.close()
-        
-        # select interval of simulation data that will be used for plot
-        # reduce loaded data to subset corresponding to selected interval
-        [start_indx,end_indx] = get_sample_window(times,sim_start,sim_end)
-        times = times[start_indx:end_indx]
-        mean_fit = mean_fit[start_indx:end_indx]
-        fit_var = fit_var[start_indx:end_indx]
-        fit_cov = fit_cov[start_indx:end_indx]
-        pop_load = pop_load[start_indx:end_indx]
-        rate_adpt1 = fit_var[:,0] + fit_cov
-        rate_adpt2 = fit_var[:,0] + fit_cov
-        
-        del start_indx, end_indx
-        
-        # compute means of the time series data and store as constant arry
-        var1_avg = np.mean(fit_var[:,0])*np.ones(np.shape(times))
-        var2_avg = np.mean(fit_var[:,1])*np.ones(np.shape(times))
-        cov_avg = np.mean(fit_cov[:])*np.ones(np.shape(times))
-        rate_adpt1_avg = var1_avg + cov_avg
-        rate_adpt2_avg = var2_avg + cov_avg
+        var = np.ones([num_exp,1])
+        cov = np.ones([num_exp,1])
+        vUthry = np.ones([num_exp,1])
+        v2Uthry = np.ones([num_exp,1])
+        NsUparam = [[] for i in range(num_exp)]
+    
+        for i in range(num_exp):
+            # load time series data of distrStats from plotdata.py output
+            pickle_file_name = './'+folder_location+'data/pythondata/data_exp'+str(i+1)+'.pickle'
+            pickle_file = open(pickle_file_name,'rb') 
+            [times,genotypes,abundances,parameters] = pickle.load(pickle_file)
+            pickle_file.close()
+            
+            # load time series data of distrStats from plotdata.py output
+            pickle_file_name = './'+folder_location+'data/pythondata/stats_exp'+str(i+1)+'.pickle'
+            pickle_file = open(pickle_file_name,'rb') 
+            [times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry] = pickle.load(pickle_file)
+            pickle_file.close()
+            
+            # select interval of simulation data that will be used for plot
+            # reduce loaded data to subset corresponding to selected interval
+            [start_indx,end_indx] = get_sample_window(times,sim_start,sim_end)
+            fit_var = fit_var[start_indx:end_indx]
+            fit_cov = fit_cov[start_indx:end_indx]
+            var[i] = np.mean(fit_var[:,0])
+            cov[i] = np.mean(fit_cov)
+            vUthry[i] = vU_thry
+            v2Uthry[i] = v2U_thry
+            NsUparam[i] = parameters
         
         # plot data for figure 2a and 2b 
-        fig3a, ax3a = plt.subplots(1,1,figsize=[8,8])
-        ax3b = plt.twinx(ax3a)
-        ax3a.plot(times,var1_avg,c="black",label='var($r_1|r_2$)=' + str(round(var1_avg[0],7)),linewidth=2.0,linestyle = '--')
-        ax3a.plot(times,cov_avg,c="black",label='cov($r_1$,$r_2$)=' + str(round(cov_avg[0],7)),linewidth=2.0,linestyle = '-.')
-        ax3a.plot(times,vU_thry*np.ones(np.shape(var1_avg)),c="black",label='var($r_1$)=' + str(round(vU_thry,7)),linewidth=2.0,linestyle = '-')        
-        ax3a.axhline(linewidth=0.5, color = 'k')
-        ax3a.set_ylabel('Fitness Variances & Covariance',fontsize=18)
-        ax3a.set_xlabel('Time (Generations)',fontsize=18)
-        ax3a.set_ylim((-3e-4,4e-4))
-        ax3a.set_xlim((1e4,2e4))
-        ax3a.tick_params(axis='both',labelsize=14)
-        ax3a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
-        ax3a.legend()
+        [start1,start2,start3] = [1,num_exp/3+1,2*num_exp/3+1]         
+        [end1,end2,end3] = [num_exp/3,2*num_exp/3,num_exp]
+        NsUparam = np.asarray(NsUparam)
         
-        ax3b.plot(times,fit_var[:,0],c="black",linestyle="--",linewidth=1.0)
-        ax3b.plot(times,fit_cov[:],c="black",linestyle="-.",linewidth=1.0)
-        ax3b.axhline(linewidth=0.5, color = 'k')        
-        ax3b.set_ylim((-3e-4,4e-4))
-        ax3b.set_xlim((1e4,2e4))        
-        ax3b.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
-        ax3b.tick_params(axis='both',labelsize=14)
-
-        fig3a.savefig('./'+folder_location+'figures/'+fname+data_name+'.pdf')
+        fig5a, ax5a = plt.subplots(1,1,figsize=[8,8])
+        ax5a.plot(NsUparam[start1:end1,1],var[start1:end1],c="black",label='var($r_1|r_2$)',linewidth=2.0,linestyle = '--')
+        ax5a.plot(NsUparam[start1:end1,1],cov[start1:end1],c="black",label='cov($r_1$,$r_2$)',linewidth=2.0,linestyle = '-.')
+        ax5a.plot(NsUparam[start1:end1,1],vUthry[start1:end1],c="black",label='v($r_1$)',linewidth=2.0,linestyle = '-')
+        ax5a.plot(NsUparam[start1:end1,1],v2Uthry[start1:end1],c="black",label='v($r_1|r_2$)',linewidth=2.0,linestyle = ':')
+        ax5a.axhline(linewidth=0.5, color = 'k')
+        ax5a.set_ylabel('Fitness Variances & Covariance',fontsize=18)
+        ax5a.set_xlabel('selection coeff',fontsize=18)
+        ax5a.tick_params(axis='both',labelsize=14)
+        ax5a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+        ax5a.legend()
+        fig5a.savefig('./'+folder_location+'figures/'+fname+data_name+'a.pdf')
         
-        del times, mean_fit, fit_var, fit_cov, pop_load, dcov_dt, vU_thry
-        del v2U_thry, rate_adpt1, rate_adpt2, var1_avg, var2_avg,cov_avg
-        del rate_adpt1_avg, rate_adpt2_avg, fig3a, ax3a, ax3b, N, s1, s2, U1, U2
+        fig5b, ax5b = plt.subplots(1,1,figsize=[8,8])
+        ax5b.plot(NsUparam[start2:end2,2],var[start2:end2],c="black",label='var($r_1|r_2$)',linewidth=2.0,linestyle = '--')
+        ax5b.plot(NsUparam[start2:end2,2],cov[start2:end2],c="black",label='cov($r_1$,$r_2$)',linewidth=2.0,linestyle = '-.')
+        ax5b.plot(NsUparam[start2:end2,2],vUthry[start2:end2],c="black",label='v($r_1$)',linewidth=2.0,linestyle = ':')
+        ax5b.plot(NsUparam[start2:end2,2],v2Uthry[start2:end2],c="black",label='v($r_1|r_2$)',linewidth=2.0,linestyle = '-')
+        ax5b.axhline(linewidth=0.5, color = 'k')
+        ax5b.set_ylabel('Fitness Variances & Covariance',fontsize=18)
+        ax5b.set_xlabel('mutation rate',fontsize=18)
+        ax5b.tick_params(axis='both',labelsize=14)
+        ax5b.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+        ax5b.legend()
+        fig5b.savefig('./'+folder_location+'figures/'+fname+data_name+'b.pdf')
         
+        fig5c, ax5c = plt.subplots(1,1,figsize=[8,8])
+        ax5c.plot(NsUparam[start3:end3,0],var[start3:end3],c="black",label='var($r_1|r_2$)',linewidth=2.0,linestyle = '--')        
+        ax5c.plot(NsUparam[start2:end2,2],cov[start2:end2],c="black",label='cov($r_1$,$r_2$)',linewidth=2.0,linestyle = '-.')
+        ax5c.plot(NsUparam[start2:end2,2],vUthry[start3:end3],c="black",label='v($r_1$)',linewidth=2.0,linestyle = '-')
+        ax5c.plot(NsUparam[start2:end2,2],v2Uthry[start3:end3],c="black",label='v($r_1|r_2$)',linewidth=2.0,linestyle = ':')
+        ax5c.axhline(linewidth=0.5, color = 'k')
+        ax5c.set_ylabel('Fitness Variances & Covariance',fontsize=18)
+        ax5c.set_xlabel('population size',fontsize=18)
+        ax5c.tick_params(axis='both',labelsize=14)
+        ax5c.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+        ax5c.legend()        
+        fig5c.savefig('./'+folder_location+'figures/'+fname+data_name+'c.pdf')
+                
     return None
