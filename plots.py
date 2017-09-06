@@ -20,7 +20,7 @@ folder_location = ''
 pop_param = [1e9,1e-2,1e-2,1e-5,1e-5]
 [sim_start,sim_end,snapshot,traitno] = [1e4,4e4,1.313e4,1]
 traitno = 0
-num_exp = 153
+num_exp = 33
 
 ## generate figure 2. (parameters N=1e9, s1=s2=1e-2, U1=U2=1e-5)
 #pltfun.generate_figure(2,data_name,folder_location,snapshot,snapshot,pop_param,'fig2-'+str(snapshot),traitno,num_exp)
@@ -45,4 +45,5 @@ num_exp = 153
 #   
    
 # generate set for figure 5
-pltfun.generate_figure(5,data_name,folder_location,sim_start,sim_end,pop_param,'fig',traitno,num_exp)
+#pltfun.generate_figure(5,data_name,folder_location,sim_start,sim_end,pop_param,'fig',traitno,num_exp)
+pltfun.generate_figure(6,data_name,folder_location,sim_start,sim_end,pop_param,'fig',traitno,num_exp)

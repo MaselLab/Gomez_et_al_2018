@@ -106,12 +106,37 @@ import numpy as np
 import copy as cpy
 
 # section of code for processing new data from Mathematica simulations
-num_exp = 153       # number of experiments/files
+num_exp = 33       # number of experiments/files
 
 #folder_location = 'Documents/kgrel2d/'  # use this location in linux
 folder_location = ''     # use this location if windows
 [times,genotypes,abundances,parameters] = [[],[],[],[]]
 
+var = np.ones([num_exp,1])
+cov = np.ones([num_exp,1])
+vUthry = np.ones([num_exp,1])
+v2Uthry = np.ones([num_exp,1])
+
+varp = np.ones([num_exp,1])
+covp = np.ones([num_exp,1])
+vUthryp = np.ones([num_exp,1])
+v2Uthryp = np.ones([num_exp,1])
+NsUparam = [[] for l in range(num_exp)]
+
+
+def get_sample_window(times,start_time,end_time):
+# returns: indeces of times that correspond to start_time and end_time
+ 
+    [num_pts,start_indx,end_indx] = [len(times),0,0]
+    
+    for i in range(num_pts):
+        if times[start_indx] <= start_time:
+            start_indx = start_indx + 1
+        if times[end_indx] <= end_time:
+            end_indx = end_indx + 1
+    
+    return [start_indx,end_indx]
+    
 for k in range(num_exp):
     print(k+1)
     # get simulation data and store genotypes as lists since they vary in dimensions over time
@@ -192,3 +217,21 @@ for k in range(num_exp):
     pickle_file = open(pickle_file_name,'wb') 
     pickle.dump([times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry],pickle_file,pickle.HIGHEST_PROTOCOL)
     pickle_file.close()
+    
+    [start_indx,end_indx] = get_sample_window(times,10000,1000000)
+    fit_var = fit_var[start_indx:end_indx]
+    fit_cov = fit_cov[start_indx:end_indx]
+    var[k] = np.mean(fit_var[:,0])
+    cov[k] = np.mean(fit_cov)
+    vUthry[k] = vU_thry
+    v2Uthry[k] = v2U_thry
+    varp[k] = var[k]/vU_thry
+    covp[k] = cov[k]/vU_thry
+    vUthryp[k] = vU_thry/vU_thry
+    v2Uthryp[k] = v2U_thry/vU_thry
+    NsUparam[k] = [N,s,U]
+
+pickle_file_name = './'+folder_location+'data/pythondata/sumdata_exp5.pickle'
+pickle_file = open(pickle_file_name,'wb') 
+pickle.dump([var, cov, vUthry, v2Uthry, varp, covp, vUthryp, v2Uthryp,NsUparam],pickle_file,pickle.HIGHEST_PROTOCOL)
+pickle_file.close()
