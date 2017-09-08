@@ -446,7 +446,7 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         ax5f.legend()        
         fig5f.savefig('./'+folder_location+'figures/'+fname+data_name+'f.pdf')
         
-# figure 5: plot of covariances and trait 1 varainces
+# figure 6: plot of covariances and trait 1 varainces
     if (figNum == 6):
         
         # load time series data of distrStats from plotdata.py output
@@ -548,5 +548,62 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         ax6f.set_xlim((1e6,1e9)) 
         ax6f.legend()        
         fig6f.savefig('./'+folder_location+'figures/'+fname+data_name+'f.pdf')
-                
+
+# figure 6: plot of covariances and trait 1 varainces
+    if (figNum == 7):
+        
+        [start1,start2,start3] = [1,num_exp/3+1,2*num_exp/3+1]         
+        [end1,end2,end3] = [num_exp/3,2*num_exp/3,num_exp]
+        
+        tau_q = np.ones([num_exp,1])
+        median_cov_times = np.ones([num_exp,1])
+        NsUparam = []
+        
+        for k in range(num_exp):        
+            # load time series data of distrStats from plotdata.py output
+            pickle_file_name = './'+folder_location+'data/pythondata/timescales_exp'+str(k+1)+'.pickle'
+            pickle_file = open(pickle_file_name,'rb') 
+            [tau_q[k],median_cov_times[k],mean_cov,dcov_dt,cov_times,parameters] = pickle.load(pickle_file)
+            pickle_file.close()
+            NsUparam = NsUparam + [parameters]
+        
+        NsUparam = np.asarray(NsUparam)        
+        
+        fig7a, ax7a = plt.subplots(1,1,figsize=[8,8])
+#        ax7a.plot(NsUparam[start1:end1,1],tau_q[start1:end1],c="black",label='tau_q',linewidth=2.0,linestyle = '--')
+        ax7a.plot(NsUparam[start1:end1,1],np.asarray(median_cov_times[start1:end1])/(np.asarray(NsUparam[start1:end1,1])**2),c="blue",label='t_cov',linewidth=2.0,linestyle = '-.')        
+        ax7a.axhline(linewidth=0.5, color = 'k')
+        ax7a.set_ylabel('timescale (gen)',fontsize=18)
+        ax7a.set_xlabel('selection coeff ($10^{-3} - 2x10^{-2}$)',fontsize=18)
+        ax7a.tick_params(axis='both',labelsize=14)
+        ax7a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+        ax7a.set_xlim((1e-3,2e-2))          
+        ax7a.legend()
+        fig7a.savefig('./'+folder_location+'figures/'+fname+data_name+'a.pdf')
+        
+        fig7b, ax7b = plt.subplots(1,1,figsize=[8,8])
+#        ax7b.plot(NsUparam[start2:end2,2],tau_q[start2:end2],c="black",label='tau_q',linewidth=2.0,linestyle = '--')
+        ax7b.plot(NsUparam[start2:end2,2],np.asarray(median_cov_times[start2:end2])/(np.asarray(NsUparam[start2:end2,1])**2),c="blue",label='t_cov',linewidth=2.0,linestyle = '-.')
+        ax7b.axhline(linewidth=0.5, color = 'k')
+        ax7b.set_ylabel('timescale (gen)',fontsize=18)
+        ax7b.set_xlabel('mutation rate ($10^{-6} - 10^{-4}$)',fontsize=18)
+        ax7b.tick_params(axis='both',labelsize=14)
+        ax7b.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+        ax7b.set_xlim((1e-7,2e-5))  
+        ax7b.legend()
+        fig7b.savefig('./'+folder_location+'figures/'+fname+data_name+'b.pdf')
+        
+        fig7c, ax7c = plt.subplots(1,1,figsize=[8,8])
+#        ax7c.plot(NsUparam[start3:end3,0],tau_q[start3:end3],c="black",label='tau_q',linewidth=2.0,linestyle = '--')        
+        ax7c.plot(NsUparam[start3:end3,0],np.asarray(median_cov_times[start3:end3])/(np.asarray(NsUparam[start3:end3,1])**2),c="blue",label='t_cov',linewidth=2.0,linestyle = '-.')
+        ax7c.axhline(linewidth=0.5, color = 'k')
+        ax7c.set_ylabel('timescale (gen)',fontsize=18)
+        ax7c.set_xlabel('population size ($10^{6} - 10^{9}$)',fontsize=18)
+        ax7c.tick_params(axis='both',labelsize=14)
+        ax7c.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+        ax7c.set_xlim((1e6,1e9))  
+        ax7c.legend()        
+        fig7c.savefig('./'+folder_location+'figures/'+fname+data_name+'c.pdf')
+        
+
     return None

@@ -46,4 +46,5 @@ num_exp = 33
    
 # generate set for figure 5
 #pltfun.generate_figure(5,data_name,folder_location,sim_start,sim_end,pop_param,'fig',traitno,num_exp)
-pltfun.generate_figure(6,data_name,folder_location,sim_start,sim_end,pop_param,'fig',traitno,num_exp)
+#pltfun.generate_figure(6,data_name,folder_location,sim_start,sim_end,pop_param,'fig',traitno,num_exp)
+pltfun.generate_figure(7,'7',folder_location,sim_start,sim_end,pop_param,'fig',traitno,num_exp)

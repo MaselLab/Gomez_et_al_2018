@@ -235,3 +235,44 @@ pickle_file_name = './'+folder_location+'data/pythondata/sumdata_exp5.pickle'
 pickle_file = open(pickle_file_name,'wb') 
 pickle.dump([var, cov, vUthry, v2Uthry, varp, covp, vUthryp, v2Uthryp,NsUparam],pickle_file,pickle.HIGHEST_PROTOCOL)
 pickle_file.close()
+
+# ------------------------------------------------------------------------------
+# import packages needed for script
+import pickle
+import scipy as sp
+import numpy as np
+import copy as cpy
+
+# section of code for processing new data from Mathematica simulations
+num_exp = 33       # number of experiments/files
+
+#folder_location = 'Documents/kgrel2d/'  # use this location in linux
+folder_location = ''     # use this location if windows
+
+for k in range(num_exp):
+    print(k+1)
+
+    pickle_file_name = './'+folder_location+'data/pythondata/data_exp'+str(k+1)+'.pickle'
+    pickle_file = open(pickle_file_name,'rb') 
+    [times,genotypes,abundances,parameters] = pickle.load(pickle_file)
+    pickle_file.close()
+    
+    # load time series data of distrStats from plotdata.py output
+    pickle_file_name = './'+folder_location+'data/pythondata/stats_exp'+str(k+1)+'.pickle'
+    pickle_file = open(pickle_file_name,'rb') 
+    [times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry] = pickle.load(pickle_file)
+    pickle_file.close()
+    
+    # compute both medians and time scale of tau_q's
+    cov_times = cpy.deepcopy(times)
+    mean_cov = np.mean(fit_cov)
+    for i in range(len(times)):
+        cov_times[i] = abs((0.1*mean_cov)/dcov_dt[i])
+    
+    median_cov_time = median(cov_times)
+    tau_q = (1/vU_thry)*parameters[1]
+    
+    pickle_file_name = './'+folder_location+'data/pythondata/timescales_exp'+str(k+1)+'.pickle'
+    pickle_file = open(pickle_file_name,'wb') 
+    pickle.dump([tau_q,median_cov_time,mean_cov,dcov_dt,cov_times,parameters],pickle_file,pickle.HIGHEST_PROTOCOL)
+    pickle_file.close()
