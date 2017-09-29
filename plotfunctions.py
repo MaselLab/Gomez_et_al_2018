@@ -351,7 +351,7 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         ax5a.tick_params(axis='both',labelsize=14)
         ax5a.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
         ax5a.set_ylim((-2,2))
-        ax5a.set_xlim((1e-3,2e-2))  
+        ax5a.set_xlim((min(NsUparam[start1:end1,1]),max(NsUparam[start1:end1,1])))  
         ax5a.legend()
         fig5a.savefig('./'+folder_location+'figures/'+fname+data_name+'d.pdf')
         
@@ -365,7 +365,7 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         ax5b.tick_params(axis='both',labelsize=14)
         ax5b.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
         ax5b.set_ylim((-2,2))
-        ax5b.set_xlim((1e-6,2e-5))          
+        ax5b.set_xlim((min(NsUparam[start2:end2,2]),max(NsUparam[start2:end2,2])))          
         ax5b.legend()
         fig5b.savefig('./'+folder_location+'figures/'+fname+data_name+'e.pdf')
         
@@ -379,7 +379,7 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         ax5c.tick_params(axis='both',labelsize=14)
         ax5c.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
         ax5c.set_ylim((-2,2))
-        ax5c.set_xlim((1e6,1e9)) 
+        ax5c.set_xlim((min(NsUparam[start3:end3,0]),max(NsUparam[start3:end3,0]))) 
         ax5c.legend()        
         fig5c.savefig('./'+folder_location+'figures/'+fname+data_name+'f.pdf')
 
