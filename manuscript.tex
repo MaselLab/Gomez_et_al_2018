@@ -125,7 +125,7 @@ In an analogous approach to that of \cite{desai2007beneficial}, we divided our p
 % ^.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{fig1.pdf}
+\includegraphics[width=1\linewidth]{fig1a.pdf}
 \label{Figure 1.}
 % * <masel@email.arizona.edu> 2017-08-22T22:26:35.280Z:
 % 
@@ -273,6 +273,7 @@ In each of our simulations we observed a 40\% decrease in the rate of adaptation
 \begin{subfigure}[b]{1\linewidth}
 \centering
 \includegraphics[width=.45\linewidth]{fig5f.pdf}
+\includegraphics[width=.45\linewidth]{fig5g.pdf}
 \end{subfigure}
 \label{fig}
 \caption{\footnotesize Contributions to rate of adaptation from changes in trait variance and covariance. (a) $s$ varies with $N$ and $U$ being kept fixed ($N= 10^7$, $U=10^-5$). (b) $U$ varies with $N$ and $s$ being kept fixed ($N= 10^7$,$s=10^-2$). (c) $N$ varies with $s$ and $U$ being kept fixed ($s=10^-2$,$U=10^-5$).}
@@ -280,35 +281,14 @@ In each of our simulations we observed a 40\% decrease in the rate of adaptation
 %------------------------------------------------------------------------------------------------------------
 %------------------------------------------------------------------------------------------------------------
 
-The reduction in the scaled mean value of $v_1$ plotted in figure 2 is independent of the choice of parameters $N$, $s$ and $U$ within ranges characterizing asexual evolution. The insensitivity of the decrease in $v_1$ to changes in the population parameters is clear from Desai and Fisher's expression for the rate of adaptation, which exhibits a logarithmic dependence on $N$, $s$ and $U$. In fact, one can generally express the decrease $v_1$ resulting from the addition of $(n-1)$ traits and arrive at the expression   
+(i) the pop param don't affect the deacrease
+
+The decreases shown in the scaled mean values of $v_1$ that are plotted in figure 2 are nearly independent of the population parameters picked within ranges characterizing asexual evolution. In all three parameter sets, the decrease nearly is always approximately 40\% of the trait's prior variance. The insensitivity follows from Desai and Fisher's expression for the rate of adaptation, which exhibits a logarithmic dependence on $N$, $s$ and $U$. This leads to a general expression that can be obtained for the expected reduction in a trait's rate of adaptation as a result of adding  $(n-1)$ traits.
 \[
-\frac{(1/n) v(N,s,nU)}{v(N,s,U)} 
-= \frac{\ln^2(s/U)\ln(nN^2sU)}{2\ln^2(s/nU)\ln(N^2sU)}. 
+\% \Delta v_1 
+= 1-\frac{1}{n}\frac{v(N,s,nU)}{v(N,s,U)}
 \]
-
-
-
-
-
-In all cases we found that the reduction in trait one's rate of adaptation equaled 40\% its original variances.  
-
-In all cases for the selected parameter sets, The addition of a second trait increases the variance of the first as shown 
-
-In every simulation, the overall calculated reduction rate of adaptation scaled by the initial variance of the trait was found to be independent of the parameters of $N$, $U$ and $s$. 
-
- with the second trait. In simulations of our model we observed two important changes Simulations of our model indicate that the expected reduction caused by the adding an additional trait is due  covariance term. variance of the trait. Figure 2 shows an example of the two dimensional distribution taken from simulations; the classes of the stochastic front are not shown. One of the distribution's key features is its oblateness along the lines of constant relative fitness which are parallel to the line shown that crosses the population's mean relative fitness.  As new classes establish in the stochastic front, genetic variation accumulates on these lines of constant relative fitness and can increase the distribution's width substantially along these directions. In contrast, the width of the distribution in the perpendicular direction is kept in check by beneficial mutation-selection balance, and will tend to be shorter. This is caused by the fact that the shape of the distribution determines its covariance, and subsequently, influences the rate of adaptation in each trait. When the two dimensional distribution is oblate in the manner shown in figure 2, the covariance between two traits will be negative. In particular, there will be genotypes that tend to be either superior in one of the traits with respect to its population mean, but inferior in the other relative to its mean. The shape of the distribution fluctuates over time but the covariance remains largely negative as shown in its sampled trajectory figure 3 drawn from simulations. Positive covariance is relatively brief in comparison due its effects on the population's rate of adaptation in each trait. Specifically, positive covariance increases their rate of adaptation (Eqt 5). This shortens the width of the distribution along the direction of maximally increasing relative fitness, while the width along the perpendicular direction remains unaffected.  This restores distribution's oblate shape typical as pictured in figure 2 and once again leads to negative covariance.  Period of negative covariance endure much longer because of the opposite effects it has on the rate of adaptation. Specifically, a slower rate of adaptation in each trait provide additional chances for classes in the stochastic front to establish and increase the distribution's width further.  These lead to large spikes in negative covariance such as those shown in figure 3. 
-% * <masel@email.arizona.edu> 2017-08-22T23:04:41.253Z:
-% 
-% > which are parallel to the line shown
-% The line is not shown.
-% 
-% ^.
-% * <masel@email.arizona.edu> 2017-08-22T23:02:02.846Z:
-% 
-% > Quantitative genetic interactions
-% I don't know what a "quantitative genetic interaction" is. An interaction must be between two specified objects A and B.
-% 
-% ^.
+Only changes $s$ appear to affect the expected decrease in scaled $v_1$ (fig 2d), while changes in the number of traits seem to be most adverse. The extent of this effect is marginally less with each additional trait, but quite substantive in the first few cases.
 
 %------------------------------------------------------------------------------------------------------------
 %------------------------------------------------------------------------------------------------------------
