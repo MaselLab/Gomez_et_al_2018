@@ -292,6 +292,7 @@ import pickle
 import scipy as sp
 import numpy as np
 import copy as cpy
+import matplotlib.pyplot as plt
 
 def get_trait_mean_var(genotypes,abundances,traitno):
     
@@ -309,28 +310,63 @@ def get_trait_mean_var(genotypes,abundances,traitno):
 def get_cov_by_fitness_line(genotypes,abundances,s):
     
     mean_fit = get_trait_mean_var(genotypes,abundances,0)[0]
-    mean_fit1 = get_trait_mean_var(genotypes,abundances,1)[0]
-    mean_fit2 = get_trait_mean_var(genotypes,abundances,2)[0]
     num_genotypes = len(abundances[0])
     
     fit1D = [genotypes[i,0]+genotypes[i,1] for i in range(num_genotypes)]
     fit1Dshrt = list(set(fit1D))
+    fit1Dshrt.sort()
     fit1Dcovs = []    
     tempcov = 0
     tempfreq = 0
+    tempmean1 = 0
+    tempmean2 = 0
     popsize = sum(abundances[0])
     
     for i in range(len(fit1Dshrt)):
         tempcov = 0
         tempfreq = 0
+        tempmean1 = 0
+        tempmean2 = 0
         for j in range(num_genotypes):
             if(fit1D[j]==fit1Dshrt[i]):
+                tempmean1 += s*genotypes[j,0]*abundances[0][j]/popsize
+                tempmean2 += s*genotypes[j,1]*abundances[0][j]/popsize                
                 tempfreq += abundances[0][j]/popsize
-                tempcov += s**2*(genotypes[j,0]-mean_fit1-0.5*(fit1D[j]-mean_fit))*(genotypes[j,1]-mean_fit2-0.5*(fit1D[j]-mean_fit))*(abundances[0][j]/popsize)
-        fit1Dcovs = fit1Dcovs +[[fit1Dshrt[i]-mean_fit,tempfreq,tempcov/tempfreq]]
+                tempcov += s**2*genotypes[j,0]*genotypes[j,1]*(abundances[0][j]/popsize)
+        tempcov = tempcov/tempfreq - (tempmean1/tempfreq)*(tempmean2/tempfreq)
+        fit1Dcovs = fit1Dcovs+[[fit1Dshrt[i]-mean_fit,tempfreq,tempcov]]
     
     # should return [[fit_i,p_i,cov_i,] for i = min_fit,...,max_fit]
     return fit1Dcovs
+
+def get_sample_window(times,start_time,end_time):
+# returns: indeces of times that correspond to start_time and end_time
+ 
+    [num_pts,start_indx,end_indx] = [len(times),0,0]
+    
+    for i in range(num_pts):
+        if times[start_indx] <= start_time:
+            start_indx = start_indx + 1
+        if times[end_indx] <= end_time:
+            end_indx = end_indx + 1
+    
+    return [start_indx,end_indx]
+    
+def get_subset_times(N,s,U,times,scaling):
+    tau_q = scaling*((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
+    indx_list = [0]
+    indx = 0
+    
+    while(times[indx]+tau_q < times[-1]):
+        indx = get_sample_window(times,times[indx],times[indx]+tau_q)[1]
+        indx_list = indx_list + [indx]
+    return indx_list
+    
+def get_cov_cov(times,nose_cov,fit_cov,N,s,U):
+    tau_q = scaling*((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
+    
+    
+    return 
 
 data_name = '_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1'
 folder_location = ''
@@ -348,16 +384,40 @@ lead_cov = []
 for i in range(num_pts):
     lead_cov = lead_cov+[get_cov_by_fitness_line(genotypes[i],abundances[i],10**(-2))]
 
+nose_cov = [lead_cov[i][-1][2] for i in range(len(lead_cov))]
+
+#indx_times = get_subset_times(10**9,10**(-2),2*10**(-5),times,0.05)
+#sub_times = [times[indx_times[i]] for i in range(len(indx_times))]
+#sub_nose_cov =[nose_cov[indx_times[i]] for i in range(len(indx_times))]
+
+## dump data into a pickle files
+#pickle_file_name = './'+folder_location+'data/pythondata/covdata'+data_name+'.pickle'
+#pickle_file = open(pickle_file_name,'wb') 
+#pickle.dump([times,lead_cov,nose_cov],pickle_file,pickle.HIGHEST_PROTOCOL)
+#pickle_file.close()
+#
+# dump data into a pickle files
+pickle_file_name = './'+folder_location+'data/pythondata/covdata'+data_name+'.pickle'
+pickle_file = open(pickle_file_name,'rb') 
+[times,lead_cov,nose_cov] = pickle.load(pickle_file)
+pickle_file.close()
+
 # dump data into a pickle files
 pickle_file_name = './'+folder_location+'data/pythondata/distrStats'+data_name+'.pickle'
 pickle_file = open(pickle_file_name,'rb') 
 [times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry] = pickle.load(pickle_file)
 pickle_file.close()
 
-fig1,ax1a = plt.subplots(1,1,figsize=[8,8])
+#nose2_cov = [lead_cov[i][-5][2] for i in range(len(lead_cov))]
 
-ax1a.plot(times,fit_cov[:],c="black",linestyle="-.",linewidth=1.0)
-ax1a.plot(times,lead_cov[:],c="red",linestyle="-.",linewidth=1.0)
+[N,U,s] = [10**9, 10**(-5),10**(-2)]
+tau_q = ((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
+q = ((np.log(s/U)))/((2*np.log(N*s)))**(-1)
+
+fig1,ax1a = plt.subplots(1,1,figsize=[8,8])
+ax1a.plot(times,fit_cov[:],c="black",linestyle="-",linewidth=1.0)
+#ax1a.plot(sub_times,sub_nose_cov[:],c="red",linestyle="-",linewidth=1.0)
+ax1a.plot(times2,nose_cov[:],c="red",linestyle="-",linewidth=1.0)
 ax1a.set_ylabel('Fitness Variances & Covariance',fontsize=18)
 ax1a.set_xlabel('Time (Generations)',fontsize=18)
 ax1a.axhline(linewidth=0.5, color = 'k')        
@@ -366,5 +426,23 @@ ax1a.set_xlim((1e4,2e4))
 ax1a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
 ax1a.tick_params(axis='both',labelsize=14)
 ax1a.legend()
-
 plt.show()
+
+times2 = [times[i]+4*tau_q for i in range(len(times))]
+
+# generate plot for the time displaced covariance of signals for you poster
+fig2,ax2a = plt.subplots(1,1,figsize=[8,8])
+ax2a.plot(times,fit_cov[:],c="black",linestyle="-",linewidth=1.0)
+#ax1a.plot(sub_times,sub_nose_cov[:],c="red",linestyle="-",linewidth=1.0)
+ax2a.plot(times2,nose_cov[:],c="red",linestyle="-",linewidth=1.0)
+ax2a.set_ylabel('Fitness Variances & Covariance',fontsize=18)
+ax2a.set_xlabel('Time (Generations)',fontsize=18)
+ax2a.axhline(linewidth=0.5, color = 'k')        
+#ax1a.set_ylim((-3e-4,4e-4))
+ax2a.set_xlim((1e4,2e4))        
+ax2a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+ax2a.tick_params(axis='both',labelsize=14)
+ax2a.legend()
+plt.show()
+
+
