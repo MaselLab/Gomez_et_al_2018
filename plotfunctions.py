@@ -9,6 +9,7 @@ Library of functions used in plots.py and plotdata.py
 #--------FUNCTIONS REQUIRE PACKAGES LISTED:------------------------------------
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.stats import multivariate_normal
+from matplotlib.ticker import FuncFormatter
 from numpy import inf
 import pickle
 import matplotlib.pyplot as plt
@@ -142,6 +143,9 @@ def get_cov_by_fitness_line(genotypes,abundances):
     
     # should return [[fit_i,p_i,cov_i,] for i = min_fit,...,max_fit]
     return fit1Dcovs
+    
+def get_vNSU(N,s,U,n):
+    return 1-(np.log(s/U)**2*np.log(n*s*U*N**2))/(n*np.log(s/n/U)**2*np.log(s*U*N**2))
 
 # -----------------------------------------------------------------------------
 def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param,fname,traitno,num_exp):
@@ -271,11 +275,12 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         rate_adpt2_avg = var2_avg + cov_avg
         
         # plot data for figure 2a and 2b 
-        fig3a, ax3a = plt.subplots(1,1,figsize=[8,8])
+        fig3a, ax3a = plt.subplots(1,1,figsize=[8,10])
+        fig3a.subplots_adjust(bottom=0.3)
         ax3b = plt.twinx(ax3a)
         ax3a.plot(times,var1_avg,c="black",label='var($r_1|r_2$)=' + str(round(var1_avg[0],7)),linewidth=2.0,linestyle = '--')
         ax3a.plot(times,cov_avg,c="black",label='cov($r_1$,$r_2$)=' + str(round(cov_avg[0],7)),linewidth=2.0,linestyle = '-.')
-        ax3a.plot(times,vU_thry*np.ones(np.shape(var1_avg)),c="black",label='var($r_1$)=' + str(round(vU_thry,7)),linewidth=2.0,linestyle = '-')        
+#        ax3a.plot(times,vU_thry*np.ones(np.shape(var1_avg)),c="black",label='var($r_1$)=' + str(round(vU_thry,7)),linewidth=2.0,linestyle = '-')        
         ax3a.axhline(linewidth=0.5, color = 'k')
         ax3a.set_ylabel('Fitness Variances & Covariance',fontsize=18)
         ax3a.set_xlabel('Time (Generations)',fontsize=18)
@@ -283,7 +288,7 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         ax3a.set_xlim((1e4,2e4))
         ax3a.tick_params(axis='both',labelsize=14)
         ax3a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
-        ax3a.legend()
+        ax3a.legend(loc='upper center', bbox_to_anchor=(0.5, -0.2),fancybox=True, shadow=True, ncol=2)
         
         ax3b.plot(times,fit_var[:,0],c="black",linestyle="--",linewidth=1.0)
         ax3b.plot(times,fit_cov[:],c="black",linestyle="-.",linewidth=1.0)
@@ -292,6 +297,7 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         ax3b.set_xlim((1e4,2e4))        
         ax3b.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
         ax3b.tick_params(axis='both',labelsize=14)
+#        fig3b.subplots_adjust(bottom=0.2)
 
         fig3a.savefig('./'+folder_location+'figures/'+fname+data_name+'.pdf')
         
@@ -339,48 +345,70 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         
         [start1,start2,start3] = [1,num_exp/3+1,2*num_exp/3+1]         
         [end1,end2,end3] = [num_exp/3,2*num_exp/3,num_exp]
-        NsUparam = np.asarray(NsUparam)        
+        NsUparam = np.asarray(NsUparam)      
         
-        fig5a, ax5a = plt.subplots(1,1,figsize=[16,8])
-        ax5a.plot(NsUparam[start1:end1,1],-np.asarray(covp[start1:end1])-np.asarray(varp[start1:end1])+np.asarray(vUthryp[start1:end1]),c="black",label='$v_1$',linewidth=2.0,linestyle = '-')                
-        ax5a.plot(NsUparam[start1:end1,1],np.asarray(varp[start1:end1]),c="black",label='$\sigma_{1}^2$',linewidth=2.0,linestyle = ':')
-        ax5a.plot(NsUparam[start1:end1,1],np.asarray(covp[start1:end1]),c="black",label='$\sigma_{12}$',linewidth=2.0,linestyle = '-.')        
-        ax5a.axhline(linewidth=0.5, color = 'k')
-        ax5a.set_ylabel('Scaled Variance-Covariance',fontsize=18)
-        ax5a.set_xlabel('selection coeff ($10^{-3} - 2 x 10^{-2}$)',fontsize=18)
-        ax5a.tick_params(axis='both',labelsize=14)
-        ax5a.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
-        ax5a.set_ylim((-2,2))
-        ax5a.set_xlim((min(NsUparam[start1:end1,1]),max(NsUparam[start1:end1,1])))  
-        ax5a.legend()
-        fig5a.savefig('./'+folder_location+'figures/'+fname+data_name+'d.pdf')
+        fig5d, ax5d = plt.subplots(1,1,figsize=[8,8])
+        ax5d.plot(NsUparam[start1:end1,1],-np.asarray(covp[start1:end1])-np.asarray(varp[start1:end1])+np.asarray(vUthryp[start1:end1]),c="black",label='$v_1$',linewidth=2.0,linestyle = '-')                
+        ax5d.plot(NsUparam[start1:end1,1],np.asarray(varp[start1:end1]),c="red",label='$\sigma_{1}^2$',linewidth=2.0,linestyle = ':')
+        ax5d.plot(NsUparam[start1:end1,1],np.asarray(covp[start1:end1]),c="blue",label='$\sigma_{12}$',linewidth=2.0,linestyle = '-.')        
+        ax5d.axhline(linewidth=0.5, color = 'k')
+        ax5d.yaxis.set_major_formatter(FuncFormatter(lambda y, _: '{:.0%}'.format(y)))         
+        ax5d.set_ylabel('Scaled Variance-Covariance',fontsize=18)
+        ax5d.set_xlabel('selection coeff ($10^{-3} - 2 x 10^{-2}$)',fontsize=18)
+        ax5d.tick_params(axis='both',labelsize=14)
+        ax5d.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
+        ax5d.set_ylim((-2,2))
+        ax5d.set_xlim((min(NsUparam[start1:end1,1]),max(NsUparam[start1:end1,1])))  
+        ax5d.legend(loc=7)
+        fig5d.savefig('./'+folder_location+'figures/'+fname+data_name+'d.pdf')
         
-        fig5b, ax5b = plt.subplots(1,1,figsize=[16,8])
-        ax5b.plot(NsUparam[start2:end2,2],-np.asarray(covp[start2:end2])-np.asarray(varp[start2:end2])+np.asarray(vUthryp[start2:end2]),c="black",label='$v_1$',linewidth=2.0,linestyle = '-')
-        ax5b.plot(NsUparam[start2:end2,2],np.asarray(varp[start2:end2]),c="black",label='$\sigma_{1}^2$',linewidth=2.0,linestyle = ':')
-        ax5b.plot(NsUparam[start2:end2,2],np.asarray(covp[start2:end2]),c="black",label='$\sigma_{12}$',linewidth=2.0,linestyle = '-.')
-        ax5b.axhline(linewidth=0.5, color = 'k')
-        ax5b.set_ylabel('Scaled Variance-Covariance',fontsize=18)
-        ax5b.set_xlabel('mutation rate ($10^{-6} - 10^{-4}$)',fontsize=18)
-        ax5b.tick_params(axis='both',labelsize=14)
-        ax5b.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
-        ax5b.set_ylim((-2,2))
-        ax5b.set_xlim((min(NsUparam[start2:end2,2]),max(NsUparam[start2:end2,2])))          
-        ax5b.legend()
-        fig5b.savefig('./'+folder_location+'figures/'+fname+data_name+'e.pdf')
+        fig5e, ax5e = plt.subplots(1,1,figsize=[8,8])
+        ax5e.plot(NsUparam[start2:end2,2],-np.asarray(covp[start2:end2])-np.asarray(varp[start2:end2])+np.asarray(vUthryp[start2:end2]),c="black",label='$v_1$',linewidth=2.0,linestyle = '-')
+        ax5e.plot(NsUparam[start2:end2,2],np.asarray(varp[start2:end2]),c="red",label='$\sigma_{1}^2$',linewidth=2.0,linestyle = '-')
+        ax5e.plot(NsUparam[start2:end2,2],np.asarray(covp[start2:end2]),c="blue",label='$\sigma_{12}$',linewidth=2.0,linestyle = '-')
+        ax5e.axhline(linewidth=0.5, color = 'k')
+        ax5e.yaxis.set_major_formatter(FuncFormatter(lambda y, _: '{:.0%}'.format(y))) 
+        ax5e.set_ylabel('Scaled Variance-Covariance',fontsize=18)
+        ax5e.set_xlabel('mutation rate ($10^{-6} - 10^{-4}$)',fontsize=18)
+        ax5e.tick_params(axis='both',labelsize=14)
+        ax5e.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
+        ax5e.set_ylim((-2.5,2.5))
+        ax5e.set_xlim((min(NsUparam[start2:end2,2]),max(NsUparam[start2:end2,2])))          
+        ax5e.legend(loc=7)
+        fig5e.savefig('./'+folder_location+'figures/'+fname+data_name+'e.pdf')
         
-        fig5c, ax5c = plt.subplots(1,1,figsize=[16,8])
-        ax5c.plot(NsUparam[start3:end3,0],-np.asarray(covp[start3:end3])-np.asarray(varp[start3:end3])+np.asarray(vUthryp[start3:end3]),c="black",label='$v_1$',linewidth=2.0,linestyle = '-')        
-        ax5c.plot(NsUparam[start3:end3,0],np.asarray(varp[start3:end3]),c="black",label='$\sigma_{1}^2$',linewidth=2.0,linestyle = ':')
-        ax5c.plot(NsUparam[start3:end3,0],np.asarray(covp[start3:end3]),c="black",label='$\sigma_{12}$',linewidth=2.0,linestyle = '-.')                
-        ax5c.axhline(linewidth=0.5, color = 'k')
-        ax5c.set_ylabel('Scaled Variance-Covariance',fontsize=18)
-        ax5c.set_xlabel('population size ($10^{6} - 10^{9}$)',fontsize=18)
-        ax5c.tick_params(axis='both',labelsize=14)
-        ax5c.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
-        ax5c.set_ylim((-2,2))
-        ax5c.set_xlim((min(NsUparam[start3:end3,0]),max(NsUparam[start3:end3,0]))) 
-        ax5c.legend()        
-        fig5c.savefig('./'+folder_location+'figures/'+fname+data_name+'f.pdf')
+        fig5f, ax5f = plt.subplots(1,1,figsize=[8,8])
+        ax5f.plot(NsUparam[start3:end3,0],-np.asarray(covp[start3:end3])-np.asarray(varp[start3:end3])+np.asarray(vUthryp[start3:end3]),c="black",label='$v_1$',linewidth=2.0,linestyle = '-')        
+        ax5f.plot(NsUparam[start3:end3,0],np.asarray(varp[start3:end3]),c="red",label='$\sigma_{1}^2$',linewidth=2.0,linestyle = '-')
+        ax5f.plot(NsUparam[start3:end3,0],np.asarray(covp[start3:end3]),c="blue",label='$\sigma_{12}$',linewidth=2.0,linestyle = '-')                
+        ax5f.axhline(linewidth=0.5, color = 'k')
+        ax5f.yaxis.set_major_formatter(FuncFormatter(lambda y, _: '{:.0%}'.format(y)))                 
+        ax5f.set_ylabel('Scaled Variance-Covariance',fontsize=18)
+        ax5f.set_xlabel('population size ($10^{6} - 10^{9}$)',fontsize=18)
+        ax5f.tick_params(axis='both',labelsize=14)
+        ax5f.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
+        ax5f.set_ylim((-2,2))
+        ax5f.set_xlim((min(NsUparam[start3:end3,0]),max(NsUparam[start3:end3,0]))) 
+        ax5f.legend(loc=7)        
+        fig5f.savefig('./'+folder_location+'figures/'+fname+data_name+'f.pdf')
+        
+        traitsadd = [i+1 for i in range(9)]
+        per_decr_vrate1 = [get_vNSU(10**9,10**(-2),10**(-5),i+2) for i in range(9)]        
+        per_decr_vrate2 = [get_vNSU(10**9,10**(-2)/5,10**(-5),i+2) for i in range(9)]        
+        per_decr_vrate3 = [get_vNSU(10**9,10**(-2)/10,10**(-5),i+2) for i in range(9)]        
+        
+        fig5g, ax5g = plt.subplots(1,1,figsize=[8,8])
+        ax5g.scatter(traitsadd,per_decr_vrate1,c="red",label='s=1e-2',s=20)        
+        ax5g.scatter(traitsadd,per_decr_vrate2,c="blue",label='s=0.5e-2',s=20)
+        ax5g.scatter(traitsadd,per_decr_vrate3,c="green",label='s=1e-3',s=20)                
+        ax5g.axhline(linewidth=0.5, color = 'k')
+        ax5g.yaxis.set_major_formatter(FuncFormatter(lambda y, _: '{:.0%}'.format(y)))         
+        ax5g.set_ylabel('% Decrease in Rate if Adaptation',fontsize=18)
+        ax5g.set_xlabel('Number of Traits Added',fontsize=18)
+        ax5g.tick_params(axis='both',labelsize=14)
+        ax5g.set_ylim((0.3,1))
+        ax5g.set_xlim(1,10) 
+        ax5g.legend(loc=2)        
+        fig5g.savefig('./'+folder_location+'figures/'+fname+data_name+'g.pdf')
 
     return None

@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{hyperref}
 \usepackage[margin=.5in]{geometry}
 
 \graphicspath{{figures/}}
@@ -55,7 +56,7 @@ For quantitative traits, genetic associations and their effects on adaptation ar
 % 
 % ^ <kgomez81@math.arizona.edu> 2017-08-07T14:10:30.176Z.
 
-The behavior of the \textbf{G}-matrix over time largely depends on what are the causes of the genetic correlations. Correlations between quantitative traits can arise for a number of reasons, but they often have a genetic basis \citep{Saltz2017}. They arise from either pleiotropy, linkage disequilibria, or are the product of trans acting elements; the first two that are thought to be the most significant factors. Historically, there have been two schools of thought what the principle causes of genetic correlations are. The first was put forth by the Edinburgh school, which held that pleiotropy was principle source, since linkage disequilibrium could rapidly decay by recombination (\citep{fox2006evolutionary}, chp 20). This belief was largely motivated by interests the relationships between parent-offspring phenotypes within randomly mating populations, and its implications for evolution. The alternative view came out of the Birmingham school, which largely experimented with inbred lines of plants. Geneticists in this group believed that linkage disequilibria was much more important; a fact that often reflected in their experiments. Presently, the Edinburgh view is more widely accepted, and as a result, most models for the evolution of the \textbf{G}-matrix assume genetic correlations are pleiotropic and proceed with examining how evolutionary processes influence them. We know far less about the about the behavior genetic correlations from linkage disequilibria over time, but this is not much of an issue for most complex organisms.\par
+The behavior of the \textbf{G}-matrix over time largely depends on what are the causes of the genetic correlations. Correlations between quantitative traits can arise for a number of reasons, but they often have a genetic basis \citep{Saltz2017}. They arise from either pleiotropy, linkage disequilibria, or are the product of trans acting elements; the first two that are thought to be the most significant factors. Historically, there have been two schools of thought what the principle causes of genetic correlations are. The first was put forth by the Edinburgh school, which held that pleiotropy was principle source, since linkage disequilibrium could rapidly decay by recombination \citep[Chapter~20]{fox2006evolutionary}. This belief was largely motivated by interests the relationships between parent-offspring phenotypes within randomly mating populations, and its implications for evolution. The alternative view came out of the Birmingham school, which largely experimented with inbred lines of plants. Geneticists in this group believed that linkage disequilibria was much more important; a fact that often reflected in their experiments. Presently, the Edinburgh view is more widely accepted, and as a result, most models for the evolution of the \textbf{G}-matrix assume genetic correlations are pleiotropic and proceed with examining how evolutionary processes influence them. We know far less about the about the behavior genetic correlations from linkage disequilibria over time, but this is not much of an issue for most complex organisms.\par
 % * <masel@email.arizona.edu> 2017-08-22T16:50:23.214Z:
 % 
 % >  most models for the evolution of the \textbf{G}-matrix assume genetic correlations are pleiotropic and proceed with examining how evolutionary processes influence them
@@ -73,7 +74,7 @@ In the case of asexuals, the Birmingham view is more appropriate, and determinin
 
 Lande’s equation describes the phenotypic evolution of populations with multiple characters from generation to generation.  Whether one can use this framework to uncover the history of natural selection in populations over large evolutionary timescales largely depends on the forces that influence the evolution of the G-matrix.  Over the past few decades there has been a significant amount of effort to shed light on the matter of G-matrix stability.  The analysis of genetic models for the adaptive evolution of multiple phenotypic traits indicate some of the conditions needed for stability\citep{Turelli1988,Jones2003}.  These works exclude the potential influences of linkage disequilibrium on the dynamics of variances and covariances over time, and as a result, our understanding of the role of linkage disequilibria in G-matrix evolution remains unclear.  Nonetheless, the question is significant there is empirical evidence suggesting that in the G-matrix is often conserved in natural populations \citep{Arnold1999,Roff2000,Steppan2002}.  However, much of what we know about G-matrix stability corresponds the examining evolutionary forces on 
 
-Our best models for adaptation in asexuals make use of what are known as traveling waves, and are based on population genetics. These models have established important relationships between the population's parameter and key features of evolution in asexuals. Among these is the traveling wave model developed by \cite{desai2007beneficial} for a population whose size $N$ is fixed in which only beneficial mutations occur at the rate $U$. They also make the key assumption that all mutations all provide the same selective advantage $s$, which allows them to show that the population's rate of adaptation is given by  $v(N,s,U) = 2s^2 \ln(N s)/\ln^2(s/U)$. This is an important result, because it directly provides the additive variance in fitness by simply applying Fisher's fundamental theorem ($v=\sigma^2$). If we regard the population as having one adaptive trait, then $\sigma^2$ is in fact the trait's additive variance and we obtain a quantitative genetics result as well.\par
+Our best models for adaptation in asexuals make use of what are known as traveling waves, and are based on population genetics. These models have established important relationships between the population's parameter and key features of evolution in asexuals. Among these is the traveling wave model developed by \citet{desai2007beneficial} for a population whose size $N$ is fixed in which only beneficial mutations occur at the rate $U$. They also make the key assumption that all mutations all provide the same selective advantage $s$, which allows them to show that the population's rate of adaptation is given by  $v(N,s,U) = 2s^2 \ln(N s)/\ln^2(s/U)$. This is an important result, because it directly provides the additive variance in fitness by simply applying Fisher's fundamental theorem ($v=\sigma^2$). If we regard the population as having one adaptive trait, then $\sigma^2$ is in fact the trait's additive variance and we obtain a quantitative genetics result as well.\par
 % * <masel@email.arizona.edu> 2017-08-22T17:28:18.736Z:
 % 
 % > the model developed by \cite{desai2007beneficial}
@@ -111,7 +112,7 @@ We considered an asexual population at carrying capacity $N$ in which haploid in
 %
 % ^.
 
-In an analogous approach to that of \cite{desai2007beneficial}, we divided our population into classes based on the number of beneficial mutations in each trait. Their abundances are accordingly denoted $n_{ij}$ and their frequencies by $p_{ij}$. We assumed that $1/N \ll s \ll 1$ to ensure that the set of classes could be neatly separated into two groups based on whether their behavior was deterministic and stochastic. Following the convention of Desai and Fisher, we refer to the set of deterministically behaving classes as the bulk, while those that grow stochastically and have a positive selective advantage ($r_{ij}>\bar{r}$) will be referred to as the stochastic front. Unlike in the case of Desai and Fisher's  traveling wave whose stochastic front is a single point, our stochastic front is the boundary of the bulk's distribution above the line crossing the population's mean fitness. This is shown in figure 1, where classes in the bulk are shown in shades of blue, while those belonging to the stochastic front are shown in shades of red. One reason why the growth of these two groups is treated differently has to do with the fact that only beneficial mutations in the stochastic front are consequential to adaptation. In asexuals, a large percentage of beneficial mutations are wasted since most occur poor genetic backgrounds, and their lineages remain relatively insignificant size and as a result, they do not contribute to the population's adaptive evolution. These are the beneficial mutations that occur within the bulk. On the other hand, mutations that do manage to occur on good genetic backgrounds will eventually grow large enough in size to influence the population's mean relative fitness over time. These are exactly the beneficial mutations produced at the edge of the bulk that give rise to classes in the stochastic front, marked by arrows in figure 1. Thus, the bulk's distribution determines the position and behavior of the stochastic front, but in time, the latter also shapes how the former shifts forward (fix this!).\par
+In an analogous approach to that of \citet{desai2007beneficial}, we divided our population into classes based on the number of beneficial mutations in each trait. Abundances are accordingly denoted $n_{ij}$ and their frequencies by $p_{ij}$. We assumed that $1/N \ll s \ll 1$ to ensure that the set of classes could be neatly separated into two groups based on whether their behavior was deterministic and stochastic. Following the convention of Desai and Fisher, we refer to the set of deterministically behaving classes as the bulk, while those that grow stochastically and have a positive selective advantage ($r_{ij}>\bar{r}$) will be referred to as the stochastic front. Unlike in the case of Desai and Fisher's  traveling wave whose stochastic front is a single point, our stochastic front is the boundary of the bulk's distribution above the line crossing the population's mean fitness. This is shown in figure 1, where classes in the bulk are shown in shades of blue, while those belonging to the stochastic front are shown in shades of red. One reason why the growth of these two groups is treated differently has to do with the fact that only beneficial mutations in the stochastic front are consequential to adaptation. In asexuals, a large percentage of beneficial mutations are wasted since most occur poor genetic backgrounds, and their lineages remain relatively insignificant size and as a result, they do not contribute to the population's adaptive evolution. These are the beneficial mutations that occur within the bulk. On the other hand, mutations that do manage to occur on good genetic backgrounds will eventually grow large enough in size to influence the population's mean relative fitness over time. These are exactly the beneficial mutations produced at the edge of the bulk that give rise to classes in the stochastic front, marked by arrows in figure 1. Thus, the bulk's distribution determines the position and behavior of the stochastic front, but in time, the latter also shapes how the former shifts forward (fix this!).\par
 % * <masel@email.arizona.edu> 2017-08-22T19:17:50.152Z:
 % 
 % > those that grow stochastically and have a positive selective advantage ($r_{ij}>\bar{r}$) will be referred to as the stochastic front
@@ -124,24 +125,25 @@ In an analogous approach to that of \cite{desai2007beneficial}, we divided our p
 %
 % ^.
 
+% *****************************************************************************************************************
+% ***********************************FIGURE 1*2D*Travelling*Wave***************************************************
+% *****************************************************************************************************************
 \begin{figure}
 \includegraphics[width=1\linewidth]{fig1a.pdf}
 \label{Figure 1.}
-% * <masel@email.arizona.edu> 2017-08-22T22:26:35.280Z:
-% 
-% > Figure 1.
-% Do you think it is possible to merge Figures 1 and 2 into a single figure? Ie, to take the features you illustrate in Figure 1, put them into Figure 2, and then cut Figure 1 out?
-% 
-% ^.
-\caption{\footnotesize (reproduce this for the actual data and cut out figure 2) Reproduction of two dimensional distribution over the trait space from simulation. Each box is a class consisting of individuals with an identical number of beneficial mutations in traits one and two, and their respective colors indicates their abundance. The red dot within the distribution marks the point whose coordinates are the mean number of beneficial mutations in each trait, while the red line passing through it represents the line of constant relative fitness associated with the mean. Classes that lie on this line have the same relative fitness, but vary in their number of beneficial mutations that have accumulated in each trait. In the perpendicular direction, the relative fitness of individuals maximally increases by improving in both traits. The set of classes shown in shades of blue are considered the bulk, while those in shades of red belong to the stochastic front. For classes within the bulk, beneficial mutations and random sampling produce negligible effects in the changes of their abundances.  Moreover, beneficial mutations in this region do not contribute to the adaptation of the populations. The dynamics of classes in the bulk are completely driven by selection and can be modeled deterministically (equation 2). In asexuals, only beneficial mutations that occur on the fittest backgrounds produce lineages that may eventually grow large enough to affect the rate of increasing mean relative fitness. These are exactly the beneficial mutations at the edge of the bulk that give rise to classes in the stochastic front, marked by arrows. All other lineages are out-competed and their abundances remain insignificant with respect to the population's fixed size. As new classes establish along the stochastic front, the bulk expands towards the direction of increasing relative fitness, while classes below the red line dwindle and eventually disappear. This leads to the two dimensional distribution shifting in the direction of increasing relative fitness over time.}
+\caption{\footnotesize Evolutuion of a two dimensional traveling wave. The distribution depicted was sampled from simulations.  Each box represents a class composed of individuals with an identical number of beneficial mutations in each trait. Classes with solid coloring form part of the bulk, while those with patterned interiors represent the stochastic front. The red dot marks the mean number of beneficial mutations in each trait. The dashed red line represents a lines of constant fitness. Classes whose centers lie along this line have relative fitness equal to the population mean, but vary in the number of beneficial mutations that have accumulated in each trait. Relative fitness increases along the perpendicular direction. Classes . Beneficial mutations and random sampling produce negligible effects in the changes of their abundances. In asexuals, only beneficial mutations that occur on the fittest backgrounds produce lineages that may eventually fix. These are marked with arrows into the stochastic front. Other lineages are out-competed and remain insignificant in size with respect to bulk. As new classes, the bulk expands in the direction of increasing relative fitness, and classes below the red line shrink and eventually disappear. As a result, the two dimensional trait distribution continually shifts in the direction of increasing relative fitness over time. (Simulation parameters: $N=10^9$, $s=10^{-2}$, and $U=10^{-5}$)}
 \end{figure}
+% *****************************************************************************************************************
+% *******************************END*FIGURE 1**********************************************************************
+% *****************************************************************************************************************
+
 
 The dynamics of the bulk was modeled by a system of ordinary differential equations, in which abundances changed in proportion to their selective advantage (\textbf{eqt. 1}). 
-\begin{equation} 
+\begin{equation} \label{eq:1}
 \dot{n}_{ij}(t) = (r_{ij}-\bar{r}) n_{ij}(t). 
 \end{equation}
 Abundances in the stochastic front were negligible in size relative to $N$ due to our parameter assumptions stated earlier.  Since the bulk represents the majority of population, we assumed that the frequencies of the bulk followed an analogous ODE.
-\begin{equation} 
+\begin{equation} \label{eq:2}
 \dot{p}_{ij}(t) = (r_{ij}-\bar{r}) p_{ij}(t) 
 \end{equation}
 These frequencies determine all of the quantitative genetic measures that are of interest to us.\par
@@ -159,7 +161,7 @@ Each mutant lineage that appears in the stochastic front either goes establishes
 % Their initial discussion of the branching process uses "s" to state the general results of mutant lineages establishing, but they later use "qs" for their analysis of establishments at the nose.  Equation 3 is taken from equation 16 in Desai and Fisher, but is also a general result found in Allen's book "intro to stoch proc" page 262.
 %
 % ^.
-\begin{equation}
+\begin{equation} \label{eq:3}
 \pi_{fix} = \frac{s_{ij}}{ 1+s_{ij}}
 \end{equation}
 The lineage establishes when it has reached a size if roughly $1/s_{ij}$, and its subsequent growth is exponential. \cite{desai2007beneficial} expressed the abundances of these lineages as $n_{ij}(t) = \frac{1}{s_{ij}} \exp[{s_{ij}(t-\tau)}]$. The random variable $\tau$ is the time of establishment and it captures the cumulative effects of the stochastic fluctuations.  In their initial analysis, Desai and Fisher solve for the probability density function of $\tau$ for lineages destined to establish. In our model, we find it more useful to consider the related random variable $\nu = \frac{1}{s_{ij}}\exp[-\Delta r_{ij}\tau]$ representing an initial size that produces the deterministic trajectory observed after establishment. Using the expression given by Desai and Fisher for the PDF of $\tau$, we can arrive at the cumulative distribution of  $\nu$ (equation 5) by following the analysis of \cite{Uecker2011}. 
@@ -175,7 +177,7 @@ The lineage establishes when it has reached a size if roughly $1/s_{ij}$, and it
 % Using the expression given by Desai and Fisher for the PDF of $\tau$, we can arrive at the cumulative distribution of  $\nu$ (equation 5) by following the analysis of \cite{Uecker2011}. 
 % 
 % ^.
-\begin{equation}
+\begin{equation} \label{eq:4}
 P(\nu \leq \nu_0) = 1- e^{-\pi_{fix} \nu_0}
 \end{equation}
 Each class in the stochastic front may consist of many mutant lineages. However, it is the arrival time of the first mutant lineage destined to establish that determines which class will join the bulk next. Once the genotype of this mutant lineage is obtained, its initial size $\nu$ can be sampled. The class can then be regarded as belonging to the bulk at the determined arrival time with initial size $\nu$. \par
@@ -211,32 +213,32 @@ In order to investigate how of traits affect one another, we identified the cont
 % I'm OK going straight to the expression. Your derivation of it is hard to follow, but I'm not convinced it is necessary.
 % 
 % ^.
-\begin{equation}
-\left(
+\begin{equation}\label{eq:5}
+\left[
 \begin{array}{c}
 \dot{\bar{r_1}} \\
 \dot{\bar{r_2}} 
 \end{array}
-\right)
+\right]
 =
-\left(
+\left[
 \begin{array}{cc}
 \sigma_1^2 & \sigma_{12} \\
 \sigma_{12} & \sigma_2^2 
 \end{array}
-\right)
-\left(
+\right]
+\left[
 \begin{array}{c}
 1 \\
 1 
 \end{array}
-\right)
+\right]
 \end{equation}
-The components of the selection gradient and trait response have been normalized in the expression above.  
+The components of the selection gradient and trait response have been normalized in the expression above. \par
 
-Our numerical implementation consisted of two routines which ran iteratively for the duration of the simulation. Each iteration began with solving for the time-dependent abundances in the bulk governed by \textbf{equation 1} over a time interval of one-thousand generations. We used Mathematica's standard numerical ODE solver to obtain the solutions and used them to determine the appearance time of the next mutant lineage destined to establish. Having computed the timing of this event, we evaluated the solutions and accordingly updated the abundances of the bulk. Any classes with less than one individual were removed.  The establishing class was then added to the bulk with an appropriate initial size. Following this step, the next iteration began with solving for the abundances of the new bulk, followed by the subsequent steps outlined above.\par
+Our numerical implementation consisted of two routines which ran iteratively for the duration of the simulation. Each iteration began with solving for the time-dependent abundances in the bulk governed by \eqref{eq:1} over a time interval of one-thousand generations. We used Mathematica's standard numerical ODE solver to obtain the solutions and used them to determine the appearance time of the next mutant lineage destined to establish. Having computed the timing of this event, we evaluated the solutions and accordingly updated the abundances of the bulk. Any classes with less than one individual were removed.  The establishing class was then added to the bulk with an appropriate initial size. Following this step, the next iteration began with solving for the abundances of the new bulk, followed by the subsequent steps outlined above.\par
 
-The contributions of the stochastic front were incorporated into the adaptive evolution of the population by simulating each establishment event.  We did this by identifying the first mutant lineage destined to establish among all mutants appearing in the stochastic front.  Mutants awhich are parallel to the line shownwhich are parallel to the line shownppear according to a time-inhomogeneous Poisson process with rate functions given by the abundances of the adjacent classes from which they originated. Consequently, the arrival time $\tau_l$ of the $l^{th}$ mutant generated from the class $n_{ij}(t)$ having a mutation in trait $k$ can be used to form the random variable
+The contributions of the stochastic front were incorporated into the adaptive evolution of the population by simulating each establishment event. We did this by identifying the first mutant lineage destined to establish among all mutants appearing in the stochastic front. Mutants awhich are parallel to the line shownwhich are parallel to the line shownppear according to a time-inhomogeneous Poisson process with rate functions given by the abundances of the adjacent classes from which they originated. Consequently, the arrival time $\tau_l$ of the $l^{th}$ mutant generated from the class $n_{ij}(t)$ having a mutation in trait $k$ can be used to form the random variable
 % * <masel@email.arizona.edu> 2017-08-22T22:55:54.046Z:
 % 
 % > can be used to form the random variable
@@ -258,82 +260,68 @@ Simulations were initialized with monoclonal populations at carrying capacity co
 
 We allowed the simulation to run for 5,000 generations to allow the population to achieve beneficial mutation-selection balance before collecting data. This ensured that the transient effects from the initializing would not distort the statistics collected for the distribution. Following the burn period of the simulation, we recorded the existing classes in the bulk and their respective abundances. The data was used to compute the marginal mean fitness and variances of each trait, as well as their covariance. From these quantities we also computed the instantaneous rate of adaptation (\textbf{eqtn. 5}), the mean rate of fitness increase in each trait and the overall rate of adaptation.
 
-
-
 \section{Results}
+Adaptation in a second trait 
+
 In each of our simulations we observed a 40\% decrease in the rate of adaptation of a trait as a result adding a second. The decrease was consistent across three parameter sets which varied either $N$, $s$ and $U$. These results also agree with predictions that can be derived from Desai and Fisher's theoretical work ($v(N,s,U)$). However, our simulations show that upon adding the second trait, the net change in $v_1$ arises from an increase in the first trait's variance and the formation of negative covariance. The first results in an increase in $v_1$, as a direct consequence of equation 5. This gain is more than offset by the negative covariance created between the two traits, whose magnitude is always substantially larger than the variance increase.  Figure 2 presents the calculated scaled mean variance of trait one, and its scaled covariance with the second trait, as a function of each varying population parameter. The graph demonstrates that within these parameter ranges, the new rate of adaptation $v_1$ as a percentage of the prior in every case is nearly 60\% less due solely to the large amounts of negative covariance that builds up between the two traits.\par
 
-%------------------------------------------------------------------------------------------------------------
-%------------------------------------------------------------------------------------------------------------
+% *****************************************************************************************************************
+% ***********************************FIGURE 2*Scaled Var/Cov Changes & Trait Reduction*****************************
+% *****************************************************************************************************************
 \begin{figure}[h]
 \begin{subfigure}[b]{1\linewidth}
-\includegraphics[width=.45\linewidth]{fig5d.pdf}
-\includegraphics[width=.45\linewidth]{fig5e.pdf}
+\centering
+\includegraphics[width=.48\linewidth]{fig5d.pdf}
+\includegraphics[width=.48\linewidth]{fig5e.pdf}
 \end{subfigure}
 \begin{subfigure}[b]{1\linewidth}
 \centering
-\includegraphics[width=.45\linewidth]{fig5f.pdf}
-\includegraphics[width=.45\linewidth]{fig5g.pdf}
+\includegraphics[width=.48\linewidth]{fig5f.pdf}
+\includegraphics[width=.48\linewidth]{fig5g.pdf}
 \end{subfigure}
 \label{fig}
 \caption{\footnotesize Contributions to rate of adaptation from changes in trait variance and covariance. (a) $s$ varies with $N$ and $U$ being kept fixed ($N= 10^7$, $U=10^-5$). (b) $U$ varies with $N$ and $s$ being kept fixed ($N= 10^7$,$s=10^-2$). (c) $N$ varies with $s$ and $U$ being kept fixed ($s=10^-2$,$U=10^-5$).}
 \end{figure}
-%------------------------------------------------------------------------------------------------------------
-%------------------------------------------------------------------------------------------------------------
-
-(i) the pop param don't affect the deacrease
+% *****************************************************************************************************************
+% ***********************************END*FIGURE*2******************************************************************
+% *****************************************************************************************************************
 
 The decreases shown in the scaled mean values of $v_1$ that are plotted in figure 2 are nearly independent of the population parameters picked within ranges characterizing asexual evolution. In all three parameter sets, the decrease nearly is always approximately 40\% of the trait's prior variance. The insensitivity follows from Desai and Fisher's expression for the rate of adaptation, which exhibits a logarithmic dependence on $N$, $s$ and $U$. This leads to a general expression that can be obtained for the expected reduction in a trait's rate of adaptation as a result of adding  $(n-1)$ traits.
 \[
 \% \Delta v_1 
 = 1-\frac{1}{n}\frac{v(N,s,nU)}{v(N,s,U)}
 \]
-Only changes $s$ appear to affect the expected decrease in scaled $v_1$ (fig 2d), while changes in the number of traits seem to be most adverse. The extent of this effect is marginally less with each additional trait, but quite substantive in the first few cases.
-
-%------------------------------------------------------------------------------------------------------------
-%------------------------------------------------------------------------------------------------------------
-\begin{figure}
-\includegraphics[width=1\linewidth]{fig2-13130_0_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pdf}
-\label{Figure}
-\caption{\footnotesize Two dimensional distribution of bulk with negative covariance. The plot shown represents a snapshot of the two dimensional distribution of the bulk taken from an actual simulation. The classes in the stochastic front are not shown, and the line crossing the distribution represents the line of constant relative fitness passing the population's mean relative fitness. In this instance the distribution is oblate along the direction parallel to the lines of constant relative fitness, indicating negative covariance between the two traits.  This shape is maintained for extended periods of time as a result of the effects that negative covariance has on the rates of adaptation for each trait.  By slowing down the progression of the mean, this ensures that classes at the edge of the bulk and in the stochastic front maintain their selective advantage for greater periods of time.  As a result, classes in the edge of the bulk grow faster and produce more mutations, while classes in the stochastic front have an increased influx of mutants and an larger probability of establishing. (Simulation parameters: $N=10^9$, $s=10^{-2}$, and $U=10^{-5}$ )}
-\end{figure}
-%------------------------------------------------------------------------------------------------------------
-%------------------------------------------------------------------------------------------------------------
-
-%------------------------------------------------------------------------------------------------------------
-%------------------------------------------------------------------------------------------------------------
-\begin{figure}
-\includegraphics[width=1\linewidth]{fig3_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pdf}
-\label{Figure}
-\caption{\footnotesize An average negative covariance between traits one and two causes a reduction in trait one's mean rate of adaptation. The figure includes sampled trajectories of the the fitness variance in trait one and its covariance over a period of 10,000 generations.  The average values of these trajectories are shown as horizontal lines, and their calculated values are included in the legend. The plot also include a horizontal line representing trait one's variance when evolving without a second trait, and the legend includes its calculated value ($\sigma^2$).  For this particular simulation, the rate of adaptation of trait one is drops by 38\% after adding the second trait. This is in agreement with the theoretical calculations  discussed in the introduction. We observed that the mean rate of adaptation for trait one without the second trait was $v_1 = 5.31 \times 10^{-5}$ ($= \sigma^2 $). Upon adding the second trait, trait one's mean rate of adaptation fell by 37\% to the value $v_1  = 3.35 \times 10^{-5}$ ($= \sigma_1^2+\sigma_{12}$). We found that adding the second trait causes a 49\% increase in the fitness variance of the first trait, which would translate into a 49\% increases in trait one's rate of adaptation. However, the covariance term whose effect is to reduce the rate of adaptation due to its negative sign, decreases trait one's mean rate of adaptation by 86\%. Summing the two contributions provides a net change of -37\% in the rate of adaptation of trait one. (Simulation parameters: $N=10^9$, $s=10^{-2}$, and $U=10^{-5}$ for our simulations)}
-\end{figure}
-%------------------------------------------------------------------------------------------------------------
-%------------------------------------------------------------------------------------------------------------
+Of the three parameters, changes in $s$ affect the expected decrease in scaled $v_1$ most (fig 2d). The total number of additional traits also lead to larger and larger reductions in $v_1$. However, the extent of this effect is marginally less with each additional trait, but quite substantive with the first few. \par
 
 In our simulations, we observed highly correlated behavior between the variance trait one and its covariance with the second.  Their fluctuations shown in figure 3 are nearly in sync throughout duration of the simulations. This behavior can be explained by the effects that covariance has on the distribution of individual traits.  As previously mentioned, negative covariance measure associations between fitter values of one trait with poorer one in the other.  Consequently, the larger the magnitude of the negative covariance, the more likely it is that we will observe extreme values in each trait, with each these associated with the opposite opposite versions in the other trait.   (This section still needs more work)\par
 
-In selecting parameters, we restricted our attention to values of $N$, $s$, and $U$ which ensured that genetic variation would be present in each trait. This was necessary to study the quantitative genetic interactions described  by equation 5, since each trait must first have some amount of variance to ensure the possibility of a covariance term.  To do so, we applied Desai and Fisher's results and fitness variance formula, and considered parameter sets that satisfied the relationship $\sigma^2(N,s,U) \geq s^2 / \log(s/U)$. For our simulation parameters, we also restricted our attention to values of $N$, $s$, and $U$ that were typical of widely studied asexaul micro-organisms, or micro-organisms with very limited amounts of sex. We examined various literature sources that reported these values as measured in evolutionary experiments \citep{Perfeito2007,desai2007speed,Levy2015}. 
-
-Under beneficial mutation-selection balance, the time scale governing fluctuations in the G-matrix is proportional to the inverse of the expected rate of adaptation $v(N,s,2U)$ given by Desai and Fisher's 2007 results. In our model, the components of the G-matrix are highly correlated in their dynamics due to their adherence to equation 5. The left hand side of this expression is approximately constant in beneficial mutation-selection balance, and as a result, the components of G will on average satisfy a linear relationship. The dynamics of the covariance terms coincide with those of the associated one dimensional fitness distribution the two dimensional trait distribution. Figure 4b, illustrates the Gaussian shape of the associated one dimensional fitness distribution.  Its peak represents the largest portion of the population and is composed of classes that lie exactly on the line of constant fitness passing through the population's mean fitness. The proportions of the classes within the peak determine the covariance of the two dimensional trait distribution. These proportions are approximately fixed in relative size to one another at the time the classes establish when forming part of the stochastic front in a manner describe by \cite{Desai2013}. Thus changes in the value of covariance in fact follow the transitions of the peaks the one dimensional traveling wave shift. These major transitions are consequently governed by the rate of adaptation and determined at the stochastic front.  In between the times of these transitions, the covariance will simply be a convex combination of the two adjacent sets of classes that lie on the lines of constant fitness below and above the mean. Minor fluctuations in these dynamics are contributed by the residual portion of abundances not included in these two groups. 
-
-\begin{figure}
+% *****************************************************************************************************************
+% ***********************************FIGURE*3*COVARIANCE*TIME*SCALES*ARGUMENT*??***********************************
+% *****************************************************************************************************************
+\begin{figure}[h!]
 \begin{subfigure}[b]{1\linewidth}
 \label{a}
-\caption{Two Dimensional Traveling Wave}
-\includegraphics[width=1\linewidth]{fig9a.png}\\
+\caption{Two Dimensional Distribution \& Covariance Fluctations}
+\includegraphics[width=0.48\linewidth]{fig3_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pdf}
+\includegraphics[width=0.48\linewidth]{fig9a.png}
 \end{subfigure}
-
 \begin{subfigure}[b]{1\linewidth}
 \label{b}
 \caption{Abundances Along Axis of Total Relative Fitness}
 \includegraphics[width=1\linewidth]{fig9b.png}
 \end{subfigure}
-
 \label{Fig 5}
-\caption{\footnotesize Fluctuations in the G-matrix, whose components are highly correlated, occur on time scales proportional to the rate of adaptation $v(N,s,2U)$. The relationship between the two dimensional trait distribution and its associated one dimensional fitness distribution governs the the dynamics of covariance over time, and changes in the latter are determined by $v$. (a) Two sets of classes are distinguished in the two dimensional distribution shown.  The first set, whose boxes are shaded in with patterned gray, represent the set of classes with 38 total beneficial mutations.  At some time $t$, the population's mean fitness lies exactly on the line of constant fitness associated with this group indicated by the black dot. The second set of classes are shaded in patterned black and they represent the classes with 39 total beneficial mutations.  At some time $t+tau_q$, the black dot shift and reside on the line of constant fitness associated with this second group. (b) The two distributions are the one dimensional traveling waves decribed by Desai and Fisher, which are associated with the two dimensional trait distribution in (a), but for the two distinct time points $t$ and $t+\tau_q$. Both are Gaussian, and consequently highly peaked at the population's mean fitness. At time $t$ the peak lies exactly on the marker for 38 total beneficial mutations.  This indicates that the abundances of classes in the first group discussed in (a) largely determine the covariance of the two dimensional trait distribution.  At time $t+\tau_q$, the covariance shifts to a new value that then determined by the distribution of abundances in second group discussed in (a). In between these times the covariance is nearly a convex combination of its values at these two times. However, all major transitions in covariance are in fact occurring on the same time scale as advances in the mean, i.e. the rate of adaptation.}
+\caption{\footnotesize Evolution of the G-matrix over time. (a) Time dependent trajectories of trait one's variance and covariance are plotted with their mean values. Both are highly correlated in their behavior and fluctuate substantially over time. (b) Two dimensional trait distribution with two sets of classes identified. The first set, whose boxes are shaded in with patterned gray, represent the set of classes with 38 total beneficial mutations.  At time $t$, the population mean fitness lies on the line of constant fitness given by 38 total beneficial mutations; mean fitness is marked by the black dot. At time $t+tau_q$ the mean shifts to the next line of constant fitness associated with 39 total beneficial mutations. Here, $\tau_q \sim v^(-1)$ is the mean time between establishements described in \cite{desai2007beneficial}. (b) Depictions of the associated one dimensional traveling wave at times $t$ and $t+\tau_q$. Due to the Gaussian shape of the one dimensional traveling wave, the covariance between traits is set by proportions of classes within the peak. At time $t$ the group with 38 total beneficial mutations determine covariance, while at time $t+\tau_q$ it will be the group with 39 total beneficial mutations that sets covariance. In between these times the covariance is approximately a convex combination of its values at these two times.}
 \end{figure}
+% *****************************************************************************************************************
+% ***********************************END*FIGURE*3******************************************************************
+% *****************************************************************************************************************
+
+Under beneficial mutation-selection balance, the time scale governing the dynamics of the G-matrix components is given by the mean time between establishements $\tau_q \sim 1/v(N,s,2U)$ described by \cite{desai2007beneficial}. Figure 3 shows the fluctuations in the variance of trait one, and its covariance with trait two.  The two are are highly correlated in their dynamics as a result of their adherence to equation 5. When the population is beneficial mutation-selection balance, the left hand side of this expression is approximately constant, and as a result, variance and covariance satisfy a linear relationship on average. This allows us to describe the dynamics of G by understanding the behavior of covariance over time, which is entirely driven by changes in the associated one dimensional fitness distribution depicted in figure 3c. The peak of the traveling wave represents the largest portion of the population. The frequencies of classes in this group, which are those whose fitness is equal to the population's mean fitness, to a large extent determine the covariance of the two dimensional distribution. After $\tau_q$ generations the mean fitness shift forward, and the peak of the one dimensional traveling wave will then coincide with next group of classes that lie on the next line of constant fitness, whose fitness subsequently equals the mean fitness, as shown in figure 3b. These major transitions in covariance are governed by the rate of adaptation. In between the times of these transitions, the covariance will simply be a convex combination of the two adjacent sets of classes that lie on the lines of constant fitness below and above the mean. Minor fluctuations in these dynamics are contributed by the residual portion of abundances not included in these two groups.\par
 
 \section{Discussion}
+
+An interesting consequence of the dynamics of covariance invovles the relationship between stochastic front and its role in setting the covariance of the two dimensional trait distribution. In between establishement events for the one dimensional traveling wave, classes that lie along the line of constant fitness passing through the fittest part of the stochastic front their relative size to one another. OneThis process is exactly  manner describe by \cite{Desai2013}. Thus changes in the value of covariance in fact follow the transitions of the peaks the one dimensional traveling wave shift. These major transitions are consequently governed by the rate of adaptation and determined at the stochastic front.   
 
 \subsection{Comparison with Barton and Otto's Negative Linkage Disequilibria Results}
 In our model, covariance between traits is arises entirely from linkage disequilibrium. We can assume that specific alleles at either locus correspond to the number of beneficial mutations that have accumulated in the corresponding trait.  It follows that the $p_{ij}$ are the gametic frequencies for the genome consisting of allele $i$ paired with allele $j$, and $D_{ij} = p_{ij}-p_{i\cdot} p_{\cdot j}$ is their coefficient of linkage disequilibrium ( $p_{i\cdot}$ and $p_{\cdot j}$ are marginal distributions). By applying \textbf{equation 2}, we can derive a mathematical relationship between covariance and linkage disequilibrium (need to cite chapter 5, Walsh and Lynch).
@@ -352,6 +340,6 @@ We examined the resulting dynamics of trait evolution using numerical simulation
 
 
 \bibliography{biblio}
-\bibliographystyle{plain}
+\bibliographystyle{plainnat}
 
 \end{document}
