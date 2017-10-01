@@ -12,7 +12,7 @@
 \newcommand{\G}{\textbf{G}}
 
 \title{Modeling How Evolution in One Trait is Affected by Adaptation in Another}
-\date{Fall 2016}
+\date{Fall 2017}
 \author{Kevin Gomez,Jason Bertram,Joanna Masel}
 
 \begin{document}
@@ -132,8 +132,7 @@ In an analogous approach to that of \citet{desai2007beneficial}, we divided our 
 % *****************************************************************************************************************
 \begin{figure}[h!]
 \includegraphics[width=1\linewidth]{fig1a.pdf}
-\label{Figure 1.}
-\caption{\footnotesize Illustration of a two dimensional trait distribution taken from simulation. Boxes correspond to classes whose members have identical numbers of beneficial mutations in each trait. The bulk is composed of classes with solid interiors, while those with patterned interiors form part of the stochastic front. The red dot marks the number of beneficial mutations in the average individual. Classes are grouped with respect to their total relative fitness, but vary in the number of beneficial mutations that have accumulated in each trait. These groups are represented by the lines passing through their centers that are parallel to the dashed line. These are refered to lines of constant fitness. The red line marks the set of classes whose fitness equals the population mean fitness. Fitness increases along the perpendicular direction to this line. Only beneficial mutations occuring on fit backgrounds produce lineages that grow sufficiently large to affect adaptation. These are represented by arrows from the bulk into the stochastic front. Other mutant lineages are out-competed and do not significantly contribute to the population's adapatation. The stochastict front expands in the direction of increasing relative fitness, while classes in the bulk below the red line disappear. These two processes continually shift the two dimensional trait distribution in the direction of increasing fitness over time. (Simulation parameters: $N=10^9$, $s=10^{-2}$, and $U=10^{-5}$)}
+\caption{\footnotesize Illustration of a two dimensional trait distribution taken from simulation. Boxes correspond to classes whose members have identical numbers of beneficial mutations in each trait. The bulk is composed of classes with solid interiors, while those with patterned interiors form part of the stochastic front. The red dot marks the number of beneficial mutations in the average individual. Classes are grouped with respect to their total relative fitness, but vary in the number of beneficial mutations that have accumulated in each trait. These groups are represented by the lines passing through their centers that are parallel to the dashed line. These are refered to lines of constant fitness. The red line marks the set of classes whose fitness equals the population mean fitness. Fitness increases along the perpendicular direction to this line. Only beneficial mutations occuring on fit backgrounds produce lineages that grow sufficiently large to affect adaptation. These are represented by arrows from the bulk into the stochastic front. Other mutant lineages are out-competed and do not significantly contribute to the population's adapatation. The stochastict front expands in the direction of increasing relative fitness, while classes in the bulk below the red line disappear. These two processes continually shift the two dimensional trait distribution in the direction of increasing fitness over time. (Simulation parameters: $N=10^9$, $s=10^{-2}$, and $U=10^{-5}$)}\label{fig:1}
 \end{figure}
 % *****************************************************************************************************************
 % *******************************END*FIGURE 1**********************************************************************
@@ -166,7 +165,7 @@ Each mutant lineage that appears in the stochastic front either goes establishes
 \begin{equation} \label{eq:3}
 \pi_{fix} = \frac{s_{ij}}{ 1+s_{ij}}
 \end{equation}
-The lineage establishes when it has reached a size if roughly $1/s_{ij}$, and its subsequent growth is exponential. \cite{desai2007beneficial} expressed the abundances of these lineages as $n_{ij}(t) = \frac{1}{s_{ij}} \exp[{s_{ij}(t-\tau)}]$. The random variable $\tau$ is the time of establishment and it captures the cumulative effects of the stochastic fluctuations.  In their initial analysis, Desai and Fisher solve for the probability density function of $\tau$ for lineages destined to establish. In our model, we find it more useful to consider the related random variable $\nu = \frac{1}{s_{ij}}\exp[-\Delta r_{ij}\tau]$ representing an initial size that produces the deterministic trajectory observed after establishment. Using the expression given by Desai and Fisher for the PDF of $\tau$, we can arrive at the cumulative distribution of  $\nu$ (equation 5) by following the analysis of \cite{Uecker2011}. 
+The lineage establishes when it has reached a size if roughly $1/s_{ij}$, and its subsequent growth is exponential. \cite{desai2007beneficial} expressed the abundances of these lineages as $n_{ij}(t) = \frac{1}{s_{ij}} \exp[{s_{ij}(t-\tau)}]$. The random variable $\tau$ is the time of establishment and it captures the cumulative effects of the stochastic fluctuations.  In their initial analysis, Desai and Fisher solve for the probability density function of $\tau$ for lineages destined to establish. In our model, we find it more useful to consider the related random variable $\nu = \frac{1}{s_{ij}}\exp[-\Delta r_{ij}\tau]$ representing an initial size that produces the deterministic trajectory observed after establishment. Using the expression given by Desai and Fisher for the PDF of $\tau$, we can arrive at the cumulative distribution of  $\nu$ (equation 5) by following the analysis of \citet{Uecker2011}. 
 % * <masel@email.arizona.edu> 2017-08-22T22:14:21.200Z:
 % 
 % > useful to consider the related random variable $\nu = \frac{1}{s_{ij}}\exp[-\Delta r_{ij}\tau]$ representing an initial size that produces the deterministic trajectory observed after establishment
@@ -264,9 +263,9 @@ We allowed the simulation to run for 5,000 generations to allow the population t
 
 \section*{Results}
 \label{sec:results}
-Much Additional traits 
+As expected, we found that an additional trait led to a decrease in the rate of adaptation in the first. We found that the reduction was primarily caused by a build of negative covariance between the two traits. When the second trait is allowed to involve with the first, the variance of the focal trait increases. The magnitude of this increase is shown in Figure \ref{fig:2} in excess of the due to the appearance of genotypes buildup of linkage disequibria which inhibits the purg 
 
-In each of our simulations we observed a 60\% decrease in the rate of adaptation of a trait as a result adding a second. The decrease was consistent across three parameter sets which varied either $N$, $s$ and $U$. These results also agree with predictions that can be derived from Desai and Fisher's theoretical work ($v(N,s,U)$). However, our simulations show that upon adding the second trait, the net change in $v_1$ arises from an increase in the first trait's variance and the formation of negative covariance. The first results in an increase in $v_1$, as a direct consequence of \eqref{eq:5}. This gain is more than offset by the negative covariance created between the two traits, whose magnitude is always substantially larger than the variance increase.  Figure 2 presents the calculated scaled mean variance of trait one, and its scaled covariance with the second trait, as a function of each varying population parameter. The graph demonstrates that within these parameter ranges, the new rate of adaptation $v_1$ as a percentage of the prior in every case is nearly 60\% less due solely to the large amounts of negative covariance that builds up between the two traits.\par
+addition of a trait leads to 60\% decrease in the rate of adaptation of a trait as a result adding a second. The decrease was consistent across three parameter sets which varied either $N$, $s$ and $U$. These results also agree with predictions that can be derived from Desai and Fisher's theoretical work ($v(N,s,U)$). However, our simulations show that upon adding the second trait, the net change in $v_1$ arises from an increase in the first trait's variance and the formation of negative covariance. The first results in an increase in $v_1$, as a direct consequence of \eqref{eq:5}. This gain is more than offset by the negative covariance created between the two traits, whose magnitude is always substantially larger than the variance increase.  Figure 2 presents the calculated scaled mean variance of trait one, and its scaled covariance with the second trait, as a function of each varying population parameter. The graph demonstrates that within these parameter ranges, the new rate of adaptation $v_1$ as a percentage of the prior in every case is nearly 60\% less due solely to the large amounts of negative covariance that builds up between the two traits.\par
 
 % *****************************************************************************************************************
 % ***********************************FIGURE 2*Scaled Var/Cov Changes & Trait Reduction*****************************
@@ -275,28 +274,26 @@ In each of our simulations we observed a 60\% decrease in the rate of adaptation
 \begin{subfigure}[b!]{0.48\linewidth}
 \centering
 \includegraphics[width=1\linewidth]{fig5d.pdf}
-\caption{}
+\caption{}\label{fig:2a}
 \end{subfigure}
 \begin{subfigure}[b!]{0.48\linewidth}
 \centering
 \includegraphics[width=1\linewidth]{fig5e.pdf}
-\caption{}
+\caption{}\label{fig:2b}
 \end{subfigure}
 
 \begin{subfigure}[b]{0.48\linewidth}
 \centering
 \includegraphics[width=1\linewidth]{fig5f.pdf}
-\caption{}
+\caption{}\label{fig:2c}
 \end{subfigure}
 \begin{subfigure}[b]{0.48\linewidth}
 \centering
 \includegraphics[width=1\linewidth]{fig5g.pdf}
-\caption{}
+\caption{}\label{fig:2d}
 \end{subfigure}
-
-\label{fig}
 \caption{\footnotesize 
-(a-c) Magnitudes of the mean variance, covariance, and rate of adaptation of a trait divided by its expected rate of adaptation when evolving without a second. Each plot includes the measured values produced by simulations with either varying $s$, $U$, or $N$. (d) Expected decrease in the rate of adapatation of trait, when additional traits are added for three choices of $s$. Changes in the scaled mean variances and covarainces vary only slightly with changes in each of three parameters. The decrease in a trait's rate of adaptation is nearly 60\% across changes in each of the three parameters. Fixed simulation parameters in (a-c) are: $s=10^-2$, $U=10^-5$ and $N=10^9$.}
+(a-c) Magnitudes of the mean variance, covariance, and rate of adaptation for trait one divided by its expected rate of adaptation when evolving without a second. Each plot includes the measured values produced by simulations with either varying $s$, $U$, or $N$. (d) Expected decrease in the rate of adapatation of trait, when additional traits are added for three choices of $s$. Changes in the scaled mean variances and covarainces vary only slightly with changes in each of three parameters. The decrease in a trait's rate of adaptation is nearly 60\% across changes in each of the three parameters. Fixed simulation parameters in (a-c) are: $s=10^{-2}$, $U=10^{-5}$ and $N=10^9$.}\label{fig:2}
 \end{figure}
 % *****************************************************************************************************************
 % ***********************************END*FIGURE*2******************************************************************
@@ -314,23 +311,19 @@ Of the three parameters, changes in $s$ affect the expected decrease in scaled $
 % *****************************************************************************************************************
 \begin{figure}[h!]
 \begin{subfigure}[b!]{0.48\linewidth}
-\label{fig:3a}
 \includegraphics[width=1\linewidth, height=6cm]{fig3_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pdf}
-\caption{}
+\caption{}\label{fig:3a}
 \end{subfigure}
 \begin{subfigure}[b!]{0.48\linewidth}
-\label{fig:3b}
 \includegraphics[width=1\linewidth, height=6cm]{fig9a.png}
-\caption{}
+\caption{}\label{fig:3b}
 \end{subfigure}
 
 \begin{subfigure}[b]{1\linewidth}
-\label{fig:3c}
 \includegraphics[width=1\linewidth]{fig9b.png}
-\caption{}
+\caption{}\label{fig:3c}
 \end{subfigure}
-\label{fig:3}
-\caption{\footnotesize Evolution of the \G-matrix over time. (a) Time dependent trajectories of variance and covariance with their mean values (constant lines). (b) Two dimensional trait distribution with classes having 38 and 39 total beneficial mutations identified. (c) Depictions of the associated one dimensional traveling wave at times $t$ and $t+\tau_q$. Major transitions in their values occur over a period of $\tau_q \sim v^{-1}$ described by \citet{desai2007beneficial}. At time $t$ the mean fitness, marked by the black dot, resides on the line associted with classes with 38 total beneficial mutations (a). These classes compose the peak of the one dimensional Gaussian fitness distribution which is exponentially larger than all others bins. As a result, their frequencies determine variance and covariance. At time $t+tau_q$ the mean shifts to the next line of constant fitness for 39 total beneficial mutations, and their frequencies will then determine variance and covariance. In between these times, their values are approximately a convex combinations of those at the time points.}
+\caption{\footnotesize Evolution of the \G-matrix over time. (a) Time dependent trajectories of variance and covariance with their mean values (constant lines). (b) Two dimensional trait distribution with classes having 38 and 39 total beneficial mutations identified. (c) Depictions of the associated one dimensional traveling wave at times $t$ and $t+\tau_q$. Major transitions in their values occur over a period of $\tau_q \sim v^{-1}$ described by \citet{desai2007beneficial}. At time $t$ the mean fitness, marked by the black dot, resides on the line associted with classes with 38 total beneficial mutations (a). These classes compose the peak of the one dimensional Gaussian fitness distribution which is exponentially larger than all others bins. As a result, their frequencies determine variance and covariance. At time $t+tau_q$ the mean shifts to the next line of constant fitness for 39 total beneficial mutations, and their frequencies will then determine variance and covariance. In between these times, their values are approximately a convex combinations of those at the time points.}\label{fig:3}
 \end{figure}
 % *****************************************************************************************************************
 % ***********************************END*FIGURE*3******************************************************************
