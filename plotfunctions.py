@@ -272,40 +272,39 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         var1_avg = np.mean(fit_var[:,0])*np.ones(np.shape(times))
         var2_avg = np.mean(fit_var[:,1])*np.ones(np.shape(times))
         cov_avg = np.mean(fit_cov[:])*np.ones(np.shape(times))
-        rate_adpt1_avg = var1_avg + cov_avg
-        rate_adpt2_avg = var2_avg + cov_avg
+        rate_adpt_avg = var1_avg + var2_avg + 2*cov_avg
         
         # plot data for figure 2a and 2b 
-        fig3a, ax3a = plt.subplots(1,1,figsize=[8,10])
-        fig3a.subplots_adjust(bottom=0.35)
+        fig3a, ax3a = plt.subplots(1,1,figsize=[8,8])
+        fig3a.subplots_adjust(bottom=0.2)
         ax3b = plt.twinx(ax3a)
-        ax3a.plot(times,var1_avg,c="black",label='var($r_1|r_2$)=' + str(round(var1_avg[0],7)),linewidth=3.0,linestyle = '--')
-        ax3a.plot(times,cov_avg,c="black",label='cov($r_1$,$r_2$)=' + str(round(cov_avg[0],7)),linewidth=3.0,linestyle = ':')
-#        ax3a.plot(times,vU_thry*np.ones(np.shape(var1_avg)),c="black",label='var($r_1$)=' + str(round(vU_thry,7)),linewidth=2.0,linestyle = '-')        
+        ax3a.plot(times,rate_adpt_avg,c="black",label='var$_{fitness}$',linewidth=2.0,linestyle = '-')                
+        ax3a.plot(times,var1_avg,c="black",label='var($r_1|r_2$)',linewidth=3.0,linestyle = '--')
+        ax3a.plot(times,cov_avg,c="black",label='cov($r_1$,$r_2$)',linewidth=3.0,linestyle = ':')
         ax3a.axhline(linewidth=0.5, color = 'k')
         ax3a.set_ylabel('Fitness Variances & Covariance',fontsize=18)
         ax3a.set_xlabel('Time (Generations)',fontsize=18)
         ax3a.set_ylim((-3e-4,4e-4))
         ax3a.set_xlim((1e4,2e4))
-        ax3a.tick_params(axis='both',labelsize=18)
+        ax3a.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=18)
         ax3a.grid(b='on', which='both', axis='both')
-        ax3a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
-        ax3a.legend(loc='upper center', bbox_to_anchor=(0.5, -0.2),fancybox=True, shadow=True, ncol=1,fontsize=20)
-        
+        ax3a.ticklabel_format(style='plain',axis='both',scilimits=(0,0))
+        ax3a.legend(loc='upper center', bbox_to_anchor=(0.5, -0.1),fancybox=True, shadow=True, ncol=3,fontsize=20)
+
+        ax3b.plot(times,np.asarray(fit_var[:,0])+np.asarray(fit_var[:,1])+2*np.asarray(fit_cov[:]),c="black",linestyle="-",linewidth=3.0)        
         ax3b.plot(times,fit_var[:,0],c="black",linestyle="--",linewidth=3.0)
         ax3b.plot(times,fit_cov[:],c="black",linestyle=":",linewidth=3.0)
         ax3b.axhline(linewidth=0.5, color = 'k')        
         ax3b.set_ylim((-3e-4,4e-4))
         ax3b.set_xlim((1e4,2e4))        
-        ax3b.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
-        ax3b.tick_params(axis='both',labelsize=18)
-#        fig3b.subplots_adjust(bottom=0.2)
+        ax3b.ticklabel_format(style='plain',axis='both',scilimits=(0,0))
+        ax3b.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=18)
 
         fig3a.savefig('./'+folder_location+'figures/'+fname+data_name+'.pdf')
         
         del times, mean_fit, fit_var, fit_cov, pop_load, dcov_dt, vU_thry
-        del v2U_thry, rate_adpt1, rate_adpt2, var1_avg, var2_avg,cov_avg
-        del rate_adpt1_avg, rate_adpt2_avg, fig3a, ax3a, ax3b, N, s1, s2, U1, U2
+        del v2U_thry, rate_adpt_avg, var1_avg, var2_avg,cov_avg
+        del fig3a, ax3a, ax3b, N, s1, s2, U1, U2
 
 # figure 4: plot of trait or fitness distribution versus normal distribution
     
@@ -352,12 +351,13 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         fmt = '%.0f%%' # Format you want the ticks, e.g. '40%'
         yticks = mtick.FormatStrFormatter(fmt)
         
-        fig5d, ax5d = plt.subplots(1,1,figsize=[8,8])
-        fig5d.subplots_adjust(bottom=0.2)
+        fig5d, ax5d = plt.subplots(1,1,figsize=[8,9])
+        fig5d.subplots_adjust(bottom=0.25)
         fig5d.subplots_adjust(left=0.2)        
-        ax5d.plot(NsUparam[start1:end1,1],100*(-np.asarray(covp[start1:end1])-np.asarray(varp[start1:end1])+np.asarray(vUthryp[start1:end1])),c="black",label='v$_{1|2}$',linewidth=3.0,linestyle = '-')                
-        ax5d.plot(NsUparam[start1:end1,1],100*np.asarray(varp[start1:end1])-100,c="black",label='$\delta$var($r_1|r_2$)',linewidth=3.0,linestyle = '--')
-        ax5d.plot(NsUparam[start1:end1,1],-100*np.asarray(covp[start1:end1]),c="black",label='|$\delta$cov($r_1,r_2$)|',linewidth=3.0,linestyle = ':')        
+        ax5d.plot(NsUparam[start1:end1,1],100*(-np.asarray(covp[start1:end1])-np.asarray(varp[start1:end1])+np.asarray(vUthryp[start1:end1])),c="black",label='$\%\Delta$v$_{1}$',linewidth=3.0,linestyle = '-')                
+#        ax5d.plot(NsUparam[start1:end1,1],100*(np.asarray(covp[start1:end1])+np.asarray(varp[start1:end1])),c="black",label='$\%$v$_{1}$',linewidth=3.0,linestyle = '-.')                
+        ax5d.plot(NsUparam[start1:end1,1],100*np.asarray(varp[start1:end1])-100,c="black",label='$\%\Delta$var($r_1|r_2$)',linewidth=3.0,linestyle = '--')
+        ax5d.plot(NsUparam[start1:end1,1],-100*np.asarray(covp[start1:end1]),c="black",label='|$\%\Delta$cov($r_1,r_2$)|',linewidth=3.0,linestyle = ':')        
         ax5d.axhline(linewidth=0.5, color = 'k')
         ax5d.yaxis.set_major_formatter(yticks)         
         ax5d.set_ylabel(r'Magnitudes of Scaled Variance-Covariance',fontsize=18)
@@ -367,15 +367,16 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         ax5d.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
         ax5d.set_ylim((0,160))
         ax5d.set_xlim((min(NsUparam[start1:end1,1]),max(NsUparam[start1:end1,1])))  
-        ax5d.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=3,fontsize=20)
+        ax5d.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=2,fontsize=20)
         fig5d.savefig('./'+folder_location+'figures/'+fname+data_name+'d.pdf')
         
-        fig5e, ax5e = plt.subplots(1,1,figsize=[8,8])
-        fig5e.subplots_adjust(bottom=0.2)        
+        fig5e, ax5e = plt.subplots(1,1,figsize=[8,9])
+        fig5e.subplots_adjust(bottom=0.25)        
         fig5e.subplots_adjust(left=0.2)
-        ax5e.plot(NsUparam[start2:end2,2],100*(-np.asarray(covp[start2:end2])-np.asarray(varp[start2:end2])+np.asarray(vUthryp[start2:end2])),c="black",label='v$_{1|2}$',linewidth=3.0,linestyle = '-')
-        ax5e.plot(NsUparam[start2:end2,2],100*np.asarray(varp[start2:end2])-100,c="black",label='$\delta$var($r_1|r_2$)',linewidth=3.0,linestyle = '--')
-        ax5e.plot(NsUparam[start2:end2,2],-100*np.asarray(covp[start2:end2]),c="black",label='|$\delta$cov($r_1,r_2$)|',linewidth=3.0,linestyle = ':')
+        ax5e.plot(NsUparam[start2:end2,2],100*(-np.asarray(covp[start2:end2])-np.asarray(varp[start2:end2])+np.asarray(vUthryp[start2:end2])),c="black",label='$\%\Delta$v$_{1}$',linewidth=3.0,linestyle = '-')
+#        ax5e.plot(NsUparam[start2:end2,2],100*(np.asarray(covp[start2:end2])+np.asarray(varp[start2:end2])),c="black",label='$\%$v$_{1}$',linewidth=3.0,linestyle = '-.')
+        ax5e.plot(NsUparam[start2:end2,2],100*np.asarray(varp[start2:end2])-100,c="black",label='$\%\Delta$var($r_1|r_2$)',linewidth=3.0,linestyle = '--')
+        ax5e.plot(NsUparam[start2:end2,2],-100*np.asarray(covp[start2:end2]),c="black",label='|$\%\Delta$cov($r_1,r_2$)|',linewidth=3.0,linestyle = ':')
         ax5e.axhline(linewidth=0.5, color = 'k')
         ax5e.yaxis.set_major_formatter(yticks) 
         ax5e.set_ylabel(r'Magnitudes of Scaled Variance-Covariance',fontsize=18)
@@ -385,15 +386,16 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         ax5e.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
         ax5e.set_ylim((0,160))
         ax5e.set_xlim((min(NsUparam[start2:end2,2]),max(NsUparam[start2:end2,2])))          
-        ax5e.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=3,fontsize=20)
+        ax5e.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=2,fontsize=20)
         fig5e.savefig('./'+folder_location+'figures/'+fname+data_name+'e.pdf')
         
-        fig5f, ax5f = plt.subplots(1,1,figsize=[8,8])
-        fig5f.subplots_adjust(bottom=0.2)
+        fig5f, ax5f = plt.subplots(1,1,figsize=[8,9])
+        fig5f.subplots_adjust(bottom=0.25)
         fig5f.subplots_adjust(left=0.2)
-        ax5f.plot(NsUparam[start3:end3,0],100*(-np.asarray(covp[start3:end3])-np.asarray(varp[start3:end3])+np.asarray(vUthryp[start3:end3])),c="black",label='v$_{1|2}$',linewidth=3.0,linestyle = '-')        
-        ax5f.plot(NsUparam[start3:end3,0],100*np.asarray(varp[start3:end3])-100,c="black",label='$\delta$var($r_1|r_2$)',linewidth=3.0,linestyle = '--')
-        ax5f.plot(NsUparam[start3:end3,0],-100*np.asarray(covp[start3:end3]),c="black",label='|$\delta$cov($r_1,r_2$)|',linewidth=3.0,linestyle = ':')                
+        ax5f.plot(NsUparam[start3:end3,0],100*(-np.asarray(covp[start3:end3])-np.asarray(varp[start3:end3])+np.asarray(vUthryp[start3:end3])),c="black",label='$\%\Delta$v$_{1}$',linewidth=3.0,linestyle = '-')
+#        ax5f.plot(NsUparam[start3:end3,0],100*(np.asarray(covp[start3:end3])+np.asarray(varp[start3:end3])),c="black",label='$\%$v$_{1}$',linewidth=3.0,linestyle = '-.')
+        ax5f.plot(NsUparam[start3:end3,0],100*np.asarray(varp[start3:end3])-100,c="black",label='$\%\Delta$var($r_1|r_2$)',linewidth=3.0,linestyle = '--')
+        ax5f.plot(NsUparam[start3:end3,0],-100*np.asarray(covp[start3:end3]),c="black",label='|$\%\Delta$cov($r_1,r_2$)|',linewidth=3.0,linestyle = ':')                
         ax5f.axhline(linewidth=0.5, color = 'k')
         ax5f.yaxis.set_major_formatter(yticks)                 
         ax5f.set_ylabel(r'Magnitudes of Scaled Variance-Covariance',fontsize=18)
@@ -403,7 +405,7 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         ax5f.ticklabel_format(style='sci',axis='x',scilimits=(0,0))
         ax5f.set_ylim((0,160))
         ax5f.set_xlim((min(NsUparam[start3:end3,0]),max(NsUparam[start3:end3,0]))) 
-        ax5f.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=3,fontsize=20)        
+        ax5f.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=2,fontsize=20)        
         fig5f.savefig('./'+folder_location+'figures/'+fname+data_name+'f.pdf')
         
         traitsadd = [i+1 for i in range(9)]
@@ -411,8 +413,8 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         per_decr_vrate2 = [100*get_vNSU(10**9,10**(-2)/5,10**(-5),i+2) for i in range(9)]        
         per_decr_vrate3 = [100*get_vNSU(10**9,10**(-2)/10,10**(-5),i+2) for i in range(9)]        
         
-        fig5g, ax5g = plt.subplots(1,1,figsize=[8,8])
-        fig5g.subplots_adjust(bottom=0.2)
+        fig5g, ax5g = plt.subplots(1,1,figsize=[8,9])
+        fig5g.subplots_adjust(bottom=0.25)
         fig5g.subplots_adjust(left=0.2)
         ax5g.scatter(traitsadd,per_decr_vrate1,c="black",label='s=1e-2',s=60,marker="o")        
         ax5g.scatter(traitsadd,per_decr_vrate2,c="black",label='s=0.5e-2',s=70,marker="*")
@@ -425,7 +427,7 @@ def generate_figure(figNum,data_name,folder_location,sim_start,sim_end,pop_param
         ax5g.grid(b='on', which='both', axis='both')
         ax5g.set_ylim((20,80))
         ax5g.set_xlim(0,10) 
-        ax5g.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=3,fontsize=20)        
+        ax5g.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=2,fontsize=20)        
         fig5g.savefig('./'+folder_location+'figures/'+fname+data_name+'g.pdf')
 
     return None
