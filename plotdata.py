@@ -363,10 +363,29 @@ def get_subset_times(N,s,U,times,scaling):
     return indx_list
     
 def get_cov_cov(times,nose_cov,fit_cov,N,s,U):
-    tau_q = scaling*((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
+    tau_q = (np.log(s/U))**2/(s*(2*np.log(N*s)-np.log(s/U)))
+    q = (2*np.log(N*s))/(np.log(s/U))
+    time_d = int(np.floor(q*tau_q))
     
+    new_times = []
+    new_covs = []
+    new_ncovs = []
     
-    return 
+    for i in range(len(times)):
+        if(np.mod(times[i],1)<0.00000001):
+            new_times = new_times+[times[i]]
+            new_covs = new_covs + [fit_cov[i]]
+            new_ncovs = new_ncovs + [nose_cov[i]]
+    
+    new_covs = np.asarray(new_covs)
+    new_ncovs = np.asarray(new_ncovs)
+    t_off = [i+1 for i in range(2*time_d)]
+    t_cov = [0 for i in range(2*time_d)]
+    
+    for i in range(2*time_d):
+        t_cov[i] = np.cov(np.vstack((new_covs[i+1:],new_ncovs[:-(1+i)])))[0,1]
+    
+    return [t_off,t_cov,new_times,new_covs,new_ncovs]
 
 data_name = '_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1'
 folder_location = ''
@@ -410,39 +429,103 @@ pickle_file.close()
 
 #nose2_cov = [lead_cov[i][-5][2] for i in range(len(lead_cov))]
 
-[N,U,s] = [10**9, 10**(-5),10**(-2)]
+[N,U,s] = [10**9, 2*10**(-5),10**(-2)]
 tau_q = ((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
-q = ((np.log(s/U)))/((2*np.log(N*s)))**(-1)
+q = (2*np.log(N*s))/(np.log(s/U))
+times2 = [times[i]+np.floor(q*tau_q) for i in range(len(times))]
 
+[t_off,t_cov,new_times,new_covs,new_ncovs]= get_cov_cov(times,nose_cov,fit_cov,N,s,U)
+
+# Time displaced Covariance for Poster
 fig1,ax1a = plt.subplots(1,1,figsize=[8,8])
 ax1a.plot(times,fit_cov[:],c="black",linestyle="-",linewidth=1.0)
 #ax1a.plot(sub_times,sub_nose_cov[:],c="red",linestyle="-",linewidth=1.0)
 ax1a.plot(times2,nose_cov[:],c="red",linestyle="-",linewidth=1.0)
-ax1a.set_ylabel('Fitness Variances & Covariance',fontsize=18)
+ax1a.set_ylabel('Covariance',fontsize=18)
 ax1a.set_xlabel('Time (Generations)',fontsize=18)
 ax1a.axhline(linewidth=0.5, color = 'k')        
 #ax1a.set_ylim((-3e-4,4e-4))
-ax1a.set_xlim((1e4,2e4))        
-ax1a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
-ax1a.tick_params(axis='both',labelsize=14)
+ax1a.set_xlim((5e3,1.5e4))        
+#ax1a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+ax1a.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=14)
 ax1a.legend()
 plt.show()
 
-times2 = [times[i]+4*tau_q for i in range(len(times))]
-
-# generate plot for the time displaced covariance of signals for you poster
+# Time Correlation
 fig2,ax2a = plt.subplots(1,1,figsize=[8,8])
-ax2a.plot(times,fit_cov[:],c="black",linestyle="-",linewidth=1.0)
-#ax1a.plot(sub_times,sub_nose_cov[:],c="red",linestyle="-",linewidth=1.0)
-ax2a.plot(times2,nose_cov[:],c="red",linestyle="-",linewidth=1.0)
-ax2a.set_ylabel('Fitness Variances & Covariance',fontsize=18)
+ax2a.plot(t_off,t_cov,c="red",linestyle="-",linewidth=3.0)
+#ax2a.axvline(x=np.floor((q-.5)*tau_q),c="blue",linewidth=3.0)
+#ax2a.plot(times2,nose_cov[:],c="red",linestyle="-",linewidth=1.0)
+ax2a.set_ylabel('Temporal Correlations',fontsize=18)
 ax2a.set_xlabel('Time (Generations)',fontsize=18)
 ax2a.axhline(linewidth=0.5, color = 'k')        
-#ax1a.set_ylim((-3e-4,4e-4))
-ax2a.set_xlim((1e4,2e4))        
-ax2a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
-ax2a.tick_params(axis='both',labelsize=14)
+ax2a.set_ylim((0,1.1*max(t_cov)))
+ax2a.set_xlim((0,1.3e3))        
+#ax2a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+ax2a.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=14)
 ax2a.legend()
 plt.show()
 
+# --------------------------------------------------------------------------------
+# Create summarized data for Joanna and Jason var-cov plots
+# --------------------------------------------------------------------------------
 
+# import packages needed for script
+import pickle
+import scipy as sp
+import numpy as np
+import copy as cpy
+import matplotlib.pyplot as plt
+
+def get_vNsU(N,s,U):
+    vrate = s**2*(2*np.log(N*s)-np.log(s/U))/(np.log(s/U)**2) 
+    return vrate
+
+data_file = open('./data/pythondata/sumdata_exp6.dat')
+data = data_file.read().splitlines()
+data_file.close()
+
+del data_file
+num_pts = len(data)
+
+# clean up mathematica data's format and convert loaded data into lists of arrays
+for i in range(num_pts):
+    data[i]='data[i]=np.array(['+data[i].replace('\t',',')+'])'
+    data[i]=data[i].replace('{','[')
+    data[i]=data[i].replace('}',']')
+    exec(data[i])
+
+data = np.asarray(data)
+data = data[:,1:]
+
+data_file = open('./data/pythondata/sumparam_exp6.dat')
+NsUparam = data_file.read().splitlines()
+data_file.close()
+
+num_pts = len(NsUparam)
+
+# clean up mathematica data's format and convert loaded data into lists of arrays
+for i in range(num_pts):
+    NsUparam[i]='NsUparam[i]=np.asarray(['+NsUparam[i].replace('\t',',')+'])'
+    NsUparam[i]=NsUparam[i].replace('{','[')
+    NsUparam[i]=NsUparam[i].replace('}',']')
+    NsUparam[i]=NsUparam[i].replace('/','*1.0/')
+    exec(NsUparam[i])
+
+NsUparam = np.asarray(NsUparam)
+
+vU_thry = np.asarray([get_vNsU(NsUparam[i,0],NsUparam[i,1],NsUparam[i,2]) for i in range(num_pts)])
+v2U_thry = np.asarray([0.5*get_vNsU(NsUparam[i,0],NsUparam[i,1],2*NsUparam[i,2]) for i in range(num_pts)])
+var = data[:,2]
+cov = data[:,4]
+varp = np.asarray([var[i]/vU_thry[i] for i in range(num_pts)])
+covp = np.asarray([cov[i]/vU_thry[i] for i in range(num_pts)])
+vU_thryp = np.asarray([vU_thry[i]/vU_thry[i] for i in range(num_pts)])
+v2U_thryp = np.asarray([v2U_thry[i]/vU_thry[i] for i in range(num_pts)])
+
+pickle_file_name = './data/pythondata/sumdata_exp6.pickle'
+pickle_file = open(pickle_file_name,'wb') 
+pickle.dump([var, cov, vU_thry, v2U_thry, varp, covp, vU_thryp, v2U_thryp, NsUparam],pickle_file,pickle.HIGHEST_PROTOCOL)
+pickle_file.close()
+
+del var, cov, vU_thry, v2U_thry, varp, covp, vU_thryp, v2U_thryp, NsUparam
