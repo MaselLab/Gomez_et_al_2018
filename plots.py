@@ -329,88 +329,62 @@ NsUparam[start3:end3,0]=np.round(NsUparam[start3:end3,0],8)
 param_set_N = [min_par_N + i*(max_par_N-min_par_N)/100 for i in range(101)]
 param_vchg_N = [pltfun.get_vNsU_perChg(param_set_N[i],s,U,2) for i in range(101)]
 
-[spcint,spcflt] = [5,4.0]
+[spcint,spcflt] = [6,5.0]
 
-#my_xticks_s = [(min_par_s + i*(max_par_s-min_par_s)/spcflt) for i in range(spcint)]
-#my_xlabel_s = [str(1e2*my_xticks_s[i]) for i in range(len(my_xticks_s))]
-#
-#my_xticks_U = [(min_par_U + i*(max_par_U-min_par_U)/spcflt) for i in range(spcint)]
-#my_xlabel_U = [str(1e5*my_xticks_U[i]) for i in range(len(my_xticks_U))]
-#
-#my_xticks_N = [(min_par_N + i*(max_par_N-min_par_N)/spcflt) for i in range(spcint)]
-#my_xlabel_N = [str(1e-8*my_xticks_N[i]) for i in range(len(my_xticks_N))]
+my_xticks_s = [(min_par_s + i*(max_par_s-min_par_s)/spcflt) for i in range(spcint)]
+my_xlabel_s = [str(1e2*my_xticks_s[i]) for i in range(len(my_xticks_s))]
+
+my_xticks_U = [(min_par_U + i*(max_par_U-min_par_U)/spcflt) for i in range(spcint)]
+my_xlabel_U = [str(1e5*my_xticks_U[i]) for i in range(len(my_xticks_U))]
+
+my_xticks_N = [(min_par_N + i*(max_par_N-min_par_N)/spcflt) for i in range(spcint)]
+my_xlabel_N = [str(1e-8*my_xticks_N[i]) for i in range(len(my_xticks_N))]
 
 my_yticks = [20*i for i in range(9)]
 my_ylabel = ['']+[str(20*(i+1))+'%' for i in range(9)]
 
 # Three subplots sharing both x/y axes
-fig2, (ax2d, ax2e, ax2f) = plt.subplots(1,3,sharey=True,figsize=[24,8])
-plt.subplots_adjust(wspace = -.059)
-ax2d.plot(np.asarray(param_set_s),100*np.asarray(param_vchg_s),c="black",label='$\%\Delta$v$_{1}$',linewidth=3.0,linestyle = '-')                
-ax2d.plot(NsUparam[start1:end1,1],100*np.asarray(varp[start1:end1])-100,c="black",label='$\%\Delta$var($r_1|r_2$)',linewidth=3.0,linestyle = '--')
-ax2d.plot(NsUparam[start1:end1,1],-100*np.asarray(covp[start1:end1]),c="black",label='$\%\Delta$|cov($r_1,r_2$)|',linewidth=3.0,linestyle = ':')        
-#plt.annotate(r'$\times 10^{-2}$',xy=(505,20),xycoords='figure points',fontsize=20)
-ax2d.set_ylabel(r'Scaled Variance-Covariance',fontsize=18)
-ax2d.set_xlabel(r'Selection Coefficient',fontsize=18)
+#fig2 = plt.subplots(1,3,figsize=[24,8])
+
+fig=plt.figure(figsize=[24,8])
+
+ax=plt.subplot(131)
+ax.plot(np.asarray(param_set_s),100*np.asarray(param_vchg_s),c="black",label='$\%\Delta$v$_{1}$',linewidth=3.0,linestyle = '-')                
+ax.scatter(NsUparam[start1:end1,1],100*np.asarray(varp[start1:end1])-100,c="black",label='$\%\Delta$var($r_1|r_2$)',s=20.0,marker = 'D')
+ax.scatter(NsUparam[start1:end1,1],-100*np.asarray(covp[start1:end1]),label='$\%\Delta$|cov($r_1,r_2$)|',s=20.0,marker = 'o')        
+plt.annotate(r'$\times 10^{-2}$',xy=(540,20),xycoords='figure points',fontsize=20)
+ax.set_ylabel(r'Scaled Variance-Covariance',fontsize=18)
+ax.set_xlabel(r'Selection Coefficient',fontsize=18)
 #ax2d.legend(loc=4, ncol=2,fontsize=16)
-ax2d.set_ylim((0,160))
+ax.set_ylim((0,160))
+ax.set_xlim((min_par_s,max_par_s))
 plt.yticks(my_yticks,my_ylabel)
-ax2d.set_xlim((min_par_s,max_par_s))
+plt.xticks(my_xticks_s,my_xlabel_s)
 
-labels = ax2d.get_xticklabels()
-newlabels=[]
-for i in range(len(labels)):
-    text = labels[i].get_text()
-    if(text!=u''):
-        newlabels += [str(1e2*float(text))]
-    else:
-        newlabels += ['']
-#ax2d.set_xticklabels(newlabels)
+ax=plt.subplot(132)
+ax.plot(np.asarray(param_set_U),100*np.asarray(param_vchg_U),c="black",label='$\%\Delta$v$_{1}$',linewidth=3.0,linestyle = '-')
+ax.scatter(NsUparam[start2:end2,2],100*np.asarray(varp[start2:end2])-100,c="black",label='$\%\Delta$var($r_1|r_2$)',s=20.0,marker = 'D')
+ax.scatter(NsUparam[start2:end2,2],-100*np.asarray(covp[start2:end2]),label='$\%\Delta$|cov($r_1,r_2$)|',s=20.0,marker = 'o')
+plt.annotate(r'$\times 10^{-2}$',xy=(1100,20),xycoords='figure points',fontsize=20)
+ax.set_xlabel(r'Mutation Rate',fontsize=18)
+ax.set_xlim((min_par_U,max_par_U))
+plt.yticks(my_yticks,[])
+fig2=plt.xticks(my_xticks_U,my_xlabel_U)
 
-#plt.xticks(my_xticks_s,my_xlabel_s)
+ax=plt.subplot(133)
+ax.plot(np.asarray(param_set_N),100*np.asarray(param_vchg_N),c="black",label='$\%\Delta$v$_{1}$',linewidth=3.0,linestyle = '-')
+ax.scatter(NsUparam[start3:end3,0],100*np.asarray(varp[start3:end3])-100,c="black",label='$\%\Delta$var($r_1|r_2$)',s=20.0,marker = 'D')
+ax.scatter(NsUparam[start3:end3,0],-100*np.asarray(covp[start3:end3]),label='$\%\Delta$|cov($r_1,r_2$)|',s=20.0,marker = 'o')                
+plt.annotate(r'$\times 10^{-2}$',xy=(1560,20),xycoords='figure points',fontsize=20)
+ax.set_xlabel(r'Population Size',fontsize=18)
+ax.set_xlim((min_par_N,max_par_N))
+plt.yticks(my_yticks,[])
+plt.xticks(my_xticks_N,my_xlabel_N)
 
+fig.subplots_adjust(wspace=0.1)
+plt.tight_layout
+plt.savefig('./figures/fig2a.pdf',bbox_inches='tight')
 
-ax2e.plot(np.asarray(param_set_U),100*np.asarray(param_vchg_U),c="black",label='$\%\Delta$v$_{1}$',linewidth=3.0,linestyle = '-')
-ax2e.plot(NsUparam[start2:end2,2],100*np.asarray(varp[start2:end2])-100,c="black",label='$\%\Delta$var($r_1|r_2$)',linewidth=3.0,linestyle = '--')
-ax2e.plot(NsUparam[start2:end2,2],-100*np.asarray(covp[start2:end2]),c="black",label='$\%\Delta$|cov($r_1,r_2$)|',linewidth=3.0,linestyle = ':')
-#plt.annotate(r'$\times 10^{-2}$',xy=(505,20),xycoords='figure points',fontsize=20)
-ax2e.set_xlabel(r'Mutation Rate',fontsize=18)
-ax2e.set_xlim((min_par_U,max_par_U))
-
-labels = ax2e.get_xticklabels()
-newlabels=[]
-for i in range(len(labels)):
-    text = labels[i].get_text()
-    if(text!=u''):
-        newlabels += [str(1e5*float(text))]
-    else:
-        newlabels += ['']
-#ax2e.set_xticklabels(newlabels)
-
-#ax2e.set_xticklabels(my_xlabel_U)
-#plt.xticks(my_xticks_U,my_xlabel_U)
-
-ax2f.plot(np.asarray(param_set_N),100*np.asarray(param_vchg_N),c="black",label='$\%\Delta$v$_{1}$',linewidth=3.0,linestyle = '-')
-ax2f.plot(NsUparam[start3:end3,0],100*np.asarray(varp[start3:end3])-100,c="black",label='$\%\Delta$var($r_1|r_2$)',linewidth=3.0,linestyle = '--')
-ax2f.plot(NsUparam[start3:end3,0],-100*np.asarray(covp[start3:end3]),c="black",label='$\%\Delta$|cov($r_1,r_2$)|',linewidth=3.0,linestyle = ':')                
-#plt.annotate(r'$\times 10^{-2}$',xy=(505,20),xycoords='figure points',fontsize=20)
-ax2f.set_xlabel(r'Population Size',fontsize=18)
-ax2f.set_xlim((min_par_N,max_par_N))
-
-labels = ax2f.get_xticklabels()
-newlabels=[]
-for i in range(len(labels)):
-    text = labels[i].get_text()
-    if(text!=u''):
-        newlabels += [str(1e-8*float(text))]
-    else:
-        newlabels += ['']
-#ax2f.set_xticklabels(newlabels)
-
-#ax2f.set_xticklabels(my_xlabel_N)
-#plt.xticks(my_xticks_N,my_xlabel_N)
-
-#plt.tight_layout
 
 #-------------------------------------------------------------------------------------------
 #--------------FIGURE 3: FLUCTUATIONS IN VAR AND COV----------------------------------------
