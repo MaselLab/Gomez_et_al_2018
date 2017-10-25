@@ -314,91 +314,90 @@ num_exp = len(NsUparam)
 [start1,start2,start3] = [0,num_exp/3,2*num_exp/3]         
 [end1,end2,end3] = [num_exp/3,2*num_exp/3,num_exp]
 
-# figure for change in selection coefficient
-NsUparam[start1:end1,1]=np.round(NsUparam[start1:end1,1],4)
-[min_par_s,max_par_s] = [min(NsUparam[start1:end1,1]),max(NsUparam[start1:end1,1])]
-[N,s,U] = NsUparam[start1]
-param_set_s = [min_par_s + i*(max_par_s-min_par_s)/100 for i in range(101)]
-param_vchg_s = [pltfun.get_vNsU_perChg(N,param_set_s[i],U,2) for i in range(101)]
+[s_min,s_max] = [min(NsUparam[start1:end1,1]),max(NsUparam[start1:end1,1])]
+[U_min,U_max] = [min(NsUparam[start2:end2,2]),max(NsUparam[start2:end2,2])]
+[N_min,N_max] = [min(NsUparam[start3:end3,0]),max(NsUparam[start3:end3,0])]
 
-[min_par_U,max_par_U] = [min(NsUparam[start2:end2,2]),max(NsUparam[start2:end2,2])]
-[N,s,U] = NsUparam[start2]
-param_set_U = [min_par_U + i*(max_par_U-min_par_U)/100.0 for i in range(101)]
-param_vchg_U = [pltfun.get_vNsU_perChg(N,s,param_set_U[i],2) for i in range(101)]
+#change in v1, variance and covariance as function of s
+xs = np.asarray([s_min + i*(s_max-s_min)/100 for i in range(101)])
+ps = np.asarray(NsUparam[start1:end1,1])
+vs = np.asarray([pltfun.get_vNsU_perChg(NsUparam[start1,0],xs[i],NsUparam[start1,2],2) for i in range(101)])
+Vs = np.asarray(varp[start1:end1])-1
+Cs = -np.asarray(covp[start1:end1])
 
-NsUparam[start3:end3,0]=np.round(NsUparam[start3:end3,0],8)
-[min_par_N,max_par_N] = [min(NsUparam[start3:end3,0]),max(NsUparam[start3:end3,0])]
-[N,s,U] = NsUparam[start3]
-param_set_N = [min_par_N + i*(max_par_N-min_par_N)/100 for i in range(101)]
-param_vchg_N = [pltfun.get_vNsU_perChg(param_set_N[i],s,U,2) for i in range(101)]
+#change in v1, variance and covariance as function of U
+xU = np.asarray([U_min + i*(U_max-U_min)/100 for i in range(101)])
+pU = np.asarray(NsUparam[start2:end1,2])
+vU = np.asarray([pltfun.get_vNsU_perChg(NsUparam[start2,0],NsUparam[start2,1],xU[i],2) for i in range(101)])
+VU = np.asarray(varp[start2:end1])-1
+CU = -np.asarray(covp[start2:end1])
+
+#change in v1, variance and covariance as function of N
+xN = np.asarray([N_min + i*(N_max-N_min)/100 for i in range(101)])
+pN = np.asarray(NsUparam[start3:end1,0])
+vN = np.asarray([pltfun.get_vNsU_perChg(xN[i],NsUparam[start3,1],NsUparam[start3,2],2) for i in range(101)])
+VN = np.asarray(varp[start3:end1])-1
+CN = -np.asarray(covp[start3:end1])
 
 [spcint,spcflt] = [6,5.0]
 
-#my_xticks_s = [(min_par_s + i*(max_par_s-min_par_s)/spcflt) for i in range(spcint)]
-#my_xlabel_s = [str(1e2*my_xticks_s[i]) for i in range(len(my_xticks_s))]
-#
-#my_xticks_U = [(min_par_U + i*(max_par_U-min_par_U)/spcflt) for i in range(spcint)]
-#my_xlabel_U = [str(1e5*my_xticks_U[i]) for i in range(len(my_xticks_U))]
-#
-#my_xticks_N = [(min_par_N + i*(max_par_N-min_par_N)/spcflt) for i in range(spcint)]
-#my_xlabel_N = [str(1e-8*my_xticks_N[i]) for i in range(len(my_xticks_N))]
+my_xticks_s = [0, 0.2e-2, 0.5e-2, 0.7e-2, 0.9e-2, 1.1e-2]
+my_xlabel_s = ['0', '0.003', '0.005', '0.007', '0.009', '1.1']
 
-my_xticks_s = [0.1e-2, 0.3e-2, 0.5e-2, 0.7e-2, 0.9e-2, 1.1e-2]
-my_xlabel_s = ['0.1', '0.3', '0.5', '0.7', '0.9', '1.1']
-
-my_xticks_U = [0.1e-5, 0.3e-5, 0.5e-5, 0.7e-5, 0.9e-5, 1.1e-5]
+my_xticks_U = [0, 0.3e-5, 0.5e-5, 0.7e-5, 0.9e-5, 1.1e-5]
 my_xlabel_U = ['0.1', '0.3', '0.5', '0.7', '0.9', '1.1']
 
-my_xticks_N = [1.0e8, 7.0e8, 13.0e8, 19.0e8, 25.0e8]
+my_xticks_N = [0, 7.0e8, 13.0e8, 19.0e8, 25.0e8]
 my_xlabel_N = ['1.0', '7.0', '13.0', '19.0', '25.0']
 
-my_yticks = [20*i for i in range(9)]
-my_ylabel = ['']+[str(20*(i+1))+'%' for i in range(9)]
-
-# Three subplots sharing both x/y axes
-#fig2 = plt.subplots(1,3,figsize=[24,8])
-
+# figure for change in selection coefficient
 fig=plt.figure(figsize=[24,8])
 ax=plt.subplot(131)
-ax.plot(np.asarray(param_set_s),100*np.asarray(param_vchg_s),c="black",label='$\%\Delta$v$_{1}$',linewidth=3.0,linestyle = '-')                
-ax.scatter(NsUparam[start1:end1,1],100*np.asarray(varp[start1:end1])-100,c="black",label='$\%\Delta$var($r_1|r_2$)',s=40.0,marker = 'D')
-ax.scatter(NsUparam[start1:end1,1],-100*np.asarray(covp[start1:end1]),label='$\%\Delta$|cov($r_1,r_2$)|',s=40.0,marker = 'o')        
-plt.annotate(r'$\times 10^{-2}$',xy=(585,38),xycoords='figure points',fontsize=20)
-ax.set_ylabel(r'Scaled Variance-Covariance',fontsize=20)
+ax.plot(xs,vs,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')                
+ax.scatter(ps,Vs,c="black",label='$\Delta \sigma_1^2$',s=40.0,marker = 'D')
+ax.scatter(ps,Cs,label='$|\sigma_{12}|$',s=40.0,marker = 'o')        
+#plt.annotate(r'$\times 10^{-2}$',xy=(585,38),xycoords='figure points',fontsize=20)
+ax.set_ylabel(r'Multiples of $v(U,N,s)$',fontsize=20)
 ax.set_xlabel(r'Selection Coefficient',fontsize=20)
 ax.tick_params(axis='both',labelsize=20)
-ax.set_ylim((0,160))
-ax.set_xlim((min_par_s,max_par_s))
-plt.yticks(my_yticks,my_ylabel)
-plt.xticks(my_xticks_s,my_xlabel_s)
+ax.set_ylim((0,2))
+ax.set_xlim((0,s_max))
+ax.set_xscale('log')
+#plt.yticks(my_yticks,my_ylabel)
+#plt.xticks(my_xticks_s,my_xlabel_s)
 
+# figure for change in mutation rate
 ax=plt.subplot(132)
-ax.plot(np.asarray(param_set_U),100*np.asarray(param_vchg_U),c="black",label='$\%\Delta$v$_{1}$',linewidth=3.0,linestyle = '-')
-ax.scatter(NsUparam[start2:end2,2],100*np.asarray(varp[start2:end2])-100,c="black",label='$\%\Delta$var($r_1|r_2$)',s=40.0,marker = 'D')
-ax.scatter(NsUparam[start2:end2,2],-100*np.asarray(covp[start2:end2]),label='$\%\Delta$|cov($r_1,r_2$)|',s=40.0,marker = 'o')
-plt.annotate(r'$\times 10^{-5}$',xy=(1055,38),xycoords='figure points',fontsize=20)
+ax.plot(xU,vU,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')
+ax.scatter(pU,VU,c="black",label='$\Delta \sigma_1^2$',s=40.0,marker = 'D')
+ax.scatter(pU,CU,label='$|\sigma_{12}|$',s=40.0,marker = 'o')
+#plt.annotate(r'$\times 10^{-5}$',xy=(1055,38),xycoords='figure points',fontsize=20)
 ax.legend(loc=4, ncol=2,fontsize=16)
 ax.set_xlabel(r'Mutation Rate',fontsize=20)
-ax.set_xlim((min_par_U,max_par_U))
+ax.set_ylim((0,2))
+ax.set_xlim((0,U_max))
+ax.set_xscale('log')
 ax.tick_params(axis='both',labelsize=20)
-plt.yticks(my_yticks,[])
-fig2=plt.xticks(my_xticks_U,my_xlabel_U)
+#plt.yticks(my_yticks,[])
+#plt.xticks(my_xticks_U,my_xlabel_U)
 
+# figure for change in population size
 ax=plt.subplot(133)
-ax.plot(np.asarray(param_set_N),100*np.asarray(param_vchg_N),c="black",label='$\%\Delta$v$_{1}$',linewidth=3.0,linestyle = '-')
-ax.scatter(NsUparam[start3:end3,0],100*np.asarray(varp[start3:end3])-100,c="black",label='$\%\Delta$var($r_1|r_2$)',s=40.0,marker = 'D')
-ax.scatter(NsUparam[start3:end3,0],-100*np.asarray(covp[start3:end3]),label='$\%\Delta$|cov($r_1,r_2$)|',s=40.0,marker = 'o')                
-plt.annotate(r'$\times 10^{8}$',xy=(1525,38),xycoords='figure points',fontsize=20)
+ax.plot(xN,vN,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')
+ax.scatter(pN,VN,c="black",label='$\Delta \sigma_1^2$',s=40.0,marker = 'D')
+ax.scatter(pN,CN,label='$|\sigma_{12}|$',s=40.0,marker = 'o')                
+#plt.annotate(r'$\times 10^{8}$',xy=(1525,38),xycoords='figure points',fontsize=20)
 ax.set_xlabel(r'Population Size',fontsize=18)
-ax.set_xlim((min_par_N,max_par_N))
+ax.set_ylim((0,2))
+ax.set_xlim((0,N_max))
+ax.set_xscale('log')
 ax.tick_params(axis='both',labelsize=20)
-plt.yticks(my_yticks,[])
-plt.xticks(my_xticks_N,my_xlabel_N)
+#plt.yticks(my_yticks,[])
+#plt.xticks(my_xticks_N,my_xlabel_N)
 
 fig.subplots_adjust(wspace=0.2)
 plt.tight_layout
 plt.savefig('./figures/fig2a.pdf',bbox_inches='tight')
-
 
 #-------------------------------------------------------------------------------------------
 #--------------FIGURE 3: FLUCTUATIONS IN VAR AND COV----------------------------------------
