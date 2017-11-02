@@ -343,7 +343,7 @@ CN = -np.asarray(covp[start3:end3])
 fig=plt.figure(figsize=[24,8])
 ax=plt.subplot(131)
 ax.plot(xs,vs,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')                
-ax.scatter(ps,Vs,c="white",label='$\Delta \sigma_1^2$',s=40.0,marker = 'D')
+ax.scatter(ps,Vs,c="white",label='$\sigma_1^2$',s=40.0,marker = 'D')
 ax.scatter(ps,Cs,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')        
 ax.set_ylabel(r'Multiples of v(U,N,s)',fontsize=20)
 ax.set_xlabel(r'Selection Coefficient',fontsize=20)
@@ -360,7 +360,7 @@ plt.annotate('(a)',xy=(100,395),xycoords='figure points',fontsize=20)
 # figure for change in mutation rate
 ax=plt.subplot(132)
 ax.plot(xU,vU,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')
-ax.scatter(pU,VU,c="white",label='$\Delta \sigma_1^2$',s=40.0,marker = 'D')
+ax.scatter(pU,VU,c="white",label='$\sigma_1^2$',s=40.0,marker = 'D')
 ax.scatter(pU,CU,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')
 ax.set_xlabel(r'Mutation Rate',fontsize=20)
 ax.set_ylim((0,2.5))
@@ -378,7 +378,7 @@ plt.annotate('(b)',xy=(495,395),xycoords='figure points',fontsize=20)
 # figure for change in population size
 ax=plt.subplot(133)
 ax.plot(xN,vN,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')
-ax.scatter(pN,VN,c="white",label='$\Delta \sigma_1^2$',s=40.0,marker = 'D')
+ax.scatter(pN,VN,c="white",label='$\sigma_1^2$',s=40.0,marker = 'D')
 ax.scatter(pN,CN,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')                
 ax.legend(loc=1, ncol=1,fontsize=16)
 ax.set_xlabel(r'Population Size',fontsize=18)
@@ -398,7 +398,7 @@ fig.subplots_adjust(wspace=0.2)
 fig.subplots_adjust(bottom=0.25)
 plt.tight_layout
 
-plt.savefig('./figures/fig2a.pdf',bbox_inches='tight')
+plt.savefig('./figures/fig2.pdf',bbox_inches='tight')
 
 #-------------------------------------------------------------------------------------------
 #--------------FIGURE 3: FLUCTUATIONS IN VAR AND COV----------------------------------------
