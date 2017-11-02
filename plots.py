@@ -322,81 +322,82 @@ num_exp = len(NsUparam)
 xs = np.asarray([s_min + i*(s_max-s_min)/100 for i in range(101)])
 ps = np.asarray(NsUparam[start1:end1,1])
 vs = np.asarray([pltfun.get_vNsU_perChg(NsUparam[start1,0],xs[i],NsUparam[start1,2],2) for i in range(101)])
-Vs = np.asarray(varp[start1:end1])-1
+Vs = np.asarray(varp[start1:end1])
 Cs = -np.asarray(covp[start1:end1])
 
 #change in v1, variance and covariance as function of U
 xU = np.asarray([U_min + i*(U_max-U_min)/100 for i in range(101)])
-pU = np.asarray(NsUparam[start2:end1,2])
+pU = np.asarray(NsUparam[start2:end2,2])
 vU = np.asarray([pltfun.get_vNsU_perChg(NsUparam[start2,0],NsUparam[start2,1],xU[i],2) for i in range(101)])
-VU = np.asarray(varp[start2:end1])-1
-CU = -np.asarray(covp[start2:end1])
+VU = np.asarray(varp[start2:end2])
+CU = -np.asarray(covp[start2:end2])
 
 #change in v1, variance and covariance as function of N
 xN = np.asarray([N_min + i*(N_max-N_min)/100 for i in range(101)])
-pN = np.asarray(NsUparam[start3:end1,0])
+pN = np.asarray(NsUparam[start3:end3,0])
 vN = np.asarray([pltfun.get_vNsU_perChg(xN[i],NsUparam[start3,1],NsUparam[start3,2],2) for i in range(101)])
-VN = np.asarray(varp[start3:end1])-1
-CN = -np.asarray(covp[start3:end1])
-
-[spcint,spcflt] = [6,5.0]
-
-my_xticks_s = [0, 0.2e-2, 0.5e-2, 0.7e-2, 0.9e-2, 1.1e-2]
-my_xlabel_s = ['0', '0.003', '0.005', '0.007', '0.009', '1.1']
-
-my_xticks_U = [0, 0.3e-5, 0.5e-5, 0.7e-5, 0.9e-5, 1.1e-5]
-my_xlabel_U = ['0.1', '0.3', '0.5', '0.7', '0.9', '1.1']
-
-my_xticks_N = [0, 7.0e8, 13.0e8, 19.0e8, 25.0e8]
-my_xlabel_N = ['1.0', '7.0', '13.0', '19.0', '25.0']
+VN = np.asarray(varp[start3:end3])
+CN = -np.asarray(covp[start3:end3])
 
 # figure for change in selection coefficient
 fig=plt.figure(figsize=[24,8])
 ax=plt.subplot(131)
 ax.plot(xs,vs,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')                
-ax.scatter(ps,Vs,c="black",label='$\Delta \sigma_1^2$',s=40.0,marker = 'D')
-ax.scatter(ps,Cs,label='$|\sigma_{12}|$',s=40.0,marker = 'o')        
-#plt.annotate(r'$\times 10^{-2}$',xy=(585,38),xycoords='figure points',fontsize=20)
-ax.set_ylabel(r'Multiples of $v(U,N,s)$',fontsize=20)
+ax.scatter(ps,Vs,c="white",label='$\Delta \sigma_1^2$',s=40.0,marker = 'D')
+ax.scatter(ps,Cs,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')        
+ax.set_ylabel(r'Multiples of v(U,N,s)',fontsize=20)
 ax.set_xlabel(r'Selection Coefficient',fontsize=20)
-ax.tick_params(axis='both',labelsize=20)
-ax.set_ylim((0,2))
-ax.set_xlim((0,s_max))
+ax.tick_params(labelsize=20)
+ax.set_ylim((0,2.5))
+ax.set_xlim((0.75*s_min,1.25*s_max))
 ax.set_xscale('log')
-#plt.yticks(my_yticks,my_ylabel)
-#plt.xticks(my_xticks_s,my_xlabel_s)
+ax.xaxis.set_tick_params(which='both',length=5)
+ax.yaxis.set_tick_params(which='both',length=5)
+ax.xaxis.set_ticks_position('bottom')
+ax.yaxis.set_ticks_position('left')
+plt.annotate('(a)',xy=(100,395),xycoords='figure points',fontsize=20)
 
 # figure for change in mutation rate
 ax=plt.subplot(132)
 ax.plot(xU,vU,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')
-ax.scatter(pU,VU,c="black",label='$\Delta \sigma_1^2$',s=40.0,marker = 'D')
-ax.scatter(pU,CU,label='$|\sigma_{12}|$',s=40.0,marker = 'o')
-#plt.annotate(r'$\times 10^{-5}$',xy=(1055,38),xycoords='figure points',fontsize=20)
-ax.legend(loc=4, ncol=2,fontsize=16)
+ax.scatter(pU,VU,c="white",label='$\Delta \sigma_1^2$',s=40.0,marker = 'D')
+ax.scatter(pU,CU,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')
 ax.set_xlabel(r'Mutation Rate',fontsize=20)
-ax.set_ylim((0,2))
-ax.set_xlim((0,U_max))
+ax.set_ylim((0,2.5))
+ax.set_xlim((0.75*U_min,1.25*U_max))
 ax.set_xscale('log')
-ax.tick_params(axis='both',labelsize=20)
-#plt.yticks(my_yticks,[])
-#plt.xticks(my_xticks_U,my_xlabel_U)
+ax.tick_params(labelsize=20)
+locs,labels = plt.yticks()
+plt.yticks(locs,[])
+ax.xaxis.set_tick_params(which='both',length=5)
+ax.yaxis.set_tick_params(which='both',length=5)
+ax.xaxis.set_ticks_position('bottom')
+ax.yaxis.set_ticks_position('left')
+plt.annotate('(b)',xy=(495,395),xycoords='figure points',fontsize=20)
 
 # figure for change in population size
 ax=plt.subplot(133)
 ax.plot(xN,vN,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')
-ax.scatter(pN,VN,c="black",label='$\Delta \sigma_1^2$',s=40.0,marker = 'D')
-ax.scatter(pN,CN,label='$|\sigma_{12}|$',s=40.0,marker = 'o')                
-#plt.annotate(r'$\times 10^{8}$',xy=(1525,38),xycoords='figure points',fontsize=20)
+ax.scatter(pN,VN,c="white",label='$\Delta \sigma_1^2$',s=40.0,marker = 'D')
+ax.scatter(pN,CN,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')                
+ax.legend(loc=1, ncol=1,fontsize=16)
 ax.set_xlabel(r'Population Size',fontsize=18)
-ax.set_ylim((0,2))
-ax.set_xlim((0,N_max))
+ax.set_ylim((0,2.5))
+ax.set_xlim((0.75*N_min,1.25*N_max))
 ax.set_xscale('log')
-ax.tick_params(axis='both',labelsize=20)
-#plt.yticks(my_yticks,[])
-#plt.xticks(my_xticks_N,my_xlabel_N)
+ax.tick_params(labelsize=20)
+locs,labels = plt.yticks()
+plt.yticks(locs,[])
+ax.xaxis.set_tick_params(which='both',length=5)
+ax.yaxis.set_tick_params(which='both',length=5)
+ax.xaxis.set_ticks_position('bottom')
+ax.yaxis.set_ticks_position('left')
+plt.annotate('(c)',xy=(890,395),xycoords='figure points',fontsize=20)
 
 fig.subplots_adjust(wspace=0.2)
+fig.subplots_adjust(bottom=0.25)
 plt.tight_layout
+
 plt.savefig('./figures/fig2a.pdf',bbox_inches='tight')
 
 #-------------------------------------------------------------------------------------------
