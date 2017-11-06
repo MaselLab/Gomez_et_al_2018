@@ -475,3 +475,65 @@ del fig3a, ax3a, ax3b, N, s, U
 #-----------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------
+
+import pickle
+import matplotlib.pyplot as plt
+import scipy as sp
+import numpy as np
+import matplotlib.mlab as mlab
+import plotfunctions as pltfun
+
+# figure 3: plot of rate of adaptation, variances, covariance and their means
+[N,s,U] = [1e9,1e-2,1e-5]
+[sim_start,sim_end,snapshot] = [5e3,4e4,1.313e4]
+
+# dump data into a pickle files
+pickle_file_name = './'+folder_location+'data/pythondata/covdata'+data_name+'.pickle'
+pickle_file = open(pickle_file_name,'rb') 
+[times,lead_cov,nose_cov] = pickle.load(pickle_file)
+pickle_file.close()
+
+# dump data into a pickle files
+pickle_file_name = './'+folder_location+'data/pythondata/distrStats'+data_name+'.pickle'
+pickle_file = open(pickle_file_name,'rb') 
+[times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry] = pickle.load(pickle_file)
+pickle_file.close()
+
+#nose2_cov = [lead_cov[i][-5][2] for i in range(len(lead_cov))]
+
+[N,U,s] = [10**9, 2*10**(-5),10**(-2)]
+tau_q = ((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
+q = (2*np.log(N*s))/(np.log(s/U))
+times2 = [times[i]+np.floor(q*tau_q) for i in range(len(times))]
+
+[t_off,t_cov,new_times,new_covs,new_ncovs]= get_cov_cov(times,nose_cov,fit_cov,N,s,U)
+
+# Time displaced Covariance for Poster
+fig1,ax1a = plt.subplots(1,1,figsize=[8,8])
+ax1a.plot(times,fit_cov[:],c="black",linestyle="-",linewidth=1.0)
+#ax1a.plot(sub_times,sub_nose_cov[:],c="red",linestyle="-",linewidth=1.0)
+ax1a.plot(times2,nose_cov[:],c="red",linestyle="-",linewidth=1.0)
+ax1a.set_ylabel('Covariance',fontsize=18)
+ax1a.set_xlabel('Time (Generations)',fontsize=18)
+ax1a.axhline(linewidth=0.5, color = 'k')        
+#ax1a.set_ylim((-3e-4,4e-4))
+ax1a.set_xlim((5e3,1.5e4))        
+#ax1a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+ax1a.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=14)
+ax1a.legend()
+plt.show()
+
+# Time Correlation
+fig2,ax2a = plt.subplots(1,1,figsize=[8,8])
+ax2a.plot(t_off,t_cov,c="red",linestyle="-",linewidth=3.0)
+#ax2a.axvline(x=np.floor((q-.5)*tau_q),c="blue",linewidth=3.0)
+#ax2a.plot(times2,nose_cov[:],c="red",linestyle="-",linewidth=1.0)
+ax2a.set_ylabel('Temporal Correlations',fontsize=18)
+ax2a.set_xlabel('Time (Generations)',fontsize=18)
+ax2a.axhline(linewidth=0.5, color = 'k')        
+ax2a.set_ylim((0,1.1*max(t_cov)))
+ax2a.set_xlim((0,1.3e3))        
+#ax2a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
+ax2a.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=14)
+ax2a.legend()
+plt.show()
