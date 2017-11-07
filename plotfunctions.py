@@ -121,12 +121,40 @@ def get_cov_by_fitness_line(genotypes,abundances):
     
     # should return [[fit_i,p_i,cov_i,] for i = min_fit,...,max_fit]
     return fit1Dcovs
-    
+
+# -----------------------------------------------------------------------------    
 def get_vNsU_perChg(N,s,U,n):
     vrate = 1-(np.log(s/U)**2*(2*np.log(N*s)-np.log(s/n/U)))/(n*np.log(s/n/U)**2*(2*np.log(N*s)-np.log(s/U))) 
     return vrate
 
+# -----------------------------------------------------------------------------
 def get_vNsU(N,s,U):
     vrate = s**2*(2*np.log(N*s)-np.log(s/U))/(np.log(s/U)**2) 
     return vrate
+
+# -----------------------------------------------------------------------------    
+def get_cov_cov(times,nose_cov,fit_cov,N,s,U):
+    tau_q = (np.log(s/U))**2/(s*(2*np.log(N*s)-np.log(s/U)))
+    q = (2*np.log(N*s))/(np.log(s/U))
+    time_d = int(np.floor(q*tau_q))
+    
+    new_times = []
+    new_covs = []
+    new_ncovs = []
+    
+    for i in range(len(times)):
+        if(np.mod(times[i],1)<0.00000001):
+            new_times = new_times+[times[i]]
+            new_covs = new_covs + [fit_cov[i]]
+            new_ncovs = new_ncovs + [nose_cov[i]]
+    
+    new_covs = np.asarray(new_covs)
+    new_ncovs = np.asarray(new_ncovs)
+    t_off = [i+1 for i in range(2*time_d)]
+    t_cov = [0 for i in range(2*time_d)]
+    
+    for i in range(2*time_d):
+        t_cov[i] = np.cov(np.vstack((new_covs[i+1:],new_ncovs[:-(1+i)])))[0,1]
+    
+    return [t_off,t_cov,new_times,new_covs,new_ncovs]
 # -----------------------------------------------------------------------------

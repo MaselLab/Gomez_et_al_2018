@@ -409,11 +409,11 @@ nose_cov = [lead_cov[i][-1][2] for i in range(len(lead_cov))]
 #sub_times = [times[indx_times[i]] for i in range(len(indx_times))]
 #sub_nose_cov =[nose_cov[indx_times[i]] for i in range(len(indx_times))]
 
-## dump data into a pickle files
-#pickle_file_name = './'+folder_location+'data/pythondata/covdata'+data_name+'.pickle'
-#pickle_file = open(pickle_file_name,'wb') 
-#pickle.dump([times,lead_cov,nose_cov],pickle_file,pickle.HIGHEST_PROTOCOL)
-#pickle_file.close()
+# dump data into a pickle files
+pickle_file_name = './'+folder_location+'data/pythondata/covdata'+data_name+'.pickle'
+pickle_file = open(pickle_file_name,'wb') 
+pickle.dump([times,lead_cov,nose_cov],pickle_file,pickle.HIGHEST_PROTOCOL)
+pickle_file.close()
 #
 # dump data into a pickle files
 pickle_file_name = './'+folder_location+'data/pythondata/covdata'+data_name+'.pickle'
