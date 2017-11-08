@@ -293,178 +293,47 @@ import scipy as sp
 import numpy as np
 import copy as cpy
 import matplotlib.pyplot as plt
-
-def get_trait_mean_var(genotypes,abundances,traitno):
+import plotfunctions as pltfun
     
-    if ((traitno == 1) | (traitno == 2)):
-        mean = (genotypes[:,traitno-1].dot(abundances[0]))/sum(abundances[0])
-        var = (((genotypes[:,traitno-1]-mean*np.ones(np.shape(genotypes[:,traitno-1])))**2).dot(abundances[0]))/sum(abundances[0])
-    if (traitno == 0):
-        mean1 = (genotypes[:,0].dot(abundances[0]))/sum(abundances[0])
-        mean2 = (genotypes[:,1].dot(abundances[0]))/sum(abundances[0])
-        means_arry = np.asarray([[mean1,mean2] for i in range(len(genotypes[:,0]))])
-        mean = mean1 + mean2
-        var = (abundances.dot((((genotypes - means_arry)**2).dot(np.ones([2,1]))))[0][0])/sum(abundances[0])
-    return [mean, var]
-    
-def get_cov_by_fitness_line(genotypes,abundances,s):
-    
-    mean_fit = get_trait_mean_var(genotypes,abundances,0)[0]
-    num_genotypes = len(abundances[0])
-    
-    fit1D = [genotypes[i,0]+genotypes[i,1] for i in range(num_genotypes)]
-    fit1Dshrt = list(set(fit1D))
-    fit1Dshrt.sort()
-    fit1Dcovs = []    
-    tempcov = 0
-    tempfreq = 0
-    tempmean1 = 0
-    tempmean2 = 0
-    popsize = sum(abundances[0])
-    
-    for i in range(len(fit1Dshrt)):
-        tempcov = 0
-        tempfreq = 0
-        tempmean1 = 0
-        tempmean2 = 0
-        for j in range(num_genotypes):
-            if(fit1D[j]==fit1Dshrt[i]):
-                tempmean1 += s*genotypes[j,0]*abundances[0][j]/popsize
-                tempmean2 += s*genotypes[j,1]*abundances[0][j]/popsize                
-                tempfreq += abundances[0][j]/popsize
-                tempcov += s**2*genotypes[j,0]*genotypes[j,1]*(abundances[0][j]/popsize)
-        tempcov = tempcov/tempfreq - (tempmean1/tempfreq)*(tempmean2/tempfreq)
-        fit1Dcovs = fit1Dcovs+[[fit1Dshrt[i]-mean_fit,tempfreq,tempcov]]
-    
-    # should return [[fit_i,p_i,cov_i,] for i = min_fit,...,max_fit]
-    return fit1Dcovs
-
-def get_sample_window(times,start_time,end_time):
-# returns: indeces of times that correspond to start_time and end_time
- 
-    [num_pts,start_indx,end_indx] = [len(times),0,0]
-    
-    for i in range(num_pts):
-        if times[start_indx] <= start_time:
-            start_indx = start_indx + 1
-        if times[end_indx] <= end_time:
-            end_indx = end_indx + 1
-    
-    return [start_indx,end_indx]
-    
-def get_subset_times(N,s,U,times,scaling):
-    tau_q = scaling*((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
-    indx_list = [0]
-    indx = 0
-    
-    while(times[indx]+tau_q < times[-1]):
-        indx = get_sample_window(times,times[indx],times[indx]+tau_q)[1]
-        indx_list = indx_list + [indx]
-    return indx_list
-    
-def get_cov_cov(times,nose_cov,fit_cov,N,s,U):
-    tau_q = (np.log(s/U))**2/(s*(2*np.log(N*s)-np.log(s/U)))
-    q = (2*np.log(N*s))/(np.log(s/U))
-    time_d = int(np.floor(q*tau_q))
-    
-    new_times = []
-    new_covs = []
-    new_ncovs = []
-    
-    for i in range(len(times)):
-        if(np.mod(times[i],1)<0.00000001):
-            new_times = new_times+[times[i]]
-            new_covs = new_covs + [fit_cov[i]]
-            new_ncovs = new_ncovs + [nose_cov[i]]
-    
-    new_covs = np.asarray(new_covs)
-    new_ncovs = np.asarray(new_ncovs)
-    t_off = [i+1 for i in range(2*time_d)]
-    t_cov = [0 for i in range(2*time_d)]
-    
-    for i in range(2*time_d):
-        t_cov[i] = np.cov(np.vstack((new_covs[i+1:],new_ncovs[:-(1+i)])))[0,1]
-    
-    return [t_off,t_cov,new_times,new_covs,new_ncovs]
-
 data_name = '_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1'
 folder_location = ''
+[N,U,s] = [10**9, 2*10**(-5),10**(-2)]
+tau_q = ((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
+q = (2*np.log(N*s))/(np.log(s/U))
 
+# get 2d fitness distribution data
 pickle_file_name = './'+folder_location+'data/pythondata/timesGenosAbund'+data_name+'.pickle'
 pickle_file = open(pickle_file_name,'rb') 
 [times,genotypes,abundances] = pickle.load(pickle_file)
+pickle_file.close()
+
+# get bulk covariance data
+pickle_file_name = './'+folder_location+'data/pythondata/distrStats'+data_name+'.pickle'
+pickle_file = open(pickle_file_name,'rb') 
+[times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry] = pickle.load(pickle_file)
 pickle_file.close()
 
 # compute data for use in plots
 num_pts = len(times)
 lead_cov = []
 
-#del genotypes, abundances
+# compute covariances for each line of const fitness
 for i in range(num_pts):
-    lead_cov = lead_cov+[get_cov_by_fitness_line(genotypes[i],abundances[i],10**(-2))]
+    lead_cov = lead_cov+[pltfun.get_cov_by_fitness_line(genotypes[i],abundances[i],10**(-2))]
 
 nose_cov = [lead_cov[i][-1][2] for i in range(len(lead_cov))]
+times2 = [times[i]+np.floor(q*tau_q) for i in range(len(times))]
+mean_fix_time = (mean_fit)
 
-#indx_times = get_subset_times(10**9,10**(-2),2*10**(-5),times,0.05)
-#sub_times = [times[indx_times[i]] for i in range(len(indx_times))]
-#sub_nose_cov =[nose_cov[indx_times[i]] for i in range(len(indx_times))]
+# get cross-covariances from bulk and nose as function of offset
+[t_off,t_cov,new_times,new_covs,new_ncovs]= pltfun.get_cov_cov(times,nose_cov,fit_cov,N,s,U)
 
 # dump data into a pickle files
 pickle_file_name = './'+folder_location+'data/pythondata/covdata'+data_name+'.pickle'
 pickle_file = open(pickle_file_name,'wb') 
-pickle.dump([times,lead_cov,nose_cov],pickle_file,pickle.HIGHEST_PROTOCOL)
+pickle.dump([times,times2,lead_cov,nose_cov,fit_cov,mean_fix_time,
+             t_off,t_cov,new_times,new_covs,new_ncovs],pickle_file,pickle.HIGHEST_PROTOCOL)
 pickle_file.close()
-#
-# dump data into a pickle files
-pickle_file_name = './'+folder_location+'data/pythondata/covdata'+data_name+'.pickle'
-pickle_file = open(pickle_file_name,'rb') 
-[times,lead_cov,nose_cov] = pickle.load(pickle_file)
-pickle_file.close()
-
-# dump data into a pickle files
-pickle_file_name = './'+folder_location+'data/pythondata/distrStats'+data_name+'.pickle'
-pickle_file = open(pickle_file_name,'rb') 
-[times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry] = pickle.load(pickle_file)
-pickle_file.close()
-
-#nose2_cov = [lead_cov[i][-5][2] for i in range(len(lead_cov))]
-
-[N,U,s] = [10**9, 2*10**(-5),10**(-2)]
-tau_q = ((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
-q = (2*np.log(N*s))/(np.log(s/U))
-times2 = [times[i]+np.floor(q*tau_q) for i in range(len(times))]
-
-[t_off,t_cov,new_times,new_covs,new_ncovs]= get_cov_cov(times,nose_cov,fit_cov,N,s,U)
-
-# Time displaced Covariance for Poster
-fig1,ax1a = plt.subplots(1,1,figsize=[8,8])
-ax1a.plot(times,fit_cov[:],c="black",linestyle="-",linewidth=1.0)
-#ax1a.plot(sub_times,sub_nose_cov[:],c="red",linestyle="-",linewidth=1.0)
-ax1a.plot(times2,nose_cov[:],c="red",linestyle="-",linewidth=1.0)
-ax1a.set_ylabel('Covariance',fontsize=18)
-ax1a.set_xlabel('Time (Generations)',fontsize=18)
-ax1a.axhline(linewidth=0.5, color = 'k')        
-#ax1a.set_ylim((-3e-4,4e-4))
-ax1a.set_xlim((5e3,1.5e4))        
-#ax1a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
-ax1a.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=14)
-ax1a.legend()
-plt.show()
-
-# Time Correlation
-fig2,ax2a = plt.subplots(1,1,figsize=[8,8])
-ax2a.plot(t_off,t_cov,c="red",linestyle="-",linewidth=3.0)
-#ax2a.axvline(x=np.floor((q-.5)*tau_q),c="blue",linewidth=3.0)
-#ax2a.plot(times2,nose_cov[:],c="red",linestyle="-",linewidth=1.0)
-ax2a.set_ylabel('Temporal Correlations',fontsize=18)
-ax2a.set_xlabel('Time (Generations)',fontsize=18)
-ax2a.axhline(linewidth=0.5, color = 'k')        
-ax2a.set_ylim((0,1.1*max(t_cov)))
-ax2a.set_xlim((0,1.3e3))        
-#ax2a.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
-ax2a.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=14)
-ax2a.legend()
-plt.show()
 
 # --------------------------------------------------------------------------------
 # Create summarized data for Joanna and Jason var-cov plots

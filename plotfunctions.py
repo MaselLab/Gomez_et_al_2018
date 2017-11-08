@@ -41,7 +41,7 @@ def get_trait_mean_var(genotypes,abundances,traitno):
         mean = mean1 + mean2
         var = (abundances.dot((((genotypes - means_arry)**2).dot(np.ones([2,1]))))[0][0])/sum(abundances[0])
     return [mean, var]
-    
+       
 # -----------------------------------------------------------------------------
 def get_1D_proj(genotypes,abundances,traitno):
 
@@ -97,27 +97,34 @@ def get_2D_distr(genotypes,abundances,box_dim):
     return [my_distr,xlabels,ylabels]
 
 # -----------------------------------------------------------------------------
-def get_cov_by_fitness_line(genotypes,abundances):
+def get_cov_by_fitness_line(genotypes,abundances,s):
     
-    mean_fit1 = get_trait_mean_var(genotypes,abundances,1)[0]
-    mean_fit2 = get_trait_mean_var(genotypes,abundances,2)[0]
+    mean_fit = get_trait_mean_var(genotypes,abundances,0)[0]
     num_genotypes = len(abundances[0])
     
     fit1D = [genotypes[i,0]+genotypes[i,1] for i in range(num_genotypes)]
     fit1Dshrt = list(set(fit1D))
+    fit1Dshrt.sort()
     fit1Dcovs = []    
     tempcov = 0
     tempfreq = 0
+    tempmean1 = 0
+    tempmean2 = 0
     popsize = sum(abundances[0])
     
     for i in range(len(fit1Dshrt)):
         tempcov = 0
         tempfreq = 0
+        tempmean1 = 0
+        tempmean2 = 0
         for j in range(num_genotypes):
             if(fit1D[j]==fit1Dshrt[i]):
+                tempmean1 += s*genotypes[j,0]*abundances[0][j]/popsize
+                tempmean2 += s*genotypes[j,1]*abundances[0][j]/popsize                
                 tempfreq += abundances[0][j]/popsize
-                tempcov += (genotypes[j,0]-mean_fit1)*(genotypes[j,1]-mean_fit2)*(abundances[0][j]/popsize)
-        fit1Dcovs = fit1Dcovs +[[fit1Dshrt[i],tempfreq,tempcov/tempfreq]]
+                tempcov += s**2*genotypes[j,0]*genotypes[j,1]*(abundances[0][j]/popsize)
+        tempcov = tempcov/tempfreq - (tempmean1/tempfreq)*(tempmean2/tempfreq)
+        fit1Dcovs = fit1Dcovs+[[fit1Dshrt[i]-mean_fit,tempfreq,tempcov]]
     
     # should return [[fit_i,p_i,cov_i,] for i = min_fit,...,max_fit]
     return fit1Dcovs
@@ -157,4 +164,14 @@ def get_cov_cov(times,nose_cov,fit_cov,N,s,U):
         t_cov[i] = np.cov(np.vstack((new_covs[i+1:],new_ncovs[:-(1+i)])))[0,1]
     
     return [t_off,t_cov,new_times,new_covs,new_ncovs]
+    
 # -----------------------------------------------------------------------------
+def get_subset_times(N,s,U,times,scaling):
+    tau_q = scaling*((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
+    indx_list = [0]
+    indx = 0
+    
+    while(times[indx]+tau_q < times[-1]):
+        indx = get_sample_window(times,times[indx],times[indx]+tau_q)[1]
+        indx_list = indx_list + [indx]
+    return indx_list

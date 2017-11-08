@@ -10005,14 +10005,14 @@ Cell[BoxData[
        "\"\<~/Documents/kgrel2d/\>\""}], "}"}]}], ";"}], 
    "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"rootaddress", "=", "ubuntuaddress"}], ";"}], "\n", 
+    RowBox[{"rootaddress", "=", "ubuntuaddress"}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
     "first", " ", "array", " ", "set", " ", "exp", " ", "5", " ", "and", " ", 
      "exp", " ", "7", " ", 
      RowBox[{"(", 
-      RowBox[{"exp", " ", "5", " ", "cont"}], ")"}]}], "*)"}], 
-   "\[IndentingNewLine]", 
+      RowBox[{"exp", " ", "5", " ", "cont"}], ")"}]}], "*)"}], "\n", 
    RowBox[{
     RowBox[{"arrys", " ", "=", " ", 
      RowBox[{"Table", "[", 
@@ -10248,7 +10248,7 @@ Cell[BoxData[
                     RowBox[{
                     "--", "--"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]\
 }]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}], " ", 
-    "*)"}], "\[IndentingNewLine]", 
+    "*)"}], "\n", 
    RowBox[{"(*", " ", 
     RowBox[{"--", 
      RowBox[{"--", 
@@ -10310,7 +10310,7 @@ Cell[BoxData[
                     RowBox[{
                     "--", "--"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]\
 }]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}], " ", 
-    "*)"}], "\n", 
+    "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"ParallelDo", "[", "\[IndentingNewLine]", 
      RowBox[{

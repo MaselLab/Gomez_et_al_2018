@@ -225,24 +225,24 @@ my_xlabel = [i+1 for i in range(9)]
 my_yticks = [20+10*i for i in range(7)]
 my_ylabel = [str(20+10*i)+'%' for i in range(len(my_yticks))]
 
-fig2g, ax2g = plt.subplots(1,1,figsize=[8,8])
+fig3g, ax3g = plt.subplots(1,1,figsize=[8,8])
 #fig2g.subplots_adjust(bottom=0.25)
-fig2g.subplots_adjust(left=0.15)
-ax2g.scatter(my_xticks,per_decr_vrate1,c="black",label=r's=$2 \times 10^{-2}$',s=60,marker="o")        
-ax2g.scatter(my_xticks,per_decr_vrate2,c="black",label=r's=$5 \times 10^{-3}$',s=70,marker="*")
-ax2g.scatter(my_xticks,per_decr_vrate3,c="black",label=r's=$2 \times 10^{-3}$',s=50,marker="D")                
-ax2g.axhline(linewidth=0.5, color = 'k')      
-ax2g.set_ylabel('Scaled Decrease in Rate if Adapt.',fontsize=18)
-ax2g.set_xlabel('Number of Traits Added',fontsize=18)
+fig3g.subplots_adjust(left=0.15)
+ax3g.scatter(my_xticks,per_decr_vrate1,c="black",label=r's=$2 \times 10^{-2}$',s=60,marker="o")        
+ax3g.scatter(my_xticks,per_decr_vrate2,c="black",label=r's=$5 \times 10^{-3}$',s=70,marker="*")
+ax3g.scatter(my_xticks,per_decr_vrate3,c="black",label=r's=$2 \times 10^{-3}$',s=50,marker="D")                
+ax3g.axhline(linewidth=0.5, color = 'k')      
+ax3g.set_ylabel('Scaled Decrease in Rate if Adapt.',fontsize=18)
+ax3g.set_xlabel('Number of Traits Added',fontsize=18)
 #ax2g.tick_params(axis='both',labelsize=18)
 plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
-ax2g.grid(b='off', which='both', axis='both')
-ax2g.set_ylim((20,80))
-ax2g.set_xlim(0,10) 
-ax2g.legend(loc=4,ncol=1,fontsize=16,frameon=True)        
+ax3g.grid(b='off', which='both', axis='both')
+ax3g.set_ylim((20,80))
+ax3g.set_xlim(0,10) 
+ax3g.legend(loc=4,ncol=1,fontsize=16,frameon=True)        
 #ax2g.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=2,fontsize=20)        
-fig2g.savefig('./figures/fig3.pdf')
+fig3g.savefig('./figures/fig3.pdf')
 
 #-------------------------------------------------------------------------------------------
 #--------------FIGURE 4: FLUCTUATIONS IN VAR AND COV----------------------------------------
@@ -276,30 +276,30 @@ cov_avg = np.mean(fit_cov[:])*np.ones(np.shape(times))
 rate_adpt_avg = var1_avg + var2_avg + 2*cov_avg
 
 # plot data for figure 3a and 3b 
-fig3a, ax3a = plt.subplots(1,1,figsize=[8,8])
-ax3b = plt.twinx(ax3a)
-ax3a.plot(times,rate_adpt_avg,c="black",label='var$_{fitness}$',linewidth=2.0,linestyle = '-')                
-ax3a.plot(times,var1_avg,c="black",label='var($r_1|r_2$)',linewidth=3.0,linestyle = '--')
-ax3a.plot(times,cov_avg,c="black",label='cov($r_1$,$r_2$)',linewidth=3.0,linestyle = ':')
-ax3a.axhline(linewidth=0.5, color = 'k')
-ax3a.set_ylabel('Fitness Variances & Covariance',fontsize=18)
-ax3a.set_xlabel('Time (Generations)',fontsize=18)
-ax3a.set_ylim((-3e-4,4e-4))
-ax3a.set_xlim((1e4,2e4))
-ax3a.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=18)
-ax3a.grid(b='off', which='both', axis='both')
-ax3a.ticklabel_format(style='plain',axis='both',scilimits=(0,0))
-ax3a.legend(loc=4,ncol=2,fontsize=14)
+fig4a, ax4a = plt.subplots(1,1,figsize=[8,8])
+ax4b = plt.twinx(ax4a)
+ax4a.plot(times,rate_adpt_avg,c="black",label='var$_{fitness}$',linewidth=2.0,linestyle = '-')                
+ax4a.plot(times,var1_avg,c="black",label='var($r_1|r_2$)',linewidth=3.0,linestyle = '--')
+ax4a.plot(times,cov_avg,c="black",label='cov($r_1$,$r_2$)',linewidth=3.0,linestyle = ':')
+ax4a.axhline(linewidth=0.5, color = 'k')
+ax4a.set_ylabel('Fitness Variances & Covariance',fontsize=18)
+ax4a.set_xlabel('Time (Generations)',fontsize=18)
+ax4a.set_ylim((-3e-4,4e-4))
+ax4a.set_xlim((1e4,2e4))
+ax4a.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=18)
+ax4a.grid(b='off', which='both', axis='both')
+ax4a.ticklabel_format(style='plain',axis='both',scilimits=(0,0))
+ax4a.legend(loc=4,ncol=2,fontsize=14)
 
-ax3b.plot(times,rate_adpt,c="black",linestyle="-",linewidth=3.0)        
-ax3b.plot(times,fit_var[:,0],c="black",linestyle="--",linewidth=3.0)
-ax3b.plot(times,fit_cov[:],c="black",linestyle=":",linewidth=3.0)
-ax3b.axhline(linewidth=0.5, color = 'k')        
-ax3b.set_ylim((-3e-4,4e-4))
-ax3b.set_xlim((1e4,2e4))        
-ax3b.ticklabel_format(style='plain',axis='both',scilimits=(0,0))
-ax3b.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=18)
-fig3a.savefig('./figures/fig3.pdf')
+ax4b.plot(times,rate_adpt,c="black",linestyle="-",linewidth=3.0)        
+ax4b.plot(times,fit_var[:,0],c="black",linestyle="--",linewidth=3.0)
+ax4b.plot(times,fit_cov[:],c="black",linestyle=":",linewidth=3.0)
+ax4b.axhline(linewidth=0.5, color = 'k')        
+ax4b.set_ylim((-3e-4,4e-4))
+ax4b.set_xlim((1e4,2e4))        
+ax4b.ticklabel_format(style='plain',axis='both',scilimits=(0,0))
+ax4b.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=18)
+fig4a.savefig('./figures/fig4.pdf')
 
 del start_indx, end_indx
 del times, fit_var, fit_cov, rate_adpt
@@ -310,11 +310,12 @@ del fig3a, ax3a, ax3b, N, s, U
 #--------------FIGURE 6: CORR BTWN COVARIANCES FRONT MEAN---------------------------------
 #-----------------------------------------------------------------------------------------
 
-# set paremeters
-[N,s,U] = [1e9,1e-2,1e-5]
-[sim_start,sim_end,snapshot] = [5e3,4e4,1.313e4]
+data_name = '_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1'
+folder_location = ''
+[N,U,s] = [10**9, 2*10**(-5),10**(-2)]
 
 # load covariance data of front from pickle file
+# what is lead_cov data?? lead cov stores the covariance of each const fit line
 pickle_file_name = './'+folder_location+'data/pythondata/covdata'+data_name+'.pickle'
 pickle_file = open(pickle_file_name,'rb') 
 [times,lead_cov,nose_cov] = pickle.load(pickle_file)
@@ -326,59 +327,68 @@ pickle_file = open(pickle_file_name,'rb')
 [times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry] = pickle.load(pickle_file)
 pickle_file.close()
 
-#nose2_cov = [lead_cov[i][-5][2] for i in range(len(lead_cov))]
-
-[N,U,s] = [10**9, 2*10**(-5),10**(-2)]
+# compute the right offset and construct nose covariance 
 tau_q = ((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
 q = (2*np.log(N*s))/(np.log(s/U))
+
+
 times2 = [times[i]+np.floor(q*tau_q) for i in range(len(times))]
-[t_off,t_cov,new_times,new_covs,new_ncovs]= get_cov_cov(times,nose_cov,fit_cov,N,s,U)
+[t_off,t_cov,new_times,new_covs,new_ncovs]= pltfun.get_cov_cov(times,nose_cov,fit_cov,N,s,U)
 
+# save nose covariance data to pickle file for later use
+pickle_file_name = './'+folder_location+'data/pythondata/nosecov'+data_name+'.pickle'
+pickle_file = open(pickle_file_name,'wb')  
+pickle.dump([times,lead_cov,nose_cov],pickle_file,pickle.HIGHEST_PROTOCOL)
+pickle_file.close()
 
-fig=plt.figure(figsize=[24,8])
-ax=plt.subplot(131)
-ax.plot(xs,vs,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')                
-ax.scatter(ps,Vs,c="white",label='$\sigma_1^2$',s=40.0,marker = 'D')
-ax.scatter(ps,Cs,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')        
-ax.set_ylabel(r'Multiples of v(U,N,s)',fontsize=20)
-ax.set_xlabel(r'Selection Coefficient',fontsize=20)
-ax.tick_params(labelsize=20)
-ax.set_ylim((0,2.5))
-ax.set_xlim((0.75*s_min,1.25*s_max))
-ax.set_xscale('log')
-ax.xaxis.set_tick_params(which='both',length=5)
-ax.yaxis.set_tick_params(which='both',length=5)
-ax.xaxis.set_ticks_position('bottom')
-ax.yaxis.set_ticks_position('left')
-plt.annotate('(a)',xy=(100,395),xycoords='figure points',fontsize=20)
+#fig=plt.figure(figsize=[24,8])
+#ax=plt.subplot(131)
+#ax.plot(xs,vs,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')                
+#ax.scatter(ps,Vs,c="white",label='$\sigma_1^2$',s=40.0,marker = 'D')
+#ax.scatter(ps,Cs,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')        
+#ax.set_ylabel(r'Multiples of v(U,N,s)',fontsize=20)
+#ax.set_xlabel(r'Selection Coefficient',fontsize=20)
+#ax.tick_params(labelsize=20)
+#ax.set_ylim((0,2.5))
+#ax.set_xlim((0.75*s_min,1.25*s_max))
+#ax.set_xscale('log')
+#ax.xaxis.set_tick_params(which='both',length=5)
+#ax.yaxis.set_tick_params(which='both',length=5)
+#ax.xaxis.set_ticks_position('bottom')
+#ax.yaxis.set_ticks_position('left')
+#plt.annotate('(a)',xy=(100,395),xycoords='figure points',fontsize=20)
 
 
 # Time Correlation
 fig,ax = plt.subplots(figsize=[8,8])
 ax.plot(t_off,t_cov,c="red",linestyle="-",linewidth=3.0)
-#ax.axvline(x=np.floor((q-.5)*tau_q),c="blue",linewidth=3.0)
-#ax.plot(times2,nose_cov[:],c="red",linestyle="-",linewidth=1.0)
-ax.set_ylabel('Temporal Correlations',fontsize=18)
-ax.set_xlabel('Time (Generations)',fontsize=18)
+ax.set_ylabel('Nose-Bulk $\sigma_{12}$ Cross-Covariance',fontsize=18)
+ax.set_xlabel('Time (multiple of mean fixation time)',fontsize=18)
 ax.axhline(linewidth=0.5, color = 'k')        
 ax.set_ylim((0,1.1*max(t_cov)))
 ax.set_xlim((0,1.3e3))        
-#ax.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
 ax.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=14)
+ax.xaxis.set_tick_params(which='both',length=5)
+ax.yaxis.set_tick_params(which='both',length=5)
+ax.xaxis.set_ticks_position('bottom')
+ax.yaxis.set_ticks_position('left')
 ax.legend()
 plt.show()
+fig.savefig('./figures/fig6a.pdf')
 
 # Time displaced Covariance for Poster
 fig,ax = plt.subplots(1,1,figsize=[8,8])
 ax.plot(times,fit_cov[:],c="black",linestyle="-",linewidth=1.0)
-#ax.plot(sub_times,sub_nose_cov[:],c="red",linestyle="-",linewidth=1.0)
 ax.plot(times2,nose_cov[:],c="red",linestyle="-",linewidth=1.0)
 ax.set_ylabel('Covariance',fontsize=18)
 ax.set_xlabel('Time (Generations)',fontsize=18)
 ax.axhline(linewidth=0.5, color = 'k')        
-#ax.set_ylim((-3e-4,4e-4))
 ax.set_xlim((5e3,1.5e4))        
-#ax.ticklabel_format(style='sci',axis='both',scilimits=(0,0))
 ax.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=14)
+ax.xaxis.set_tick_params(which='both',length=5)
+ax.yaxis.set_tick_params(which='both',length=5)
+ax.xaxis.set_ticks_position('bottom')
+ax.yaxis.set_ticks_position('left')
 ax.legend()
 plt.show()
+fig.savefig('./figures/fig6b.pdf')
