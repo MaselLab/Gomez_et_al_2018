@@ -154,6 +154,7 @@ ax=plt.subplot(131)
 ax.plot(xs,vs,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')                
 ax.scatter(ps,Vs,c="white",label='$\sigma_1^2$',s=40.0,marker = 'D')
 ax.scatter(ps,Cs,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')        
+ax.legend(loc=1, ncol=1,fontsize=16,numpoints=1)
 ax.set_ylabel(r'Multiples of v(U,N,s)',fontsize=20)
 ax.set_xlabel(r'Selection Coefficient',fontsize=20)
 ax.tick_params(labelsize=20)
@@ -189,7 +190,6 @@ ax=plt.subplot(133)
 ax.plot(xN,vN,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')
 ax.scatter(pN,VN,c="white",label='$\sigma_1^2$',s=40.0,marker = 'D')
 ax.scatter(pN,CN,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')                
-ax.legend(loc=1, ncol=1,fontsize=16)
 ax.set_xlabel(r'Population Size',fontsize=18)
 ax.set_ylim((0,2.5))
 ax.set_xlim((0.75*N_min,1.25*N_max))
@@ -203,7 +203,7 @@ ax.xaxis.set_ticks_position('bottom')
 ax.yaxis.set_ticks_position('left')
 plt.annotate('(c)',xy=(890,395),xycoords='figure points',fontsize=20)
 
-fig.subplots_adjust(wspace=0.2)
+fig.subplots_adjust(wspace=0.1)
 fig.subplots_adjust(bottom=0.25)
 plt.tight_layout
 plt.savefig('./figures/fig2.pdf',bbox_inches='tight')
@@ -314,31 +314,16 @@ data_name = '_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1'
 folder_location = ''
 [N,U,s] = [10**9, 2*10**(-5),10**(-2)]
 
-# load covariance data of front from pickle file
-# what is lead_cov data?? lead cov stores the covariance of each const fit line
-pickle_file_name = './'+folder_location+'data/pythondata/covdata'+data_name+'.pickle'
-pickle_file = open(pickle_file_name,'rb') 
-[times,lead_cov,nose_cov] = pickle.load(pickle_file)
-pickle_file.close()
-
-# Load covariance data from pickle files
-pickle_file_name = './'+folder_location+'data/pythondata/distrStats'+data_name+'.pickle'
-pickle_file = open(pickle_file_name,'rb') 
-[times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry] = pickle.load(pickle_file)
-pickle_file.close()
-
 # compute the right offset and construct nose covariance 
 tau_q = ((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
 q = (2*np.log(N*s))/(np.log(s/U))
 
-
-times2 = [times[i]+np.floor(q*tau_q) for i in range(len(times))]
-[t_off,t_cov,new_times,new_covs,new_ncovs]= pltfun.get_cov_cov(times,nose_cov,fit_cov,N,s,U)
-
-# save nose covariance data to pickle file for later use
-pickle_file_name = './'+folder_location+'data/pythondata/nosecov'+data_name+'.pickle'
-pickle_file = open(pickle_file_name,'wb')  
-pickle.dump([times,lead_cov,nose_cov],pickle_file,pickle.HIGHEST_PROTOCOL)
+# load covariance data of front from pickle file
+# what is lead_cov data?? lead cov stores the covariance of each const fit line
+pickle_file_name = './'+folder_location+'data/pythondata/covdata'+data_name+'.pickle'
+pickle_file = open(pickle_file_name,'rb') 
+[times,times2,tau_fix_avg,lead_cov,nose_cov,fit_cov,mean_fix_time,
+             t_off,t_cov,new_times,new_covs,new_ncovs] = pickle.load(pickle_file)
 pickle_file.close()
 
 #fig=plt.figure(figsize=[24,8])
@@ -358,25 +343,30 @@ pickle_file.close()
 #ax.yaxis.set_ticks_position('left')
 #plt.annotate('(a)',xy=(100,395),xycoords='figure points',fontsize=20)
 
+xline = np.asarray(np.ones([11,1]))
+yline = np.asarray([0+i*max(t_cov)/10 for i in range(11)])
 
-# Time Correlation
+# figure 6: cross-covariance between bulk and nose
 fig,ax = plt.subplots(figsize=[8,8])
-ax.plot(t_off,t_cov,c="red",linestyle="-",linewidth=3.0)
+ax.plot((1/tau_fix_avg)*np.asarray(t_off),np.asarray(t_cov),c="red",linestyle="-",linewidth=3.0)
+ax.plot(xline,yline,c="blue",linestyle="--",linewidth=3.0)
 ax.set_ylabel('Nose-Bulk $\sigma_{12}$ Cross-Covariance',fontsize=18)
-ax.set_xlabel('Time (multiple of mean fixation time)',fontsize=18)
+ax.set_xlabel(r'Time (multiples of $\bar{\tau}_{fix}$)',fontsize=18)
 ax.axhline(linewidth=0.5, color = 'k')        
 ax.set_ylim((0,1.1*max(t_cov)))
-ax.set_xlim((0,1.3e3))        
-ax.tick_params(labelbottom='off',labelleft='off',labelright='off',axis='both',labelsize=14)
+ax.set_xlim((0,1.3e3/tau_fix_avg))        
 ax.xaxis.set_tick_params(which='both',length=5)
 ax.yaxis.set_tick_params(which='both',length=5)
 ax.xaxis.set_ticks_position('bottom')
 ax.yaxis.set_ticks_position('left')
+ax.tick_params(labelbottom='on',labelleft='off',labelright='off',axis='both',labelsize=14)
+#plt.annotate(r'$\bar{\tau}_{fix}$',xy=(320,150),xytext=(370,145),arrowprops=dict(facecolor='black', shrink=0.01),xycoords='figure points',fontsize=20)
+plt.ticklabel_format(style='plain', axis='both')
 ax.legend()
 plt.show()
 fig.savefig('./figures/fig6a.pdf')
 
-# Time displaced Covariance for Poster
+# figure 6b: Time displaced Covariance for Poster
 fig,ax = plt.subplots(1,1,figsize=[8,8])
 ax.plot(times,fit_cov[:],c="black",linestyle="-",linewidth=1.0)
 ax.plot(times2,nose_cov[:],c="red",linestyle="-",linewidth=1.0)

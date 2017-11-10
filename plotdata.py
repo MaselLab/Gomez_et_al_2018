@@ -322,8 +322,8 @@ for i in range(num_pts):
     lead_cov = lead_cov+[pltfun.get_cov_by_fitness_line(genotypes[i],abundances[i],10**(-2))]
 
 nose_cov = [lead_cov[i][-1][2] for i in range(len(lead_cov))]
-times2 = [times[i]+np.floor(q*tau_q) for i in range(len(times))]
-mean_fix_time = (mean_fit)
+tau_fix_avg = (mean(pop_load[10000:-1])/s)*tau_q
+times2 = [times[i]+np.floor(avg_fix_time) for i in range(len(times))]
 
 # get cross-covariances from bulk and nose as function of offset
 [t_off,t_cov,new_times,new_covs,new_ncovs]= pltfun.get_cov_cov(times,nose_cov,fit_cov,N,s,U)
@@ -331,7 +331,7 @@ mean_fix_time = (mean_fit)
 # dump data into a pickle files
 pickle_file_name = './'+folder_location+'data/pythondata/covdata'+data_name+'.pickle'
 pickle_file = open(pickle_file_name,'wb') 
-pickle.dump([times,times2,lead_cov,nose_cov,fit_cov,mean_fix_time,
+pickle.dump([times,times2,tau_fix_avg,lead_cov,nose_cov,fit_cov,mean_fix_time,
              t_off,t_cov,new_times,new_covs,new_ncovs],pickle_file,pickle.HIGHEST_PROTOCOL)
 pickle_file.close()
 
@@ -345,10 +345,13 @@ import scipy as sp
 import numpy as np
 import copy as cpy
 import matplotlib.pyplot as plt
+import plotfunctions.py as pltfun
 
-def get_vNsU(N,s,U):
-    vrate = s**2*(2*np.log(N*s)-np.log(s/U))/(np.log(s/U)**2) 
-    return vrate
+# load time series data of distrStats from plotdata.py output
+pickle_file_name = './data/pythondata/sumdata_exp6.pickle'
+pickle_file = open(pickle_file_name,'rb') 
+[var, cov, vUthry, v2Uthry, varp, covp, vUthryp, v2Uthryp, NsUparam] = pickle.load(pickle_file)
+pickle_file.close()
 
 data_file = open('./data/pythondata/sumdata_exp6.dat')
 data = data_file.read().splitlines()
@@ -398,3 +401,4 @@ pickle.dump([var, cov, vU_thry, v2U_thry, varp, covp, vU_thryp, v2U_thryp, NsUpa
 pickle_file.close()
 
 del var, cov, vU_thry, v2U_thry, varp, covp, vU_thryp, v2U_thryp, NsUparam
+
