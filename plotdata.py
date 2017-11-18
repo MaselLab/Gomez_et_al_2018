@@ -284,7 +284,7 @@ for k in range(num_exp):
     pickle_file.close()
 
 # --------------------------------------------------------------------------------
-# Create summarized data for Joanna and Jason var-cov plots
+# Create summarized data for Joanna and Jason nose-bulk cov plots
 # --------------------------------------------------------------------------------
 
 # import packages needed for script
@@ -323,7 +323,7 @@ for i in range(num_pts):
 
 nose_cov = [lead_cov[i][-1][2] for i in range(len(lead_cov))]
 tau_fix_avg = (mean(pop_load[10000:-1])/s)*tau_q
-times2 = [times[i]+np.floor(avg_fix_time) for i in range(len(times))]
+times2 = [times[i]+np.floor(tau_fix_avg) for i in range(len(times))]
 
 # get cross-covariances from bulk and nose as function of offset
 [t_off,t_cov,new_times,new_covs,new_ncovs]= pltfun.get_cov_cov(times,nose_cov,fit_cov,N,s,U)
@@ -331,7 +331,7 @@ times2 = [times[i]+np.floor(avg_fix_time) for i in range(len(times))]
 # dump data into a pickle files
 pickle_file_name = './'+folder_location+'data/pythondata/covdata'+data_name+'.pickle'
 pickle_file = open(pickle_file_name,'wb') 
-pickle.dump([times,times2,tau_fix_avg,lead_cov,nose_cov,fit_cov,mean_fix_time,
+pickle.dump([times,times2,tau_fix_avg,lead_cov,nose_cov,fit_cov,tau_fix_avg,
              t_off,t_cov,new_times,new_covs,new_ncovs],pickle_file,pickle.HIGHEST_PROTOCOL)
 pickle_file.close()
 
@@ -401,4 +401,94 @@ pickle.dump([var, cov, vU_thry, v2U_thry, varp, covp, vU_thryp, v2U_thryp, NsUpa
 pickle_file.close()
 
 del var, cov, vU_thry, v2U_thry, varp, covp, vU_thryp, v2U_thryp, NsUparam
+
+# --------------------------------------------------------------------------------
+# Add additional data to figure 2 plots from extra simulations
+# --------------------------------------------------------------------------------
+
+# import packages needed for script
+import pickle
+import scipy as sp
+import numpy as np
+import copy as cpy
+import matplotlib.pyplot as plt
+import plotfunctions as pltfun
+
+# load existing data of variances and covariances.py output
+pickle_file_name = './data/pythondata/sumdata_exp6.pickle'
+pickle_file = open(pickle_file_name,'rb') 
+[var, cov, vUthry, v2Uthry, varp, covp, vUthryp, v2Uthryp, NsUparam] = pickle.load(pickle_file)
+pickle_file.close()
+
+# import new data from additional simulations "parameters" and add to existing datafile
+data_file = open('./data/pythondata/NsUparam.dat')
+data_par = data_file.read().splitlines()
+data_file.close()
+
+num_pts = len(data_par)
+
+# clean up mathematica data's format and convert loaded data into lists of arrays
+for i in range(num_pts):
+    data_par[i]='data_par[i]=np.array(['+data_par[i].replace('\t',',')+'])'
+    data_par[i]=data_par[i].replace('{','[')
+    data_par[i]=data_par[i].replace('}',']')
+    exec(data_par[i])
+
+data_par = np.asarray(data_par)
+
+# compute new theory and 2U theory arrays
+new_vUthry = np.asarray([pltfun.get_vNsU(data_par[i][0],data_par[i][1],data_par[i][2]) for i in range(num_pts)])
+new_v2Uthry = np.asarray([0.5*pltfun.get_vNsU(data_par[i][0],data_par[i][1],2*data_par[i][2]) for i in range(num_pts)])
+new_vUthryp = np.asarray([new_vUthry[i]/new_vUthry[i] for i in range(num_pts)])
+new_v2Uthryp = np.asarray([new_v2Uthry[i]/new_vUthry[i] for i in range(num_pts)])
+
+# import new data from additional simulations "cov data" and add to existing datafile
+data_file = open('./data/pythondata/results.dat')
+data = data_file.read().splitlines()
+data_file.close()
+
+num_pts = len(data)
+
+# clean up mathematica data's format and convert loaded data into lists of arrays
+for i in range(num_pts):
+    data[i]='data[i]=np.array(['+data[i].replace('\t',',')+'])'
+    data[i]=data[i].replace('*^','e')
+    data[i]=data[i].replace('`16.','')
+    data[i]=data[i].replace('{','[')
+    data[i]=data[i].replace('}',']')
+    exec(data[i])
+
+data_file.close()
+
+new_var = np.asarray([data[i][0][3] for i in range(num_pts)]) 
+new_cov = np.asarray([data[i][0][5] for i in range(num_pts)]) 
+new_varp = np.asarray([data[i][0][3]/new_vUthry[i] for i in range(num_pts)])
+new_covp = np.asarray([data[i][0][5]/new_vUthry[i] for i in range(num_pts)])
+
+# straighten data
+num_exp = len(NsUparam)
+num_exp2 = len(data_par)
+
+[start1,start2,start3] = [0,num_exp/3,2*num_exp/3]         
+[end1,end2,end3] = [num_exp/3,2*num_exp/3,num_exp]
+
+[start21,start22,start23] = [0,10,20]         
+[end21,end22,end23] = [10,20,40]
+
+new_NsUparam = np.concatenate((NsUparam[start1:end1],data_par[start21:end21],NsUparam[start2:end2],data_par[start22:end22],NsUparam[start3:end3],data_par[start23:end23]), axis=0)
+new_vUthry = np.concatenate((vUthry[start1:end1],new_vUthry[start21:end21],vUthry[start2:end2],new_vUthry[start22:end22],vUthry[start3:end3],new_vUthry[start23:end23]), axis=0)
+new_v2Uthry = np.concatenate((v2Uthry[start1:end1],new_v2Uthry[start21:end21],v2Uthry[start2:end2],new_v2Uthry[start22:end22],v2Uthry[start3:end3],new_v2Uthry[start23:end23]), axis=0)
+new_vUthryp = np.concatenate((vUthryp[start1:end1],new_vUthryp[start21:end21],vUthryp[start2:end2],new_vUthryp[start22:end22],vUthryp[start3:end3],new_vUthryp[start23:end23]), axis=0)
+new_v2Uthryp = np.concatenate((v2Uthryp[start1:end1],new_v2Uthryp[start21:end21],v2Uthryp[start2:end2],new_v2Uthryp[start22:end22],v2Uthryp[start3:end3],new_v2Uthryp[start23:end23]), axis=0)
+
+new_var = np.concatenate((var[start1:end1],new_var[start21:end21],var[start2:end2],new_var[start22:end22],var[start3:end3],new_var[start23:end23]), axis=0)
+new_cov = np.concatenate((cov[start1:end1],new_cov[start21:end21],cov[start2:end2],new_cov[start22:end22],cov[start3:end3],new_cov[start23:end23]), axis=0)
+new_varp = np.concatenate((varp[start1:end1],new_varp[start21:end21],varp[start2:end2],new_varp[start22:end22],varp[start3:end3],new_varp[start23:end23]), axis=0)
+new_covp = np.concatenate((covp[start1:end1],new_covp[start21:end21],covp[start2:end2],new_covp[start22:end22],covp[start3:end3],new_covp[start23:end23]), axis=0)
+
+# load existing data of variances and covariances.py output
+pickle_file_name = './data/pythondata/sumdata_exp7.pickle'
+pickle_file = open(pickle_file_name,'wb') 
+pickle.dump([new_var, new_cov, new_vUthry, new_v2Uthry, new_varp, new_covp, new_vUthryp, new_v2Uthryp, new_NsUparam],pickle_file,pickle.HIGHEST_PROTOCOL)
+pickle_file.close()
 

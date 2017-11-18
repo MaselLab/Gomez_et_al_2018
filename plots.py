@@ -18,6 +18,9 @@ import scipy as sp
 import numpy as np
 import matplotlib.mlab as mlab
 import plotfunctions as pltfun
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
+
 
 #-------------------------------------------------------------------------------------------
 #---------------FIGURE 0: PLOT OF MARGINAL TRAIT DISTRIBUTIONS------------------------------
@@ -101,16 +104,13 @@ del class_ylabels, fit_distr_2d, cbar, fig1a, ax1a, N, s, U
 #------------------FIGURE 2: %CHANGE IN V WRT PARAMETERS SHARED AXES----------------------
 #-------------------------------------------------------------------------------------------
 
-import matplotlib.ticker as mtick
-import pickle
-import matplotlib.pyplot as plt
-import scipy as sp
-import numpy as np
-import matplotlib.mlab as mlab
-import plotfunctions as pltfun
+# Need to change this
+#1. add more points
+#2. decrease space between plots
+#3. change dots to one dot in legend
 
 # load time series data of distrStats from plotdata.py output
-pickle_file_name = './data/pythondata/sumdata_exp6.pickle'
+pickle_file_name = './data/pythondata/sumdata_exp7.pickle'
 pickle_file = open(pickle_file_name,'rb') 
 [var, cov, vUthry, v2Uthry, varp, covp, vUthryp, v2Uthryp, NsUparam] = pickle.load(pickle_file)
 pickle_file.close()
@@ -120,8 +120,9 @@ NsUparam = np.asarray(NsUparam)
 num_exp = len(NsUparam)
 
 #indices for partitioning parameter array
-[start1,start2,start3] = [0,num_exp/3,2*num_exp/3]         
-[end1,end2,end3] = [num_exp/3,2*num_exp/3,num_exp]
+#end points had to be manually calibrated with additional data
+[start1,start2,start3] = [0,41,81]         
+[end1,end2,end3] = [40,80,133]
 
 [s_min,s_max] = [min(NsUparam[start1:end1,1]),max(NsUparam[start1:end1,1])]
 [U_min,U_max] = [min(NsUparam[start2:end2,2]),max(NsUparam[start2:end2,2])]
@@ -154,7 +155,7 @@ ax=plt.subplot(131)
 ax.plot(xs,vs,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')                
 ax.scatter(ps,Vs,c="white",label='$\sigma_1^2$',s=40.0,marker = 'D')
 ax.scatter(ps,Cs,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')        
-ax.legend(loc=1, ncol=1,fontsize=16,numpoints=1)
+ax.legend(loc=2, ncol=1,fontsize=16,numpoints=1,scatterpoints = 1)
 ax.set_ylabel(r'Multiples of v(U,N,s)',fontsize=20)
 ax.set_xlabel(r'Selection Coefficient',fontsize=20)
 ax.tick_params(labelsize=20)
@@ -165,7 +166,7 @@ ax.xaxis.set_tick_params(which='both',length=5)
 ax.yaxis.set_tick_params(which='both',length=5)
 ax.xaxis.set_ticks_position('bottom')
 ax.yaxis.set_ticks_position('left')
-plt.annotate('(a)',xy=(100,395),xycoords='figure points',fontsize=20)
+plt.annotate('(a)',xy=(380,395),xycoords='figure points',fontsize=20)
 
 # figure for change in mutation rate
 ax=plt.subplot(132)
@@ -183,7 +184,7 @@ ax.xaxis.set_tick_params(which='both',length=5)
 ax.yaxis.set_tick_params(which='both',length=5)
 ax.xaxis.set_ticks_position('bottom')
 ax.yaxis.set_ticks_position('left')
-plt.annotate('(b)',xy=(495,395),xycoords='figure points',fontsize=20)
+plt.annotate('(b)',xy=(760,395),xycoords='figure points',fontsize=20)
 
 # figure for change in population size
 ax=plt.subplot(133)
@@ -201,48 +202,52 @@ ax.xaxis.set_tick_params(which='both',length=5)
 ax.yaxis.set_tick_params(which='both',length=5)
 ax.xaxis.set_ticks_position('bottom')
 ax.yaxis.set_ticks_position('left')
-plt.annotate('(c)',xy=(890,395),xycoords='figure points',fontsize=20)
+plt.annotate('(c)',xy=(1145,395),xycoords='figure points',fontsize=20)
 
 fig.subplots_adjust(wspace=0.1)
 fig.subplots_adjust(bottom=0.25)
 plt.tight_layout
 plt.savefig('./figures/fig2.pdf',bbox_inches='tight')
 
-
 #-----------------------------------------------------------------------------------------
 #------------------FIGURE 3: %CHANGE IN V WRT TRAIT NO.----------------------------------
 #-----------------------------------------------------------------------------------------
 
+# Need to change this and run this
+#1. get rid of (d)
+#2. change to decrease
+
+
 #plot fig 2 trait no. effect
 [N,s,U] = [1e7,2e-2,1e-5]
 
-per_decr_vrate1 = [100*pltfun.get_vNsU_perChg(N,s,U,i+2) for i in range(9)]        
-per_decr_vrate2 = [100*pltfun.get_vNsU_perChg(N,s/4,U,i+2) for i in range(9)]        
-per_decr_vrate3 = [100*pltfun.get_vNsU_perChg(N,s/10,U,i+2) for i in range(9)]        
+per_decr_vrate1 = [100-100*pltfun.get_vNsU_perChg(N,s,U,i+1) for i in range(10)]        
+per_decr_vrate2 = [100-100*pltfun.get_vNsU_perChg(N,s/4,U,i+1) for i in range(10)]        
+per_decr_vrate3 = [100-100*pltfun.get_vNsU_perChg(N,s/10,U,i+1) for i in range(10)]        
 
-my_xticks = [i+1 for i in range(9)]
-my_xlabel = [i+1 for i in range(9)]
-my_yticks = [20+10*i for i in range(7)]
-my_ylabel = [str(20+10*i)+'%' for i in range(len(my_yticks))]
+traitNo = [i+1 for i in range(10)]
+my_xticks = [i for i in range(12)]
+my_xlabel = [i for i in range(12)]
+my_yticks = [0+20*i for i in range(6)]
+my_ylabel = [str(0+20*i)+'%' for i in range(len(my_yticks))]
 
-fig3g, ax3g = plt.subplots(1,1,figsize=[8,8])
+fig, ax = plt.subplots(1,1,figsize=[8,8])
 #fig2g.subplots_adjust(bottom=0.25)
-fig3g.subplots_adjust(left=0.15)
-ax3g.scatter(my_xticks,per_decr_vrate1,c="black",label=r's=$2 \times 10^{-2}$',s=60,marker="o")        
-ax3g.scatter(my_xticks,per_decr_vrate2,c="black",label=r's=$5 \times 10^{-3}$',s=70,marker="*")
-ax3g.scatter(my_xticks,per_decr_vrate3,c="black",label=r's=$2 \times 10^{-3}$',s=50,marker="D")                
-ax3g.axhline(linewidth=0.5, color = 'k')      
-ax3g.set_ylabel('Scaled Decrease in Rate if Adapt.',fontsize=18)
-ax3g.set_xlabel('Number of Traits Added',fontsize=18)
-#ax2g.tick_params(axis='both',labelsize=18)
+fig.subplots_adjust(left=0.15)
+ax.scatter(traitNo,per_decr_vrate1,c="black",label=r's=$2 \times 10^{-2}$',s=60,marker="o")        
+ax.scatter(traitNo,per_decr_vrate2,c="black",label=r's=$5 \times 10^{-3}$',s=70,marker="*")
+ax.scatter(traitNo,per_decr_vrate3,c="black",label=r's=$2 \times 10^{-3}$',s=50,marker="D")                
+ax.axhline(linewidth=0.5, color = 'k')      
+ax.set_ylabel('Scaled Decrease in Rate if Adapt.',fontsize=18)
+ax.set_xlabel('Number of Traits',fontsize=18)
 plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
-ax3g.grid(b='off', which='both', axis='both')
-ax3g.set_ylim((20,80))
-ax3g.set_xlim(0,10) 
-ax3g.legend(loc=4,ncol=1,fontsize=16,frameon=True)        
+ax.grid(b='off', which='both', axis='both')
+ax.set_ylim((0,110))
+ax.set_xlim(0,11) 
+ax.legend(loc=1,ncol=1,fontsize=16,frameon=True,scatterpoints = 1)        
 #ax2g.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=2,fontsize=20)        
-fig3g.savefig('./figures/fig3.pdf')
+fig.savefig('./figures/fig3.pdf',bbox_inches='tight')
 
 #-------------------------------------------------------------------------------------------
 #--------------FIGURE 4: FLUCTUATIONS IN VAR AND COV----------------------------------------
@@ -326,23 +331,6 @@ pickle_file = open(pickle_file_name,'rb')
              t_off,t_cov,new_times,new_covs,new_ncovs] = pickle.load(pickle_file)
 pickle_file.close()
 
-#fig=plt.figure(figsize=[24,8])
-#ax=plt.subplot(131)
-#ax.plot(xs,vs,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')                
-#ax.scatter(ps,Vs,c="white",label='$\sigma_1^2$',s=40.0,marker = 'D')
-#ax.scatter(ps,Cs,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')        
-#ax.set_ylabel(r'Multiples of v(U,N,s)',fontsize=20)
-#ax.set_xlabel(r'Selection Coefficient',fontsize=20)
-#ax.tick_params(labelsize=20)
-#ax.set_ylim((0,2.5))
-#ax.set_xlim((0.75*s_min,1.25*s_max))
-#ax.set_xscale('log')
-#ax.xaxis.set_tick_params(which='both',length=5)
-#ax.yaxis.set_tick_params(which='both',length=5)
-#ax.xaxis.set_ticks_position('bottom')
-#ax.yaxis.set_ticks_position('left')
-#plt.annotate('(a)',xy=(100,395),xycoords='figure points',fontsize=20)
-
 xline = np.asarray(np.ones([11,1]))
 yline = np.asarray([0+i*max(t_cov)/10 for i in range(11)])
 
@@ -350,16 +338,16 @@ yline = np.asarray([0+i*max(t_cov)/10 for i in range(11)])
 fig,ax = plt.subplots(figsize=[8,8])
 ax.plot((1/tau_fix_avg)*np.asarray(t_off),np.asarray(t_cov),c="red",linestyle="-",linewidth=3.0)
 ax.plot(xline,yline,c="blue",linestyle="--",linewidth=3.0)
-ax.set_ylabel('Nose-Bulk $\sigma_{12}$ Cross-Covariance',fontsize=18)
+ax.set_ylabel('Font-Bulk $\sigma_{12}$ Correlation',fontsize=18)
 ax.set_xlabel(r'Time (multiples of $\bar{\tau}_{fix}$)',fontsize=18)
 ax.axhline(linewidth=0.5, color = 'k')        
-ax.set_ylim((0,1.1*max(t_cov)))
+ax.set_ylim((0,1))
 ax.set_xlim((0,1.3e3/tau_fix_avg))        
 ax.xaxis.set_tick_params(which='both',length=5)
 ax.yaxis.set_tick_params(which='both',length=5)
 ax.xaxis.set_ticks_position('bottom')
 ax.yaxis.set_ticks_position('left')
-ax.tick_params(labelbottom='on',labelleft='off',labelright='off',axis='both',labelsize=14)
+ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=14)
 #plt.annotate(r'$\bar{\tau}_{fix}$',xy=(320,150),xytext=(370,145),arrowprops=dict(facecolor='black', shrink=0.01),xycoords='figure points',fontsize=20)
 plt.ticklabel_format(style='plain', axis='both')
 ax.legend()

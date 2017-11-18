@@ -161,7 +161,7 @@ def get_cov_cov(times,nose_cov,fit_cov,N,s,U):
     t_cov = [0 for i in range(2*time_d)]
     
     for i in range(2*time_d):
-        t_cov[i] = np.cov(np.vstack((new_covs[i+1:],new_ncovs[:-(1+i)])))[0,1]
+        t_cov[i] = (np.cov(np.vstack((new_covs[i+1:],new_ncovs[:-(1+i)])))[0,1])/np.std(new_covs[i+1:])/np.std(new_ncovs[:-(1+i)])
     
     return [t_off,t_cov,new_times,new_covs,new_ncovs]
     
@@ -175,3 +175,4 @@ def get_subset_times(N,s,U,times,scaling):
         indx = get_sample_window(times,times[indx],times[indx]+tau_q)[1]
         indx_list = indx_list + [indx]
     return indx_list
+# -----------------------------------------------------------------------------    
