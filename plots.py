@@ -20,39 +20,12 @@ import matplotlib.mlab as mlab
 import plotfunctions as pltfun
 #-------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
-
-
-#-------------------------------------------------------------------------------------------
-#---------------FIGURE 0: PLOT OF MARGINAL TRAIT DISTRIBUTIONS------------------------------
-#-------------------------------------------------------------------------------------------
-
-# figure 4: plot of trait or fitness distribution versus normal distribution
-[N,s,U] = [1e9,1e-2,1e-5]
-[sim_start,sim_end,snapshot] = [1e4,4e4,1.313e4]
-
-# load time series data of distrStats from plotdata.py output
-pickle_file_name = './data/pythondata/timesGenosAbund_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pickle'
-pickle_file = open(pickle_file_name,'rb') 
-[times,genotypes,abundances] = pickle.load(pickle_file)
-pickle_file.close()
-
-# change the index to plot a different distribution
-snapshot_indx = pltfun.get_sample_window(times,sim_start,sim_start)[0]
-genotypes = genotypes[snapshot_indx]
-abundances = abundances[snapshot_indx]   
-
-[mu, var] = pltfun.get_trait_mean_var(genotypes,abundances,traitno)
-[trait_bins,trait_tot] = pltfun.get_1D_proj(genotypes,abundances,traitno)
-        
-# plot data for figure 2a and 2b 
-fig0, ax0 = plt.subplots(1,1,figsize=[8,8])
-ax4.hist(trait_bins,len(trait_bins),normed=1,facecolor='green',alpha=0.75,weights=trait_tot)
-x = np.asarray([np.min(trait_bins)+(np.max(trait_bins)-np.min(trait_bins))*i/100.0 for i in range(101)])
-y = mlab.normpdf(x, mu, np.sqrt(var))
-ax0.plot(x, y, 'r--', linewidth=1)
-ax0.set_title('1D distribution trait '+str(traitno))
-fig0.savefig('./figures/fig0.pdf')
-
+#               General format parameters
+#
+#   Label font size = 20, 24 (tex)
+#   tick font size = 18
+#   tick padding = 15
+#   legend = 20 (tex)
 #-------------------------------------------------------------------------------------------
 #---------------FIGURE 1: SAMPLE OF 2D DISTRIBUTION-----------------------------------------
 #-------------------------------------------------------------------------------------------
@@ -155,10 +128,10 @@ ax=plt.subplot(131)
 ax.plot(xs,vs,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')                
 ax.scatter(ps,Vs,c="white",label='$\sigma_1^2$',s=40.0,marker = 'D')
 ax.scatter(ps,Cs,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')        
-ax.legend(loc=2, ncol=1,fontsize=16,numpoints=1,scatterpoints = 1)
+ax.legend(loc=2, ncol=1,fontsize=20,numpoints=1,scatterpoints = 1)
 ax.set_ylabel(r'Multiples of v(U,N,s)',fontsize=20)
 ax.set_xlabel(r'Selection Coefficient',fontsize=20)
-ax.tick_params(labelsize=20)
+ax.tick_params(labelsize=18,pad=15)
 ax.set_ylim((0,2.5))
 ax.set_xlim((0.75*s_min,1.25*s_max))
 ax.set_xscale('log')
@@ -177,7 +150,7 @@ ax.set_xlabel(r'Mutation Rate',fontsize=20)
 ax.set_ylim((0,2.5))
 ax.set_xlim((0.75*U_min,1.25*U_max))
 ax.set_xscale('log')
-ax.tick_params(labelsize=20)
+ax.tick_params(labelsize=18,pad=15)
 locs,labels = plt.yticks()
 plt.yticks(locs,[])
 ax.xaxis.set_tick_params(which='both',length=5)
@@ -191,11 +164,11 @@ ax=plt.subplot(133)
 ax.plot(xN,vN,c="black",label='$\Delta v_{1}$',linewidth=3.0,linestyle = '-')
 ax.scatter(pN,VN,c="white",label='$\sigma_1^2$',s=40.0,marker = 'D')
 ax.scatter(pN,CN,c="black",label='$|\sigma_{12}|$',s=40.0,marker = 'o')                
-ax.set_xlabel(r'Population Size',fontsize=18)
+ax.set_xlabel(r'Population Size',fontsize=20)
 ax.set_ylim((0,2.5))
 ax.set_xlim((0.75*N_min,1.25*N_max))
 ax.set_xscale('log')
-ax.tick_params(labelsize=20)
+ax.tick_params(labelsize=18,pad=15)
 locs,labels = plt.yticks()
 plt.yticks(locs,[])
 ax.xaxis.set_tick_params(which='both',length=5)
@@ -212,10 +185,6 @@ plt.savefig('./figures/fig2.pdf',bbox_inches='tight')
 #-----------------------------------------------------------------------------------------
 #------------------FIGURE 3: %CHANGE IN V WRT TRAIT NO.----------------------------------
 #-----------------------------------------------------------------------------------------
-
-# Need to change this and run this
-#1. get rid of (d)
-#2. change to decrease
 
 
 #plot fig 2 trait no. effect
@@ -234,18 +203,19 @@ my_ylabel = [str(0+20*i)+'%' for i in range(len(my_yticks))]
 fig, ax = plt.subplots(1,1,figsize=[8,8])
 #fig2g.subplots_adjust(bottom=0.25)
 fig.subplots_adjust(left=0.15)
-ax.scatter(traitNo,per_decr_vrate1,c="black",label=r's=$2 \times 10^{-2}$',s=60,marker="o")        
-ax.scatter(traitNo,per_decr_vrate2,c="black",label=r's=$5 \times 10^{-3}$',s=70,marker="*")
-ax.scatter(traitNo,per_decr_vrate3,c="black",label=r's=$2 \times 10^{-3}$',s=50,marker="D")                
+ax.scatter(traitNo,per_decr_vrate1,c="black",label=r's=$0.02$',s=60,marker="o")        
+ax.scatter(traitNo,per_decr_vrate2,c="black",label=r's=$0.005$',s=70,marker="*")
+ax.scatter(traitNo,per_decr_vrate3,c="black",label=r's=$0.002$',s=50,marker="D")                
 ax.axhline(linewidth=0.5, color = 'k')      
-ax.set_ylabel('Scaled Decrease in Rate if Adapt.',fontsize=18)
-ax.set_xlabel('Number of Traits',fontsize=18)
+ax.set_ylabel('Rate of Adaptation',fontsize=20)
+ax.set_xlabel('Number of Traits',fontsize=20)
 plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
+ax.tick_params(labelsize=18)
 ax.grid(b='off', which='both', axis='both')
 ax.set_ylim((0,110))
 ax.set_xlim(0,11) 
-ax.legend(loc=1,ncol=1,fontsize=16,frameon=True,scatterpoints = 1)        
+ax.legend(loc=1,ncol=1,fontsize=20,frameon=True,scatterpoints = 1)        
 #ax2g.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=2,fontsize=20)        
 fig.savefig('./figures/fig3.pdf',bbox_inches='tight')
 
@@ -335,11 +305,11 @@ xline = np.asarray(np.ones([11,1]))
 yline = np.asarray([0+i*max(t_cov)/10 for i in range(11)])
 
 # figure 6: cross-covariance between bulk and nose
-fig,ax = plt.subplots(figsize=[8,8])
+fig,ax = plt.subplots(figsize=[4,4])
 ax.plot((1/tau_fix_avg)*np.asarray(t_off),np.asarray(t_cov),c="red",linestyle="-",linewidth=3.0)
 ax.plot(xline,yline,c="blue",linestyle="--",linewidth=3.0)
-ax.set_ylabel('Font-Bulk $\sigma_{12}$ Correlation',fontsize=18)
-ax.set_xlabel(r'Time (multiples of $\bar{\tau}_{fix}$)',fontsize=18)
+ax.set_ylabel('Font-Bulk $\sigma_{12}$ Correlation',fontsize=20)
+ax.set_xlabel(r'Time (multiples of $\bar{\tau}_{fix}$)',fontsize=20)
 ax.axhline(linewidth=0.5, color = 'k')        
 ax.set_ylim((0,1))
 ax.set_xlim((0,1.3e3/tau_fix_avg))        
