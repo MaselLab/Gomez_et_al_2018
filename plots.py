@@ -188,25 +188,25 @@ plt.savefig('./figures/fig2.pdf',bbox_inches='tight')
 
 #plot fig 2 trait no. effect
 [N,s,U] = [1e7,2e-2,1e-5]
-per_decr_vrate1 = [100-100*pltfun.get_vNsU_perChg(N,s,U,i+1) for i in range(10)]        
+per_decr_vrate1 = [1-1*pltfun.get_vNsU_perChg(N,s,U,i+1) for i in range(10)]        
 traitNo = [np.log(i+1) for i in range(10)]
 my_xticks = [-0.25]+[log(i+1) for i in range(11)]
 my_xlabel = ['', '1', '2', '', '4', '', '', '', '8', '', '', '']
-my_yticks = [0+20*i for i in range(6)]
-my_ylabel = [str(0+20*i)+'%' for i in range(len(my_yticks))]
+my_yticks = [0+0.20*i for i in range(6)]
+my_ylabel = [str(0+0.20*i) for i in range(len(my_yticks))]
 
 fig, ax = plt.subplots(1,1,figsize=[8,8])
 #fig2g.subplots_adjust(bottom=0.25)
 fig.subplots_adjust(left=0.15)
 ax.scatter(traitNo,per_decr_vrate1,c="black",label=r's=$0.02$',s=60,marker="o")        
 ax.axhline(linewidth=0.5, color = 'k')      
-ax.set_ylabel('Adaptation rate',fontsize=20)
+ax.set_ylabel('Adaptation rate / v(U,N,s)',fontsize=20)
 ax.set_xlabel('Number of traits (log scale)',fontsize=20)
 plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
 ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=18)
 ax.grid(b='off', which='both', axis='both')
-ax.set_ylim((0,110))
+ax.set_ylim((0,1.1))
 ax.set_xlim(-0.25,np.log(11)) 
 #ax.legend(loc=1,ncol=1,fontsize=20,frameon=True,scatterpoints = 1)        
 #ax2g.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=2,fontsize=20)        
@@ -299,8 +299,8 @@ my_ylabel = ['0', '', '0.2', '', '0.4', '', '0.6', '', '0.8', '', '1']
 
 # figure 6: cross-covariance between bulk and nose
 fig,ax = plt.subplots(figsize=[8,8])
-ax.plot((1/tau_fix_avg)*np.asarray(t_off),np.asarray(t_cov),c="red",linestyle="-",linewidth=3.0)
-ax.plot(xline,yline,c="blue",linestyle="--",linewidth=3.0)
+ax.plot((1/tau_fix_avg)*np.asarray(t_off),np.asarray(t_cov),c="black",linestyle="-",linewidth=3.0)
+ax.plot(xline,yline,c="black",linestyle="--",linewidth=3.0)
 ax.set_ylabel(r'Font-Bulk $\sigma_{1,2}$ Correlation',fontsize=20)
 ax.set_xlabel(r'Time offset (Multiples of $\bar{\tau}_{fix}$)',fontsize=20)
 ax.axhline(linewidth=0.5, color = 'k')        
