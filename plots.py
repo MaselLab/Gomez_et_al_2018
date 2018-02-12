@@ -235,11 +235,11 @@ fit_var = fit_var[start_indx:end_indx]
 fit_cov = fit_cov[start_indx:end_indx]
 
 # compute means of the time series data and store as constant arry
-rate_adpt = np.asarray(fit_var[:,0])+np.asarray(fit_var[:,1])+2*np.asarray(fit_cov[:])
+rate_adpt_t1 = np.asarray(fit_var[:,0])+np.asarray(fit_cov[:])
 var1_avg = np.mean(fit_var[:,0])*np.ones(np.shape(times))
 var2_avg = np.mean(fit_var[:,1])*np.ones(np.shape(times))
 cov_avg = np.mean(fit_cov[:])*np.ones(np.shape(times))
-rate_adpt_avg = var1_avg + var2_avg + 2*cov_avg
+rate_adpt_t1_avg = var1_avg + cov_avg
 
 my_xticks = [10000+i*1000 for i in range(11)]
 my_xlabel = ['10', '', '12', '', '14', '', '16', '', '18', '', '20']
@@ -248,10 +248,10 @@ my_ylabel = ['', '-4', '', '-2', '', '0', '', '2', '', '4', '', '6', '']
 
 # plot data for figure 3a and 3b 
 fig, ax = plt.subplots(1,1,figsize=[8,8])
-ax.plot(times,rate_adpt_avg,c="black",label=r'$\sigma^2$',linewidth=2.0,linestyle = '-')                
+ax.plot(times,rate_adpt_t1_avg,c="black",label=r'$\sigma^2$',linewidth=2.0,linestyle = '-')                
 ax.plot(times,var1_avg,c="black",label=r'$\sigma_1^2$',linewidth=3.0,linestyle = '--')
 ax.plot(times,cov_avg,c="black",label=r'$\sigma_{1,2}$',linewidth=3.0,linestyle = ':')
-ax.plot(times,rate_adpt,c="black",linestyle="-",linewidth=3.0)        
+ax.plot(times,rate_adpt_t1,c="black",linestyle="-",linewidth=3.0)        
 ax.plot(times,fit_var[:,0],c="black",linestyle="--",linewidth=3.0)
 ax.plot(times,fit_cov[:],c="black",linestyle=":",linewidth=3.0)
 ax.axhline(linewidth=0.5, color = 'k')
