@@ -1,4 +1,5 @@
-% Encoding: ISO-8859-1
+% This file was created with JabRef 2.10.
+% Encoding: ISO8859_1
 
 
 @Article{Agrawal2009,
@@ -86,7 +87,11 @@ Determining if and how the multivariate genetic variance evolves has been limite
 Current methods for the comparison of G typically share several drawbacks: metrics that lack a direct relationship to evolutionary theory, the inability to be applied in conjunction with complex experimental designs, difficulties with determining statistical confidence in inferred differences and an inherently pair-wise focus. 
 
 Here, we present a cohesive and general analytical framework for the comparative analysis of G that addresses these issues, and that incorporates and extends current methods with a strong geometrical basis. We describe the application of random skewers, common subspace analysis, the 4th-order genetic covariance tensor and the decomposition of the multivariate breeders equation, all within a Bayesian framework. We illustrate these methods using data from an artificial selection experiment on eight traits in Drosophila serrata, where a multi-generational pedigree was available to estimate G in each of six populations. One method, the tensor, elegantly captures all of the variation in genetic variance among populations, and allows the identification of the trait combinations that differ most in genetic variance. The tensor approach is likely to be the most generally
- applicable method to the comparison of G-matrices from any sampling or experimental design.},
+ applicable method to the comparison of G-matrices from any sampling or experimental design.
+
+Joanna comment: 
+
+Although determination of the genetic details underpinning G is an active research area (Kelly, 2009), the general lack of information on the distribution of allelic effects and frequencies currently makes it impossible for theoretical quantitative genetic models to clearly predict the evolutionary dynamics of G. Several studies have circumvented this problem through simulation-based approaches, exploring the impact of variation in parameters describing evolutionary processes (selection, mutation and migration) on the evolution of G (Jones et al., 2003; 2004; Guillaume and Whitlock, 2007; Jones et al., 2007; Revell, 2007).},
   Times-cited              = {26},
   Timestamp                = {2018.01.26},
   Type                     = {Article},
@@ -1245,6 +1250,20 @@ We model the demography and evolution of populations subject to optimizing selec
   Publisher                = {National Acad Sciences}
 }
 
+@Article{guillaume2007effects,
+  Title                    = {Effects of migration on the genetic covariance matrix},
+  Author                   = {Guillaume, Fr{\'e}d{\'e}ric and Whitlock, Michael C},
+  Journal                  = {Evolution},
+  Year                     = {2007},
+  Number                   = {10},
+  Pages                    = {2398--2409},
+  Volume                   = {61},
+
+  Abstract                 = {In 1996, Schluter showed that the direction of morphological divergence of closely related species is biased toward the line of least genetic resistance, represented by gmax, the leading eigenvector of the matrix of genetic variance-covariance (the G-matrix). G is used to predict the direction of evolutionary change in natural populations. However, this usage requires that G is sufficiently constant over time to have enough predictive significance. Here, we explore the alternative explanation that G can evolve due to gene flow to conform to the direction of divergence between incipient species. We use computer simulations in a mainland-island migration model with stabilizing selection on two quantitative traits. We show that a high level of gene flow from a mainland population is required to significantly affect the orientation of the G-matrix in an island population. The changes caused by the introgression of the mainland alleles into the island population affect all aspects of the shape of G (size, eccentricity, and orientation) and lead to the alignment of gmax with the line of divergence between the two populations' phenotypic optima. Those changes decrease with increased correlation in mutational effects and with a correlated selection. Our results suggest that high migration rates, such as those often seen at the intraspecific level, will substantially affect the shape and orientation of G, whereas low migration (e.g., at the interspecific level) is unlikely to substantially affect the evolution of G.},
+  Owner                    = {GMutations},
+  Publisher                = {BioOne}
+}
+
 @Article{hallatschek2011noisy,
   Title                    = {The noisy edge of traveling waves},
   Author                   = {Hallatschek, Oskar},
@@ -1815,6 +1834,20 @@ FOLLOW-UP:
 -Miralles, R., Gerrish, P.J., Moya, A. & Elena, S.F. Clonal interference and the evolution of RNA viruses. Science 285, 1745-1747 (1999).
 -de Visser, J.A.G.M. & Rozen, D.E. Clonal interference and the periodic selection of new beneficial mutations in Escherichia coli. Genetics 172, 2093-2100 (2006).},
   Url                      = {http://dx.doi.org/10.1038/ng.280}
+}
+
+@Article{kelly2009connecting,
+  Title                    = {Connecting QTLs to the G-matrix of evolutionary quantitative genetics},
+  Author                   = {Kelly, John K},
+  Journal                  = {Evolution},
+  Year                     = {2009},
+  Number                   = {4},
+  Pages                    = {813--825},
+  Volume                   = {63},
+
+  Abstract                 = {Evolutionary quantitative genetics has recently advanced in two distinct streams. Many biologists address evolutionary questions by estimating phenotypic selection and genetic (co)variances (G matrices). Simultaneously, an increasing number of studies have applied quantitative trait locus (QTL) mapping methods to dissect variation. Both conceptual and practical difficulties have isolated these two foci of quantitative genetics. A conceptual integration follows from the recognition that QTL allele frequencies are the essential variables relating the G-matrix to marker-based mapping experiments. Breeding designs initiated from randomly selected parental genotypes can be used to estimate QTL-specific genetic (co)variances. These statistics appropriately distill allelic variation and provide an explicit population context for QTL mapping estimates. Within this framework, one can parse the G-matrix into a set of mutually exclusive genomic components and ask whether these parts are similar or dissimilar in their respective features, for example the magnitude of phenotypic effects and the extent and nature of pleiotropy. As these features are critical determinants of sustained response to selection, the integration of QTL mapping methods into G-matrix estimation can provide a concrete, genetically based experimental program to investigate the evolutionary potential of natural populations.},
+  Owner                    = {GStatComp},
+  Publisher                = {Wiley Online Library}
 }
 
 @Article{Kempthorne1959,
@@ -2747,8 +2780,25 @@ Depends on the situation and question being asked.},
   Volume                   = {75},
 
   Abstract                 = {Lande's equation for predicting the response of trait means to a shift in optimal trait values is tested using a stochastic simulation model. The simulated population is finite, and each individual has a finite number of loci. Therefore, selection may cause allele frequencies and distributions to change over time. Since the equation assumes constant genetic parameters, the degree to which such allelic changes affect predictions can be examined. Predictions are based only on information available at generation zero of directional selection. The quality of the predictions depends on the nature of allelic distributions in the original population. If allelic effects are approximately normally distributed, as assumed in Lande's Gaussian approximation to the continuum-of-alleles model, the predictions are very accurate, despite small changes in the G matrix. If allelic effects have a leptokurtic distribution, as is likely in Turelli's Ã¢ÂÂhouse-of-cards' approximation, the equation underestimates the rate of response and correlated response, and overestimates the time required for the trait means to reach their equilibrium values. Models with biallelic loci have limits as to the amount of trait divergence possible, since only two allelic values are available at each of a finite set of loci. If the new optimal trait values lie within these limits, predictions are good. if not, singularity in the G matrix results in suboptimal equilibria, despite the presence of genetic variance for each individual trait.},
+  Owner                    = {GMutations},
   Publisher                = {Cambridge University Press},
-  Review                   = {Simulations are done to check Lande's Gaussian approximation for multiple trait evolution.}
+  Review                   = {MUTATIONS AND THE EVOL OF G MATRICES
+
+Simulations are done to check Lande's Gaussian approximation for multiple trait evolution.}
+}
+
+@Article{revell2007g,
+  Title                    = {The G matrix under fluctuating correlational mutation and selection},
+  Author                   = {Revell, Liam J},
+  Journal                  = {Evolution},
+  Year                     = {2007},
+  Number                   = {8},
+  Pages                    = {1857--1872},
+  Volume                   = {61},
+
+  Abstract                 = {Theoretical quantitative genetics provides a framework for reconstructing past selection and predicting future patterns of phenotypic differentiation. However, the usefulness of the equations of quantitative genetics for evolutionary inference relies on the evolutionary stability of the additive genetic variance-covariance matrix (G matrix). A fruitful new approach for exploring the evolutionary dynamics of G involves the use of individual-based computer simulations. Previous studies have focused on the evolution of the eigenstructure of G. An alternative approach employed in this paper uses the multivariate response-to-selection equation to evaluate the stability of G. In this approach, I measure similarity by the correlation between response-to-selection vectors due to random selection gradients. I analyze the dynamics of G under several conditions of correlational mutation and selection. As found in a previous study, the eigenstructure of G is stabilized by correlational mutation and selection. However, over broad conditions, instability of G did not result in a decreased consistency of the response to selection. I also analyze the stability of G when the correlation coefficients of correlational mutation and selection and the effective population size change through time. To my knowledge, no prior study has used computer simulations to investigate the stability of G when correlational mutation and selection fluctuate. Under these conditions, the eigenstructure of G is unstable under some simulation conditions. Different results are obtained if G matrix stability is assessed by eigenanalysis or by the response to random selection gradients. In this case, the response to selection is most consistent when certain aspects of the eigenstructure of G are least stable and vice versa.},
+  Owner                    = {GMutations},
+  Publisher                = {Wiley Online Library}
 }
 
 @Book{roff2012evolutionary,
@@ -3041,6 +3091,18 @@ what is Nei's genetic distance?
 How is Nei's genetic distance related to time? (0.3 Nei units is over four million years.)},
   Timestamp                = {2017.10.18},
   Url                      = {http://dx.doi.org/10.1111/j.1558-5646.1996.tb03563.x}
+}
+
+@Article{schluter1984morphological,
+  Title                    = {Morphological and phylogenetic relations among the Darwin's finches},
+  Author                   = {Schluter, Dolph},
+  Journal                  = {Evolution},
+  Year                     = {1984},
+  Number                   = {5},
+  Pages                    = {921--930},
+  Volume                   = {38},
+
+  Publisher                = {Wiley Online Library}
 }
 
 @Article{Schoustra2009,
@@ -3854,15 +3916,5 @@ Follow up:
   Url                      = {http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1462254/}
 }
 
-@Article{schluter1984morphological,
-  author    = {Schluter, Dolph},
-  title     = {Morphological and phylogenetic relations among the Darwin's finches},
-  journal   = {Evolution},
-  year      = {1984},
-  volume    = {38},
-  number    = {5},
-  pages     = {921--930},
-  publisher = {Wiley Online Library},
-}
+@comment{jabref-meta: databaseType:bibtex;}
 
-@Comment{jabref-meta: databaseType:bibtex;}
