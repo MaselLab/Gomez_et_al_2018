@@ -248,7 +248,7 @@ my_ylabel = ['', '-4', '', '-2', '', '0', '', '2', '', '4', '', '6', '']
 
 # plot data for figure 3a and 3b 
 fig, ax = plt.subplots(1,1,figsize=[8,8])
-ax.plot(times,rate_adpt_t1_avg,c="black",label=r'$\sigma^2$',linewidth=2.0,linestyle = '-')                
+ax.plot(times,rate_adpt_t1_avg,c="black",label=r'$v_1$',linewidth=2.0,linestyle = '-')                
 ax.plot(times,var1_avg,c="black",label=r'$\sigma_1^2$',linewidth=3.0,linestyle = '--')
 ax.plot(times,cov_avg,c="black",label=r'$\sigma_{1,2}$',linewidth=3.0,linestyle = ':')
 ax.plot(times,rate_adpt_t1,c="black",linestyle="-",linewidth=3.0)        
@@ -301,8 +301,8 @@ my_ylabel = ['0', '', '0.2', '', '0.4', '', '0.6', '', '0.8', '', '1']
 fig,ax = plt.subplots(figsize=[8,8])
 ax.plot((1/tau_fix_avg)*np.asarray(t_off),np.asarray(t_cov),c="black",linestyle="-",linewidth=3.0)
 ax.plot(xline,yline,c="black",linestyle="--",linewidth=3.0)
-ax.set_ylabel(r'Font-Bulk $\sigma_{1,2}$ Correlation',fontsize=20)
-ax.set_xlabel(r'Time offset (Multiples of $\bar{\tau}_{fix}$)',fontsize=20)
+ax.set_ylabel(r'Front-Bulk $\sigma_{1,2}$ Correlation',fontsize=20)
+ax.set_xlabel(r'Time offset (Multiples of $\bar{\tau}_{SW}$)',fontsize=20)
 ax.axhline(linewidth=0.5, color = 'k')        
 ax.set_ylim((0,1))
 ax.set_xlim((0,1.3e3/tau_fix_avg))        
