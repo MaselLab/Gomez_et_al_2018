@@ -388,9 +388,9 @@ for i in range(n1):
     Gang = Gang + [Ang1*2/pi]
 
 # test plots
-plt.plot(times,var_diff/vUNs)
-plt.plot(times,4*fit_cov/vUNs)
-plt.plot(times,10*np.asarray(Gang))
+#plt.plot(times,var_diff/vUNs)
+#plt.plot(times,4*fit_cov/vUNs)
+#plt.plot(times,10*np.asarray(Gang))
 
 my_xticks = [10000+i*1000 for i in range(11)]
 my_xlabel = ['10', '', '12', '', '14', '', '16', '', '18', '', '20']
@@ -401,10 +401,10 @@ my_xlabel = ['10', '', '12', '', '14', '', '16', '', '18', '', '20']
 
 fig, ax1 = plt.subplots(1,1,figsize=[8,8])
 ax2 = plt.twinx(ax1)
-ax1.plot(times,(1/vUNs)*lambda1,c="blue",linewidth=2.0,label='$\lambda_1$')
-ax1.plot(times,(1/vUNs)*lambda2,c="red",linewidth=2.0,label='$\lambda_2$')
-#ax1.plot(times,(1/vUNs)*var_diff,c="blue",linewidth=2.0,linestyle="-.",label='$\sigma_1^2-\sigma_2^2$')
-ax1.plot(times,(1/vUNs)*fit_cov,c="black",linewidth=2.0,linestyle="-.",label='$\sigma_{1,2}$')
+ax1.plot(times,(1/vUNs)*lambda1,c="blue",linewidth=2.0,linestyle="-",label='$\lambda_1$')
+ax1.plot(times,(1/vUNs)*lambda2,c="green",linewidth=2.0,linestyle="-",label='$\lambda_2$')
+ax1.plot(times,(1/vUNs)*var_diff,c="magenta",linewidth=2.0,linestyle="-",label='$\sigma_1^2-\sigma_2^2$')
+ax1.plot(times,(1/vUNs)*fit_cov,c="cyan",linewidth=2.0,linestyle="-",label='$\sigma_{1,2}$')
 ax1.set_ylabel('Eigenvalues of G matrix (multiples of v(U,N,s))',fontsize=20)
 ax1.set_xlabel('Time (Thousands of Generations)',fontsize=20)
 ax1.axhline(linewidth=0.5, color = 'k')
@@ -416,7 +416,7 @@ ax1.grid(b='off', which='both', axis='both')
 plt.xticks(my_xticks,my_xlabel)
 #plt.yticks(my_yticks1,my_ylabel1)
 
-ax2.plot(times,90*np.asarray(Gang),c="black",linewidth=2.0,label='$\theta_{PC1,\beta}$')
+ax2.plot(times,90*np.asarray(Gang),c="black",linewidth=2.0,linestyle="-",label='$\theta_{PC1,\beta}$')
 ax2.set_ylim((-90,90))
 ax2.set_ylabel(r'Angle between PC1 and $\beta$ (degrees)',fontsize=20)
 ax2.grid(b='off', which='both', axis='both')
