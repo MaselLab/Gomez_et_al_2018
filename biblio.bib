@@ -1756,6 +1756,15 @@ KEY TERMS
   Volume                   = {360},
 
   Abstract                 = {Empirical studies of quantitative genetic variation have revealed robust patterns that are observed both across traits and across species. However, these patterns have no compelling explanation, and some of the observations even appear to be mutually incompatible. We review and extend a major class of theoretical models, Ã¢ÂÂmutation-selection models', that have been proposed to explain quantitative genetic variation. We also briefly review an alternative class of Ã¢ÂÂbalancing selection models'. We consider to what extent the models are compatible with the general observations, and argue that a key issue is understanding and modelling pleiotropy. We discuss some of the thorny issues that arise when formulating models that describe many traits simultaneously.},
+  Review                   = {REVIEWS OF THRY AND EXP FOR G MATRICES (finish reading)
+
+JB explain that while statistical models have had success in short to medium term effects of selection, they cannot say anything about the mechanistic genetic basis of the traits they describe, which are important for predicting the medium to long-term evolution.  I guess this is kind of made clear with the fact that allele frequencies matter in the QG models themselves. In the intro, the imply that finding information about the mechanisms that influence genetic variation in complex traits could prove useful for our understanding about evolution in complex diseases.
+
+An interesting paper that was touched on in the discussion of heritabilities was the Houle 1992 paper which showed that heritabilities for traits more closely related to fitness (life history traits) was lower, but only because V_E was larger, and V_G was in fact much higher, than in other kinds of traits. Morphological traits have higher heritabilities.
+
+On the subject of mutations, JB state that mutation experiments with inbred lines show that V_m fall with 10^-3 V_E to 10^-2 V_E (Lynch 1988 and Lynch Walsh 1998). Net fitness effects of mutations can differ between species: mutations in D. melanogaster on average reduce fitness, while in arabidopsis thaliana, the average effect is zero (Keightley 1996, fry 1999 and shaw et al 2000)
+
+In the discussion about the maintenance of genetic variation by mutations, JB state that given data and an assumption of a gaussian distribution of f(x) = "frequency of effect x on a trait" as each locus (where x is the effect of an allele on a trait at a locus), the equilibrium condition for genetic variance and as it depends on mutaitonal variance (3.1), says that the effective number of loci is small, while the effect size must be large.  NOTE},
   Url                      = {http://rstb.royalsocietypublishing.org/content/360/1459/1411.abstract}
 }
 
@@ -2107,7 +2116,17 @@ Just that in this model, genetic variances are maintained by selection and mutat
 
   Abstract                 = {It is assumed that a character under stabilizing selection is determined genetically by n linked, mutable loci with additive effects and a range of many possible allelic effects at each locus. A general qualitative feature of such systems is that the genetic variance for the character is independent of the linkage map of the loci, provided linkage is not very tight. A particular detailed model shows that certain aspects of the genetic system are moulded by stabilizing selection while others are selectively neutral. With reference to experimental data on characters of Drosophila flies, maize, and mice, it is concluded that large amounts of genetic variation can be maintained by mutation in polygenic characters even when there is strong stabilizing selection. The properties of the model are compared with those of heterotic models with linked loci.},
   Doi                      = {10.1017/S0016672300016037},
-  Publisher                = {Cambridge University Press}
+  Publisher                = {Cambridge University Press},
+  Review                   = {REVIEWS OF THRY AND EXP FOR G MATRICES
+
+Follows same approach as his other papers. Finds and solve dynamical equations for the covariance terms between traits. The main recurrence equation is given in (19), and the equilibrium condition for genetic variance is given in 21a-21c for the covariances and the amount of expressed variance expressed by each loci, and the additive gentic variance.
+
+One of the main goals of the paper is to show that genetic variation can be maintained by mutation even with strong stabilizing selection.
+Assumptions:
+(1) At the ith locus, each allele mutates with probability fii each generation, and the distribution of mutant effects is the same for all alleles. The variance of the mutational changes at the ith locus is denoted as m\. At each locus, the changes produced by mutation have a mean of zero so that there is no mutation pressure influencing the population mean.
+(2) The population mates randomly with respect to the character.
+(3) The effective population size is large enough to ignore genetic drift.
+(4) There is no genotype-environment interaction and the allelic effects are additive within and between loci.}
 }
 
 @Article{lande1983measurement,
