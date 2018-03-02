@@ -213,7 +213,7 @@ ax.set_xlim(-0.25,np.log(11))
 fig.savefig('./figures/fig3.pdf')
 
 #-------------------------------------------------------------------------------------------
-#--------------FIGURE 4: FLUCTUATIONS IN VAR AND COV----------------------------------------
+#--------------FIGURE 4: FLUCTUATIONS IN VAR-COV AND EVALS----------------------------------
 #-------------------------------------------------------------------------------------------
 
 # figure 3: plot of rate of adaptation, variances, covariance and their means
@@ -272,57 +272,8 @@ ax.axhline(linewidth=0.5, color = 'k')
 plt.annotate('(a)',xy=(90,280),xycoords='figure points',fontsize=20)         
 fig.savefig('./figures/fig4a.pdf',bbox_inches='tight')
 
-#-----------------------------------------------------------------------------------------
-#--------------FIGURE 7: Dynamics of G matrix shape & orientation-------------------------
-#-----------------------------------------------------------------------------------------
 
-# figure 3: plot of rate of adaptation, variances, covariance and their means
-[N,s,U] = [1e9,1e-2,1e-5]
-[sim_start,sim_end,snapshot] = [5e3,4e4,1.313e4]
-vUNs = pltfun.get_vNsU(N,s,U)
 
-# load time series data of distrStats from plotdata.py output
-pickle_file_name = './data/pythondata/distrStats_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pickle'
-pickle_file = open(pickle_file_name,'rb') 
-[times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry] = pickle.load(pickle_file)
-pickle_file.close()
-
-# select interval of simulation data that will be used for plot
-# reduce loaded data to subset corresponding to selected interval
-[start_indx,end_indx] = pltfun.get_sample_window(times,sim_start,sim_end)
-times = times[start_indx:end_indx]
-fit_var = fit_var[start_indx:end_indx]
-fit_cov = fit_cov[start_indx:end_indx]
-var_diff = (fit_var[:,0]-fit_var[:,1])
-n1 = len(fit_cov)
-
-trG = fit_var[:,0]+fit_var[:,1] 
-detG =  np.asarray([fit_var[i,0]*fit_var[i,1]-fit_cov[i]**2 for i in range(n1)])
-Gmatr = [np.asarray([[fit_var[i,0],fit_cov[i]],[fit_cov[i],fit_var[i,1]]]) for i in range(n1)]
-Xmatr = np.asarray([[1/sqrt(2),1/sqrt(2)],[1/sqrt(2),-1/sqrt(2)]])
-
-lambda1 = np.asarray([0.5*(trG[i]-np.sqrt(trG[i]**2-4*detG[i])) for i in range(n1)])
-lambda2 = np.asarray([0.5*(trG[i]+np.sqrt(trG[i]**2-4*detG[i])) for i in range(n1)])
-
-[Gvec,Gval,Gang] = [[],[],[]]
-
-# compute the eigenvalues of the G matrix
-for i in range(n1):
-    A = np.linalg.eig(Gmatr[i])
-    if(abs(A[0][0]-lambda2[i])<abs(A[0][0]-lambda1[i])):
-        Gval = Gval+[np.asarray([A[0][1],A[0][0]])]
-        Gvec = Gvec+[np.fliplr(A[1])]
-    else:
-        Gval = Gval+[A[0]]
-        Gvec = Gvec+[A[1]]
-
-# convert matrix to array for processing
-Gval = np.asarray(Gval)
-
-for i in range(n1):
-    Ang1 = np.arccos((sign(Gvec[i][0,0])*Gvec[i][0,0]*Xmatr[0,0]+sign(Gvec[i][1,0])*Gvec[i][1,0]*Xmatr[1,0])/np.linalg.norm(Gvec[i][:,0]))
-    Ang1 = sign(sign(Gvec[i][1,0])*Gvec[i][1,0]-sign(Gvec[i][0,0])*Gvec[i][0,0])*Ang1
-    Gang = Gang + [Ang1*2/pi]
 
 # test plots
 #plt.plot(times,var_diff/vUNs)
