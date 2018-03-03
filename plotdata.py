@@ -496,10 +496,18 @@ pickle_file.close()
 #-----------------------------------data for G stability------------------------
 #-------------------------------------------------------------------------------
 
+# import packages needed for script
+import pickle
+import scipy as sp
+import numpy as np
+import copy as cpy
+import matplotlib.pyplot as plt
+import plotfunctions as pltfun
+
 # figure 3: plot of rate of adaptation, variances, covariance and their means
-[N,s,U] = [1e9,1e-2,1e-5]
+parameters = [1e9,1e-2,1e-5]
+[N,s,U] = parameters
 [sim_start,sim_end,snapshot] = [5e3,4e4,1.313e4]
-vUNs = pltfun.get_vNsU(N,s,U)
 
 # load time series data of distrStats from plotdata.py output
 pickle_file_name = './data/pythondata/distrStats_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pickle'
@@ -513,6 +521,8 @@ pickle_file.close()
 times = times[start_indx:end_indx]
 fit_var = fit_var[start_indx:end_indx]
 fit_cov = fit_cov[start_indx:end_indx]
+pop_load = pop_load[start_indx:end_indx]
+dcov_dt = dcov_dt[start_indx:end_indx]
 var_diff = (fit_var[:,0]-fit_var[:,1])
 n1 = len(fit_cov)
 
@@ -536,16 +546,52 @@ for i in range(n1):
         Gval = Gval+[A[0]]
         Gvec = Gvec+[A[1]]
 
-# convert matrix to array for processing
-Gval = np.asarray(Gval)
-
 for i in range(n1):
     Ang1 = np.arccos((sign(Gvec[i][0,0])*Gvec[i][0,0]*Xmatr[0,0]+sign(Gvec[i][1,0])*Gvec[i][1,0]*Xmatr[1,0])/np.linalg.norm(Gvec[i][:,0]))
     Ang1 = sign(sign(Gvec[i][1,0])*Gvec[i][1,0]-sign(Gvec[i][0,0])*Gvec[i][0,0])*Ang1
     Gang = Gang + [Ang1*2/pi]
-    
+
+# convert list to array  
+Gval = np.asarray(Gval)
+Gang = np.asarray(Gang)
+
 # load existing data of variances and covariances.py output
 pickle_file_name = './data/pythondata/Gstability_exp1.pickle'
 pickle_file = open(pickle_file_name,'wb') 
-pickle.dump([times,fit_var,fit_cov,var_diff,n1,trG,detG,Gmatr,Xmatr,lambda1,lambda2,Gvec,Gval,Gang],pickle_file,pickle.HIGHEST_PROTOCOL)
+pickle.dump([times,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry,var_diff,n1,trG,detG,Gmatr,Xmatr,lambda1,lambda2,Gvec,Gval,Gang,parameters],pickle_file,pickle.HIGHEST_PROTOCOL)
 pickle_file.close()
+
+# test plots
+#plt.plot(times,var_diff/vUNs)
+#plt.plot(times,4*fit_cov/vUNs)
+#plt.plot(times,10*np.asarray(Gang))
+
+#plt.plot(times,(1/np.mean(lambda1))*lambda1,c="blue",linewidth=2.0,linestyle="-.",label='\lambda_1$')
+#plt.plot(times,(1/np.mean(lambda2))*lambda2,c="green",linewidth=2.0,linestyle="-.",label='\lambda_2$')
+
+# ---------------------------------------------------------------------------------
+# Analysis of the instabilities observed in the 2d distribution induced by stochasticity
+# in the front. Signal analysis of the G matrix eigenvalues.
+
+# comparison of the total variance in fitness/rate of adaptation, first eigenvalue, and 
+# fluctuations in the load.
+
+# load covariance data of front from pickle file
+# what is lead_cov data?? lead cov stores the covariance of each const fit line
+pickle_file_name = './data/pythondata/Gstability_exp1.pickle'
+pickle_file = open(pickle_file_name,'rb') 
+[times,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry,var_diff,
+     n1,trG,detG,Gmatr,Xmatr,lambda1,lambda2,Gvec,Gval,Gang,parameters] = pickle.load(pickle_file)
+pickle_file.close()
+
+
+qDF = 2*log(N*s)/log(s/U)
+meanq = np.mean(pop_load)
+
+CVeval1 = np.sqrt(np.var(lambda1))/np.mean(lambda1)*100
+CVeval2 = np.sqrt(np.var(lambda2))/np.mean(lambda2)*100
+CVpopld = np.sqrt(np.var(pop_load))/np.mean(pop_load)*100
+CVcov = np.sqrt(np.var(fit_cov))/np.mean(fit_cov)*100
+
+fig = plt.subplots(figsize=[8,8])
+plt.plot(times,pop_load)

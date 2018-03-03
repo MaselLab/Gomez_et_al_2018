@@ -26,9 +26,15 @@ import plotfunctions as pltfun
 #   tick font size = 18
 #   tick padding = 15
 #   legend = 20 (tex)
+#
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
 #---------------FIGURE 1: SAMPLE OF 2D DISTRIBUTION-----------------------------------------
 #-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
+
 # figure 2: plot of sampled two dimensional distribution from simulated data
 [N,s,U] = [1e9,1e-2,1e-5]
 [sim_start,sim_end,snapshot] = [1e4,4e4,1.313e4]
@@ -74,7 +80,11 @@ del times, genotypes, abundances, fit_clss_width, class_xlabels
 del class_ylabels, fit_distr_2d, cbar, fig1a, ax1a, N, s, U
 
 #-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
 #------------------FIGURE 2: %CHANGE IN V WRT PARAMETERS SHARED AXES----------------------
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
 
 # Need to change this
@@ -182,9 +192,13 @@ fig.subplots_adjust(bottom=0.25)
 plt.tight_layout
 plt.savefig('./figures/fig2.pdf',bbox_inches='tight')
 
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------
 #------------------FIGURE 3: %CHANGE IN V WRT TRAIT NO.----------------------------------
 #-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
 
 #plot fig 2 trait no. effect
 [N,s,U] = [1e7,2e-2,1e-5]
@@ -213,114 +227,128 @@ ax.set_xlim(-0.25,np.log(11))
 fig.savefig('./figures/fig3.pdf')
 
 #-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
 #--------------FIGURE 4: FLUCTUATIONS IN VAR-COV AND EVALS----------------------------------
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
 
 # figure 3: plot of rate of adaptation, variances, covariance and their means
-[N,s,U] = [1e9,1e-2,1e-5]
-[sim_start,sim_end,snapshot] = [5e3,4e4,1.313e4]
-vUNs = pltfun.get_vNsU(N,s,U)
 
+# ----------------plots for angle of G and eigenvalues-----------------------------
 # load time series data of distrStats from plotdata.py output
-pickle_file_name = './data/pythondata/distrStats_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pickle'
+pickle_file_name = './data/pythondata/Gstability_exp1.pickle'
 pickle_file = open(pickle_file_name,'rb') 
-[times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry] = pickle.load(pickle_file)
+[times,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry,var_diff,
+     n1,trG,detG,Gmatr,Xmatr,lambda1,lambda2,Gvec,Gval,Gang,parameters] = pickle.load(pickle_file)
 pickle_file.close()
 
-# select interval of simulation data that will be used for plot
-# reduce loaded data to subset corresponding to selected interval
-[start_indx,end_indx] = pltfun.get_sample_window(times,sim_start,sim_end)
-times = times[start_indx:end_indx]
-fit_var = fit_var[start_indx:end_indx]
-fit_cov = fit_cov[start_indx:end_indx]
-
 # compute means of the time series data and store as constant arry
+[N,s,U] = parameters 
 rate_adpt_t1 = np.asarray(fit_var[:,0])+np.asarray(fit_cov[:])
 var1_avg = np.mean(fit_var[:,0])*np.ones(np.shape(times))
 var2_avg = np.mean(fit_var[:,1])*np.ones(np.shape(times))
 cov_avg = np.mean(fit_cov[:])*np.ones(np.shape(times))
 rate_adpt_t1_avg = var1_avg + cov_avg
 
+# *********************************************************************************
+# plots for figure 4a - the variance and covariance, and trait 1 rate of adaptation
+
+lsize1=14
+lsize2=14
 my_xticks = [10000+i*1000 for i in range(11)]
 my_xlabel = ['10', '', '12', '', '14', '', '16', '', '18', '', '20']
-#my_yticks = [(i-5)*vUNs for i in range(13)]
-#my_ylabel = ['', '-4', '', '-2', '', '0', '', '2', '', '4', '', '6', '']
-my_yticks = [(i-4)*vUNs for i in range(11)]
+
+fig = plt.figure(figsize=[6,14])
+
+my_yticks = [(i-4) for i in range(11)]
 my_ylabel = ['-4', '', '-2', '', '0', '', '2', '', '4', '', '6']
 
-# plot data for figure 3a and 3b 
-fig, ax = plt.subplots(1,1,figsize=[8,5])
-ax.plot(times,rate_adpt_t1_avg,c="black",label=r'$v_1$',linewidth=2.0,linestyle = '-')                
-ax.plot(times,var1_avg,c="black",label=r'$\sigma_1^2$',linewidth=3.0,linestyle = '--')
-ax.plot(times,cov_avg,c="black",label=r'$\sigma_{1,2}$',linewidth=3.0,linestyle = ':')
-ax.plot(times,rate_adpt_t1,c="black",linestyle="-",linewidth=3.0)        
-ax.plot(times,fit_var[:,0],c="black",linestyle="--",linewidth=3.0)
-ax.plot(times,fit_cov[:],c="black",linestyle=":",linewidth=3.0)
+ax=plt.subplot(311)
+ax.plot(times,(1/vU_thry)*rate_adpt_t1_avg,c="black",label=r'$v_1$',linewidth=2.0,linestyle = '-')                
+ax.plot(times,(1/vU_thry)*var1_avg,c="black",label=r'$\sigma_1^2$',linewidth=3.0,linestyle = '--')
+ax.plot(times,(1/vU_thry)*cov_avg,c="black",label=r'$\sigma_{1,2}$',linewidth=3.0,linestyle = ':')
+ax.plot(times,(1/vU_thry)*rate_adpt_t1,c="black",linestyle="-",linewidth=3.0)        
+ax.plot(times,(1/vU_thry)*fit_var[:,0],c="black",linestyle="--",linewidth=3.0)
+ax.plot(times,(1/vU_thry)*fit_cov[:],c="black",linestyle=":",linewidth=3.0)
 ax.axhline(linewidth=0.5, color = 'k')
-ax.set_ylabel(r'$\sigma_1^2$ and $\sigma_{1,2}$ / v(U,N,s)',fontsize=20)
-#ax.set_xlabel('Time (Thousands of Generations)',fontsize=20)
-ax.legend(loc=4,ncol=3,fontsize=20)
+ax.set_ylabel(r'$\sigma_1^2$ & $\sigma_{1,2}$ / $v(U,N,s)$',fontsize=lsize1)
+ax.legend(loc=4,ncol=3,fontsize=lsize1)
 ax.set_ylim((np.min(cov_avg),np.max(var1_avg)))
 ax.set_xlim((1e4,2e4))
-ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=18)
-#plt.xticks(my_xticks,my_xlabel)
+ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
 plt.xticks(my_xticks,[])
 plt.yticks(my_yticks,my_ylabel)
 ax.grid(b='off', which='both', axis='both')
-#ax.ticklabel_format(style='plain',axis='both',scilimits=(0,0))
 ax.axhline(linewidth=0.5, color = 'k')    
-plt.annotate('(a)',xy=(90,280),xycoords='figure points',fontsize=20)         
-fig.savefig('./figures/fig4a.pdf',bbox_inches='tight')
 
+# *********************************************************************************
+# plots for figure 4b - The eigenvalues of the G matrix
 
+my_yticks = [(i-3) for i in range(14)]
+my_ylabel = ['', '-2', '', '0', '', '2', '', '4', '', '6', '', '8', '', '10']
 
+ax=plt.subplot(312)
+ax.plot(times,(1/vU_thry)*lambda1,c="black",linewidth=2.0,linestyle="-",label='$\lambda_1$')
+ax.plot(times,(1/vU_thry)*lambda2,c="black",linewidth=2.0,linestyle=":",label='$\lambda_2$')
+ax.set_ylabel(r'$\lambda$ / $v(U,N,s)$)',fontsize=lsize1)
+ax.axhline(linewidth=0.5, color = 'k')
+ax.set_xlim((1e4,2e4))
+ax.set_ylim((-3,10))
+ax.legend(loc=3,ncol=2,fontsize=lsize1)
+ax.grid(b='off', which='both', axis='both')
+ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
+plt.xticks(my_xticks,[])
+plt.yticks(my_yticks,my_ylabel)
 
-# test plots
-#plt.plot(times,var_diff/vUNs)
-#plt.plot(times,4*fit_cov/vUNs)
-#plt.plot(times,10*np.asarray(Gang))
+#ax.tick_params(labelsize=18)
 
-my_xticks = [10000+i*1000 for i in range(11)]
-my_xlabel = ['10', '', '12', '', '14', '', '16', '', '18', '', '20']
-#my_yticks1 = [(i-5)*vUNs for i in range(13)]
-#my_ylabel1 = ['', '-4', '', '-2', '', '0', '', '2', '', '4', '', '6', '']
-#my_yticks2 = [(i-2)/2.0 for i in range(5)]
-#my_ylabel2 = ['-90.0', '-45.0', '0.0', '45.0', '90.0']
+# *********************************************************************************
+# plots for figure 4c - The angle of the G matrix wrt selection gradient
 
-fig, ax1 = plt.subplots(1,1,figsize=[8,5])
-ax2 = plt.twinx(ax1)
-ax1.plot(times,(1/vUNs)*lambda1,c="blue",linewidth=2.0,linestyle="-",label='$\lambda_1$')
-ax1.plot(times,(1/vUNs)*lambda2,c="green",linewidth=2.0,linestyle="-",label='$\lambda_2$')
-#ax1.plot(times,(1/vUNs)*var_diff,c="magenta",linewidth=2.0,linestyle="-",label='$\sigma_1^2-\sigma_2^2$')
-#ax1.plot(times,(1/vUNs)*fit_cov,c="cyan",linewidth=2.0,linestyle="-",label='$\sigma_{1,2}$')
-ax1.set_ylabel('$\lambda$ / v(U,N,s))',fontsize=20)
-ax1.set_xlabel('Time (Thousands of Generations)',fontsize=20)
-ax1.axhline(linewidth=0.5, color = 'k')
-ax1.set_ylim((-3,10))
-ax1.set_xlim((1e4,2e4))
-ax1.legend(loc=4,ncol=2,fontsize=20)
-ax1.grid(b='off', which='both', axis='both')
-#ax1.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=18)
+#my_yticks = [(i-4) for i in range(9)]
+#my_ylabel = [r'$-90^o$','', r'$-45^o$', '', r'$0^o$', '', r'$45^o$', '', r'$95^o$']
+my_yticks = [(i-2)/2.0 for i in range(5)]
+my_ylabel = [r'-$45^o$','', r'$0^o$','', r'$45^o$']
+
+ax=plt.subplot(313)
+lg1 = ax.plot(times,(pi/2)*Gang,c="black",linewidth=2.0,linestyle="-",label='$\phi$')
+ax.axhline(linewidth=0.5, color = 'k')
+ax.set_ylabel('Angle $\phi$',fontsize=lsize1)
+ax.set_xlim((1e4,2e4))
+ax.set_ylim((-1,1))
+ax.grid(b='off', which='both', axis='both')
+ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
+ax.set_xlabel('Time (Thousands of Generations)',fontsize=lsize1)
 plt.xticks(my_xticks,my_xlabel)
-#plt.yticks(my_yticks1,my_ylabel1)
-plt.annotate('(b)',xy=(100,300),xycoords='figure points',fontsize=20)
-ax1.tick_params(labelsize=18)
+plt.yticks(my_yticks,my_ylabel)
 
-#ax2.plot(times,90*np.asarray(Gang),c="black",linewidth=2.0,linestyle="-",label='$\theta_{PC1,\beta}$')
-ax2.plot(times,(1/np.mean(lambda1))*lambda1,c="blue",linewidth=2.0,linestyle="-.",label='\lambda_1$')
-ax2.plot(times,(1/np.mean(lambda2))*lambda2,c="green",linewidth=2.0,linestyle="-.",label='\lambda_2$')
-ax2.set_ylim((-1.09,np.max((1/np.mean(lambda2))*lambda2)))
-#ax2.set_ylim((-90,90))
-#ax2.set_ylabel(r'Angle between PC1 and $\beta$ (degrees)',fontsize=20)
-ax2.set_ylabel(r'$\lambda$ / $\bar{\lambda}$',fontsize=20)
-ax2.grid(b='off', which='both', axis='both')
-ax2.tick_params(labelsize=18)
-#plt.yticks(my_yticks2,my_ylabel2)
-#ax.ticklabel_format(style='plain',axis='both',scilimits=(0,0))
-fig.savefig('./figures/fig4b.pdf',bbox_inches='tight')
+my_yticks = [10*(i-2) for i in range(5)]
+my_ylabel = [r'-20',r'-10',r'0',r'10',r'20']
+
+ax2 = plt.twinx(ax)
+lg2 = ax2.plot(times,(np.mean(fit_cov))*fit_cov**(-1),c="black",linewidth=2.0,linestyle=":",label='$k$ / $\sigma_{1,2}$')
+ax2.set_ylim((-20,20))
+ax2.set_xlim((1e4,2e4))
+plt.yticks(my_yticks,my_ylabel)
+
+lg = lg1+lg2
+labs = [l.get_label() for l in lg]
+ax.legend(lg, labs, loc=3,ncol=2,fontsize=lsize1)
+
+plt.annotate('(a)',xy=(215,617),xycoords='figure points',fontsize=lsize1)         
+plt.annotate('(b)',xy=(215,407),xycoords='figure points',fontsize=lsize1)
+plt.annotate('(c)',xy=(215,197),xycoords='figure points',fontsize=lsize1)
+
+fig.savefig('./figures/fig4.pdf',bbox_inches='tight')
 
 #-----------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------
 #--------------FIGURE 6: CORR BTWN COVARIANCES FRONT MEAN---------------------------------
+#-----------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------
 
 data_name = '_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1'
