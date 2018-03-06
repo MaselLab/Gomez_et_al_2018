@@ -267,13 +267,13 @@ my_ylabel = ['-4', '', '-2', '', '0', '', '2', '', '4', '', '6']
 
 ax=plt.subplot(311)
 ax.plot(times,(1/vU_thry)*rate_adpt_t1_avg,c="black",label=r'$v_1$',linewidth=2.0,linestyle = '-')                
-ax.plot(times,(1/vU_thry)*var1_avg,c="black",label=r'$\sigma_1^2$',linewidth=3.0,linestyle = '--')
-ax.plot(times,(1/vU_thry)*cov_avg,c="black",label=r'$\sigma_{1,2}$',linewidth=3.0,linestyle = ':')
-ax.plot(times,(1/vU_thry)*rate_adpt_t1,c="black",linestyle="-",linewidth=3.0)        
-ax.plot(times,(1/vU_thry)*fit_var[:,0],c="black",linestyle="--",linewidth=3.0)
-ax.plot(times,(1/vU_thry)*fit_cov[:],c="black",linestyle=":",linewidth=3.0)
+ax.plot(times,(1/vU_thry)*var1_avg,c="black",label=r'$\sigma_1^2$',linewidth=2.0,linestyle = '--')
+ax.plot(times,(1/vU_thry)*cov_avg,c="black",label=r'$\sigma_{1,2}$',linewidth=2.0,linestyle = ':')
+ax.plot(times,(1/vU_thry)*rate_adpt_t1,c="black",linestyle="-",linewidth=2.0)        
+ax.plot(times,(1/vU_thry)*fit_var[:,0],c="black",linestyle="--",linewidth=2.0)
+ax.plot(times,(1/vU_thry)*fit_cov[:],c="black",linestyle=":",linewidth=2.0)
 ax.axhline(linewidth=0.5, color = 'k')
-ax.set_ylabel(r'$\sigma_1^2$ & $\sigma_{1,2}$ / $v(U,N,s)$',fontsize=lsize1)
+ax.set_ylabel(r'$\sigma_1^2$ and $\sigma_{1,2}$ / $v(U,N,s)$',fontsize=lsize1)
 ax.legend(loc=4,ncol=3,fontsize=lsize1)
 ax.set_ylim((np.min(cov_avg),np.max(var1_avg)))
 ax.set_xlim((1e4,2e4))
@@ -292,11 +292,11 @@ my_ylabel = ['', '-2', '', '0', '', '2', '', '4', '', '6', '', '8', '', '10']
 ax=plt.subplot(312)
 ax.plot(times,(1/vU_thry)*lambda1,c="black",linewidth=2.0,linestyle="-",label='$\lambda_1$')
 ax.plot(times,(1/vU_thry)*lambda2,c="black",linewidth=2.0,linestyle=":",label='$\lambda_2$')
-ax.set_ylabel(r'$\lambda$ / $v(U,N,s)$)',fontsize=lsize1)
+ax.set_ylabel(r'$\lambda$ / $v(U,N,s)$',fontsize=lsize1)
 ax.axhline(linewidth=0.5, color = 'k')
 ax.set_xlim((1e4,2e4))
 ax.set_ylim((-3,10))
-ax.legend(loc=3,ncol=2,fontsize=lsize1)
+ax.legend(loc=4,ncol=2,fontsize=lsize1)
 ax.grid(b='off', which='both', axis='both')
 ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
 plt.xticks(my_xticks,[])
@@ -321,25 +321,33 @@ ax.set_ylim((-1,1))
 ax.grid(b='off', which='both', axis='both')
 ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
 ax.set_xlabel('Time (Thousands of Generations)',fontsize=lsize1)
+ax.legend(loc=3,ncol=2,fontsize=lsize1)
+
 plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
 
-my_yticks = [10*(i-2) for i in range(5)]
-my_ylabel = [r'-20',r'-10',r'0',r'10',r'20']
+
+my_yticks = [(i-4) for i in range(9)]
+my_ylabel = ['-4', '', '-2', '', '0', '', '2', '', '4']
 
 ax2 = plt.twinx(ax)
-lg2 = ax2.plot(times,(np.mean(fit_cov))*fit_cov**(-1),c="black",linewidth=2.0,linestyle=":",label='$k$ / $\sigma_{1,2}$')
-ax2.set_ylim((-20,20))
+#lg2 = ax2.plot(times,(np.mean(fit_cov))*fit_cov**(-1),c="black",linewidth=2.0,linestyle=":",label='$k$ / $\sigma_{1,2}$')
+lg2 = ax2.plot(times,(1/vU_thry)*fit_cov[:],c="black",linestyle=":",linewidth=2.0,label='$\sigma_{1,2}$')
 ax2.set_xlim((1e4,2e4))
+ax2.set_ylim((-4,4))
 plt.yticks(my_yticks,my_ylabel)
 
 lg = lg1+lg2
 labs = [l.get_label() for l in lg]
-ax.legend(lg, labs, loc=3,ncol=2,fontsize=lsize1)
+ax.legend(lg, labs, loc=4,ncol=2,fontsize=lsize1)
 
-plt.annotate('(a)',xy=(215,617),xycoords='figure points',fontsize=lsize1)         
-plt.annotate('(b)',xy=(215,407),xycoords='figure points',fontsize=lsize1)
-plt.annotate('(c)',xy=(215,197),xycoords='figure points',fontsize=lsize1)
+plt.annotate('(a)',xy=(365,617),xycoords='figure points',fontsize=lsize1)         
+plt.annotate('(b)',xy=(365,407),xycoords='figure points',fontsize=lsize1)
+plt.annotate('(c)',xy=(365,197),xycoords='figure points',fontsize=lsize1)
+plt.axvspan(1.19e4,1.25e4, color='gray', alpha=0.2)
+plt.axvspan(1.40e4,1.46e4, color='gray', alpha=0.2)
+plt.axvspan(1.87e4,2.00e4, color='gray', alpha=0.2)
+#plt.axvspan(3, 6, color='grey', alpha=0.1)
 
 fig.savefig('./figures/fig4.pdf',bbox_inches='tight')
 
