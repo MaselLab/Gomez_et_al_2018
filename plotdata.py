@@ -529,7 +529,7 @@ n1 = len(fit_cov)
 trG = fit_var[:,0]+fit_var[:,1] 
 detG =  np.asarray([fit_var[i,0]*fit_var[i,1]-fit_cov[i]**2 for i in range(n1)])
 Gmatr = [np.asarray([[fit_var[i,0],fit_cov[i]],[fit_cov[i],fit_var[i,1]]]) for i in range(n1)]
-Xmatr = np.asarray([[1/sqrt(2),1/sqrt(2)],[1/sqrt(2),-1/sqrt(2)]])
+Xmatr = np.asarray([[1/np.sqrt(2),1/np.sqrt(2)],[1/np.sqrt(2),-1/np.sqrt(2)]])
 
 lambda1 = np.asarray([0.5*(trG[i]-np.sqrt(trG[i]**2-4*detG[i])) for i in range(n1)])
 lambda2 = np.asarray([0.5*(trG[i]+np.sqrt(trG[i]**2-4*detG[i])) for i in range(n1)])
@@ -547,9 +547,9 @@ for i in range(n1):
         Gvec = Gvec+[A[1]]
 
 for i in range(n1):
-    Ang1 = np.arccos((sign(Gvec[i][0,0])*Gvec[i][0,0]*Xmatr[0,0]+sign(Gvec[i][1,0])*Gvec[i][1,0]*Xmatr[1,0])/np.linalg.norm(Gvec[i][:,0]))
-    Ang1 = sign(sign(Gvec[i][1,0])*Gvec[i][1,0]-sign(Gvec[i][0,0])*Gvec[i][0,0])*Ang1
-    Gang = Gang + [Ang1*2/pi]
+    Ang1 = np.arccos((np.sign(Gvec[i][0,0])*Gvec[i][0,0]*Xmatr[0,0]+np.sign(Gvec[i][1,0])*Gvec[i][1,0]*Xmatr[1,0])/np.linalg.norm(Gvec[i][:,0]))
+    Ang1 = np.sign(np.sign(Gvec[i][1,0])*Gvec[i][1,0]-np.sign(Gvec[i][0,0])*Gvec[i][0,0])*Ang1
+    Gang = Gang + [Ang1*2/np.pi]
 
 # convert list to array  
 Gval = np.asarray(Gval)
