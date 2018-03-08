@@ -286,16 +286,19 @@ ax.axhline(linewidth=0.5, color = 'k')
 # *********************************************************************************
 # plots for figure 4b - The eigenvalues of the G matrix
 
-my_yticks = [(i-3) for i in range(14)]
-my_ylabel = ['', '-2', '', '0', '', '2', '', '4', '', '6', '', '8', '', '10']
+my_yticks = [(i-2) for i in range(8)]
+my_ylabel = ['-2', '', '0', '', '2', '', '4','']
 
 ax=plt.subplot(312)
-ax.plot(times,(1/vU_thry)*lambda1,c="black",linewidth=2.0,linestyle="-",label='$\lambda_1$')
-ax.plot(times,(1/vU_thry)*lambda2,c="black",linewidth=2.0,linestyle=":",label='$\lambda_2$')
-ax.set_ylabel(r'$\lambda$ / $v(U,N,s)$',fontsize=lsize1)
+ax.plot(times,(1/np.mean(lambda1))*lambda1,c="black",linewidth=2.0,linestyle="-",label='$\lambda_1$ / $\overline{\lambda}_1$')
+ax.plot(times,(1/np.mean(lambda2))*lambda2,c="black",linewidth=2.0,linestyle=":",label='$\lambda_2$ / $\overline{\lambda}_2$')
+ax.annotate('',xy=(1.05e4,3.9), xycoords='data',xytext=(1.05e4,4.9),arrowprops=dict(facecolor='black', shrink=0.01, width=1, headwidth=8))
+ax.annotate('',xy=(1.12e4,2.1), xycoords='data',xytext=(1.12e4,3.1),arrowprops=dict(facecolor='black', shrink=0.01, width=1, headwidth=8))
+ax.annotate('',xy=(1.2e4,0.2), xycoords='data',xytext=(1.2e4,-0.8),arrowprops=dict(facecolor='black', shrink=0.01, width=1, headwidth=8))
+ax.set_ylabel(r'Normalized eignvalues of G',fontsize=lsize1)
 ax.axhline(linewidth=0.5, color = 'k')
 ax.set_xlim((1e4,2e4))
-ax.set_ylim((-3,10))
+ax.set_ylim((-2,5))
 ax.legend(loc=4,ncol=2,fontsize=lsize1)
 ax.grid(b='off', which='both', axis='both')
 ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
@@ -313,9 +316,9 @@ my_yticks = [(i-2)/2.0 for i in range(5)]
 my_ylabel = [r'-$45^o$','', r'$0^o$','', r'$45^o$']
 
 ax=plt.subplot(313)
-lg1 = ax.plot(times,(pi/2)*Gang,c="black",linewidth=2.0,linestyle="-",label='$\phi$')
+lg1 = ax.plot(times,(pi/2)*Gang,c="black",linewidth=2.0,linestyle="-",label='$Angle$')
 ax.axhline(linewidth=0.5, color = 'k')
-ax.set_ylabel('Angle $\phi$',fontsize=lsize1)
+ax.set_ylabel(r'Angle of $1^{st}$ eigenvector',fontsize=lsize1)
 ax.set_xlim((1e4,2e4))
 ax.set_ylim((-1,1))
 ax.grid(b='off', which='both', axis='both')
@@ -325,7 +328,6 @@ ax.legend(loc=3,ncol=2,fontsize=lsize1)
 
 plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
-
 
 my_yticks = [(i-4) for i in range(9)]
 my_ylabel = ['-4', '', '-2', '', '0', '', '2', '', '4']
@@ -388,8 +390,8 @@ my_ylabel = ['0', '', '0.2', '', '0.4', '', '0.6', '', '0.8', '', '1']
 fig,ax = plt.subplots(figsize=[8,8])
 ax.plot((1/tau_fix_avg)*np.asarray(t_off),np.asarray(t_cov),c="black",linestyle="-",linewidth=3.0)
 ax.plot(xline,yline,c="black",linestyle="--",linewidth=3.0)
-ax.set_ylabel(r'Front-Bulk $\sigma_{1,2}$ Correlation',fontsize=20)
-ax.set_xlabel(r'Time offset (Multiples of $\bar{\tau}_{SW}$)',fontsize=20)
+ax.set_ylabel(r'Front-Bulk $\sigma_{1,2}$ Correlation',fontsize=28)
+ax.set_xlabel(r'Time offset (Multiples of $\bar{\tau}_{SW}$)',fontsize=28)
 ax.axhline(linewidth=0.5, color = 'k')        
 ax.set_ylim((0,1))
 ax.set_xlim((0,1.3e3/tau_fix_avg))        
@@ -401,8 +403,8 @@ ax.yaxis.set_ticks_position('left')
 plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
 
-ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=18)
-fig.savefig('./figures/fig6a.pdf')
+ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=26)
+fig.savefig('./figures/fig6a.pdf',bbox_inches='tight')
 
 # figure 6b: Time displaced Covariance for Poster
 fig,ax = plt.subplots(1,1,figsize=[8,8])
@@ -420,3 +422,127 @@ ax.yaxis.set_ticks_position('left')
 ax.legend()
 plt.show()
 fig.savefig('./figures/fig6b.pdf')
+
+# ************************************************************************************
+# Examine 2d distribution at peaks and valleys for comparison
+# ************************************************************************************
+
+from mpl_toolkits.mplot3d import Axes3D
+from scipy.stats import multivariate_normal
+from numpy import inf
+import matplotlib.ticker as mtick
+import pickle
+import matplotlib.pyplot as plt
+import scipy as sp
+import numpy as np
+import matplotlib.mlab as mlab
+import plotfunctions as pltfun
+
+# figure 2: plot of sampled two dimensional distribution from simulated data
+[N,s,U] = [1e9,1e-2,1e-5]
+[sim_start,sim_end] = [1e4,4e4]
+snapshot = [1.05e4,1.12e4,1.2e4]
+
+# load time series data of distrStats from plotdata.py output
+pickle_file_name = './data/pythondata/timesGenosAbund_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pickle'
+pickle_file = open(pickle_file_name,'rb') 
+[times,genotypes_all,abundances_all] = pickle.load(pickle_file)
+pickle_file.close()
+
+# ---------------------------------------------------------------------------------                                     
+# 2D distribution sample at time 10,500 generations
+fig=plt.figure(figsize=[12,4])
+
+ax=plt.subplot(131)
+snapshot_indx = pltfun.get_sample_window(times,snapshot[0],snapshot[0])[0]
+genotypes = genotypes_all[snapshot_indx]
+abundances = abundances_all[snapshot_indx]  
+fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
+box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
+[distr_grid,class_xlabels,class_ylabels] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+distr_grid = np.log10(N*distr_grid)
+distr_grid[distr_grid == -inf] = 0
+
+fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
+#cbar = plt.colorbar(fit_distr_2d)
+ax.axis('tight')        
+ax.set_xticks(np.arange(distr_grid.shape[1])+0.5)
+ax.set_yticks(np.arange(distr_grid.shape[0])+0.5)        
+#ax.set_xticklabels(class_xlabels[1:],rotation=90)
+#ax.set_yticklabels(class_ylabels[1:])
+ax.set_xticklabels([])
+ax.set_yticklabels([])
+#ax.set_xlabel('Beneficial mutaitons trait 1',fontsize=24,labelpad=20)
+#ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
+ax.tick_params(axis='both',labelsize=14)        
+#cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
+#plt.annotate('t = 10,500',xy=(410,85),xycoords='figure points',fontsize=20)
+
+# ---------------------------------------------------------------------------------
+# 2D distribution sample at time 11,200 generations
+ax=plt.subplot(132)
+snapshot_indx = pltfun.get_sample_window(times,snapshot[1],snapshot[1])[0]
+genotypes = genotypes_all[snapshot_indx]
+abundances = abundances_all[snapshot_indx]
+fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
+box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
+[distr_grid,class_xlabels,class_ylabels] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+distr_grid = np.log10(N*distr_grid)
+distr_grid[distr_grid == -inf] = 0
+
+fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
+#cbar = plt.colorbar(fit_distr_2d)
+ax.axis('tight')        
+ax.set_xticks(np.arange(distr_grid.shape[1])+0.5)
+ax.set_yticks(np.arange(distr_grid.shape[0])+0.5)        
+#ax.set_xticklabels(class_xlabels[1:],rotation=90)
+#ax.set_yticklabels(class_ylabels[1:])
+ax.set_xticklabels([])
+ax.set_yticklabels([])    
+#ax.set_xlabel('Beneficial mutaitons trait 1',fontsize=24,labelpad=20)
+#ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
+ax.tick_params(axis='both',labelsize=14)        
+#cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
+#plt.annotate('t = 11,200',xy=(410,85),xycoords='figure points',fontsize=20)
+
+# ---------------------------------------------------------------------------------
+# 2D distribution sample at time 12,000 generations
+ax=plt.subplot(133)
+snapshot_indx = pltfun.get_sample_window(times,snapshot[2],snapshot[2])[0]
+genotypes = genotypes_all[snapshot_indx]
+abundances = abundances_all[snapshot_indx]  
+fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
+box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
+[distr_grid,class_xlabels,class_ylabels] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+distr_grid = np.log10(N*distr_grid)
+distr_grid[distr_grid == -inf] = 0
+          
+fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
+#cbar = plt.colorbar(fit_distr_2d)
+ax.axis('tight')        
+ax.set_xticks(np.arange(distr_grid.shape[1])+0.5)
+ax.set_yticks(np.arange(distr_grid.shape[0])+0.5)        
+#ax.set_xticklabels(class_xlabels[1:],rotation=90)
+#ax.set_yticklabels(class_ylabels[1:])
+ax.set_xticklabels([])
+ax.set_yticklabels([])       
+#ax.set_xlabel('Beneficial mutaitons trait 1',fontsize=24,labelpad=20)
+#ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
+ax.tick_params(axis='both',labelsize=14)        
+#cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
+#plt.annotate('t = 12,000',xy=(410,85),xycoords='figure points',fontsize=20)
+
+fig.text(0.51, 0.02, 'Beneficial mutations trait 1', ha='center', va='center',fontsize=14)
+fig.text(0.1, 0.5, 'Beneficial mutations trait 2', ha='center', va='center', rotation='vertical',fontsize=14)
+fig.text(0.95, 0.5, 'Log10 of abundances', ha='center', va='center', rotation='vertical',fontsize=14)
+fig.subplots_adjust(right=0.89)
+cbar_ax = fig.add_axes([0.90, 0.10, 0.02, 0.8])
+fig.colorbar(fit_distr_2d, cax=cbar_ax)
+
+plt.annotate('(a)',xy=(215,240),xycoords='figure points',fontsize=16)         
+plt.annotate('(b)',xy=(440,240),xycoords='figure points',fontsize=16)
+plt.annotate('(c)',xy=(665,240),xycoords='figure points',fontsize=16)
+fig.subplots_adjust(wspace=0.05)
+#fig.subplots_adjust(bottom=0.25)
+
+fig.savefig('./figures/fig7.pdf',bbox_inches='tight')
