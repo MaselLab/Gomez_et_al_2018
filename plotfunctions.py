@@ -176,3 +176,17 @@ def get_subset_times(N,s,U,times,scaling):
         indx_list = indx_list + [indx]
     return indx_list
 # -----------------------------------------------------------------------------    
+
+def get_hifit_front_line(genotypes,num_points,box_dim):
+    num_geno = len(genotypes)
+    min_x = min(genotypes[:,0])-box_dim[0][1]
+    max_x = box_dim[0][0]+box_dim[0][1]
+    min_y = min(genotypes[:,1])-box_dim[0][1]
+    
+    hffrt = []    
+    L1 = max([genotypes[i][0]+genotypes[i][1] for i in range(num_geno)])
+    
+    xl = np.asarray([1.0*(max_x-2*box_dim[0][1])*i/num_points+box_dim[0][1] for i in range(num_points+1)])
+    yl = np.asarray([L1-1.0*xl[i]-min_y-min_x+1 for i in range(num_points+1)])
+    return [xl,yl]
+# -----------------------------------------------------------------------------  
