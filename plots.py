@@ -76,7 +76,7 @@ ax1a.tick_params(axis='both',labelsize=14)
 cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
 #ax1.scatter([45],[33])
 #fit_line = plt.plot([i+40 for i in range(13)],[-i+38 for i in range(13)],ls="--", c=".3")
-fig1a.savefig('./figures/fig1.pdf')
+fig1a.savefig('./figures/2dDistributionSample.pdf')
 
 del times, genotypes, abundances, fit_clss_width, class_xlabels
 del class_ylabels, fit_distr_2d, cbar, fig1a, ax1a, N, s, U
@@ -151,7 +151,7 @@ ax.xaxis.set_tick_params(which='both',length=5)
 ax.yaxis.set_tick_params(which='both',length=5)
 ax.xaxis.set_ticks_position('bottom')
 ax.yaxis.set_ticks_position('left')
-plt.annotate('(a)',xy=(380,395),xycoords='axes fraction',fontsize=20)
+plt.annotate('(a)',xy=(0.9,0.93),xycoords='axes fraction',fontsize=20)
 
 # figure for change in mutation rate
 ax=plt.subplot(132)
@@ -169,7 +169,7 @@ ax.xaxis.set_tick_params(which='both',length=5)
 ax.yaxis.set_tick_params(which='both',length=5)
 ax.xaxis.set_ticks_position('bottom')
 ax.yaxis.set_ticks_position('left')
-plt.annotate('(b)',xy=(760,395),xycoords='axes fraction',fontsize=20)
+plt.annotate('(b)',xy=(0.9,0.93),xycoords='axes fraction',fontsize=20)
 
 # figure for change in population size
 ax=plt.subplot(133)
@@ -187,12 +187,12 @@ ax.xaxis.set_tick_params(which='both',length=5)
 ax.yaxis.set_tick_params(which='both',length=5)
 ax.xaxis.set_ticks_position('bottom')
 ax.yaxis.set_ticks_position('left')
-plt.annotate('(c)',xy=(1145,395),xycoords='axes fraction',fontsize=20)
+plt.annotate('(c)',xy=(0.9,0.93),xycoords='axes fraction',fontsize=20)
 
 fig.subplots_adjust(wspace=0.1)
 fig.subplots_adjust(bottom=0.25)
 plt.tight_layout
-plt.savefig('./figures/fig2.pdf',bbox_inches='tight')
+plt.savefig('./figures/MeanVarianceCovarianceNsU.pdf',bbox_inches='tight')
 
 # ************************************************************************************
 # ************************************************************************************
@@ -226,7 +226,7 @@ ax.set_ylim((0,1.1))
 ax.set_xlim(-0.25,np.log(11)) 
 #ax.legend(loc=1,ncol=1,fontsize=20,frameon=True,scatterpoints = 1)        
 #ax2g.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=2,fontsize=20)        
-fig.savefig('./figures/fig3.pdf')
+fig.savefig('./figures/vReductionMultipleTraits.pdf')
 
 # ************************************************************************************
 # ************************************************************************************
@@ -364,7 +364,7 @@ plt.axvspan(1.87e4,2.00e4, color='gray', alpha=0.2)
 #plt.axvspan(3, 6, color='grey', alpha=0.1)
 plt.tight_layout()
 
-fig.savefig('./figures/fig4.pdf',bbox_inches='tight')
+fig.savefig('./figures/FluctuationsStabilityG.pdf',bbox_inches='tight')
 
 # ************************************************************************************
 # ************************************************************************************
@@ -417,7 +417,7 @@ plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
 
 ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=26)
-fig.savefig('./figures/fig5c.pdf',bbox_inches='tight')
+fig.savefig('./figures/CorrelationNoseBulkCovariance.pdf',bbox_inches='tight')
 
 # figure 6b: Time displaced Covariance for Poster
 fig,ax = plt.subplots(1,1,figsize=[8,8])
@@ -566,4 +566,4 @@ fig.subplots_adjust(wspace=0.05)
 #fig.subplots_adjust(bottom=0.25)
 #plt.tight_layout()
 
-fig.savefig('./figures/fig6a.pdf',bbox_inches='tight')
+fig.savefig('./figures/2dBulkBreakup.pdf',bbox_inches='tight')

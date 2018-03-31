@@ -131,7 +131,7 @@ def get_cov_by_fitness_line(genotypes,abundances,s):
 
 # -----------------------------------------------------------------------------    
 def get_vNsU_perChg(N,s,U,n):
-    vrate = 1-(np.log(s/U)**2*(2*np.log(N*s)-np.log(s/n/U)))/(n*np.log(s/n/U)**2*(2*np.log(N*s)-np.log(s/U))) 
+    vrate = ((2*np.log(N*s)-np.log(s/n/U))/np.log(s/n/U)**2/n) / ((2*np.log(N*s)-np.log(s/U))/np.log(s/U)**2) 
     return vrate
 
 # -----------------------------------------------------------------------------
