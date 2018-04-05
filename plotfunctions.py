@@ -191,7 +191,7 @@ def get_hifit_front_line(genotypes,num_points,box_dim):
     min_y = min(genotypes[:,1])
     
     hffrt = []    
-    L1 = 2+max([genotypes[i][0]-min_x+genotypes[i][1]-min_y+2*box_dim[0][1] for i in range(num_geno)])
+    L1 = 1+max([genotypes[i][0]-min_x+genotypes[i][1]-min_y+2*box_dim[0][1] for i in range(num_geno)])
     
     x_start = L1-box_dim[0][0]
     x_end = box_dim[0][0]

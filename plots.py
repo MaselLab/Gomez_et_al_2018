@@ -484,7 +484,7 @@ fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, v
 ax.scatter(hhf_points[:,0],hhf_points[:,1],c="pink",marker="s",linewidth='0',s=100)
 
 # get line data for pre-high fitness front
-[xl,yl] = get_hifit_front_line(genotypes,40,box_dim)
+[xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
 ax.plot(xl,yl,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
@@ -520,7 +520,7 @@ fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, v
 ax.scatter(hhf_points[:,0],hhf_points[:,1],c="pink",marker="s",linewidth='0',s=100)
 
 # get line data for pre-high fitness front
-[xl,yl] = get_hifit_front_line(genotypes,40,box_dim)
+[xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
 ax.plot(xl,yl,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
@@ -556,7 +556,7 @@ fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, v
 ax.scatter(hhf_points[:,0],hhf_points[:,1],c="pink",marker="s",linewidth='0',s=100)
 
 # get line data for pre-high fitness front
-[xl,yl] = get_hifit_front_line(genotypes,40,box_dim)
+[xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
 ax.plot(xl,yl,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
@@ -592,7 +592,7 @@ fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, v
 ax.scatter(hhf_points[:,0],hhf_points[:,1],c="pink",marker="s",linewidth='0',s=100)
 
 # get line data for pre-high fitness front
-[xl,yl] = get_hifit_front_line(genotypes,40,box_dim)
+[xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
 ax.plot(xl,yl,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
@@ -627,7 +627,7 @@ fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, v
 ax.scatter(hhf_points[:,0],hhf_points[:,1],c="pink",marker="s",linewidth='0',s=100)
 
 # get line data for pre-high fitness front
-[xl,yl] = get_hifit_front_line(genotypes,40,box_dim)
+[xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
 ax.plot(xl,yl,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
@@ -662,7 +662,7 @@ fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, v
 ax.scatter(hhf_points[:,0],hhf_points[:,1],c="pink",marker="s",linewidth='0',s=100)
 
 # get line data for pre-high fitness front
-[xl,yl] = get_hifit_front_line(genotypes,40,box_dim)
+[xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
 ax.plot(xl,yl,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
