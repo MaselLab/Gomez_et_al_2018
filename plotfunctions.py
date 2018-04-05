@@ -75,7 +75,9 @@ def get_2D_distr(genotypes,abundances,box_dim):
 # box_dim = gives array data to bound distr correponding to genotypes & abund.
 #           [[width1,margin1],[width2,margin2]]
 # returns: an array whose elements are the abundances of the fit classes
-
+    
+    hhfgenotypes = np.asarray(get_hifit_front_genos(genotypes))
+    hhf_points = []
     tot_pop_size = sum(abundances[0])  # be careful with your sums of arrays!!!    
     dim1_data = [np.min(genotypes[:,0]),np.max(genotypes[:,0])]
     dim2_data = [np.min(genotypes[:,1]),np.max(genotypes[:,1])]
@@ -88,13 +90,19 @@ def get_2D_distr(genotypes,abundances,box_dim):
     
     for i in range(len(genotypes)):
         indx1 = genotypes[i][0] - dim1_data[0] + box_dim[0][1]
-        indx2 = genotypes[i][1] - dim2_data[0] + box_dim[1][1]
+        indx2 = genotypes[i][1] - dim2_data[0] + box_dim[1][1]        
         my_distr[indx1,indx2] = max([abundances[0][i]/tot_pop_size,1/tot_pop_size])
-    
+        
     xlabels = [(dim1_data[0] - box_dim[0][1]-1 + i) for i in range(box_dim[0][0]+1)]
     ylabels = [(dim2_data[0] - box_dim[1][1]-1 + i) for i in range(box_dim[1][0]+1)]
+
+    for i in range(len(hhfgenotypes)):
+        indx1 = hhfgenotypes[i][0] - dim1_data[0] + box_dim[0][1]
+        indx2 = hhfgenotypes[i][1] - dim2_data[0] + box_dim[1][1]        
+        hhf_points.append([indx1+.5,indx2+0.5])
     
-    return [my_distr,xlabels,ylabels]
+    hhf_points = np.asarray(hhf_points)
+    return [my_distr,xlabels,ylabels,hhf_points]
 
 # -----------------------------------------------------------------------------
 def get_cov_by_fitness_line(genotypes,abundances,s):
@@ -179,14 +187,33 @@ def get_subset_times(N,s,U,times,scaling):
 
 def get_hifit_front_line(genotypes,num_points,box_dim):
     num_geno = len(genotypes)
-    min_x = min(genotypes[:,0])-box_dim[0][1]
-    max_x = box_dim[0][0]+box_dim[0][1]
-    min_y = min(genotypes[:,1])-box_dim[0][1]
+    min_x = min(genotypes[:,0])
+    min_y = min(genotypes[:,1])
     
     hffrt = []    
-    L1 = max([genotypes[i][0]+genotypes[i][1] for i in range(num_geno)])
+    L1 = 2+max([genotypes[i][0]-min_x+genotypes[i][1]-min_y+2*box_dim[0][1] for i in range(num_geno)])
     
-    xl = np.asarray([1.0*(max_x-2*box_dim[0][1])*i/num_points+box_dim[0][1] for i in range(num_points+1)])
-    yl = np.asarray([L1-1.0*xl[i]-min_y-min_x+1 for i in range(num_points+1)])
+    x_start = L1-box_dim[0][0]
+    x_end = box_dim[0][0]
+    
+    xl = np.asarray([1.0*(x_end-x_start)*i/num_points + x_start for i in range(num_points+1)])
+    yl = np.asarray([L1-1.0*xl[i] for i in range(num_points+1)])
     return [xl,yl]
+    
+# -----------------------------------------------------------------------------  
+    
+def get_hifit_front_genos(genotypes):
+    num_geno = len(genotypes)
+    hhfgenotypes = []
+    L = 1+np.max([genotypes[i][0]+genotypes[i][1] for i in range(num_geno)])
+    
+    for i in range(num_geno):
+        if(genotypes[i][0]+genotypes[i][1]+1 == L):
+            if [genotypes[i][0]+1,genotypes[i][1]] not in hhfgenotypes:
+                hhfgenotypes.append([genotypes[i][0]+1,genotypes[i][1]])
+            if [genotypes[i][0],genotypes[i][1]+1] not in hhfgenotypes:
+                hhfgenotypes.append([genotypes[i][0],genotypes[i][1]+1])
+    
+    return hhfgenotypes
+
 # -----------------------------------------------------------------------------  

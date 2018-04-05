@@ -475,14 +475,17 @@ genotypes = genotypes_all[snapshot_indx]
 abundances = abundances_all[snapshot_indx]  
 fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
 box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
-[distr_grid,class_xlabels,class_ylabels] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+[distr_grid,class_xlabels,class_ylabels,hhf_points] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
 distr_grid = np.log10(N*distr_grid)
 distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
+# mark classes at the high fitness front
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="pink",marker="s",linewidth='0',s=100)
+
 # get line data for pre-high fitness front
-[xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
-ax.plot(xl,yl,c="black")
+[xl,yl] = get_hifit_front_line(genotypes,40,box_dim)
+ax.plot(xl,yl,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
 ax.axis('tight')        
@@ -508,15 +511,17 @@ genotypes = genotypes_all[snapshot_indx]
 abundances = abundances_all[snapshot_indx]
 fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
 box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
-[distr_grid,class_xlabels,class_ylabels] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+[distr_grid,class_xlabels,class_ylabels,hhf_points] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
 distr_grid = np.log10(N*distr_grid)
 distr_grid[distr_grid == -inf] = 0
-
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
+# mark classes at the high fitness front
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="pink",marker="s",linewidth='0',s=100)
+
 # get line data for pre-high fitness front
-[xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
-ax.plot(xl,yl,c="black")
+[xl,yl] = get_hifit_front_line(genotypes,40,box_dim)
+ax.plot(xl,yl,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
 ax.axis('tight')        
@@ -542,15 +547,17 @@ genotypes = genotypes_all[snapshot_indx]
 abundances = abundances_all[snapshot_indx]  
 fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
 box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
-[distr_grid,class_xlabels,class_ylabels] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+[distr_grid,class_xlabels,class_ylabels,hhf_points] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
 distr_grid = np.log10(N*distr_grid)
 distr_grid[distr_grid == -inf] = 0
-          
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
+# mark classes at the high fitness front
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="pink",marker="s",linewidth='0',s=100)
+
 # get line data for pre-high fitness front
-[xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
-ax.plot(xl,yl,c="black")
+[xl,yl] = get_hifit_front_line(genotypes,40,box_dim)
+ax.plot(xl,yl,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
 ax.axis('tight')        
@@ -576,14 +583,17 @@ genotypes = genotypes_all[snapshot_indx]
 abundances = abundances_all[snapshot_indx]  
 fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
 box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
-[distr_grid,class_xlabels,class_ylabels] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+[distr_grid,class_xlabels,class_ylabels,hhf_points] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
 distr_grid = np.log10(N*distr_grid)
 distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
+# mark classes at the high fitness front
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="pink",marker="s",linewidth='0',s=100)
+
 # get line data for pre-high fitness front
-[xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
-ax.plot(xl,yl,c="black")
+[xl,yl] = get_hifit_front_line(genotypes,40,box_dim)
+ax.plot(xl,yl,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
 ax.axis('tight')        
@@ -608,15 +618,17 @@ genotypes = genotypes_all[snapshot_indx]
 abundances = abundances_all[snapshot_indx]
 fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
 box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
-[distr_grid,class_xlabels,class_ylabels] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+[distr_grid,class_xlabels,class_ylabels,hhf_points] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
 distr_grid = np.log10(N*distr_grid)
 distr_grid[distr_grid == -inf] = 0
-
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
+# mark classes at the high fitness front
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="pink",marker="s",linewidth='0',s=100)
+
 # get line data for pre-high fitness front
-[xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
-ax.plot(xl,yl,c="black")
+[xl,yl] = get_hifit_front_line(genotypes,40,box_dim)
+ax.plot(xl,yl,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
 ax.axis('tight')        
@@ -641,15 +653,17 @@ genotypes = genotypes_all[snapshot_indx]
 abundances = abundances_all[snapshot_indx]  
 fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
 box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
-[distr_grid,class_xlabels,class_ylabels] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+[distr_grid,class_xlabels,class_ylabels,hhf_points] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
 distr_grid = np.log10(N*distr_grid)
-distr_grid[distr_grid == -inf] = 0
-          
+distr_grid[distr_grid == -inf] = 0     
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
+# mark classes at the high fitness front
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="pink",marker="s",linewidth='0',s=100)
+
 # get line data for pre-high fitness front
-[xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
-ax.plot(xl,yl,c="black")
+[xl,yl] = get_hifit_front_line(genotypes,40,box_dim)
+ax.plot(xl,yl,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
 ax.axis('tight')        
