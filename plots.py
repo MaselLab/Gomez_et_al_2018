@@ -481,7 +481,7 @@ distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
 # mark classes at the high fitness front
-ax.scatter(hhf_points[:,0],hhf_points[:,1],c="deepskyblue",marker="s",linewidth='0',s=140)
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="dodgerblue",marker="s",linewidth='0',s=140)
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
@@ -517,7 +517,7 @@ distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
 # mark classes at the high fitness front
-ax.scatter(hhf_points[:,0],hhf_points[:,1],c="deepskyblue",marker="s",linewidth='0',s=155)
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="dodgerblue",marker="s",linewidth='0',s=155)
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
@@ -553,7 +553,7 @@ distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
 # mark classes at the high fitness front
-ax.scatter(hhf_points[:,0],hhf_points[:,1],c="deepskyblue",marker="s",linewidth='0',s=170)
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="dodgerblue",marker="s",linewidth='0',s=170)
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
@@ -589,7 +589,7 @@ distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
 # mark classes at the high fitness front
-ax.scatter(hhf_points[:,0],hhf_points[:,1],c="deepskyblue",marker="s",linewidth='0',s=155)
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="dodgerblue",marker="s",linewidth='0',s=155)
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
@@ -624,7 +624,7 @@ distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
 # mark classes at the high fitness front
-ax.scatter(hhf_points[:,0],hhf_points[:,1],c="deepskyblue",marker="s",linewidth='0',s=140)
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="dodgerblue",marker="s",linewidth='0',s=140)
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
@@ -659,7 +659,7 @@ distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
 # mark classes at the high fitness front
-ax.scatter(hhf_points[:,0],hhf_points[:,1],c="deepskyblue",marker="s",linewidth='0',s=120)
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="dodgerblue",marker="s",linewidth='0',s=120)
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
