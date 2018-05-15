@@ -472,7 +472,7 @@ The analysis demonstrates a general relation between selection on recombination 
   Review                   = {SELECTION VARIATION PARADOX AND MULTVAR QG
 
 COMMENTS:
--basic conflict in observations: ample additive genetic variation and strong stablizing selection - with explanations: mutation selection balance, selection induces overdominance on loci
+-basic conflict in observations: ample additive genetic variation and strong stabilizing selection - with explanations: mutation selection balance, selection induces overdominance on loci
 -quantitative view of variation being explained character by character leads to conclusion, through naive calculations, that at most 100 characters can be selected upon
 -seems more likely that quantitative variation is based on overlapping effects of many genes on many characters
 
@@ -562,14 +562,14 @@ This is more of a review paper that combines the Y-model of van Noordwijk and de
 
 There are two key measures used in the paper: 1) the ratio of lambda_1 over lambda_2 and 2) the angle between eval_1 and the isometry vector (1,.....1). The larger the ratio, the stronger the genetic correlations since the space is basically flattened into one dimension. To measure the strength of correlations, they used the angle between eval_1 and the isometry vector. When correlations were high, the leading eigen vector is almost equal to the isometry vector, but as these correlations are broken apart, the leading eigenvector departs from isometry and the angle between eval_1 and the isometry vector increases.
 
-A basic message from all this is that variance in allocation can basically washout the effects of allocations (functional contraints) causing positive genetic correlations. This is basically summarized in figure 6, where he shows three graphs with different angles (90 degrees = low genetic correlations low ratio of acquisition variance over allocation variance, 0-90 degrees =  medium size ratio of acquisition variance to allocation variance, and 0 degrees = high genetic correlations with high ratio of acquisition variance to allocation variance).
+A basic message from all this is that variance in allocation can basically washout the effects of allocations (functional contraints) causing positive genetic correlations. This is basically summarized in figure 6, where he shows three graphs with different angles (90 degrees = low genetic correlations low ratio of acquisition variance over allocation variance, 0-90 degrees = medium size ratio of acquisition variance to allocation variance, and 0 degrees = high genetic correlations with high ratio of acquisition variance to allocation variance).
 
-Bottlenecks have the effect of increasing the angle between eval_1 and the isometry vector, but the amount depends on the initial variance in acquisition. The higher the variance in acquisition, the less effect the bottleneck has on  the angle change, but over all, severe bottlenecks will alter the genetic correlations (see figure 5). 
+Bottlenecks have the effect of increasing the angle between eval_1 and the isometry vector, but the amount depends on the initial variance in acquisition. The higher the variance in acquisition, the less effect the bottleneck has on the angle change, but over all, severe bottlenecks will alter the genetic correlations (see figure 5). 
 
-One important thing to note is that here, the functional constraints again manifest through allocations that give rise to trade-offs between pairs, which is different from the way functional constraints enter charnov and charlesworth's approach using QG or optimization.  There should be an equilivalence between them, but that is not explained by charlesworth in his paper. However, it might appear in the prior paper by Arnold (1992).  I don't recall seeing it there, but I will check again.
+One important thing to note is that here, the functional constraints again manifest through allocations that give rise to trade-offs between pairs, which is different from the way functional constraints enter charnov and charlesworth's approach using QG or optimization. There should be an equilivalence between them, but that is not explained by charlesworth in his paper. However, it might appear in the prior paper by Arnold (1992). I don't recall seeing it there, but I will check again.
 
 Lastly, Bjorklund uses the results of his work (specifically how ratio of V_alloc / V_acqui affects genetic correlations) to suggest that the mixed results obtained from empirical studies might be due to the underlying differences in allocation.
-Interestingly he points out that differences in size correspond to differences in allocation patterns. In some populations (such as in birds), V_alloc << V_acqui, meaning that selection against allocation will still produce mostly size differences (allocation), i.e overall size.  The smaller V_alloc, the more rapid the divergence in non size related correlations. He discusses the patterns in Island models and how this might relate.}
+Interestingly he points out that differences in size correspond to differences in allocation patterns. In some populations (such as in birds), V_alloc << V_acqui, meaning that selection against allocation will still produce mostly size differences (allocation), i.e overall size. The smaller V_alloc, the more rapid the divergence in non size related correlations. He discusses the patterns in Island models and how this might relate.}
 }
 
 @Article{bjorklund1996importance,
@@ -2219,6 +2219,11 @@ Follow-up},
   Doi                      = {10.2307/1936778},
   ISSN                     = {1939-9170},
   Publisher                = {Ecological Society of America},
+  Review                   = {REVIEWS OF THRY AND EXP FOR G MATRICES
+
+Lande develops a quantitative genetics model for the life history traits.  The basic set up is grounded on the Lokta Keyfitz model for age structured populations in demographic equilibrium. He derives how the malthusian growth rate depends on G (see equation 14). traits are assumed to have normal distribution.
+
+In the discussion he describes why negative genetic correlations should be expected to persist among characters components. Also states that near an equilibrium, major components of fitness tend to have negative genetic correlations, which may not be reflected in the phenotypic covariances because of positive correlations among them from the environment. This is sort of in line with the idea of the Y model analysis in which variance in acquisition being large makes negative correlations from allocation constraints less likely. Note that this paper doesn't acutally derive any equations or expressions that say that genetic correlations among fitness components should be negative. In fact, he only gives a verbal description of why this must be so in the discussion.},
   Url                      = {http://dx.doi.org/10.2307/1936778}
 }
 
@@ -2238,7 +2243,7 @@ Follow-up},
   Publisher                = {Genetics},
   Review                   = {REVIEWS OF THRY AND EXP FOR G MATRICES
 
-This paper focuses on deriving equilibrium formulas for the evolution of multivariate phenotypes in large, randomly mating populations. The assumption requires selection to be much smaller than twice the harmonic mean of recombination rate between loci with interacting fitnesses, then linkage disequilibria is negligible and pleiotropy is the main cause of genetic correlations between characters. He then gets expressions for the dynamics of gentic covariances under these assumptions (21b for transformed covariances, 21c for equilibrium covariances, and 22a for the G matrix dynamics in equilibrium). This work is a sort of multivariate form of his 1977 work. The key idea here is that in 21c, we find that the solutions depend specifically on mutations (matrix U) and selection (matrix W) and environmental variances (\tilde W = W +E). Again, this is under the assumption of selection being weak relative to the recombination rate, but I don't think this assumption is needed in his 1977 paper, or at least he doesn't state that he needs it. },
+This paper focuses on deriving equilibrium formulas for the evolution of multivariate phenotypes in large, randomly mating populations. The assumption requires selection to be much smaller than twice the harmonic mean of recombination rate between loci with interacting fitnesses, then linkage disequilibria is negligible and pleiotropy is the main cause of genetic correlations between characters. He then gets expressions for the dynamics of gentic covariances under these assumptions (21b for transformed covariances, 21c for equilibrium covariances, and 22a for the G matrix dynamics in equilibrium). This work is a sort of multivariate form of his 1977 work. The key idea here is that in 21c, we find that the solutions depend specifically on mutations (matrix U) and selection (matrix W) and environmental variances (\tilde W = W +E). Again, this is under the assumption of selection being weak relative to the recombination rate, but I don't think this assumption is needed in his 1977 paper, or at least he doesn't state that he needs it.},
   Timestamp                = {2018.1.27},
   Url                      = {http://www.genetics.org/content/94/1/203}
 }
@@ -3151,6 +3156,19 @@ Simulations are done to check Lande's Gaussian approximation for multiple trait 
   Abstract                 = {Theoretical quantitative genetics provides a framework for reconstructing past selection and predicting future patterns of phenotypic differentiation. However, the usefulness of the equations of quantitative genetics for evolutionary inference relies on the evolutionary stability of the additive genetic variance-covariance matrix (G matrix). A fruitful new approach for exploring the evolutionary dynamics of G involves the use of individual-based computer simulations. Previous studies have focused on the evolution of the eigenstructure of G. An alternative approach employed in this paper uses the multivariate response-to-selection equation to evaluate the stability of G. In this approach, I measure similarity by the correlation between response-to-selection vectors due to random selection gradients. I analyze the dynamics of G under several conditions of correlational mutation and selection. As found in a previous study, the eigenstructure of G is stabilized by correlational mutation and selection. However, over broad conditions, instability of G did not result in a decreased consistency of the response to selection. I also analyze the stability of G when the correlation coefficients of correlational mutation and selection and the effective population size change through time. To my knowledge, no prior study has used computer simulations to investigate the stability of G when correlational mutation and selection fluctuate. Under these conditions, the eigenstructure of G is unstable under some simulation conditions. Different results are obtained if G matrix stability is assessed by eigenanalysis or by the response to random selection gradients. In this case, the response to selection is most consistent when certain aspects of the eigenstructure of G are least stable and vice versa.},
   Owner                    = {GMutations},
   Publisher                = {Wiley Online Library}
+}
+
+@Article{reznick1985costs,
+  Title                    = {Costs of reproduction: an evaluation of the empirical evidence},
+  Author                   = {Reznick, David},
+  Journal                  = {Oikos},
+  Year                     = {1985},
+  Pages                    = {257--267},
+
+  Publisher                = {JSTOR},
+  Review                   = {States in section on genetic correlations that -These correlations are interpreted as a measure of pleiotropy, or the degree to which single genes affect the expression of two or more traits.- but doesn't cite anything.
+
+Also states in discussion -  Correlated responses to selection are a more definitive demonstration of the cost of reproduction since they directly reveal the pleiotropic effects of genes controlling the expression of both traits. Thus, they graphically illustrate how these traits are linked for short-term selection.--}
 }
 
 @Book{roff2012evolutionary,
