@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    218723,       4896]
-NotebookOptionsPosition[    216901,       4852]
-NotebookOutlinePosition[    217697,       4877]
-CellTagsIndexPosition[    217654,       4874]
+NotebookDataLength[    218301,       4889]
+NotebookOptionsPosition[    217169,       4856]
+NotebookOutlinePosition[    217957,       4881]
+CellTagsIndexPosition[    217914,       4878]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -469,10 +469,10 @@ Cell[BoxData[
                     RowBox[{"--", 
                     RowBox[{"--", 
                     RowBox[{"--", 
-                    RowBox[{"--", 
-                    "-"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}\
-]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}], 
-    "*)"}], "\[IndentingNewLine]", 
+                    RowBox[{
+                    "--", "-"}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}\
+]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}]}\
+], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"groupNewMutantsList", "[", "newmutantgenotypes_", "]"}], ":=", 
     RowBox[{"Module", "[", 
@@ -806,7 +806,6 @@ Cell[BoxData[
                RowBox[{"2", " ", 
                 RowBox[{"Log", "[", 
                  RowBox[{"popsize", " ", "\[CapitalDelta]c1"}], "]"}]}], "-", 
-               
                RowBox[{"Log", "[", 
                 RowBox[{"\[CapitalDelta]c1", "/", "U1"}], "]"}]}], ")"}]}], 
             ")"}]}]}], ";", "\[IndentingNewLine]", 
@@ -822,7 +821,6 @@ Cell[BoxData[
                RowBox[{"2", " ", 
                 RowBox[{"Log", "[", 
                  RowBox[{"popsize", " ", "\[CapitalDelta]c2"}], "]"}]}], "-", 
-               
                RowBox[{"Log", "[", 
                 RowBox[{"\[CapitalDelta]c2", "/", "U2"}], "]"}]}], ")"}]}], 
             ")"}]}]}], ";", "\[IndentingNewLine]", 
@@ -3344,10 +3342,15 @@ Cell[BoxData[
          "to", " ", "need", " ", "a", " ", "lot", " ", "of", " ", "work"}], 
         ",", " ", 
         RowBox[{
-        "and", " ", "it", " ", "will", " ", "also", " ", "require", " ", 
-         "some", " ", "changes", " ", "to", " ", "the", " ", "variables", " ",
-          "used", " ", "in", " ", "the", " ", "main", " ", "code"}]}], " ", 
-       "*)"}], "\[IndentingNewLine]", 
+         RowBox[{
+         "and", " ", "it", " ", "will", " ", "also", " ", "require", " ", 
+          "some", " ", "changes", " ", "to", " ", "the", " ", "variables", 
+          " ", "used", " ", "in", " ", "the", " ", "main", " ", "code"}], " ",
+          "-", " ", 
+         RowBox[{
+         "need", " ", "to", " ", "use", " ", "RandomFunction", " ", "in", " ",
+           "mathematica", " ", "with", " ", "ItoProcess"}]}]}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
       RowBox[{"(*", " ", 
        RowBox[{
         RowBox[{"LOOP", " ", "THROUGH", " ", "MUTANT", " ", "LIST"}], ",", 
@@ -3677,8 +3680,9 @@ Cell[BoxData[
   3.735496548613042*^9, {3.7354965843670745`*^9, 3.735496599988105*^9}, {
    3.735496652152217*^9, 3.7354966639913235`*^9}, {3.735496812707296*^9, 
    3.7354968157401714`*^9}, {3.7354980430234118`*^9, 
-   3.7354981029500675`*^9}},ExpressionUUID->"185ca8d8-294e-4912-87d4-\
-2dc293d5ec97"],
+   3.7354981029500675`*^9}, {3.735933621277907*^9, 3.735933635746831*^9}, {
+   3.735933856423922*^9, 3.735933874405407*^9}},
+ ExpressionUUID -> "185ca8d8-294e-4912-87d4-2dc293d5ec97"],
 
 Cell[BoxData[
  RowBox[{
@@ -4858,11 +4862,11 @@ PrintingPageRange->{Automatic, Automatic},
 PrintingOptions->{"PaperOrientation"->"Landscape",
 "PaperSize"->{Automatic, Automatic},
 "PostScriptOutputFile"->"/home/kevin/base_code2d.pdf"},
-FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (April 18, 2017)",
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
 StyleDefinitions->Notebook[{
    Cell[
     StyleData[StyleDefinitions -> "Default.nb"]]}, Visible -> False, 
-  FrontEndVersion -> "11.1 for Microsoft Windows (64-bit) (April 18, 2017)", 
+  FrontEndVersion -> "11.0 for Linux x86 (64-bit) (September 21, 2016)", 
   StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
 ]
 (* End of Notebook Content *)
@@ -4876,28 +4880,17 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 160, 3, 18, "Input", "ExpressionUUID" -> \
-"a4326cbc-71c1-4c90-8f62-65c24a0886d2"],
-Cell[721, 25, 36240, 928, 873, "Input", "ExpressionUUID" -> \
-"ce219095-ddf4-4a44-96dc-4b5e1341bec8"],
-Cell[36964, 955, 18980, 429, 587, "Input", "ExpressionUUID" -> \
-"820f4dfb-82a0-42ca-8605-5a54dbbf7eac"],
-Cell[55947, 1386, 11072, 282, 454, "Input", "ExpressionUUID" -> \
-"52919151-b89d-4d0d-97cd-b2debc12dcef"],
-Cell[67022, 1670, 8212, 210, 529, "Input", "ExpressionUUID" -> \
-"73859616-bf23-49dc-a4e8-10412f9197a4"],
-Cell[75237, 1882, 16842, 387, 683, "Input", "ExpressionUUID" -> \
-"c2d4eb38-4fea-4444-a8bb-c2239407b97c"],
-Cell[92082, 2271, 32537, 719, 1430, "Input", "ExpressionUUID" -> \
-"b90ab56a-79e1-43af-a3ea-da6e1a83dd0c"],
-Cell[124622, 2992, 29888, 688, 1447, "Input", "ExpressionUUID" -> \
-"185ca8d8-294e-4912-87d4-2dc293d5ec97"],
-Cell[154513, 3682, 5322, 141, 206, "Input", "ExpressionUUID" -> \
-"57cd05e2-a4ca-44a4-8952-50955bc9009a"],
-Cell[159838, 3825, 3527, 100, 238, "Input", "ExpressionUUID" -> \
-"38ea5ddb-0f7f-4356-806a-9a2d25a45056"],
-Cell[163368, 3927, 53529, 923, 1566, "Input", "ExpressionUUID" -> \
-"931c47f3-58ac-46e4-9e04-2c2496facad7"]
+Cell[558, 20, 160, 3, 19, "Input"],
+Cell[721, 25, 36205, 926, 941, "Input"],
+Cell[36929, 953, 18980, 429, 644, "Input"],
+Cell[55912, 1384, 11072, 282, 488, "Input"],
+Cell[66987, 1668, 8212, 210, 580, "Input"],
+Cell[75202, 1880, 16842, 387, 758, "Input"],
+Cell[92047, 2269, 32537, 719, 1551, "Input"],
+Cell[124587, 2990, 30191, 694, 1570, "Input"],
+Cell[154781, 3686, 5322, 141, 223, "Input"],
+Cell[160106, 3829, 3527, 100, 262, "Input"],
+Cell[163636, 3931, 53529, 923, 1719, "Input"]
 }
 ]
 *)
