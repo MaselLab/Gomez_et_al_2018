@@ -358,54 +358,14 @@ ax.axhline(linewidth=0.5, color = 'k')
 plt.annotate('(a)',xy=(0.90,0.90),xycoords='axes fraction',fontsize=lsize1)         
 
 # ------------------------------------------------------------------------------------
-# plots for figure 4b - The eigenvalues of the G matrix
-
-my_yticks = [i for i in range(5)]
-my_ylabel = ['0', '1', '2', '3', '4']
-
-tl1 = np.asarray([0.870e4 for i in range(11)])
-tl2 = np.asarray([0.920e4 for i in range(11)])
-tl3 = np.asarray([0.990e4 for i in range(11)])
-tl4 = np.asarray([1.050e4 for i in range(11)])
-tl5 = np.asarray([1.120e4 for i in range(11)])
-tl6 = np.asarray([1.200e4 for i in range(11)])
-yl = np.asarray([4*i/10 for i in range(11)])
-
-ax=plt.subplot(312)
-ax.plot(times,(1/np.mean(lambda1))*lambda1,c="black",linewidth=2.0,linestyle=":",label='$\lambda_1$ / $\overline{\lambda}_1$')
-ax.plot(times,(1/np.mean(lambda2))*lambda2,c="black",linewidth=2.0,linestyle="-",label='$\lambda_2$ / $\overline{\lambda}_2$')
-ax.plot(tl1,yl,c="blue",linewidth=2.0,linestyle="--")
-ax.plot(tl2,yl,c="green",linewidth=2.0,linestyle="--")
-ax.plot(tl3,yl,c="red",linewidth=2.0,linestyle="--")
-ax.plot(tl4,yl,c="darkcyan",linewidth=2.0,linestyle="--")
-ax.plot(tl5,yl,c="magenta",linewidth=2.0,linestyle="--")
-ax.plot(tl6,yl,c="darkorange",linewidth=2.0,linestyle="--")
-ax.yaxis.set_label_coords(-0.05,0.5)
-#ax.annotate('',xy=(1.05e4,3.9), xycoords='data',xytext=(1.05e4,4.9),arrowprops=dict(facecolor='black', shrink=0.01, width=1, headwidth=8))
-#ax.annotate('',xy=(1.12e4,2.1), xycoords='data',xytext=(1.12e4,3.1),arrowprops=dict(facecolor='black', shrink=0.01, width=1, headwidth=8))
-#ax.annotate('',xy=(1.2e4,0.2), xycoords='data',xytext=(1.2e4,-0.8),arrowprops=dict(facecolor='black', shrink=0.01, width=1, headwidth=8))
-ax.set_ylabel(r'Normalized eignvalues of G',fontsize=lsize1)
-ax.axhline(linewidth=0.5, color = 'k')
-ax.set_xlim((5e3,1.5e4))
-ax.set_ylim((0,4))
-ax.legend(loc='upper center',ncol=2,fontsize=lsize1)
-ax.grid(b='off', which='both', axis='both')
-ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
-plt.xticks(my_xticks,[])
-plt.yticks(my_yticks,my_ylabel)
-plt.annotate('(b)',xy=(0.90,0.90),xycoords='axes fraction',fontsize=lsize1)
-
-#ax.tick_params(labelsize=18)
-
-# ------------------------------------------------------------------------------------
-# plots for figure 4c - The angle of the G matrix wrt selection gradient
+# plots for figure 4b - The angle of the G matrix wrt selection gradient
 
 #my_yticks = [(i-4) for i in range(9)]
 #my_ylabel = [r'$-90^o$','', r'$-45^o$', '', r'$0^o$', '', r'$45^o$', '', r'$95^o$']
 my_yticks = [(i-2)/2.0 for i in range(5)]
 my_ylabel = [r'-$45^o$','', r'$0^o$','', r'$45^o$']
 
-ax=plt.subplot(313)
+ax=plt.subplot(312)
 lg1 = ax.plot(times,(pi/2)*Gang,c="black",linewidth=2.0,linestyle="-",label='Angle')
 ax.axhline(linewidth=0.5, color = 'k')
 ax.set_ylabel(r'Angle of $1^{st}$ eigenvector',fontsize=lsize1)
@@ -414,9 +374,8 @@ ax.set_xlim((5e3,1.5e4))
 ax.set_ylim((-1,1))
 ax.grid(b='off', which='both', axis='both')
 ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
-ax.set_xlabel('Time (Thousands of Generations)',fontsize=lsize1)
 ax.legend(loc=3,ncol=2,fontsize=lsize1)
-plt.xticks(my_xticks,my_xlabel)
+plt.xticks(my_xticks,[])
 plt.yticks(my_yticks,my_ylabel)
 
 my_yticks = [(i-4) for i in range(9)]
@@ -435,6 +394,48 @@ plt.yticks(my_yticks,my_ylabel)
 lg = lg1+lg2
 labs = [l.get_label() for l in lg]
 ax.legend(lg, labs, loc='upper center',ncol=2,fontsize=lsize1)
+
+# ------------------------------------------------------------------------------------
+# plots for figure 4c - The eigenvalues of the G matrix
+
+my_yticks = [i for i in range(5)]
+my_ylabel = ['0', '1', '2', '3', '4']
+
+tl1 = np.asarray([0.870e4 for i in range(11)])
+tl2 = np.asarray([0.920e4 for i in range(11)])
+tl3 = np.asarray([0.990e4 for i in range(11)])
+tl4 = np.asarray([1.050e4 for i in range(11)])
+tl5 = np.asarray([1.120e4 for i in range(11)])
+tl6 = np.asarray([1.200e4 for i in range(11)])
+yl = np.asarray([4*i/10 for i in range(11)])
+
+ax=plt.subplot(313)
+ax.plot(times,(1/np.mean(lambda1))*lambda1,c="black",linewidth=2.0,linestyle=":",label='$\lambda_1$ / $\overline{\lambda}_1$')
+ax.plot(times,(1/np.mean(lambda2))*lambda2,c="black",linewidth=2.0,linestyle="-",label='$\lambda_2$ / $\overline{\lambda}_2$')
+ax.plot(tl1,yl,c="blue",linewidth=2.0,linestyle="--")
+ax.plot(tl2,yl,c="green",linewidth=2.0,linestyle="--")
+ax.plot(tl3,yl,c="red",linewidth=2.0,linestyle="--")
+ax.plot(tl4,yl,c="darkcyan",linewidth=2.0,linestyle="--")
+ax.plot(tl5,yl,c="magenta",linewidth=2.0,linestyle="--")
+ax.plot(tl6,yl,c="darkorange",linewidth=2.0,linestyle="--")
+ax.yaxis.set_label_coords(-0.05,0.5)
+#ax.annotate('',xy=(1.05e4,3.9), xycoords='data',xytext=(1.05e4,4.9),arrowprops=dict(facecolor='black', shrink=0.01, width=1, headwidth=8))
+#ax.annotate('',xy=(1.12e4,2.1), xycoords='data',xytext=(1.12e4,3.1),arrowprops=dict(facecolor='black', shrink=0.01, width=1, headwidth=8))
+#ax.annotate('',xy=(1.2e4,0.2), xycoords='data',xytext=(1.2e4,-0.8),arrowprops=dict(facecolor='black', shrink=0.01, width=1, headwidth=8))
+ax.set_xlabel('Time (Thousands of Generations)',fontsize=lsize1)
+ax.set_ylabel(r'Normalized eignvalues of G',fontsize=lsize1)
+ax.axhline(linewidth=0.5, color = 'k')
+ax.set_xlim((5e3,1.5e4))
+ax.set_ylim((0,4))
+ax.legend(loc='upper center',ncol=2,fontsize=lsize1)
+ax.grid(b='off', which='both', axis='both')
+ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
+plt.xticks(my_xticks,my_xlabel)
+plt.yticks(my_yticks,my_ylabel)
+plt.annotate('(b)',xy=(0.90,0.90),xycoords='axes fraction',fontsize=lsize1)
+
+#ax.tick_params(labelsize=18)
+# ------------------------------------------------------------------------------------
 
 plt.annotate('(c)',xy=(0.90,0.90),xycoords='axes fraction',fontsize=lsize1)
 plt.axvspan(5.1e3,6.3e3, color='gray', alpha=0.2)
