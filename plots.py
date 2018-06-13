@@ -338,9 +338,9 @@ my_yticks = [(i-4) for i in range(11)]
 my_ylabel = ['-4', '', '-2', '', '0', '', '2', '', '4', '', '6']
 
 ax=plt.subplot(311)
-ax.plot(times,(1/vU_thry)*rate_adpt_t1_avg,c="black",label=r'$v_1$',linewidth=2.0,linestyle = '-')                
-ax.plot(times,(1/vU_thry)*var1_avg,c="black",label=r'$\sigma_1^2$',linewidth=2.0,linestyle = '--')
-ax.plot(times,(1/vU_thry)*cov_avg,c="black",label=r'$\sigma_{1,2}$',linewidth=2.0,linestyle = ':')
+#ax.plot(times,(1/vU_thry)*rate_adpt_t1_avg,c="black",label=r'$v_1$',linewidth=2.0,linestyle = '-')                
+#ax.plot(times,(1/vU_thry)*var1_avg,c="black",label=r'$\sigma_1^2$',linewidth=2.0,linestyle = '--')
+#ax.plot(times,(1/vU_thry)*cov_avg,c="black",label=r'$\sigma_{1,2}$',linewidth=2.0,linestyle = ':')
 ax.plot(times,(1/vU_thry)*rate_adpt_t1,c="black",linestyle="-",linewidth=2.0)        
 ax.plot(times,(1/vU_thry)*fit_var[:,0],c="black",linestyle="--",linewidth=2.0)
 ax.plot(times,(1/vU_thry)*fit_cov[:],c="black",linestyle=":",linewidth=2.0)
@@ -391,6 +391,9 @@ ax2.set_ylim((-4,4))
 ax2.tick_params(labelsize=lsize2)
 plt.yticks(my_yticks,my_ylabel)
 plt.annotate('(b)',xy=(0.90,0.90),xycoords='axes fraction',fontsize=lsize1)
+plt.axvspan(5.1e3,6.3e3, color='gray', alpha=0.2)
+plt.axvspan(1.19e4,1.25e4, color='gray', alpha=0.2)
+plt.axvspan(1.40e4,1.46e4, color='gray', alpha=0.2)
 
 lg = lg1+lg2
 labs = [l.get_label() for l in lg]
@@ -438,9 +441,6 @@ plt.yticks(my_yticks,my_ylabel)
 # ------------------------------------------------------------------------------------
 
 plt.annotate('(c)',xy=(0.90,0.90),xycoords='axes fraction',fontsize=lsize1)
-plt.axvspan(5.1e3,6.3e3, color='gray', alpha=0.2)
-plt.axvspan(1.19e4,1.25e4, color='gray', alpha=0.2)
-plt.axvspan(1.40e4,1.46e4, color='gray', alpha=0.2)
 #plt.axvspan(3, 6, color='grey', alpha=0.1)
 plt.tight_layout()
 
