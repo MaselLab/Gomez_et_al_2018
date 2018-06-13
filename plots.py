@@ -390,6 +390,7 @@ ax2.set_xlim((5e3,1.5e4))
 ax2.set_ylim((-4,4))
 ax2.tick_params(labelsize=lsize2)
 plt.yticks(my_yticks,my_ylabel)
+plt.annotate('(b)',xy=(0.90,0.90),xycoords='axes fraction',fontsize=lsize1)
 
 lg = lg1+lg2
 labs = [l.get_label() for l in lg]
@@ -410,8 +411,8 @@ tl6 = np.asarray([1.200e4 for i in range(11)])
 yl = np.asarray([4*i/10 for i in range(11)])
 
 ax=plt.subplot(313)
-ax.plot(times,(1/np.mean(lambda1))*lambda1,c="black",linewidth=2.0,linestyle=":",label='$\lambda_1$ / $\overline{\lambda}_1$')
-ax.plot(times,(1/np.mean(lambda2))*lambda2,c="black",linewidth=2.0,linestyle="-",label='$\lambda_2$ / $\overline{\lambda}_2$')
+ax.plot(times,(1/np.mean(lambda2))*lambda2,c="black",linewidth=2.0,linestyle="-",label='$\lambda_1$ / $\overline{\lambda}_1$')
+ax.plot(times,(1/np.mean(lambda1))*lambda1,c="black",linewidth=2.0,linestyle=":",label='$\lambda_2$ / $\overline{\lambda}_2$')
 ax.plot(tl1,yl,c="blue",linewidth=2.0,linestyle="--")
 ax.plot(tl2,yl,c="green",linewidth=2.0,linestyle="--")
 ax.plot(tl3,yl,c="red",linewidth=2.0,linestyle="--")
@@ -432,7 +433,6 @@ ax.grid(b='off', which='both', axis='both')
 ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
 plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
-plt.annotate('(b)',xy=(0.90,0.90),xycoords='axes fraction',fontsize=lsize1)
 
 #ax.tick_params(labelsize=18)
 # ------------------------------------------------------------------------------------
