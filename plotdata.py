@@ -584,7 +584,6 @@ pickle_file = open(pickle_file_name,'rb')
      n1,trG,detG,Gmatr,Xmatr,lambda1,lambda2,Gvec,Gval,Gang,parameters] = pickle.load(pickle_file)
 pickle_file.close()
 
-
 qDF = 2*log(N*s)/log(s/U)
 meanq = np.mean(pop_load)
 

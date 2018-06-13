@@ -330,74 +330,51 @@ rate_adpt_t1_avg = var1_avg + cov_avg
 
 lsize1=14
 lsize2=14
+
 my_xticks = [5000+i*1000 for i in range(11)]
 my_xlabel = ['5', '', '7', '', '9', '', '11', '', '13', '', '15']
+my_yticks = [(i-4) for i in range(13)]
+my_ylabel = ['-4', '', '-2', '', '0', '', '2', '', '4', '', '6','', '8']
 
-fig = plt.figure(figsize=[6,14])
-my_yticks = [(i-4) for i in range(11)]
-my_ylabel = ['-4', '', '-2', '', '0', '', '2', '', '4', '', '6']
+fig = plt.figure(figsize=[6,9])
 
-ax=plt.subplot(311)
-#ax.plot(times,(1/vU_thry)*rate_adpt_t1_avg,c="black",label=r'$v_1$',linewidth=2.0,linestyle = '-')                
-#ax.plot(times,(1/vU_thry)*var1_avg,c="black",label=r'$\sigma_1^2$',linewidth=2.0,linestyle = '--')
-#ax.plot(times,(1/vU_thry)*cov_avg,c="black",label=r'$\sigma_{1,2}$',linewidth=2.0,linestyle = ':')
-ax.plot(times,(1/vU_thry)*rate_adpt_t1,c="black",linestyle="-",linewidth=2.0)        
-ax.plot(times,(1/vU_thry)*fit_var[:,0],c="black",linestyle="--",linewidth=2.0)
-ax.plot(times,(1/vU_thry)*fit_cov[:],c="black",linestyle=":",linewidth=2.0)
-ax.yaxis.set_label_coords(-0.05,0.5)
-ax.axhline(linewidth=0.5, color = 'k')
+ax=plt.subplot(211)
+lg1 = ax.plot(times,(1/vU_thry)*rate_adpt_t1,c="black",label=r'$v_1$',linestyle="-",linewidth=2.0)        
+lg2 = ax.plot(times,(1/vU_thry)*fit_var[:,0],c="black",label=r'$\sigma_1^2$',linestyle="--",linewidth=2.0)
+lg3 = ax.plot(times,(1/vU_thry)*fit_cov[:],c="black",label=r'$\sigma_{1,2}$',linestyle=":",linewidth=2.0)
 ax.set_ylabel(r'$\sigma_1^2$ and $\sigma_{1,2}$ / $v(U,N,s)$',fontsize=lsize1)
-ax.legend(loc='upper center',ncol=3,fontsize=14)
-ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
-ax.set_ylim((-5,7))
+ax.yaxis.set_label_coords(-0.05,0.5)
 ax.set_xlim((5e3,1.5e4))
+ax.set_ylim((-5,8))
+ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
 plt.xticks(my_xticks,[])
 plt.yticks(my_yticks,my_ylabel)
 ax.grid(b='off', which='both', axis='both')
 ax.axhline(linewidth=0.5, color = 'k')    
-plt.annotate('(a)',xy=(0.90,0.90),xycoords='axes fraction',fontsize=lsize1)         
-
-# ------------------------------------------------------------------------------------
-# plots for figure 4b - The angle of the G matrix wrt selection gradient
-
-#my_yticks = [(i-4) for i in range(9)]
-#my_ylabel = [r'$-90^o$','', r'$-45^o$', '', r'$0^o$', '', r'$45^o$', '', r'$95^o$']
-my_yticks = [(i-2)/2.0 for i in range(5)]
-my_ylabel = [r'-$45^o$','', r'$0^o$','', r'$45^o$']
-
-ax=plt.subplot(312)
-lg1 = ax.plot(times,(pi/2)*Gang,c="black",linewidth=2.0,linestyle="-",label='Angle')
-ax.axhline(linewidth=0.5, color = 'k')
-ax.set_ylabel(r'Angle of $1^{st}$ eigenvector',fontsize=lsize1)
-ax.yaxis.set_label_coords(-0.05,0.5)
-ax.set_xlim((5e3,1.5e4))
-ax.set_ylim((-1,1))
-ax.grid(b='off', which='both', axis='both')
-ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
-ax.legend(loc=3,ncol=2,fontsize=lsize1)
-plt.xticks(my_xticks,[])
-plt.yticks(my_yticks,my_ylabel)
-
-my_yticks = [(i-4) for i in range(9)]
-my_ylabel = ['-4', '', '-2', '', '0', '', '2', '', '4']
-
-ax2 = plt.twinx(ax)
-#lg2 = ax2.plot(times,(np.mean(fit_cov))*fit_cov**(-1),c="black",linewidth=2.0,linestyle=":",label='$k$ / $\sigma_{1,2}$')
-lg2 = ax2.plot(times,(1/vU_thry)*fit_cov[:],c="black",linestyle=":",linewidth=2.0,label='$\sigma_{1,2}$')
-ax2.set_ylabel(r'$\sigma_{1,2}$ / $v(U,N,s)$',fontsize=lsize1)
-#ax2.yaxis.set_label_coords(1.05,0.5)
-ax2.set_xlim((5e3,1.5e4))
-ax2.set_ylim((-4,4))
-ax2.tick_params(labelsize=lsize2)
-plt.yticks(my_yticks,my_ylabel)
-plt.annotate('(b)',xy=(0.90,0.90),xycoords='axes fraction',fontsize=lsize1)
+plt.annotate('(a)',xy=(0.93,0.93),xycoords='axes fraction',fontsize=lsize1) 
 plt.axvspan(5.1e3,6.3e3, color='gray', alpha=0.2)
 plt.axvspan(1.19e4,1.25e4, color='gray', alpha=0.2)
 plt.axvspan(1.40e4,1.46e4, color='gray', alpha=0.2)
 
-lg = lg1+lg2
+# -------------------------------------------------------------------------------------
+
+my_yticks = [(i-2)/3.0 for i in range(6)]
+my_ylabel = [r'$-30^o$','',r'$0^o$','', r'$30^o$','']
+
+ax2 = plt.twinx(ax)
+lg4 = ax2.plot(times,2*Gang,c="blue",linewidth=1.5,linestyle="-",label='Angle')
+ax2.axhline(linewidth=0.5, color = 'k')
+ax2.set_ylabel(r'Angle of $2^{nd}$ eigenvector',fontsize=lsize1)
+ax2.yaxis.set_label_coords(1.07,0.5)
+ax2.set_xlim((5e3,1.5e4))
+ax2.set_ylim((-0.77,1.23))
+ax2.tick_params(labelsize=lsize2)
+plt.yticks(my_yticks,my_ylabel)
+ax2.grid(b='off', which='both', axis='both')
+
+lg = lg1+lg2+lg3+lg4
 labs = [l.get_label() for l in lg]
-ax.legend(lg, labs, loc='upper center',ncol=2,fontsize=lsize1)
+ax2.legend(lg, labs, loc='upper center',ncol=2,fontsize=lsize1)
 
 # ------------------------------------------------------------------------------------
 # plots for figure 4c - The eigenvalues of the G matrix
@@ -411,9 +388,9 @@ tl3 = np.asarray([0.990e4 for i in range(11)])
 tl4 = np.asarray([1.050e4 for i in range(11)])
 tl5 = np.asarray([1.120e4 for i in range(11)])
 tl6 = np.asarray([1.200e4 for i in range(11)])
-yl = np.asarray([4*i/10 for i in range(11)])
+yl = np.asarray([5*i/10 for i in range(11)])
 
-ax=plt.subplot(313)
+ax=plt.subplot(212)
 ax.plot(times,(1/np.mean(lambda2))*lambda2,c="black",linewidth=2.0,linestyle="-",label='$\lambda_1$ / $\overline{\lambda}_1$')
 ax.plot(times,(1/np.mean(lambda1))*lambda1,c="black",linewidth=2.0,linestyle=":",label='$\lambda_2$ / $\overline{\lambda}_2$')
 ax.plot(tl1,yl,c="blue",linewidth=2.0,linestyle="--")
@@ -423,28 +400,30 @@ ax.plot(tl4,yl,c="darkcyan",linewidth=2.0,linestyle="--")
 ax.plot(tl5,yl,c="magenta",linewidth=2.0,linestyle="--")
 ax.plot(tl6,yl,c="darkorange",linewidth=2.0,linestyle="--")
 ax.yaxis.set_label_coords(-0.05,0.5)
-#ax.annotate('',xy=(1.05e4,3.9), xycoords='data',xytext=(1.05e4,4.9),arrowprops=dict(facecolor='black', shrink=0.01, width=1, headwidth=8))
-#ax.annotate('',xy=(1.12e4,2.1), xycoords='data',xytext=(1.12e4,3.1),arrowprops=dict(facecolor='black', shrink=0.01, width=1, headwidth=8))
-#ax.annotate('',xy=(1.2e4,0.2), xycoords='data',xytext=(1.2e4,-0.8),arrowprops=dict(facecolor='black', shrink=0.01, width=1, headwidth=8))
 ax.set_xlabel('Time (Thousands of Generations)',fontsize=lsize1)
 ax.set_ylabel(r'Normalized eignvalues of G',fontsize=lsize1)
 ax.axhline(linewidth=0.5, color = 'k')
 ax.set_xlim((5e3,1.5e4))
-ax.set_ylim((0,4))
+ax.set_ylim((0,4.2))
 ax.legend(loc='upper center',ncol=2,fontsize=lsize1)
 ax.grid(b='off', which='both', axis='both')
 ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
 plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
 
+plt.axvspan(5.1e3,6.3e3, color='gray', alpha=0.2)
+plt.axvspan(1.19e4,1.25e4, color='gray', alpha=0.2)
+plt.axvspan(1.40e4,1.46e4, color='gray', alpha=0.2)
+
 #ax.tick_params(labelsize=18)
 # ------------------------------------------------------------------------------------
 
-plt.annotate('(c)',xy=(0.90,0.90),xycoords='axes fraction',fontsize=lsize1)
+plt.annotate('(b)',xy=(0.93,0.93),xycoords='axes fraction',fontsize=lsize1)
 #plt.axvspan(3, 6, color='grey', alpha=0.1)
 plt.tight_layout()
 
 fig.savefig('./figures/FluctuationsStabilityG.pdf',bbox_inches='tight')
+
 
 # ************************************************************************************
 # ************************************************************************************
