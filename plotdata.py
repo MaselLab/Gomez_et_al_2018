@@ -623,6 +623,7 @@ data_file2.close()
 data_file3.close()
 data_file4.close()
 
+exec('data_parameters=np.asarray(['+data_parameters[i]+'])'
 num_pts = len(data_2dwave)
 
 # clean up mathematica data's format and convert loaded data into lists of arrays
@@ -637,7 +638,7 @@ for i in range(num_pts):
 data_2dwave = np.asarray(data_2dwave)
 
 times = data_2dwave[:,0]
-fit_var
+fit_var = 
 fit_cov
 pop_load
 dcov_dt
