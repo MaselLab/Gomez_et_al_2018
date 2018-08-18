@@ -594,3 +594,70 @@ CVcov = np.sqrt(np.var(fit_cov))/np.mean(fit_cov)*100
 
 fig = plt.subplots(figsize=[8,8])
 plt.plot(times,pop_load)
+
+# ---------------------------------------------------------------------------------
+# fixing data from pearce fisher code to generate new plots
+
+# import packages needed for script
+import pickle
+import scipy as sp
+import numpy as np
+import copy as cpy
+import matplotlib.pyplot as plt
+import plotfunctions as pltfun
+
+# import new data from additional simulations "parameters" and add to existing datafile
+
+data_file1 = open('./data/twoDparameters01.txt')
+data_file2 = open('./data/twoDclasses01.txt')
+data_file3 = open('./data/twoDabundances01.txt')
+data_file4 = open('./data/twoDwavedata01.txt')
+
+data_parameters = data_file1.read().splitlines()
+data_classes = data_file2.read().splitlines()
+data_abundances = data_file3.read().splitlines()
+data_2dwave = data_file4.read().splitlines()
+
+data_file1.close()
+data_file2.close()
+data_file3.close()
+data_file4.close()
+
+num_pts = len(data_2dwave)
+
+# clean up mathematica data's format and convert loaded data into lists of arrays
+for i in range(num_pts):
+    data_2dwave[i]='data_2dwave[i]=np.array(['+data_2dwave[i]+'])'
+    data_classes[i]='data_classes[i]=np.array(['+data_classes[i][:-1]+'])'
+    data_abundances[i]='data_abundances[i]=np.array(['+data_abundances[i][:-1]+'])'
+    exec(data_2dwave[i])
+    exec(data_classes[i])
+    exec(data_abundances[i])
+
+data_2dwave = np.asarray(data_2dwave)
+
+times = data_2dwave[:,0]
+fit_var
+fit_cov
+pop_load
+dcov_dt
+vU_thry
+v2U_thry
+var_diff
+n1
+trG
+detG
+Gmatr
+Xmatr
+lambda1
+lambda2
+Gvec
+Gval
+Gang
+parameters
+
+# load existing data of variances and covariances.py output
+pickle_file_name = './data/pythondata/Gstability_exp2.pickle'
+pickle_file = open(pickle_file_name,'wb') 
+pickle.dump([times,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry,var_diff,n1,trG,detG,Gmatr,Xmatr,lambda1,lambda2,Gvec,Gval,Gang,parameters],pickle_file,pickle.HIGHEST_PROTOCOL)
+pickle_file.close()
