@@ -32,17 +32,17 @@ import plotfunctions as pltfun
 # ************************************************************************************
 # ************************************************************************************
 # ************************************************************************************
-#--------------FIGURE: FLUCTUATIONS IN VAR-COV AND EVALS----------------------------
+#--------------FIGURE: FluctuationsStabilityG----------------------------
 # ************************************************************************************
 # ************************************************************************************
 # ************************************************************************************
 
 # ----------------plots for angle of G and eigenvalues--------------------------------
 # load time series data of distrStats from plotdata.py output
-pickle_file_name = './data/pythondata/Gstability_exp1.pickle'
+#pickle_file_name = './data/pythondata/2dwave_data_time_series_corr_mm-1.pickle'
+pickle_file_name = './data/pythondata/2dwave_data_time_series_stats_ml-1.pickle'
 pickle_file = open(pickle_file_name,'rb') 
-[times,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry,var_diff,
-     n1,trG,detG,Gmatr,Xmatr,lambda1,lambda2,Gvec,Gval,Gang,parameters] = pickle.load(pickle_file)
+[times,fit_var,fit_cov,vU_thry,v2U_thry,lambda1,lambda2,Gang,parameters] = pickle.load(pickle_file)
 pickle_file.close()
 
 # compute means of the time series data and store as constant arry
@@ -150,4 +150,4 @@ plt.annotate('(b)',xy=(0.93,0.93),xycoords='axes fraction',fontsize=lsize1)
 #plt.axvspan(3, 6, color='grey', alpha=0.1)
 plt.tight_layout()
 
-fig.savefig('./figures/FluctuationsStabilityG.pdf',bbox_inches='tight')
+fig.savefig('./figures/FluctuationsStabilityG-updated.pdf',bbox_inches='tight')
