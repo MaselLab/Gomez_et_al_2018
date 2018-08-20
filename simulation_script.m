@@ -1,21 +1,21 @@
+cd ~
+cd MATLAB/
+
 %% Simulations for new figures (2,4,5,6,7)
 
 N = 1e9;
 s = 2e-2;
 u = 1e-5;
-r = 0;
 steps = 2e5;
 times = 1:steps;
 
 start_time = 5e4;
 end_time = steps;
-collect_detailed_data = true;
-
-cd ~
-cd MATLAB/
+collect_data = true;
+outputfile = '2dwave_data_time_series_stats_ml-01';
 
 tic
-[v,v1,v2,varx,vary,cov] = stochastic_simulation2(N,s,u,r,steps,collect_data,start_time,end_time);
+[v,v1,v2,varx,vary,cov] = stochastic_simulation2(N,s,u,steps,collect_data,start_time,end_time,outputfile);
 toc
 
 %% Simulations for new figures (4)
@@ -27,6 +27,7 @@ steps = 1.5e6;
 start_time = 1;
 end_time = 1;
 collect_data = false;
+outputfile = '2dwave_data_time_series_stats_ml-01';
 
 data_pts = 50;
 x = ones(data_pts+1,1);
@@ -47,9 +48,9 @@ cov = zeros(size(NsU,1),1);
 
 tic
 for i=1:size(NsU,1)
-    [v(i),v1(i),v2(i),varx(i),vary(i),cov(i)] = stochastic_simulation2(NsU(i,1),NsU(i,2),NsU(i,3),collect_data,steps,start_time,end_time);
+    [v(i),v1(i),v2(i),varx(i),vary(i),cov(i)] = stochastic_simulation2(NsU(i,1),NsU(i,2),NsU(i,3),collect_data,steps,start_time,end_time,outputfile);
 end
 toc
 
-csvwrite('~/Documents/kgrel2d/data/simdata-0.dat',NsU);
-csvwrite('~/Documents/kgrel2d/data/simdata-1.dat',[v v1 v2 varx vary cov]);
+csvwrite('~/Documents/kgrel2d/data/2dwave_data_time_avg_stats_ml-01-0.dat',NsU);
+csvwrite('~/Documents/kgrel2d/data/2dwave_data_time_avg_stats_ml-01-1.dat',[v v1 v2 varx vary cov]);
