@@ -298,7 +298,7 @@ for k in range(num_exp):
 # ************************************************************************************
 # ************************************************************************************
 # ************************************************************************************
-# 4) Data on correlation between front and bulk covariance
+# 4) Data on correlation between front and bulk covariance (WIP)
 # ************************************************************************************
 # ************************************************************************************
 # ************************************************************************************
@@ -311,18 +311,20 @@ import copy as cpy
 import matplotlib.pyplot as plt
 import plotfunctions as pltfun
     
-[N,U,s] = [10**9, 2*10**(-5),10**(-2)]
+[N,U,s] = [10**9, 2*10**(-5),1*10**(-2)]      #here U is double the single trait mutation rate
 tau_q = ((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
 q = (2*np.log(N*s))/(np.log(s/U))
 
 # get 2d fitness distribution data
-pickle_file_name = './data/pythondata/timesGenosAbund_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pickle'
+#pickle_file_name = './data/pythondata/timesGenosAbund_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pickle'   #old mathematica data
+pickle_file_name = './data/2dwave_data_time_series_distr_ml-01.pickle'    #new matlab data
 pickle_file = open(pickle_file_name,'rb') 
 [times,genotypes,abundances] = pickle.load(pickle_file)
 pickle_file.close()
 
 # get bulk covariance data
-pickle_file_name = './data/pythondata/distrStats_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pickle'
+#pickle_file_name = './data/pythondata/distrStats_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pickle'         #old mathematica data
+pickle_file_name = './data/2dwave_data_time_series_stats_ml-01.pickle'         #new matlab data
 pickle_file = open(pickle_file_name,'rb') 
 [times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry] = pickle.load(pickle_file)
 pickle_file.close()
@@ -343,7 +345,8 @@ times2 = [times[i]+np.floor(tau_fix_avg) for i in range(len(times))]
 [t_off,t_cov,new_times,new_covs,new_ncovs]= pltfun.get_cov_cov(times,nose_cov,fit_cov,N,s,U)
 
 # dump data into a pickle files
-pickle_file_name = './data/2dwave_data_time_series_corr_mm-01.pickle'
+#pickle_file_name = './data/2dwave_data_time_series_corr_mm-01.pickle'       #old output using mathematica data
+pickle_file_name = './data/2dwave_data_time_series_corr_ml-01.pickle'       #new output using matlab data
 pickle_file = open(pickle_file_name,'wb') 
 pickle.dump([tau_fix_avg,t_off,t_cov],pickle_file,pickle.HIGHEST_PROTOCOL)
 pickle_file.close()
@@ -576,9 +579,9 @@ Gval = np.asarray(Gval)
 Gang = np.asarray(Gang)
 
 # load existing data of variances and covariances.py output
-pickle_file_name = './data/pythondata/2dwave_data_time_series_stats_mm-1.pickle'
+pickle_file_name = './data/pythondata/2dwave_data_time_series_stab_mm-1.pickle'
 pickle_file = open(pickle_file_name,'wb') 
-pickle.dump([times,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry,var_diff,n1,trG,detG,Gmatr,Xmatr,lambda1,lambda2,Gvec,Gval,Gang,parameters],pickle_file,pickle.HIGHEST_PROTOCOL)
+pickle.dump([times,fit_var,fit_cov,vU_thry,v2U_thry,lambda1,lambda2,Gang,parameters],pickle_file,pickle.HIGHEST_PROTOCOL)
 pickle_file.close()
 
 # ************************************************************************************
@@ -657,10 +660,13 @@ pickle_file.close()
 # ************************************************************************************
 # ************************************************************************************
 # ************************************************************************************
-# 9) New data on time-series for G stability
+# 9) New data on time-series using matlab code ()
 # ************************************************************************************
 # ************************************************************************************
 # ************************************************************************************
+
+#The code below takes data generated from Pearce and Fisher's matlab code and changes it
+#into the format used for graphs.
 
 # fixing data from pearce fisher code to generate new plots
 
@@ -674,10 +680,10 @@ import plotfunctions as pltfun
 
 # import new data from additional simulations "parameters" and add to existing datafile
 
-data_file1 = open('./data/2dwavedata-0.txt')
-data_file2 = open('./data/2dwavedata-1.txt')
-data_file3 = open('./data/2dwavedata-2.txt')
-data_file4 = open('./data/2dwavedata-3.txt')
+data_file1 = open('./data/2dwave_data_time_series_stats_ml-01-0.txt')
+data_file2 = open('./data/2dwave_data_time_series_stats_ml-01-1.txt')
+data_file3 = open('./data/2dwave_data_time_series_stats_ml-01-2.txt')
+data_file4 = open('./data/2dwave_data_time_series_stats_ml-01-3.txt')
 
 data_parameters = data_file1.read().splitlines()
 data_2dwave     = data_file2.read().splitlines()
@@ -689,42 +695,58 @@ data_file2.close()
 data_file3.close()
 data_file4.close()
 
-exec('data_parameters=np.asarray(['+data_parameters[i]+'])'
+exec('data_parameters=np.asarray(['+data_parameters[0]+'])')
+parameters = data_parameters
 num_pts = len(data_2dwave)
 
 # clean up mathematica data's format and convert loaded data into lists of arrays
 for i in range(num_pts):
     data_2dwave[i]='data_2dwave[i]=np.array(['+data_2dwave[i]+'])'
     data_classes[i]='data_classes[i]=np.array(['+data_classes[i][:-1]+'])'
-    data_abundances[i]='data_abundances[i]=np.array(['+data_abundances[i][:-1]+'])'
+    data_abundances[i]='data_abundances[i]=np.array([['+data_abundances[i][:-1]+']])'
     exec(data_2dwave[i])
     exec(data_classes[i])
     exec(data_abundances[i])
 
 data_2dwave = np.asarray(data_2dwave)
 
+# construct arrays for times genotypes and abundances
 times       = data_2dwave[:,0]
-fit_var     = data_2dwave[:,0]
-fit_cov     = data_2dwave[:,0]
-pop_load    = data_2dwave[:,0]
-dcov_dt     = data_2dwave[:,0]
-vU_thry     = data_2dwave[:,0]
-v2U_thry    = data_2dwave[:,0]
-var_diff    = data_2dwave[:,0]
-n1          = data_2dwave[:,0]
-trG         = data_2dwave[:,0]
-detG
-Gmatr
-Xmatr
-lambda1
-lambda2
-Gvec
-Gval
-Gang
-parameters
+genotypes   = data_classes
+abundances  = data_abundances
 
-# load existing data of variances and covariances.py output
-pickle_file_name = './data/pythondata/Gstability_exp2.pickle'
+# Summary of data_2dwave columns: 
+# timestep,sigmax2,sigmay2,sigmaxy,front_cov,pop_load,L(2,2),L(1,1),Gang,meanfitness,meanfitx,meanfity
+
+# construct arrays for times, mean_fit, fit_var, fit_cov, pop_load, dcov_dt, vU_thry, v2U_thry
+fit_var     = parameters[1]**2*data_2dwave[:,1:3]
+fit_cov     = parameters[1]**2*data_2dwave[:,3]
+mean_fit    = parameters[1]*data_2dwave[:,9]
+pop_load    = parameters[1]*data_2dwave[:,5]
+dcov_dt     = fit_var[:,0]+fit_cov[:]
+vU_thry     = pltfun.get_vNsU(parameters[0],parameters[1],parameters[2])
+v2U_thry    = 0.5*pltfun.get_vNsU(parameters[0],parameters[1],2*parameters[2])
+
+lambda1     = data_2dwave[:,6]
+lambda2     = data_2dwave[:,7]
+Gang        = (1/90.0)*data_2dwave[:,8]
+
+# output new data for time series of times genotypes and abundances
+pickle_file_name = './data/2dwave_data_time_series_distr_ml-01.pickle'
 pickle_file = open(pickle_file_name,'wb') 
-pickle.dump([times,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry,var_diff,n1,trG,detG,Gmatr,Xmatr,lambda1,lambda2,Gvec,Gval,Gang,parameters],pickle_file,pickle.HIGHEST_PROTOCOL)
+pickle.dump([times,genotypes,abundances],pickle_file,pickle.HIGHEST_PROTOCOL)
 pickle_file.close()
+
+# output new data for time series of 2d wave stats
+pickle_file_name = './data/2dwave_data_time_series_stats_ml-01.pickle'
+pickle_file = open(pickle_file_name,'wb') 
+pickle.dump([times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry],pickle_file,pickle.HIGHEST_PROTOCOL)
+pickle_file.close()
+
+# output new data for time series of 2d wave stats
+pickle_file_name = './data/2dwave_data_time_series_stab_ml-01.pickle'
+pickle_file = open(pickle_file_name,'wb') 
+pickle.dump([times,fit_var,fit_cov,vU_thry,v2U_thry,lambda1,lambda2,Gang,parameters],pickle_file,pickle.HIGHEST_PROTOCOL)
+pickle_file.close()
+
+

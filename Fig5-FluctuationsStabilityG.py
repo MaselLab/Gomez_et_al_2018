@@ -39,8 +39,8 @@ import plotfunctions as pltfun
 
 # ----------------plots for angle of G and eigenvalues--------------------------------
 # load time series data of distrStats from plotdata.py output
-#pickle_file_name = './data/pythondata/2dwave_data_time_series_corr_mm-1.pickle'
-pickle_file_name = './data/pythondata/2dwave_data_time_series_stats_ml-1.pickle'
+#pickle_file_name = './data/2dwave_data_time_series_stab_mm-01.pickle'        #old mathematica data
+pickle_file_name = './data/2dwave_data_time_series_stab_ml-01.pickle'         #new matlab data
 pickle_file = open(pickle_file_name,'rb') 
 [times,fit_var,fit_cov,vU_thry,v2U_thry,lambda1,lambda2,Gang,parameters] = pickle.load(pickle_file)
 pickle_file.close()
@@ -61,8 +61,8 @@ lsize2=14
 
 my_xticks = [5000+i*1000 for i in range(11)]
 my_xlabel = ['5', '', '7', '', '9', '', '11', '', '13', '', '15']
-my_yticks = [(i-4) for i in range(13)]
-my_ylabel = ['-4', '', '-2', '', '0', '', '2', '', '4', '', '6','', '8']
+my_yticks = [(i-5) for i in range(16)]
+my_ylabel = ['', '-4', '', '-2', '', '0', '', '2', '', '4', '', '6','', '8', '', '10']
 
 fig = plt.figure(figsize=[6,9])
 
@@ -73,16 +73,15 @@ lg3 = ax.plot(times,(1/vU_thry)*fit_cov[:],c="black",label=r'$\sigma_{1,2}$',lin
 ax.set_ylabel(r'$\sigma_1^2$ and $\sigma_{1,2}$ / $v(U,N,s)$',fontsize=lsize1)
 ax.yaxis.set_label_coords(-0.05,0.5)
 ax.set_xlim((5e3,1.5e4))
-ax.set_ylim((-5,8))
+ax.set_ylim((-6,10))
 ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
 plt.xticks(my_xticks,[])
 plt.yticks(my_yticks,my_ylabel)
 ax.grid(b='off', which='both', axis='both')
 ax.axhline(linewidth=0.5, color = 'k')    
 plt.annotate('(a)',xy=(0.93,0.93),xycoords='axes fraction',fontsize=lsize1) 
-plt.axvspan(5.1e3,6.3e3, color='gray', alpha=0.2)
-plt.axvspan(1.19e4,1.25e4, color='gray', alpha=0.2)
-plt.axvspan(1.40e4,1.46e4, color='gray', alpha=0.2)
+plt.axvspan(5.35e3,6.4e3, color='gray', alpha=0.2)
+plt.axvspan(1.26e4,1.45e4, color='gray', alpha=0.2)
 
 # -------------------------------------------------------------------------------------
 
@@ -105,17 +104,17 @@ labs = [l.get_label() for l in lg]
 ax2.legend(lg, labs, loc='upper center',ncol=2,fontsize=lsize1)
 
 # ------------------------------------------------------------------------------------
-# plots for figure 4c - The eigenvalues of the G matrix
+# plots for figure 4b - The eigenvalues of the G matrix
 
 my_yticks = [i for i in range(5)]
 my_ylabel = ['0', '1', '2', '3', '4']
 
-tl1 = np.asarray([0.870e4 for i in range(11)])
-tl2 = np.asarray([0.920e4 for i in range(11)])
-tl3 = np.asarray([0.990e4 for i in range(11)])
-tl4 = np.asarray([1.050e4 for i in range(11)])
-tl5 = np.asarray([1.120e4 for i in range(11)])
-tl6 = np.asarray([1.200e4 for i in range(11)])
+tl1 = np.asarray([0.740e4 for i in range(11)])
+tl2 = np.asarray([0.800e4 for i in range(11)])
+tl3 = np.asarray([0.880e4 for i in range(11)])
+tl4 = np.asarray([0.950e4 for i in range(11)])
+tl5 = np.asarray([1.000e4 for i in range(11)])
+tl6 = np.asarray([1.050e4 for i in range(11)])
 yl = np.asarray([5*i/10 for i in range(11)])
 
 ax=plt.subplot(212)
@@ -139,9 +138,8 @@ ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labe
 plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
 
-plt.axvspan(5.1e3,6.3e3, color='gray', alpha=0.2)
-plt.axvspan(1.19e4,1.25e4, color='gray', alpha=0.2)
-plt.axvspan(1.40e4,1.46e4, color='gray', alpha=0.2)
+plt.axvspan(5.35e3,6.4e3, color='gray', alpha=0.2)
+plt.axvspan(1.26e4,1.45e4, color='gray', alpha=0.2)
 
 #ax.tick_params(labelsize=18)
 # ------------------------------------------------------------------------------------
@@ -150,4 +148,5 @@ plt.annotate('(b)',xy=(0.93,0.93),xycoords='axes fraction',fontsize=lsize1)
 #plt.axvspan(3, 6, color='grey', alpha=0.1)
 plt.tight_layout()
 
-fig.savefig('./figures/FluctuationsStabilityG-updated.pdf',bbox_inches='tight')
+#fig.savefig('./figures/FluctuationsStabilityG.pdf',bbox_inches='tight')             #old mathematica data
+fig.savefig('./figures/FluctuationsStabilityG-updated.pdf',bbox_inches='tight')     #new matlab data

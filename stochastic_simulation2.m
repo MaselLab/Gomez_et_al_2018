@@ -161,8 +161,8 @@ for timestep=1:steps
         evec1 = [cosd(45) sind(45); -sind(45) cosd(45)]*(sign(D(1,1))*D(:,1)); 
         Gang = atan2d(evec1(2),evec1(1)); 
         
-        % print data to output files
-        fprintf(fileID1,'%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f\n',timestep,sigmax2,sigmay2,sigmaxy,front_cov,pop_load,L(2,2),L(1,1),Gang);
+        % print data to output files, need: times,mean_fit,fit_var,fit_cov,pop_load,dcov_dt,vU_thry,v2U_thry
+        fprintf(fileID1,'%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f\n',timestep,sigmax2,sigmay2,sigmaxy,front_cov,pop_load,L(2,2),L(1,1),Gang,meanfitness,meanfitx,meanfity);
         
         for i=1:size(pop,1)
             for j=1:size(pop,2)

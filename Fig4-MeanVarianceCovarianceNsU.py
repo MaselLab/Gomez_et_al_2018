@@ -31,8 +31,8 @@ import plotfunctions as pltfun
 
 # -----------------------------------------------------------------------------------
 # load time series data of distrStats from plotdata.py output
-#pickle_file_name = './data/pythondata/2dwave_data_time_avg_stats_mm-01.pickle'
-pickle_file_name = './data/pythondata/2dwave_data_time_avg_stats_ml-01.pickle'
+#pickle_file_name = './data/pythondata/2dwave_data_time_avg_stats_mm-01.pickle'     #old mathematica data
+pickle_file_name = './data/pythondata/2dwave_data_time_avg_stats_ml-01.pickle'      #new matlab data
 pickle_file = open(pickle_file_name,'rb') 
 [var, cov, vUthry, v2Uthry, varp, covp, vUthryp, v2Uthryp, NsUparam] = pickle.load(pickle_file)
 pickle_file.close()
@@ -132,5 +132,6 @@ plt.annotate('(c)',xy=(0.9,0.93),xycoords='axes fraction',fontsize=20)
 fig.subplots_adjust(wspace=0.1)
 fig.subplots_adjust(bottom=0.25)
 plt.tight_layout
+#plt.savefig('./figures/MeanVarianceCovarianceNsU.pdf',bbox_inches='tight')     #figure with old mathematica data
 plt.savefig('./figures/MeanVarianceCovarianceNsU-updated.pdf',bbox_inches='tight')
 

@@ -22,7 +22,7 @@ import plotfunctions as pltfun
 # ************************************************************************************
 # ************************************************************************************
 
-[N,U,s] = [10**9, 2*10**(-5),10**(-2)]
+[N,U,s] = [10**9, 2*10**(-5),1*10**(-2)]      #need to replace this with actual stored parameters
 
 # compute the right offset and construct nose covariance 
 tau_q = ((np.log(s/U))**2)/(s*(2*np.log(N*s)-np.log(s/U)))
@@ -30,7 +30,8 @@ q = (2*np.log(N*s))/(np.log(s/U))
 
 # load covariance data of front from pickle file
 # what is lead_cov data?? lead cov stores the covariance of each const fit line
-pickle_file_name = './data/2dwave_data_time_series_corr_mm-01.pickle'
+#pickle_file_name = './data/2dwave_data_time_series_corr_mm-01.pickle'       #old mathematica data
+pickle_file_name = './data/2dwave_data_time_series_corr_ml-01.pickle'       #new matlab data
 pickle_file = open(pickle_file_name,'rb') 
 [tau_fix_avg,t_off,t_cov] = pickle.load(pickle_file)
 pickle_file.close()
@@ -61,4 +62,5 @@ plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
 
 ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=26)
-fig.savefig('./figures/CorrelationNoseBulkCovariance-updated.pdf',bbox_inches='tight')
+#fig.savefig('./figures/CorrelationNoseBulkCovariance.pdf',bbox_inches='tight')      #figure with old mathematica data
+fig.savefig('./figures/CorrelationNoseBulkCovariance-updated.pdf',bbox_inches='tight')  #figure with new matlab data

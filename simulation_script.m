@@ -4,12 +4,12 @@ cd MATLAB/
 %% Simulations for new figures (2,4,5,6,7)
 
 N = 1e9;
-s = 2e-2;
+s = 1e-2;
 u = 1e-5;
-steps = 2e5;
+steps = 2e4;
 times = 1:steps;
 
-start_time = 5e4;
+start_time = 5e3;
 end_time = steps;
 collect_data = true;
 outputfile = '2dwave_data_time_series_stats_ml-01';
