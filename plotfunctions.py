@@ -217,3 +217,64 @@ def get_hifit_front_genos(genotypes):
     return hhfgenotypes
 
 # -----------------------------------------------------------------------------  
+
+def get_stoch_genotypes(genotypes,abundances,cutoff):
+# returns the set of classes that are smaller than the given cutoff
+# and the those classes that are at the high fitness front.
+    nosefitness = np.max(np.matmul(genotypes,np.ones([2,1])))
+    hhf_points = []
+    stoch_points = []
+    
+    for i in range(len(genotypes)):
+        if (abundances[0][i]<cutoff):
+            stoch_points = stoch_points+[genotypes[i]]
+            if(genotypes[i][0]+genotypes[i][1]==nosefitness):
+                hhf_points = hhf_points + [genotypes[i]]
+    
+    hhf_points = np.asarray(hhf_points)
+    stoch_points = np.asarray(stoch_points)
+    return [hhf_points,stoch_points]
+
+def get_2D_distr2(genotypes,abundances,box_dim,cutoff):
+# box_dim = gives array data to bound distr correponding to genotypes & abund.
+#           [[width1,margin1],[width2,margin2]]
+# returns: an array whose elements are the abundances of the fit classes
+    
+    [hhfgenotypes,stochgenotypes] = get_stoch_genotypes(genotypes,abundances,cutoff)
+    hhf_points = []
+    stoch_points = []
+    
+    tot_pop_size = sum(abundances[0])  # be careful with your sums of arrays!!!    
+    dim1_data = [np.min(genotypes[:,0]),np.max(genotypes[:,0])]
+    dim2_data = [np.min(genotypes[:,1]),np.max(genotypes[:,1])]
+    
+    if((box_dim[0][0] < dim1_data[1]-dim1_data[0]) | (box_dim[1][0] < dim2_data[1]-dim2_data[0])):
+        print "Error with box dimensions"
+        end()
+    
+    my_distr = np.zeros([box_dim[0][0],box_dim[1][0]])
+    
+    for i in range(len(genotypes)):
+        indx1 = genotypes[i][0] - dim1_data[0] + box_dim[0][1]
+        indx2 = genotypes[i][1] - dim2_data[0] + box_dim[1][1]        
+        my_distr[indx1,indx2] = max([abundances[0][i]/tot_pop_size,1/tot_pop_size])
+        
+    xlabels = [(dim1_data[0] - box_dim[0][1]-1 + i) for i in range(box_dim[0][0]+1)]
+    ylabels = [(dim2_data[0] - box_dim[1][1]-1 + i) for i in range(box_dim[1][0]+1)]
+
+    for i in range(len(hhfgenotypes)):
+        indx1 = hhfgenotypes[i][0] - dim1_data[0] + box_dim[0][1]
+        indx2 = hhfgenotypes[i][1] - dim2_data[0] + box_dim[1][1]        
+        hhf_points.append([indx1+.5,indx2+0.5])
+
+    for i in range(len(stochgenotypes)):
+        indx1 = stochgenotypes[i][0] - dim1_data[0] + box_dim[0][1]
+        indx2 = stochgenotypes[i][1] - dim2_data[0] + box_dim[1][1]        
+        stoch_points.append([indx1+0.5,indx2+0.5])
+        
+    hhf_points = np.asarray(hhf_points)
+    stoch_points = np.asarray(stoch_points)
+    
+    return [my_distr,xlabels,ylabels,hhf_points,stoch_points]
+
+# -----------------------------------------------------------------------------  

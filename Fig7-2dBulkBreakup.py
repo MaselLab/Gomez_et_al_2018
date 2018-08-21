@@ -22,15 +22,6 @@ import plotfunctions as pltfun
 
 # ************************************************************************************
 # ************************************************************************************
-#               General format parameters
-#
-#   Label font size = 20, 24 (tex)
-#   tick font size = 18
-#   tick padding = 15
-#   legend = 20 (tex)
-#
-# ************************************************************************************
-# ************************************************************************************
 # ************************************************************************************
 # --------------------Figure: 2dBulkBreakup.----------------------------------------
 # ************************************************************************************
@@ -39,11 +30,13 @@ import plotfunctions as pltfun
 
 # figure 2: plot of sampled two dimensional distribution from simulated data
 [N,s,U] = [1e9,1e-2,1e-5]
-[sim_start,sim_end] = [1e4,4e4]
-snapshot = [0.870e4,0.920e4,0.990e4,1.050e4,1.120e4,1.200e4]
+[sim_start,sim_end,cutoff] = [1e4,4e4,10/s]
+#snapshot = [0.870e4,0.920e4,0.990e4,1.050e4,1.120e4,1.200e4]    #old mathematica data
+snapshot = [0.740e4, 0.800e4, 0.876e4, 0.945e4, 1.000e4, 1.050e4]    #new matlab data
 
 # load time series data of distrStats from plotdata.py output
-pickle_file_name = './data/pythondata/timesGenosAbund_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pickle'
+#pickle_file_name = './data/pythondata/timesGenosAbund_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pickle'    #old mathematica data
+pickle_file_name = './data/2dwave_data_time_series_distr_ml-01.pickle'
 pickle_file = open(pickle_file_name,'rb') 
 [times,genotypes_all,abundances_all] = pickle.load(pickle_file)
 pickle_file.close()
@@ -59,13 +52,14 @@ genotypes = genotypes_all[snapshot_indx]
 abundances = abundances_all[snapshot_indx]  
 fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
 box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
-[distr_grid,class_xlabels,class_ylabels,hhf_points] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+[distr_grid,class_xlabels,class_ylabels,hhf_points,stoch_points] = pltfun.get_2D_distr2(genotypes,abundances,box_dim,cutoff)
 distr_grid = np.log10(N*distr_grid)
 distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
 # mark classes at the high fitness front
-ax.scatter(hhf_points[:,0],hhf_points[:,1],c="dodgerblue",marker="s",linewidth='0',s=140)
+#ax.scatter(stoch_points[:,0],stoch_points[:,1],c="skyblue",marker="s",linewidth='0',s=140)
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="None",marker="s",linewidth='1',s=150,edgecolor="dodgerblue")
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
@@ -83,7 +77,7 @@ ax.set_yticklabels([])
 #ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
-plt.annotate('t = 8,700',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="Blue")
+plt.annotate('t = 7,400',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="Blue")
 plt.annotate('(a)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16) 
 
 # ---------------------------------------------------------------------------------
@@ -95,13 +89,14 @@ genotypes = genotypes_all[snapshot_indx]
 abundances = abundances_all[snapshot_indx]
 fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
 box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
-[distr_grid,class_xlabels,class_ylabels,hhf_points] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+[distr_grid,class_xlabels,class_ylabels,hhf_points,stoch_points] = pltfun.get_2D_distr2(genotypes,abundances,box_dim,cutoff)
 distr_grid = np.log10(N*distr_grid)
 distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
 # mark classes at the high fitness front
-ax.scatter(hhf_points[:,0],hhf_points[:,1],c="dodgerblue",marker="s",linewidth='0',s=155)
+#ax.scatter(stoch_points[:,0],stoch_points[:,1],c="skyblue",marker="s",linewidth='0',s=140)
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="None",marker="s",linewidth='1',s=150,edgecolor="dodgerblue")
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
@@ -119,7 +114,7 @@ ax.set_yticklabels([])
 #ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
-plt.annotate('t = 9,200',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="green")
+plt.annotate('t = 8,000',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="green")
 plt.annotate('(b)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16)
 
 # ---------------------------------------------------------------------------------
@@ -131,13 +126,14 @@ genotypes = genotypes_all[snapshot_indx]
 abundances = abundances_all[snapshot_indx]  
 fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
 box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
-[distr_grid,class_xlabels,class_ylabels,hhf_points] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+[distr_grid,class_xlabels,class_ylabels,hhf_points,stoch_points] = pltfun.get_2D_distr2(genotypes,abundances,box_dim,cutoff)
 distr_grid = np.log10(N*distr_grid)
 distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
 # mark classes at the high fitness front
-ax.scatter(hhf_points[:,0],hhf_points[:,1],c="dodgerblue",marker="s",linewidth='0',s=170)
+#ax.scatter(stoch_points[:,0],stoch_points[:,1],c="skyblue",marker="s",linewidth='0',s=140)
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="None",marker="s",linewidth='1',s=130,edgecolor="dodgerblue")
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
@@ -155,7 +151,7 @@ ax.set_yticklabels([])
 #ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
-plt.annotate('t = 9,900',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="red")
+plt.annotate('t = 8,760',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="red")
 plt.annotate('(c)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16)
 
 # ---------------------------------------------------------------------------------
@@ -167,13 +163,14 @@ genotypes = genotypes_all[snapshot_indx]
 abundances = abundances_all[snapshot_indx]  
 fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
 box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
-[distr_grid,class_xlabels,class_ylabels,hhf_points] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+[distr_grid,class_xlabels,class_ylabels,hhf_points,stoch_points] = pltfun.get_2D_distr2(genotypes,abundances,box_dim,cutoff)
 distr_grid = np.log10(N*distr_grid)
 distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
 # mark classes at the high fitness front
-ax.scatter(hhf_points[:,0],hhf_points[:,1],c="dodgerblue",marker="s",linewidth='0',s=155)
+#ax.scatter(stoch_points[:,0],stoch_points[:,1],c="skyblue",marker="s",linewidth='0',s=140)
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="None",marker="s",linewidth='1',s=100,edgecolor="dodgerblue")
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
@@ -191,7 +188,7 @@ ax.set_yticklabels([])
 #ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
-plt.annotate('t = 10,500',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="darkcyan")
+plt.annotate('t = 9,450',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="darkcyan")
 plt.annotate('(d)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16) 
 
 # ---------------------------------------------------------------------------------
@@ -202,13 +199,14 @@ genotypes = genotypes_all[snapshot_indx]
 abundances = abundances_all[snapshot_indx]
 fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
 box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
-[distr_grid,class_xlabels,class_ylabels,hhf_points] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+[distr_grid,class_xlabels,class_ylabels,hhf_points,stoch_points] = pltfun.get_2D_distr2(genotypes,abundances,box_dim,cutoff)
 distr_grid = np.log10(N*distr_grid)
 distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
 # mark classes at the high fitness front
-ax.scatter(hhf_points[:,0],hhf_points[:,1],c="dodgerblue",marker="s",linewidth='0',s=140)
+#ax.scatter(stoch_points[:,0],stoch_points[:,1],c="skyblue",marker="s",linewidth='0',s=140)
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="None",marker="s",linewidth='1',s=90,edgecolor="dodgerblue")
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
@@ -226,7 +224,7 @@ ax.set_yticklabels([])
 #ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
-plt.annotate('t = 11,200',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="magenta")
+plt.annotate('t = 10,000',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="magenta")
 plt.annotate('(e)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16)
 
 # ---------------------------------------------------------------------------------
@@ -237,13 +235,14 @@ genotypes = genotypes_all[snapshot_indx]
 abundances = abundances_all[snapshot_indx]  
 fit_clss_width = np.max([np.max(genotypes[:,0])-np.min(genotypes[:,0])+5,np.max(genotypes[:,1])-np.min(genotypes[:,1])+5])
 box_dim = [[fit_clss_width,2],[fit_clss_width,2]]
-[distr_grid,class_xlabels,class_ylabels,hhf_points] = pltfun.get_2D_distr(genotypes,abundances,box_dim)
+[distr_grid,class_xlabels,class_ylabels,hhf_points,stoch_points] = pltfun.get_2D_distr2(genotypes,abundances,box_dim,cutoff)
 distr_grid = np.log10(N*distr_grid)
-distr_grid[distr_grid == -inf] = 0     
+distr_grid[distr_grid == -inf] = 0
 fit_distr_2d = ax.pcolormesh(distr_grid.transpose(),cmap=plt.cm.gray_r,vmin=0, vmax=9*np.log10(10))
 
 # mark classes at the high fitness front
-ax.scatter(hhf_points[:,0],hhf_points[:,1],c="dodgerblue",marker="s",linewidth='0',s=120)
+#ax.scatter(stoch_points[:,0],stoch_points[:,1],c="skyblue",marker="s",linewidth='0',s=140)
+ax.scatter(hhf_points[:,0],hhf_points[:,1],c="None",marker="s",linewidth='1',s=120,edgecolor="dodgerblue")
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
@@ -261,7 +260,7 @@ ax.set_yticklabels([])
 #ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
-plt.annotate('t = 12,000',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="darkorange")
+plt.annotate('t = 10,500',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="darkorange")
 plt.annotate('(f)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16)
 
 #------------------------------------------------------------------------------------
@@ -277,5 +276,6 @@ fig.subplots_adjust(wspace=0.05)
 #fig.subplots_adjust(bottom=0.25)
 #plt.tight_layout()
 
-fig.savefig('./figures/2dBulkBreakup.pdf',bbox_inches='tight')
+#fig.savefig('./figures/2dBulkBreakup.pdf',bbox_inches='tight')      #old mathematica data
+fig.savefig('./figures/2dBulkBreakup-updated.pdf',bbox_inches='tight')
 

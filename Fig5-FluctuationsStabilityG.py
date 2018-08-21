@@ -111,8 +111,8 @@ my_ylabel = ['0', '1', '2', '3', '4']
 
 tl1 = np.asarray([0.740e4 for i in range(11)])
 tl2 = np.asarray([0.800e4 for i in range(11)])
-tl3 = np.asarray([0.880e4 for i in range(11)])
-tl4 = np.asarray([0.950e4 for i in range(11)])
+tl3 = np.asarray([0.876e4 for i in range(11)])
+tl4 = np.asarray([0.945e4 for i in range(11)])
 tl5 = np.asarray([1.000e4 for i in range(11)])
 tl6 = np.asarray([1.050e4 for i in range(11)])
 yl = np.asarray([5*i/10 for i in range(11)])
