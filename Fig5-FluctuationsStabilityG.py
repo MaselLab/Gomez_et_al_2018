@@ -80,8 +80,8 @@ plt.yticks(my_yticks,my_ylabel)
 ax.grid(b='off', which='both', axis='both')
 ax.axhline(linewidth=0.5, color = 'k')    
 plt.annotate('(a)',xy=(0.93,0.93),xycoords='axes fraction',fontsize=lsize1) 
-plt.axvspan(5.35e3,6.4e3, color='gray', alpha=0.2)
-plt.axvspan(1.26e4,1.45e4, color='gray', alpha=0.2)
+#plt.axvspan(5.35e3,6.4e3, color='gray', alpha=0.2)
+#plt.axvspan(1.26e4,1.45e4, color='gray', alpha=0.2)
 
 # -------------------------------------------------------------------------------------
 
@@ -91,7 +91,7 @@ my_ylabel = [r'$-30^o$','',r'$0^o$','', r'$30^o$','']
 ax2 = plt.twinx(ax)
 lg4 = ax2.plot(times,2*Gang,c="blue",linewidth=1.5,linestyle="-",label='Angle')
 ax2.axhline(linewidth=0.5, color = 'k')
-ax2.set_ylabel(r'Angle of $2^{nd}$ eigenvector',fontsize=lsize1)
+ax2.set_ylabel(r'Angle of $2^{nd}$ eigenvector',fontsize=lsize1,color="blue")
 ax2.yaxis.set_label_coords(1.07,0.5)
 ax2.set_xlim((5e3,1.5e4))
 ax2.set_ylim((-0.77,1.23))
@@ -138,8 +138,8 @@ ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labe
 plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
 
-plt.axvspan(5.35e3,6.4e3, color='gray', alpha=0.2)
-plt.axvspan(1.26e4,1.45e4, color='gray', alpha=0.2)
+#plt.axvspan(5.35e3,6.4e3, color='gray', alpha=0.2)
+#plt.axvspan(1.26e4,1.45e4, color='gray', alpha=0.2)
 
 #ax.tick_params(labelsize=18)
 # ------------------------------------------------------------------------------------
