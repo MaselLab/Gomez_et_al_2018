@@ -63,7 +63,7 @@ ax.scatter(hhf_points[:,0],hhf_points[:,1],c="None",marker="s",linewidth='1',s=1
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
-ax.plot(xl,yl,c="black",linestyle="-")
+ax.plot(xl-0.5,yl-0.5,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
 ax.axis('tight')        
@@ -100,7 +100,7 @@ ax.scatter(hhf_points[:,0],hhf_points[:,1],c="None",marker="s",linewidth='1',s=1
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
-ax.plot(xl,yl,c="black",linestyle="-")
+ax.plot(xl-0.5,yl-0.5,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
 ax.axis('tight')        
@@ -137,7 +137,7 @@ ax.scatter(hhf_points[:,0],hhf_points[:,1],c="None",marker="s",linewidth='1',s=1
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
-ax.plot(xl,yl,c="black",linestyle="-")
+ax.plot(xl-0.5,yl-0.5,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
 ax.axis('tight')        
@@ -174,7 +174,7 @@ ax.scatter(hhf_points[:,0],hhf_points[:,1],c="None",marker="s",linewidth='1',s=1
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
-ax.plot(xl,yl,c="black",linestyle="-")
+ax.plot(xl-0.5,yl-0.5,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
 ax.axis('tight')        
@@ -210,7 +210,7 @@ ax.scatter(hhf_points[:,0],hhf_points[:,1],c="None",marker="s",linewidth='1',s=9
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
-ax.plot(xl,yl,c="black",linestyle="-")
+ax.plot(xl-0.5,yl-0.5,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
 ax.axis('tight')        
@@ -246,7 +246,7 @@ ax.scatter(hhf_points[:,0],hhf_points[:,1],c="None",marker="s",linewidth='1',s=1
 
 # get line data for pre-high fitness front
 [xl,yl] = pltfun.get_hifit_front_line(genotypes,40,box_dim)
-ax.plot(xl,yl,c="black",linestyle="-")
+ax.plot(xl-0.5,yl-0.5,c="black",linestyle="-")
 
 #cbar = plt.colorbar(fit_distr_2d)
 ax.axis('tight')        
