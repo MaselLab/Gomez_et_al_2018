@@ -32,7 +32,7 @@ import plotfunctions as pltfun
 [N,s,U] = [1e9,1e-2,1e-5]
 [sim_start,sim_end,cutoff] = [1e4,4e4,10/s]
 #snapshot = [0.870e4,0.920e4,0.990e4,1.050e4,1.120e4,1.200e4]    #old mathematica data
-snapshot = [0.740e4, 0.800e4, 0.876e4, 0.945e4, 1.000e4, 1.050e4]    #new matlab data
+snapshot = [0.6985e4, 0.7565e4, 0.8198e4, 0.8790e4, 0.9486e4, 1.0162e4]    #new matlab data 
 
 # load time series data of distrStats from plotdata.py output
 #pickle_file_name = './data/pythondata/timesGenosAbund_N-10p09_c1-0d01_c2-0d01_U1-1x10pn5_U2-1x10pn5_exp1.pickle'    #old mathematica data
@@ -77,7 +77,7 @@ ax.set_yticklabels([])
 #ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
-plt.annotate('t = 7,400',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="Blue")
+plt.annotate('t = '+str(snapshot[0]),xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="Blue")
 plt.annotate('(a)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16) 
 
 # ---------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ ax.set_yticklabels([])
 #ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
-plt.annotate('t = 8,000',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="green")
+plt.annotate('t = '+str(snapshot[1]),xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="green")
 plt.annotate('(b)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16)
 
 # ---------------------------------------------------------------------------------
@@ -151,7 +151,7 @@ ax.set_yticklabels([])
 #ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
-plt.annotate('t = 8,760',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="red")
+plt.annotate('t = '+str(snapshot[2]),xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="red")
 plt.annotate('(c)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16)
 
 # ---------------------------------------------------------------------------------
@@ -188,7 +188,7 @@ ax.set_yticklabels([])
 #ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
-plt.annotate('t = 9,450',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="darkcyan")
+plt.annotate('t = '+str(snapshot[3]),xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="darkcyan")
 plt.annotate('(d)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16) 
 
 # ---------------------------------------------------------------------------------
@@ -224,7 +224,7 @@ ax.set_yticklabels([])
 #ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
-plt.annotate('t = 10,000',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="magenta")
+plt.annotate('t = '+str(snapshot[4]),xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="magenta")
 plt.annotate('(e)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16)
 
 # ---------------------------------------------------------------------------------
@@ -260,7 +260,7 @@ ax.set_yticklabels([])
 #ax.set_ylabel('Beneficial mutaitons trait 2',fontsize=24,labelpad=10)
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
-plt.annotate('t = 10,500',xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="darkorange")
+plt.annotate('t = '+str(snapshot[5]),xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="darkorange")
 plt.annotate('(f)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16)
 
 #------------------------------------------------------------------------------------

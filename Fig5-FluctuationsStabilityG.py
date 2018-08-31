@@ -90,12 +90,14 @@ plt.annotate('(a)',xy=(0.92,0.90),xycoords='axes fraction',fontsize=lsize1)
 my_yticks = [i for i in range(5)]
 my_ylabel = ['0', '1', '2', '3', '4']
 
-tl1 = np.asarray([0.740e4 for i in range(11)])
-tl2 = np.asarray([0.800e4 for i in range(11)])
-tl3 = np.asarray([0.876e4 for i in range(11)])
-tl4 = np.asarray([0.945e4 for i in range(11)])
-tl5 = np.asarray([1.000e4 for i in range(11)])
-tl6 = np.asarray([1.050e4 for i in range(11)])
+snapshot = [0.6985e4, 0.7565e4, 0.8198e4, 0.8790e4, 0.9486e4, 1.0162e4]
+
+tl1 = np.asarray([snapshot[0] for i in range(11)])
+tl2 = np.asarray([snapshot[1] for i in range(11)])
+tl3 = np.asarray([snapshot[2] for i in range(11)])
+tl4 = np.asarray([snapshot[3] for i in range(11)])
+tl5 = np.asarray([snapshot[4] for i in range(11)])
+tl6 = np.asarray([snapshot[5] for i in range(11)])
 yl = np.asarray([5*i/10 for i in range(11)])
 
 ax=plt.subplot(312)
@@ -142,7 +144,7 @@ ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labe
 ax.legend(loc='upper center',ncol=2,fontsize=lsize1)
 plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
-ax2.grid(b='off', which='both', axis='both')
+ax.grid(b='off', which='both', axis='both')
 ax.axhline(linewidth=0.5, color = 'k')    
 plt.annotate('(c)',xy=(0.92,0.90),xycoords='axes fraction',fontsize=lsize1) 
 ax.set_xlabel('Time (Thousands of Generations)',fontsize=lsize1)
