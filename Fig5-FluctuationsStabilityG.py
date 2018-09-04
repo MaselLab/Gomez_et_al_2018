@@ -71,7 +71,7 @@ ax.plot(times,(1/vU_thry)*rate_adpt_t1,c="black",label=r'$v_1$',linestyle="-",li
 ax.plot(times,(1/vU_thry)*fit_var[:,0],c="black",label=r'$\sigma_1^2$',linestyle="--",linewidth=2.0)
 ax.plot(times,(1/vU_thry)*fit_cov[:],c="black",label=r'$\sigma_{1,2}$',linestyle=":",linewidth=2.0)
 ax.set_ylabel(r'$\sigma_1^2$ and $\sigma_{1,2}$ / $v(U,N,s)$',fontsize=lsize1)
-ax.yaxis.set_label_coords(-0.09,0.5)
+ax.yaxis.set_label_coords(-0.12,0.5)
 ax.set_xlim((5e3,1.5e4))
 ax.set_ylim((-5.5,9.5))
 ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
@@ -81,6 +81,33 @@ ax.grid(b='off', which='both', axis='both')
 ax.axhline(linewidth=0.5, color = 'k')    
 ax.legend(loc='upper center',ncol=3,fontsize=lsize1)
 plt.annotate('(a)',xy=(0.92,0.90),xycoords='axes fraction',fontsize=lsize1) 
+plt.tight_layout()
+#plt.axvspan(5.35e3,6.4e3, color='gray', alpha=0.2)
+#plt.axvspan(1.26e4,1.45e4, color='gray', alpha=0.2)
+
+
+# ------------------------------------------------------------------------------------
+
+my_yticks = [(i-1)/3.0 for i in range(4)]
+my_ylabel = [r'-$15^o$',r'$0^o$',r'$15^o$', r'$30^o$']
+
+ax=plt.subplot(312)
+
+ax.plot(times,2*Gang,c="black",linewidth=2.0,linestyle="-",label='Angle')
+ax.axhline(linewidth=0.5, color = 'k')
+ax.set_ylabel(r'Angle of $2^{nd}$ eigenvector',fontsize=lsize1,color="black")
+ax.yaxis.set_label_coords(-0.12,0.5)
+ax.set_xlim((5e3,1.5e4))
+ax.set_ylim((-0.50,0.80))
+ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
+ax.legend(loc='upper center',ncol=2,fontsize=lsize1)
+plt.xticks(my_xticks,[])
+plt.yticks(my_yticks,my_ylabel)
+ax.grid(b='off', which='both', axis='both')
+ax.axhline(linewidth=0.5, color = 'k')    
+plt.annotate('(b)',xy=(0.92,0.90),xycoords='axes fraction',fontsize=lsize1) 
+
+plt.tight_layout()
 #plt.axvspan(5.35e3,6.4e3, color='gray', alpha=0.2)
 #plt.axvspan(1.26e4,1.45e4, color='gray', alpha=0.2)
 
@@ -100,7 +127,7 @@ tl5 = np.asarray([snapshot[4] for i in range(11)])
 tl6 = np.asarray([snapshot[5] for i in range(11)])
 yl = np.asarray([5*i/10 for i in range(11)])
 
-ax=plt.subplot(312)
+ax=plt.subplot(313)
 ax.plot(times,(1/np.mean(lambda1))*lambda1,c="black",linewidth=2.0,linestyle="-",label='$\lambda_1$ / $\overline{\lambda}_1$')
 ax.plot(times,(1/np.mean(lambda2))*lambda2,c="black",linewidth=2.0,linestyle=":",label='$\lambda_2$ / $\overline{\lambda}_2$')
 ax.plot(tl1,yl,c="blue",linewidth=2.0,linestyle="--")
@@ -109,47 +136,26 @@ ax.plot(tl3,yl,c="red",linewidth=2.0,linestyle="--")
 ax.plot(tl4,yl,c="darkcyan",linewidth=2.0,linestyle="--")
 ax.plot(tl5,yl,c="magenta",linewidth=2.0,linestyle="--")
 ax.plot(tl6,yl,c="darkorange",linewidth=2.0,linestyle="--")
-ax.yaxis.set_label_coords(-0.09,0.5)
+ax.yaxis.set_label_coords(-0.12,0.5)
 ax.set_ylabel(r'Normalized eignvalues of G',fontsize=lsize1)
 ax.axhline(linewidth=0.5, color = 'k')
 ax.set_xlim((5e3,1.5e4))
 ax.set_ylim((0,4.5))
 ax.legend(loc='upper center',ncol=2,fontsize=lsize1)
 ax.grid(b='off', which='both', axis='both')
+ax.set_xlabel('Time (Thousands of Generations)',fontsize=lsize1)
 ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
-plt.xticks(my_xticks,[])
+plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
+
 #plt.axvspan(5.35e3,6.4e3, color='gray', alpha=0.2)
 #plt.axvspan(1.26e4,1.45e4, color='gray', alpha=0.2)
 #ax.tick_params(labelsize=18)
 
-plt.annotate('(b)',xy=(0.92,0.90),xycoords='axes fraction',fontsize=lsize1)
+plt.annotate('(c)',xy=(0.92,0.90),xycoords='axes fraction',fontsize=lsize1)
 #plt.axvspan(3, 6, color='grey', alpha=0.1)
 plt.tight_layout()
 
-# ------------------------------------------------------------------------------------
-
-my_yticks = [(i-1)/3.0 for i in range(4)]
-my_ylabel = [r'-$15^o$',r'$0^o$',r'$15^o$', r'$30^o$']
-
-ax=plt.subplot(313)
-
-ax.plot(times,2*Gang,c="black",linewidth=2.0,linestyle="-",label='Angle')
-ax.axhline(linewidth=0.5, color = 'k')
-ax.set_ylabel(r'Angle of $2^{nd}$ eigenvector',fontsize=lsize1,color="black")
-ax.yaxis.set_label_coords(-0.09,0.5)
-ax.set_xlim((5e3,1.5e4))
-ax.set_ylim((-0.50,0.80))
-ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labelsize=lsize2)
-ax.legend(loc='upper center',ncol=2,fontsize=lsize1)
-plt.xticks(my_xticks,my_xlabel)
-plt.yticks(my_yticks,my_ylabel)
-ax.grid(b='off', which='both', axis='both')
-ax.axhline(linewidth=0.5, color = 'k')    
-plt.annotate('(c)',xy=(0.92,0.90),xycoords='axes fraction',fontsize=lsize1) 
-ax.set_xlabel('Time (Thousands of Generations)',fontsize=lsize1)
-#plt.axvspan(5.35e3,6.4e3, color='gray', alpha=0.2)
-#plt.axvspan(1.26e4,1.45e4, color='gray', alpha=0.2)
 
 #fig.savefig('./figures/FluctuationsStabilityG.pdf',bbox_inches='tight')             #old mathematica data
 fig.savefig('./figures/FluctuationsStabilityG-updated.pdf',bbox_inches='tight')     #new matlab data
