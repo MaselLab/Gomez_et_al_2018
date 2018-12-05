@@ -278,11 +278,11 @@ def get_2D_distr2(genotypes,abundances,box_dim,cutoff):
     return [my_distr,xlabels,ylabels,hhf_points,stoch_points]
 
 def get_normlzd_thry_indv_var(N,s,U):
-    sigma1sqrd = 0.25*(1+np.log(s/U)+(s/np.sqrt(np.pi))*(1/np.sqrt(get_vNsU(N,s,U))))
+    sigma1sqrd = 0.25 * (get_vNsU(N,s,2*U)/get_vNsU(N,s,U)) * ( 1 + np.log(s/(2*U)) + (s / np.sqrt(np.pi*get_vNsU(N,s,2*U))))
     return sigma1sqrd
 
 def get_normlzd_thry_cov(N,s,U):
-    sigma12 = 0.25*(1-np.log(s/U)-(s/np.sqrt(np.pi))*(1/np.sqrt(get_vNsU(N,s,U))))
+    sigma12 = 0.25 * (get_vNsU(N,s,2*U)/get_vNsU(N,s,U)) * ( 1 - np.log(s/(2*U)) - (s / np.sqrt(np.pi*get_vNsU(N,s,2*U))))
     return sigma12
 
 
