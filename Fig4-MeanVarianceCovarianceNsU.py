@@ -43,7 +43,7 @@ num_exp = len(NsUparam)
 #indices for partitioning parameter array
 #end points had to be manually calibrated with additional data
 [start1,start2,start3] = [0,51,102]         
-[end1,end2,end3] = [50,101,153]
+[end1,end2,end3] = [51,102,153]
 
 # used a different order than in simulations
 [N_min,N_max] = [min(NsUparam[start1:end1,0]),max(NsUparam[start1:end1,0])]

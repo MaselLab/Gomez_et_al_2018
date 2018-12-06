@@ -285,5 +285,8 @@ def get_normlzd_thry_cov(N,s,U):
     sigma12 = 0.25 * (get_vNsU(N,s,2*U)/get_vNsU(N,s,U)) * ( 1 - np.log(s/(2*U)) - (s / np.sqrt(np.pi*get_vNsU(N,s,2*U))))
     return sigma12
 
+def get_q(N,s,U):
+    q_est = 2*np.log(N*s)/np.log(s/U) 
+    return q_est
 
 # -----------------------------------------------------------------------------  
