@@ -42,7 +42,7 @@ import plotfunctions as pltfun
 [N,s,U] = [1e7,2e-2,1e-5]
 per_decr_vrate1 = [pltfun.get_vNsU_perChg(N,s,U,i+1) for i in range(10)]        
 traitNo = [np.log(i+1) for i in range(10)]
-my_xticks = [-0.25]+[log(i+1) for i in range(11)]
+my_xticks = [-0.25]+[np.log(i+1) for i in range(11)]
 my_xlabel = ['', '1', '2', '', '4', '', '', '', '8', '', '', '']
 my_yticks = [0+0.20*i for i in range(6)]
 my_ylabel = [str(0+0.20*i) for i in range(len(my_yticks))]
@@ -63,6 +63,7 @@ ax.tick_params(labelbottom='on',labelleft='on',labelright='off',axis='both',labe
 ax.grid(b='off', which='both', axis='both')
 ax.set_ylim((0,1.1))
 ax.set_xlim(-0.25,np.log(11)) 
+plt.annotate('A',xy=(0.9,0.9),xycoords='axes fraction',fontsize=18,weight='bold')
 #ax.legend(loc=1,ncol=1,fontsize=20,frameon=True,scatterpoints = 1)        
 #ax2g.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),fancybox=True, shadow=True, ncol=2,fontsize=20) 
 
@@ -108,6 +109,7 @@ ax.set_xlabel(r'Selection coefficient',fontsize=14)
 
 plt.xticks(my_sticks,my_slabel,fontsize=14)
 plt.yticks(my_uticks,my_ulabel,fontsize=14)
+plt.annotate('B',xy=(0.9,0.9),xycoords='axes fraction',fontsize=18,weight='bold')
 #fig.text(0.95, 0.5, 'Reduction in v1 (multiples of v(U,N,s))', ha='center', va='center', rotation='vertical',fontsize=20)
        
 fig.savefig('./figures/vReductionMultipleTraits-Updated.pdf',bbox_inches='tight')

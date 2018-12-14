@@ -78,7 +78,7 @@ ax.set_yticklabels([])
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
 plt.annotate('t = '+str(snapshot[0]),xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="Blue")
-plt.annotate('(a)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16) 
+plt.annotate('A',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16,weight='bold') 
 
 # ---------------------------------------------------------------------------------
 # 2D distribution sample at time 9,200 generations
@@ -115,7 +115,7 @@ ax.set_yticklabels([])
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
 plt.annotate('t = '+str(snapshot[1]),xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="green")
-plt.annotate('(b)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16)
+plt.annotate('B',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16,weight='bold')
 
 # ---------------------------------------------------------------------------------
 # 2D distribution sample at time 9,900 generations
@@ -152,7 +152,7 @@ ax.set_yticklabels([])
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
 plt.annotate('t = '+str(snapshot[2]),xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="red")
-plt.annotate('(c)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16)
+plt.annotate('C',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16,weight='bold')
 
 # ---------------------------------------------------------------------------------
 # 2D distribution sample at time 10,500 generations
@@ -189,7 +189,7 @@ ax.set_yticklabels([])
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
 plt.annotate('t = '+str(snapshot[3]),xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="darkcyan")
-plt.annotate('(d)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16) 
+plt.annotate('D',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16,weight='bold') 
 
 # ---------------------------------------------------------------------------------
 # 2D distribution sample at time 11,200 generations
@@ -225,7 +225,7 @@ ax.set_yticklabels([])
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
 plt.annotate('t = '+str(snapshot[4]),xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="magenta")
-plt.annotate('(e)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16)
+plt.annotate('E',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16,weight='bold')
 
 # ---------------------------------------------------------------------------------
 # 2D distribution sample at time 12,000 generations
@@ -261,7 +261,7 @@ ax.set_yticklabels([])
 ax.tick_params(axis='both',labelsize=14)        
 #cbar.ax.text(2.5,0.65,'Log$_{10}$ of Abundances',rotation=90,fontsize=18)
 plt.annotate('t = '+str(snapshot[5]),xy=(0.1,0.05),xycoords='axes fraction',fontsize=16,color="darkorange")
-plt.annotate('(f)',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16)
+plt.annotate('F',xy=(0.85,0.90),xycoords='axes fraction',fontsize=16,weight='bold')
 
 #------------------------------------------------------------------------------------
 
