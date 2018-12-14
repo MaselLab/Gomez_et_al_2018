@@ -57,7 +57,7 @@ ax.xaxis.set_tick_params(which='both',length=5)
 ax.yaxis.set_tick_params(which='both',length=5)
 ax.xaxis.set_ticks_position('bottom')
 ax.yaxis.set_ticks_position('left')
-plt.annotate('B',xy=(0.87,0.90),xycoords='axes fraction',fontsize=32,weight='bold')
+plt.annotate('B',xy=(0.87,0.90),xycoords='axes fraction',fontsize=34,weight='bold')
 plt.xticks(my_xticks,my_xlabel)
 plt.yticks(my_yticks,my_ylabel)
 
